@@ -233,11 +233,16 @@ function reveal(){
  const w=filtered[current];revealed=true;
  const parts=[];
  parts.push('<div class="meaning">'+escapeHtml(w.meaning||"Nincs megadott magyar jelentés.")+'</div>');
- if((w.partOfSpeech && String(w.partOfSpeech).includes("főnév")) || (w.partOfSpeech && String(w.partOfSpeech).includes("tulajdonnév"))){
+ const isNoun=String(w.partOfSpeech||"").includes("főnév") || String(w.partOfSpeech||"").includes("tulajdonnév");
+ if(isNoun){
   if(currentLanguage==="latin"){
-   const gender=w.gender?" · "+w.gender:"";
-   if(w.declension)parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(gender)+'</span></div>');
-   else parts.push('<div class="detailrow">'+(gender?escapeHtml(gender.slice(3))+" · ":"")+"A forrásban külön ragozás vagy deklináció nincs megadva.</div>');
+   const genderSuffix=w.gender ? " · "+w.gender : "";
+   if(w.declension){
+    parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(genderSuffix)+'</span></div>');
+   }else{
+    const genderText=w.gender ? w.gender+" · " : "";
+    parts.push('<div class="detailrow">'+escapeHtml(genderText)+'A forrásban külön ragozás vagy deklináció nincs megadva.</div>');
+   }
   }else{
    const nounDetails=[];
    if(w.gender)nounDetails.push("nem: "+w.gender);
