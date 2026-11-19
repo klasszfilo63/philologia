@@ -73,6 +73,38 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 @media(max-width:620px){.endings-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.endings-strip span{font-size:11px;padding:8px 2px}.declension-heading{align-items:flex-start}.declension-heading>span{width:42px;height:42px;flex-basis:42px;font-size:25px}}
 
 
+
+.grammar-categories{display:grid;gap:12px;margin-top:20px}
+.grammar-category,.grammar-topic{border:1px solid var(--line);background:#fffefa;border-radius:5px;overflow:hidden}
+.grammar-category>summary,.grammar-topic>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer}
+.grammar-category>summary::-webkit-details-marker,.grammar-topic>summary::-webkit-details-marker{display:none}
+.grammar-category>summary{padding:16px 18px;font:600 16px system-ui,sans-serif;color:var(--ink)}
+.grammar-category>summary:after{content:"＋";font:20px system-ui,sans-serif;color:var(--gold)}
+.grammar-category[open]>summary:after{content:"−"}
+.grammar-category[open]>summary{border-bottom:1px solid var(--line)}
+.grammar-category>summary small,.grammar-topic>summary small{font:11px system-ui,sans-serif;color:var(--muted);font-weight:400}
+.grammar-category-content{padding:10px 14px 14px}
+.grammar-topic{margin:8px 0;background:#fdfbf5}
+.grammar-topic>summary{padding:13px 14px;font:600 14px system-ui,sans-serif;color:var(--latin)}
+.grammar-topic>summary:after{content:"›";font:22px Georgia,serif;color:var(--gold)}
+.grammar-topic[open]>summary:after{content:"⌄"}
+.grammar-topic[open]>summary{border-bottom:1px solid var(--line)}
+.grammar-topic-content{padding:12px 2px 3px}
+.grammar-topic-content>.lesson-box:first-child{margin-top:5px}
+.verb-table{min-width:560px}
+.verb-table td{font-size:15px;line-height:1.5}
+.conjugation-table{min-width:790px}
+.conjugation-table td,.conjugation-table th{padding:9px 10px}
+.conjugation-table td{font-size:14px}
+.endings-table{max-width:560px}
+.sum-table{max-width:650px}
+.stem-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin:14px 0}
+.stem-examples>div{padding:12px;border:1px solid var(--line);background:#f8f5ed;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.stem-examples em{font-size:15px}
+.stem-examples strong{font-size:15px;color:var(--latin)}
+.grammar-topic-content .grammar-note ul{margin:6px 0 3px}
+@media(max-width:620px){.grammar-category>summary{padding:14px}.grammar-category-content{padding:8px}.grammar-topic>summary{align-items:flex-start;flex-wrap:wrap}.grammar-topic>summary small{width:100%;padding-right:22px}.stem-examples{grid-template-columns:1fr}}
+
 .i-stem-box{border-left:3px solid var(--gold)}.i-stem-box ol{margin:8px 0;padding-left:23px}.i-stem-box ol li{padding:5px 0}.i-stem-box .endings-strip span{font-size:12px;line-height:1.45}.i-stem-box .declension-table{min-width:560px}.i-stem-box .declension-table td strong{color:var(--latin)}
 </style>
 </head>
@@ -129,10 +161,16 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </div>
 
 <div id="grammarPanel" class="panel hidden grammar-lesson">
-<div class="sub">Grammatica Latina · 01</div>
-<h2 class="grammar-title">A főnevek deklinációi</h2>
-<p class="grammar-lead">A latin főnevek öt deklináció valamelyikébe tartoznak. Ebben a leckében megismered, hogyan állapíthatod meg a deklinációt, mit fejeznek ki az esetek, és hogyan ragozunk egy-egy mintafőnevet egyes és többes számban.</p>
-
+<div class="sub">Grammatica Latina</div>
+<h2 class="grammar-title">Nyelvtan</h2>
+<p class="grammar-lead">A latin nyelvtani anyag témakörök szerint rendezve található itt. Nyisd le a kategóriát, majd válaszd ki a tananyagot, amelyet át szeretnél venni.</p>
+<div class="grammar-categories">
+<details class="grammar-category">
+<summary><span>Főnevek</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>A főnevek deklinációi</span><small>Az öt deklináció és az esetek</small></summary>
+<div class="grammar-topic-content">
 <div class="lesson-box">
 <h3>1. Mi az a deklináció?</h3>
 <p>A <strong>deklináció</strong> (declinatio) a főnevek, melléknevek és névmások névszói ragozása: a szó alakja a mondatbeli szerepétől és a számától függően változik. A latin főnév végződése tehát megmutatja, milyen szerepet tölt be a mondatban.</p>
@@ -304,6 +342,130 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </ul>
 </div>
 <div class="notice">A táblázatokban minden eset sorrendje a kérésed szerint: nominativus, accusativus, genitivus, dativus, ablativus. A hosszú magánhangzókat makronnal jelöltem.</div>
+</div>
+</details>
+</div>
+</details>
+<details class="grammar-category">
+<summary><span>Igék</span><small>2 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>Az ige szótári alakja és a coniugatiók</span><small>Alakok, három tő, négy ragozási osztály</small></summary>
+<div class="grammar-topic-content">
+
+<div class="lesson-box">
+<h3>1. Miért fontos a teljes szótári alak?</h3>
+<p>A latin szótári alakok a nyelvtanítás hosszú hagyományán alapulnak. Ez a kialakult forma éppen annyi információt tartalmaz, amennyi a szó teljes alaktani rendszerének képzéséhez szükséges. Egyik elemét sem érdemes elhagyni vagy leegyszerűsíteni: mindegyikre szükségünk van. Ezért a latin szavakat mindig a teljes szótári alakjukkal együtt tanuljuk meg.</p>
+</div>
+
+<div class="lesson-box">
+<h3>2. Az ige szótári alakjának négy eleme</h3>
+<p>A latin ige szótári alakja négy részből áll. Például: <strong><em>nōminō – nōmināre – nōmināvī – nōminātum</em></strong>.</p>
+<div class="table-scroll"><table class="declension-table verb-table"><thead><tr><th>Sorszám</th><th>Szótári elem</th><th>Mit mutat?</th></tr></thead><tbody>
+<tr><th>1.</th><td><em>nōminō</em></td><td>Praesens imperfectum, egyes szám első személy: „nevezek”.</td></tr>
+<tr><th>2.</th><td><em>nōmināre</em></td><td>Infinitivus, vagyis főnévi igenév: „nevezni”.</td></tr>
+<tr><th>3.</th><td><em>nōmināvī</em></td><td>Praesens perfectum, egyes szám első személy: „neveztem”.</td></tr>
+<tr><th>4.</th><td><em>nōminātum</em></td><td>Supinum, amelynek itt megadott alakja célhatározói értelemben használható.</td></tr>
+</tbody></table></div>
+<p>A második elem az <strong>infinitivus</strong> (in + finitivus, azaz „meghatározatlan”). Az infinitivus olyan igei alak, amelynek nincs igeideje, módja, száma és személye. A magyar főnévi igenévnek felel meg, amelyet a <em>-ni</em> képzővel alkotunk.</p>
+<p>A negyedik elem a <strong>supinum</strong>, egy főnévi igenévhez hasonló igei alak. A szótárak általában a <em>-um</em> végű alakját adják meg. Előfordul azonban, hogy a szótár nem ezt, hanem a supinumból képzett, <em>-us</em> végű melléknévi igenevet tünteti fel.</p>
+<div class="grammar-note"><strong>Nem minden igének van supinuma.</strong> Ilyenkor a szótári alak három elemből is állhat, például: <em>sum, esse, fuī</em>. Máskor a negyedik elem nem supinum, hanem <em>-ūrus</em> végű melléknévi igenév: <em>vīvō, vīvere, vīxī, victūrus</em>.</div>
+</div>
+
+<div class="lesson-box">
+<h3>3. A négy coniugatio</h3>
+<p>A latin igéket négy ragozási osztályba, azaz <strong>coniugatióba</strong> soroljuk. A második szótári alak, az infinitivus végződése alapján különböztetjük meg őket. A szótárak ezt az osztályt rendszerint egy számmal jelölik.</p>
+<div class="table-scroll"><table class="declension-table verb-table"><thead><tr><th>Coniugatio</th><th>Infinitivus végződése</th><th>Példa</th></tr></thead><tbody>
+<tr><th>I.</th><td><strong>-āre</strong></td><td><em>nōminō 1</em> → <em>nōminō, nōmināre</em></td></tr>
+<tr><th>II.</th><td><strong>-ēre</strong></td><td><em>habeō 2</em> → <em>habeō, habēre</em></td></tr>
+<tr><th>III.</th><td><strong>-ere</strong></td><td><em>vīvō 3</em> → <em>vīvō, vīvere</em></td></tr>
+<tr><th>IV.</th><td><strong>-īre</strong></td><td><em>veniō 4</em> → <em>veniō, venīre</em></td></tr>
+</tbody></table></div>
+<p>A négy osztályban az igék többsége szabályosan viselkedik. Például az I. coniugatióban a <em>nōminō 1</em> teljes szótári alakja <em>nōminō, nōmināre, nōmināvī, nōminātum</em>; hasonló a <em>laudō 1</em> is: <em>laudō, laudāre, laudāvī, laudātum</em>.</p>
+<p>Vannak azonban olyan igék, amelyek valamelyik szótári alakja eltér a megszokott mintától. Ilyenkor a coniugatio száma után a szótár a rendhagyó alakot is feltünteti. Például: <em>stō 1, stetī, stātūrus</em>.</p>
+</div>
+
+<div class="lesson-box">
+<h3>4. A latin ige három töve</h3>
+<p>A latin igének három alapvető töve van: az <strong>imperfectum</strong>, a <strong>perfectum</strong> és a <strong>supinum töve</strong>. Ezek közül az imperfectum és a perfectum tőből képezzük az ige ragozott alakjait; a supinum tövéből többek között melléknévi igenevek származnak.</p>
+<p>A cselekvő igék ragozásának egyik alapelve, hogy az imperfectum tőből képezzük az imperfectum alakokat, a perfectum tőből pedig a perfectum alakokat. Ahhoz tehát, hogy az igét helyesen tudjuk ragozni, meg kell tanulnunk a szótári alakból felismerni a töveket.</p>
+</div>
+
+<div class="lesson-box">
+<h3>5. Az imperfectum tő képzése</h3>
+<p>Az I., II. és IV. coniugatióban az imperfectum tövet a második szótári alakból, vagyis az infinitivusból kapjuk meg: egyszerűen elhagyjuk a <em>-re</em> végződést.</p>
+<div class="stem-examples">
+<div><em>nōmināre</em> → <strong>nōminā-</strong></div>
+<div><em>habēre</em> → <strong>habē-</strong></div>
+<div><em>venīre</em> → <strong>venī-</strong></div>
+</div>
+<p>A III. coniugatióban nem az infinitivusból indulunk ki, mert annak hangalaki változásai miatt nem mindig egyértelmű a tő. Ilyenkor az első szótári alakból indulunk ki, és levágjuk róla az egyes szám első személyű <em>-ō</em> ragot.</p>
+<div class="stem-examples">
+<div><em>vīvō</em> → <strong>vīv-</strong></div>
+<div><em>capiō</em> → <strong>capi-</strong></div>
+<div><em>tribuō</em> → <strong>tribu-</strong></div>
+</div>
+<p>Így az I. coniugatióban <em>-ā-</em>, a II.-ban <em>-ē-</em>, a III.-ban mássalhangzós, <em>-i-</em> vagy <em>-u-</em> tövet, a IV.-ben pedig <em>-ī-</em> tövet kapunk. Az így meghatározott imperfectum tőhöz kapcsoljuk a személyragokat.</p>
+</div>
+
+</div>
+</details>
+<details class="grammar-topic">
+<summary><span>A praesens imperfectum képzése</span><small>Személyragok és ragozási táblázatok</small></summary>
+<div class="grammar-topic-content">
+
+<div class="lesson-box">
+<h3>1. A praesens imperfectum jelentése</h3>
+<p>A <strong>praesens imperfectum</strong> a magyar jelen időnek felel meg. Az ige imperfectum tövéhez kapcsolódnak a személyragok, ezek jelölik a cselekvő személyét és számát.</p>
+<p>A III. coniugatióban, a mássalhangzóra végződő tövű igéknél a második személytől kezdve kötőhang jelenik meg a tő és a személyrag között. Ez a kötőhang általában <em>-i-</em>, a többes szám harmadik személyében azonban <em>-u-</em>.</p>
+</div>
+
+<div class="lesson-box">
+<h3>2. A cselekvő igeragozás személyragjai</h3>
+<div class="table-scroll"><table class="declension-table verb-table endings-table"><thead><tr><th>Szám</th><th>Személy</th><th>Rag</th></tr></thead><tbody>
+<tr><th rowspan="3">Singularis</th><td>1. személy</td><td><strong>-ō / -m</strong></td></tr>
+<tr><td>2. személy</td><td><strong>-s</strong></td></tr>
+<tr><td>3. személy</td><td><strong>-t</strong></td></tr>
+<tr><th rowspan="3">Pluralis</th><td>1. személy</td><td><strong>-mus</strong></td></tr>
+<tr><td>2. személy</td><td><strong>-tis</strong></td></tr>
+<tr><td>3. személy</td><td><strong>-nt</strong></td></tr>
+</tbody></table></div>
+</div>
+
+<div class="lesson-box">
+<h3>3. A praesens imperfectum a négy coniugatióban</h3>
+<p>Az alábbi táblázatban a négy coniugatio szabályos praesens imperfectum alakjait látod. A III. coniugatiót két példával mutatjuk be: egy mássalhangzós tövű igével (<em>vīvō</em>) és egy <em>-i-</em> tövű igével (<em>capiō</em>).</p>
+<div class="table-scroll"><table class="declension-table verb-table conjugation-table"><thead><tr><th>Szám, személy</th><th>I. <em>nōminō</em></th><th>II. <em>habeō</em></th><th>III. <em>vīvō</em></th><th>III. <em>capiō</em></th><th>IV. <em>veniō</em></th></tr></thead><tbody>
+<tr><th>Singularis 1.</th><td><em>nōminō</em></td><td><em>habeō</em></td><td><em>vīvō</em></td><td><em>capiō</em></td><td><em>veniō</em></td></tr>
+<tr><th>Singularis 2.</th><td><em>nōminās</em></td><td><em>habēs</em></td><td><em>vīvis</em></td><td><em>capis</em></td><td><em>venīs</em></td></tr>
+<tr><th>Singularis 3.</th><td><em>nōminat</em></td><td><em>habet</em></td><td><em>vīvit</em></td><td><em>capit</em></td><td><em>venit</em></td></tr>
+<tr><th>Pluralis 1.</th><td><em>nōmināmus</em></td><td><em>habēmus</em></td><td><em>vīvimus</em></td><td><em>capimus</em></td><td><em>venīmus</em></td></tr>
+<tr><th>Pluralis 2.</th><td><em>nōminātis</em></td><td><em>habētis</em></td><td><em>vīvitis</em></td><td><em>capitis</em></td><td><em>venītis</em></td></tr>
+<tr><th>Pluralis 3.</th><td><em>nōminant</em></td><td><em>habent</em></td><td><em>vīvunt</em></td><td><em>capiunt</em></td><td><em>veniunt</em></td></tr>
+</tbody></table></div>
+<div class="grammar-note"><strong>Megjegyzések:</strong>
+<ul class="grammar-rules">
+<li>Az I. coniugatióban a tő <em>-ā-</em> magánhangzója az egyes szám első személyű alakban az <em>-ō</em> előtt összevonódik: <em>-a + o &gt; -ō</em>.</li>
+<li>Az I., II. és IV. coniugatióban a példák szerint a tő magánhangzójának hosszúsága a ragozás során változhat.</li>
+<li>A IV. coniugatióban a többes szám harmadik személyében – a III. coniugatio mintájára – szintén megjelenik az <em>-u-</em> kötőhang: <em>veni-u-nt</em> → <em>veniunt</em>.</li>
+</ul>
+</div>
+</div>
+
+<div class="lesson-box">
+<h3>4. A létige: <em>sum, esse, fuī</em></h3>
+<p>A <strong>létige</strong> ragozása – ahogyan sok más nyelvben is – eltér a szabályos igékétől. A <em>sum, esse, fuī</em> praesens imperfectum alakjai a következők:</p>
+<div class="table-scroll"><table class="declension-table verb-table sum-table"><thead><tr><th>Szám</th><th>1. személy</th><th>2. személy</th><th>3. személy</th></tr></thead><tbody>
+<tr><th>Singularis</th><td><strong>sum</strong></td><td><strong>es</strong></td><td><strong>est</strong></td></tr>
+<tr><th>Pluralis</th><td><strong>sumus</strong></td><td><strong>estis</strong></td><td><strong>sunt</strong></td></tr>
+</tbody></table></div>
+</div>
+
+</div>
+</details>
+</div>
+</details>
+</div>
 </div>
 
 <div id="practicePanel" class="panel hidden">
