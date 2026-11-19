@@ -32,7 +32,7 @@
     {
       "id": "gr-002",
       "lemma": "κρίνει",
-      "dictionaryForm": "κρίνω → κρίνει",
+      "dictionaryForm": "κρίνει",
       "partOfSpeech": "igealak",
       "meaning": "eldönt, megítél",
       "gender": null,
@@ -46,7 +46,7 @@
     {
       "id": "gr-003",
       "lemma": "κρύπτει",
-      "dictionaryForm": "κρύπτω → κρύπτει",
+      "dictionaryForm": "κρύπτει",
       "partOfSpeech": "igealak",
       "meaning": "rejt, rejteget",
       "gender": null,
@@ -74,7 +74,7 @@
     {
       "id": "gr-005",
       "lemma": "λέγει",
-      "dictionaryForm": "λέγω → λέγει",
+      "dictionaryForm": "λέγει",
       "partOfSpeech": "igealak",
       "meaning": "mond",
       "gender": null,
@@ -102,7 +102,7 @@
     {
       "id": "gr-007",
       "lemma": "σημαίνει",
-      "dictionaryForm": "σημαίνω → σημαίνει",
+      "dictionaryForm": "σημαίνει",
       "partOfSpeech": "igealak",
       "meaning": "jelez",
       "gender": null,
@@ -130,12 +130,12 @@
     {
       "id": "gr-009",
       "lemma": "ἄναξ",
-      "dictionaryForm": "ἄναξ, ἄνακτος, ὁ",
+      "dictionaryForm": "ἄναξ, ὁ",
       "partOfSpeech": "főnév",
       "meaning": "úr",
       "gender": "m",
       "genitive": null,
-      "notes": "A forrás külön jelzi: mássalhangzós ragozás.",
+      "notes": "A képen külön megjegyzés: mássalhangzós ragozás. Genitivust a forrás nem ad meg.",
       "formType": null,
       "voice": null,
       "isDeponent": false,
@@ -583,7 +583,7 @@
       "lemma": "θεά",
       "dictionaryForm": "θεά, θεᾶς, ἡ",
       "partOfSpeech": "főnév",
-      "meaning": "istennő; látvány",
+      "meaning": "istennő",
       "gender": "f",
       "genitive": "θεᾶς",
       "notes": null,
@@ -1052,7 +1052,7 @@
     {
       "id": "gr-075",
       "lemma": "ὁράω",
-      "dictionaryForm": "ὁράω (ὁρῶ)",
+      "dictionaryForm": "ὁρῶ < ὁράω",
       "partOfSpeech": "ige",
       "meaning": "lát",
       "gender": null,
@@ -3193,6 +3193,20 @@
       "voice": null,
       "isDeponent": false,
       "sourcePage": null
+    },
+    {
+      "id": "gr-extra-001",
+      "lemma": "θέα",
+      "dictionaryForm": "θέα, θεᾶς, ἡ",
+      "partOfSpeech": "főnév",
+      "meaning": "látvány",
+      "gender": "f",
+      "genitive": "θεᾶς",
+      "notes": null,
+      "formType": null,
+      "voice": null,
+      "isDeponent": false,
+      "sourcePage": 4
     }
   ]
 }
