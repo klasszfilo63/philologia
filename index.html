@@ -74,6 +74,34 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 
 
 
+
+.greek-grammar{color:var(--ink)}
+.greek-grammar .grammar-lead{max-width:900px}
+.greek-declination-map{border:1px solid var(--line);background:#fdfbf5;padding:16px;margin:16px 0}
+.greek-map-root{text-align:center;font:600 14px system-ui,sans-serif;padding:10px;border-bottom:1px solid var(--line)}
+.greek-map-branches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:16px}
+.greek-map-branches>div{display:flex;flex-direction:column;gap:6px;text-align:center;padding:10px 5px;border-top:2px solid var(--gold)}
+.greek-map-branches b{font:600 13px system-ui,sans-serif;color:var(--latin)}
+.greek-map-branches span{font:12px/1.45 system-ui,sans-serif;color:var(--muted)}
+.greek-stem-list{display:grid;gap:8px;margin:14px 0}
+.greek-stem-list>div{display:flex;justify-content:space-between;gap:14px;padding:10px 12px;border:1px solid var(--line);background:#fdfbf5}
+.greek-stem-list b{font:600 13px system-ui,sans-serif;color:var(--latin)}
+.greek-stem-list span{font:12px/1.5 system-ui,sans-serif;color:var(--muted);text-align:right}
+.greek-table{min-width:520px}
+.greek-table td{font-family:Georgia,"Times New Roman",serif;font-size:19px!important}
+.greek-table th{font-family:system-ui,sans-serif}
+.greek-table .table-band{background:#f2ecde;color:var(--latin);text-align:left;font-weight:700}
+.greek-table.ending-summary{min-width:540px}
+.greek-table.ending-summary td{font-size:17px!important}
+.article-table{min-width:550px}
+.article-table td{font-size:21px!important}
+.greek-case-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.greek-example{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 14px;margin:9px 0;border:1px solid var(--line);background:#fdfbf5}
+.greek-example em,.greek-example strong{font:19px Georgia,"Times New Roman",serif}
+.greek-example strong{color:var(--latin)}
+.greek-example span{font:14px system-ui,sans-serif;color:var(--muted)}
+@media(max-width:620px){.greek-map-branches{grid-template-columns:1fr;gap:7px}.greek-map-branches>div{text-align:left;flex-direction:row;justify-content:space-between;border-top:1px solid var(--line);padding:9px}.greek-stem-list>div{display:block}.greek-stem-list span{display:block;text-align:left;margin-top:3px}.greek-example{gap:7px}.greek-example em,.greek-example strong{font-size:17px}}
+
 .grammar-categories{display:grid;gap:12px;margin-top:20px}
 .grammar-category,.grammar-topic{border:1px solid var(--line);background:#fffefa;border-radius:5px;overflow:hidden}
 .grammar-category>summary,.grammar-topic>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;cursor:pointer}
@@ -468,6 +496,301 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </div>
 </div>
 
+
+<div id="greekGrammarPanel" class="panel hidden grammar-lesson greek-grammar">
+<div class="sub">Grammatica Graeca · Dialectus Attica</div>
+<h2 class="grammar-title">Nyelvtan</h2>
+<p class="grammar-lead">Az ógörög nyelvtani anyag külön témakörökbe rendezve található. A kategóriák lenyithatók, az egyes tananyagok pedig önálló egységként tanulhatók. Az itt feldolgozott példák az attikai görög névszóragozását és hangsúlyozását mutatják be.</p>
+<div class="grammar-categories">
+
+<details class="grammar-category">
+<summary><span>Főnevek</span><small>3 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>A görög névszók és a deklinációk áttekintése</span><small>Alapfogalmak és a három deklináció</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A névszóragozás alapelve</h3>
+<p>A görög névszók mondatbeli szerepét a szó végéhez kapcsolódó ragok jelölik. A főnevekhez tartozó névelők, melléknevek, számnevek és névmások többnyire egyeztethetők a főnévvel <strong>nemben, számban és esetben</strong>.</p>
+<p>A görög névszóragozás hagyományosan három deklinációra oszlik:</p>
+<div class="greek-declination-map">
+<div class="greek-map-root">Főnevek · melléknevek · névelők · névmások</div>
+<div class="greek-map-branches">
+<div><b>I. deklináció</b><span>α-tövűek</span></div>
+<div><b>II. deklináció</b><span>ο-tövűek</span></div>
+<div><b>III. deklináció</b><span>mássalhangzó- és egyéb tövűek</span></div>
+</div>
+</div>
+<p>Az első deklináció az <em>α</em>-tövű, a második az <em>ο</em>-tövű, a harmadik pedig a mássalhangzó- és egyéb tövű névszókat foglalja magában. A mostani tananyag az első két deklináció példáit részletezi.</p>
+<div class="grammar-note"><strong>Fontos:</strong> a harmadik deklinációt az áttekintésben már elhelyeztük, de a részletes paradigmái még nem szerepelnek a most küldött tananyagrészben. Azokat a megfelelő tankönyvi oldalak alapján külön leckében dolgozzuk fel.</div>
+</div>
+<div class="lesson-box">
+<h3>2. A görög esetek</h3>
+<p>A mostani táblázatok négy esetet használnak:</p>
+<div class="case-grid greek-case-grid">
+<article><b>Nominativus</b><span>Alanyeset. A mondat alanyát jelöli.</span></article>
+<article><b>Accusativus</b><span>Tárgyeset. Gyakran a cselekvés közvetlen tárgyát fejezi ki.</span></article>
+<article><b>Genitivus</b><span>Birtokos esetként ismerjük, de a görögben a magyar birtokos eseten túl más jelentéseket is kifejezhet.</span></article>
+<article><b>Dativus</b><span>Részes esetként ismerjük, de a magyar részes eseten túl más jelentésekben is használatos.</span></article>
+</div>
+<p>Az eseteket a hagyományos latin elnevezésükkel szokás említeni. Fontos azonban, hogy egy-egy görög eset jóval több jelentést fejezhet ki, mint a neki megfelelő magyar eset.</p>
+</div>
+</div>
+</details>
+
+<details class="grammar-topic">
+<summary><span>I. deklináció – α-tövűek</span><small>η-végű és tiszta α-tövű nőneműek</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. Az I. deklináció csoportjai</h3>
+<p>Az első deklináció az <em>α</em>-tövű névszókat foglalja magában. A tankönyvi áttekintés négy csoportot különít el:</p>
+<div class="greek-stem-list">
+<div><b>η-végűek</b><span>Nőnemű főnevek</span></div>
+<div><b>Tiszta α-tövűek (α purum)</b><span>Nőneműek; például -εα, -ια és -ρα végűek</span></div>
+<div><b>Nem tiszta α-tövűek (α impurum)</b><span>Nőneműek</span></div>
+<div><b>Hímnemű α-tövűek</b><span>-ης és -ας végű alakok</span></div>
+</div>
+<p>A mostani oldalak részletes ragozási mintát az η-végű és a tiszta α-tövű nőneműekhez adnak.</p>
+</div>
+<div class="lesson-box">
+<h3>2. η-végű nőneműek</h3>
+<p><strong>Mintaszó:</strong> <em>ὀργή</em> – harag. Az α-tő magánhangzója egyes számban ebben a csoportban η-vá válik.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ὀργή</td><td>ὀργαί</td></tr>
+<tr><th>Accusativus</th><td>ὀργήν</td><td>ὀργάς</td></tr>
+<tr><th>Genitivus</th><td>ὀργῆς</td><td>ὀργῶν</td></tr>
+<tr><th>Dativus</th><td>ὀργῇ</td><td>ὀργαῖς</td></tr>
+</tbody></table></div>
+<p class="grammar-note">A mintában az α-tő magánhangzója egyes számban η alakban jelenik meg.</p>
+</div>
+<div class="lesson-box">
+<h3>3. Tiszta α-tövű nőneműek (α purum)</h3>
+<p>A tiszta α-tövű nőnemű főnevek közé tartoznak többek között az <em>-εα</em>, <em>-ια</em> és <em>-ρα</em> végű alakok. A tankönyvi példa a <em>ἡ κακὴ ἀναρχία</em> – „a rossz anarchia” kifejezés.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ἡ κακὴ ἀναρχία</td><td>αἱ κακαὶ ἀναρχίαι</td></tr>
+<tr><th>Accusativus</th><td>τὴν κακὴν ἀναρχίαν</td><td>τὰς κακὰς ἀναρχίας</td></tr>
+<tr><th>Genitivus</th><td>τῆς κακῆς ἀναρχίας</td><td>τῶν κακῶν ἀναρχιῶν</td></tr>
+<tr><th>Dativus</th><td>τῇ κακῇ ἀναρχίᾳ</td><td>ταῖς κακαῖς ἀναρχίαις</td></tr>
+</tbody></table></div>
+</div>
+<div class="lesson-box">
+<h3>4. Az I. deklináció végződéseinek összefoglalása</h3>
+<p>Az η-végű és a tiszta α-tövű nőneműek végződései a következőképpen foglalhatók össze:</p>
+<div class="table-scroll"><table class="declension-table greek-table ending-summary"><thead><tr><th>Eset</th><th>Singularis · η-végű</th><th>Singularis · tiszta α</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>-η</td><td>-α</td><td>-αι</td></tr>
+<tr><th>Accusativus</th><td>-ην</td><td>-αν</td><td>-ας</td></tr>
+<tr><th>Genitivus</th><td>-ης</td><td>-ας</td><td>-ῶν</td></tr>
+<tr><th>Dativus</th><td>-ῃ</td><td>-ᾳ</td><td>-αις</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</details>
+
+<details class="grammar-topic">
+<summary><span>II. deklináció – ο-tövűek</span><small>-ος végű hímneműek és -ον végű semlegesneműek</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. -ος végződésű hímneműek</h3>
+<p>A második deklináció egyik jellegzetes csoportját az <em>-ος</em> végű hímnemű főnevek alkotják.</p>
+<p><strong>Mintaszó:</strong> <em>κόσμος</em> – világ. A szó hangsúlya a második szótagon van.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>κόσμος</td><td>κόσμοι</td></tr>
+<tr><th>Accusativus</th><td>κόσμον</td><td>κόσμους</td></tr>
+<tr><th>Genitivus</th><td>κόσμου</td><td>κόσμων</td></tr>
+<tr><th>Dativus</th><td>κόσμῳ</td><td>κόσμοις</td></tr>
+</tbody></table></div>
+<p><strong>További mintaszó:</strong> <em>ἄνθρωπος</em> – ember. Ez harmadéles névszó, ezért bizonyos alakokban a hangsúly a második szótagra kerül át.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ἄνθρωπος</td><td>ἄνθρωποι</td></tr>
+<tr><th>Accusativus</th><td>ἄνθρωπον</td><td>ἀνθρώπους</td></tr>
+<tr><th>Genitivus</th><td>ἀνθρώπου</td><td>ἀνθρώπων</td></tr>
+<tr><th>Dativus</th><td>ἀνθρώπῳ</td><td>ἀνθρώποις</td></tr>
+</tbody></table></div>
+</div>
+<div class="lesson-box">
+<h3>2. -ον végződésű semlegesneműek</h3>
+<p>A második deklináció semlegesnemű főneveinek nominativusa és accusativusa mind egyes, mind többes számban megegyezik.</p>
+<p><strong>Mintaszó:</strong> <em>τὸ καλόν</em> – szépség, „a szép”.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>τὸ καλόν</td><td>τὰ καλά</td></tr>
+<tr><th>Accusativus</th><td>τὸ καλόν</td><td>τὰ καλά</td></tr>
+<tr><th>Genitivus</th><td>τοῦ καλοῦ</td><td>τῶν καλῶν</td></tr>
+<tr><th>Dativus</th><td>τῷ καλῷ</td><td>τοῖς καλοῖς</td></tr>
+</tbody></table></div>
+<div class="grammar-note"><strong>A semlegesneműek szabálya:</strong> a nominativus és az accusativus alakja minden számban megegyezik. Többes számban a két eset végződése -α; ez a minta a többi deklinációban is érvényes.</div>
+</div>
+<div class="lesson-box">
+<h3>3. A II. deklináció végződéseinek összefoglalása</h3>
+<div class="table-scroll"><table class="declension-table greek-table ending-summary"><thead><tr><th>Eset</th><th>Singularis · hímnem</th><th>Singularis · semlegesnem</th><th>Pluralis · hímnem</th><th>Pluralis · semlegesnem</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>-ος</td><td>-ον</td><td>-οι*</td><td>-α*</td></tr>
+<tr><th>Accusativus</th><td>-ον</td><td>-ον</td><td>-ους</td><td>-α*</td></tr>
+<tr><th>Genitivus</th><td>-ου</td><td>-ου</td><td>-ων</td><td>-ων</td></tr>
+<tr><th>Dativus</th><td>-ῳ</td><td>-ῳ</td><td>-οις**</td><td>-οις**</td></tr>
+</tbody></table></div>
+<p class="example-line">* Az <em>-οι</em> és az <em>-α</em> rövid. ** Az <em>-οις</em> hosszú.</p>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+<details class="grammar-category">
+<summary><span>Névelők</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>A határozott névelő ragozása</span><small>Nem, szám és eset szerinti alakok</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A névelő alakjai</h3>
+<p>A görög határozott névelő a főnévhez igazodik nemben, számban és esetben. Az alábbi táblázat a négy esetben mutatja be a hímnemű (m), nőnemű (f) és semlegesnemű (n) alakokat.</p>
+<div class="table-scroll"><table class="declension-table greek-table article-table"><thead><tr><th>Szám, eset</th><th>Hímnem (m)</th><th>Nőnem (f)</th><th>Semlegesnem (n)</th></tr></thead><tbody>
+<tr><th colspan="4" class="table-band">Singularis</th></tr>
+<tr><th>Nominativus</th><td>ὁ</td><td>ἡ</td><td>τό</td></tr>
+<tr><th>Accusativus</th><td>τόν</td><td>τήν</td><td>τό</td></tr>
+<tr><th>Genitivus</th><td>τοῦ</td><td>τῆς</td><td>τοῦ</td></tr>
+<tr><th>Dativus</th><td>τῷ</td><td>τῇ</td><td>τῷ</td></tr>
+<tr><th colspan="4" class="table-band">Pluralis</th></tr>
+<tr><th>Nominativus</th><td>οἱ</td><td>αἱ</td><td>τά</td></tr>
+<tr><th>Accusativus</th><td>τούς</td><td>τάς</td><td>τά</td></tr>
+<tr><th>Genitivus</th><td>τῶν</td><td>τῶν</td><td>τῶν</td></tr>
+<tr><th>Dativus</th><td>τοῖς</td><td>ταῖς</td><td>τοῖς</td></tr>
+</tbody></table></div>
+<p class="grammar-note">A hímnemű és nőnemű nominativus singularis, valamint nominativus pluralis alakjai – <em>ὁ, ἡ, οἱ, αἱ</em> – hangsúlytalan, a tananyag szóhasználatával élve „hangsúlytalan szóként” viselkednek.</p>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+<details class="grammar-category">
+<summary><span>Melléknevek</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>A melléknevek egyeztetése</span><small>Nem, szám és eset egyezése a főnévvel</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A melléknév és a főnév egyeztetése</h3>
+<p>A főnévhez kapcsolódó melléknév a főnévvel nemben, számban és esetben egyezik. A következő példák a hímnemű és nőnemű alakokat mutatják be.</p>
+<p><strong>Példa:</strong> <em>ὁ καλὸς θεός</em> – a szép isten.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ὁ καλὸς θεός</td><td>οἱ καλοὶ θεοί</td></tr>
+<tr><th>Accusativus</th><td>τὸν καλὸν θεόν</td><td>τοὺς καλοὺς θεούς</td></tr>
+<tr><th>Genitivus</th><td>τοῦ καλοῦ θεοῦ</td><td>τῶν καλῶν θεῶν</td></tr>
+<tr><th>Dativus</th><td>τῷ καλῷ θεῷ</td><td>τοῖς καλοῖς θεοῖς</td></tr>
+</tbody></table></div>
+<p>A tiszta α-tövű nőnemű példában ugyanez az egyeztetés látható: <em>ἡ κακὴ ἀναρχία</em> – a rossz anarchia.</p>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+<details class="grammar-category">
+<summary><span>Névmások</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>Az αὐτός alakjai</span><small>„Ugyanaz” – egyeztetés a főnévvel</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. Az ὁ αὐτός</h3>
+<p>Az <em>αὐτός</em> alakjai a példában a hímnemű névelővel együtt szerepelnek. Jelentése: „ugyanaz”.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ὁ αὐτός</td><td>οἱ αὐτοί</td></tr>
+<tr><th>Accusativus</th><td>τὸν αὐτόν</td><td>τοὺς αὐτούς</td></tr>
+<tr><th>Genitivus</th><td>τοῦ αὐτοῦ</td><td>τῶν αὐτῶν</td></tr>
+<tr><th>Dativus</th><td>τῷ αὐτῷ</td><td>τοῖς αὐτοῖς</td></tr>
+</tbody></table></div>
+</div>
+<div class="lesson-box">
+<h3>2. Az ὁ αὐτὸς θεός</h3>
+<p>A névmás a főnévvel együtt is megjelenhet: <em>ὁ αὐτὸς θεός</em> – ugyanaz az isten.</p>
+<div class="table-scroll"><table class="declension-table greek-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>ὁ αὐτὸς θεός</td><td>οἱ αὐτοὶ θεοί</td></tr>
+<tr><th>Accusativus</th><td>τὸν αὐτὸν θεόν</td><td>τοὺς αὐτοὺς θεούς</td></tr>
+<tr><th>Genitivus</th><td>τοῦ αὐτοῦ θεοῦ</td><td>τῶν αὐτῶν θεῶν</td></tr>
+<tr><th>Dativus</th><td>τῷ αὐτῷ θεῷ</td><td>τοῖς αὐτοῖς θεοῖς</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+<details class="grammar-category">
+<summary><span>Hangsúlyozás</span><small>2 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>A névszók hangsúlyozása</span><small>Alapszabály és a véghangsúlyos alakok</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A névszók hangsúlyozásának főszabálya</h3>
+<p>A névszó igyekszik megtartani a hangsúlyát azon a szótagon, amelyen a nominativus singularisban áll. Hogy az adott névszó hangsúlya hol található nominativusban, azt a szótári alak alapján kell megtanulnunk.</p>
+<p>A hangsúly helye azonban nem minden esetben maradhat változatlan.</p>
+</div>
+<div class="lesson-box">
+<h3>2. Mikor kerül át a hangsúly?</h3>
+<p>Ha a szó utolsó szótagja hosszúvá válik, a hangsúly nem maradhat a harmadik szótagon. Ilyenkor a második szótagra kerül át.</p>
+<div class="greek-example"><em>ἄνθρωπος</em><span>→</span><strong>ἀνθρώπου</strong></div>
+<p>Az <em>ἄνθρωπος</em> harmadéles névszó. A genitivus <em>-ου</em> végződése hosszú, ezért a hangsúly a második szótagra kerül.</p>
+</div>
+<div class="lesson-box">
+<h3>3. A véghangsúlyos névszók külön szabálya</h3>
+<p>A véghangsúlyos névszók genitivus- és dativusalakjaiban a hangsúly a szó végén marad, és az utolsó szótagon circumflex hangsúly jelenik meg.</p>
+<div class="greek-example"><em>θεός</em><span>→</span><strong>θεοῦ</strong><span>→</span><strong>θεῷ</strong></div>
+<div class="greek-example"><em>θεῶν</em><span>·</span><strong>θεοῖς</strong></div>
+<p>Ez a szabály csak az első két deklinációra érvényes.</p>
+</div>
+</div>
+</details>
+
+<details class="grammar-topic">
+<summary><span>Simulószók és hangsúlytalan szók</span><small>Az előző szó hangsúlyára gyakorolt hatás</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A simulószók</h3>
+<p>A <strong>simulószó</strong> (encliticum) olyan szó, amely önálló hangsúly helyett az előtte álló szóhoz kapcsolódik. A kiejtésben és a hangsúlyozásban az előző szóval együtt alkot egységet, és bizonyos esetekben az előző szó hangsúlyát is módosíthatja.</p>
+<p>A tankönyv a következő példákat mutatja:</p>
+<div class="greek-example"><em>ἀθλητής + τε</em><span>→</span><strong>ἀθλητής τε</strong></div>
+<div class="greek-example"><em>δίσκος + τε</em><span>→</span><strong>δίσκος τε</strong></div>
+<div class="greek-example"><em>ἐμβαίνομεν + τε</em><span>→</span><strong>ἐμβαίνομέν τε</strong></div>
+<div class="greek-example"><em>εἶμεν + τε</em><span>→</span><strong>εἶμέν τε</strong></div>
+<p>A példák azt mutatják, hogy a simulószó hatására az előtte álló szó hangsúlya változatlan is maradhat, de bizonyos alakokban új hangsúlyjel is megjelenhet rajta.</p>
+<div class="grammar-note">Csak néhány egy- vagy kétszótagos szó viselkedik simulószóként.</div>
+</div>
+<div class="lesson-box">
+<h3>2. A hangsúlytalan szók</h3>
+<p>A hangsúlytalan szónak nincs önálló hangsúlyjele, és az előző szó hangsúlyozására sincs hatással.</p>
+<p>A tankönyvi példák között a határozott névelő következő alakjai szerepelnek: <em>ὁ, οἱ, ἡ, αἱ</em>.</p>
+<div class="greek-example"><em>ὁ + βάρβαρος + καί + ὁ + δίσκος</em><span>→</span><strong>ὁ βάρβαρος καὶ ὁ δίσκος</strong></div>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+<details class="grammar-category">
+<summary><span>Szóképzés</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>Melléknevek főnevesülése</span><small>A semlegesnemű melléknév főnévi használata</small></summary>
+<div class="grammar-topic-content">
+<div class="lesson-box">
+<h3>1. A semlegesnemű melléknév főnévként</h3>
+<p>A görög melléknév semlegesnemű alakjából névelő segítségével főnévi jelentésű kifejezés alkotható.</p>
+<div class="greek-example"><em>καλός (m), καλόν (n)</em><span>→</span><strong>τὸ καλόν</strong></div>
+<p>A <em>καλός</em> jelentése „szép”. A <em>τὸ καλόν</em> jelentheti „a szépet”, illetve elvont fogalomként „a szépséget”.</p>
+<div class="greek-example"><em>τὸ καλόν</em><span>→</span><strong>τὰ καλά</strong></div>
+<p>Többes számban a <em>τὰ καλά</em> jelentése: „a szép dolgok”.</p>
+<p>Az egyes számú alak tehát elvont fogalmat fejez ki, a többes szám pedig az adott tulajdonsággal rendelkező dolgokat jelöli.</p>
+</div>
+</div>
+</details>
+</div>
+</details>
+
+</div>
+</div>
+
 <div id="practicePanel" class="panel hidden">
 <div class="sub">Exercitia</div><h2 style="font-weight:400;font-size:32px;margin:8px 0">Szókincs gyakorlása</h2>
 <p class="muted">A gyakorló ugyanazt a latin szótárat használja, mint a szókártyák, de csak az általad kiválasztott szóanyagot kérdezi ki.</p>
@@ -527,15 +850,19 @@ function openModule(key){
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
- document.querySelectorAll(".advancedTab").forEach(b=>b.classList.toggle("hidden",key==="greek"));
+ document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
+ document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
  showTab("vocab");
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
 function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
 function showTab(tab){
- if(currentLanguage==="greek"&&(tab==="grammar"||tab==="practice"))tab="vocab";
- ["vocab","grammar","practice"].forEach(t=>document.getElementById(t+"Panel").classList.toggle("hidden",t!==tab));
+ if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
+ document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
+ document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
+ document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
+ document.getElementById("practicePanel").classList.toggle("hidden",tab!=="practice");
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
 }
 async function loadWords(){
