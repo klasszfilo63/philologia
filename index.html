@@ -44,7 +44,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <div id="home">
 <h1>Philologia</h1><p class="intro">Klasszikus nyelvek műhelye</p>
 <div class="grid">
-<article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai</p><button onclick="openModule('greek')">Belépés</button></article>
+<article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai · 226 szócikk</p><button onclick="openModule('greek')">Belépés</button></article>
 <article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Szótár és tanulás · 836 szócikk</p><button onclick="openModule('latin')">Belépés</button></article>
 <article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
 </div>
@@ -55,11 +55,11 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <section id="module" class="hidden">
 <button class="back softbtn" onclick="goHome()">← Vissza a nyelvekhez</button>
 <div class="modulehead"><div><div class="sub" id="moduleLabel"></div><h1 id="moduleTitle"></h1><p id="moduleDesc" class="muted"></p></div></div>
-<div id="latinApp" class="hidden">
+<div id="languageApp" class="hidden">
 <div class="pillrow" role="tablist" aria-label="Latin tanulómodul">
 <button class="tab active" data-tab="vocab" onclick="showTab('vocab')">Szókártyák</button>
-<button class="tab" data-tab="grammar" onclick="showTab('grammar')">Nyelvtan</button>
-<button class="tab" data-tab="practice" onclick="showTab('practice')">Gyakorlás</button>
+<button class="tab advancedTab" data-tab="grammar" onclick="showTab('grammar')">Nyelvtan</button>
+<button class="tab advancedTab" data-tab="practice" onclick="showTab('practice')">Gyakorlás</button>
 </div>
 <div id="vocabPanel" class="panel">
 <div class="statgrid">
@@ -69,9 +69,9 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </div>
 <div class="progressbar"><span id="progressFill"></span></div>
 <div class="toolbar" style="margin-top:18px">
-<input id="searchBox" type="search" placeholder="Keresés latin szó vagy magyar jelentés alapján…" oninput="applyFilters()">
+<input id="searchBox" type="search" placeholder="Keresés szó vagy magyar jelentés alapján…" oninput="applyFilters()">
 <select id="typeFilter" onchange="applyFilters()">
-<option value="all">Minden szófaj</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="other">Egyéb</option>
+<option value="all">Minden szófaj</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="névmás">Névmások</option><option value="elöljárószó">Elöljárószók</option><option value="other">Egyéb</option>
 </select>
 <button class="softbtn" onclick="shuffleCards()">Keverés</button>
 </div>
@@ -116,24 +116,25 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </div>
 <div id="comingSoon" class="panel hidden">
 <div class="sub">Tananyag előkészítés alatt</div><h2 style="font-size:30px;font-weight:400">Ez a nyelvi modul még épül.</h2>
-<p class="muted">A szókincs és a nyelvtan saját, külön adatbázisba kerül majd. Az ógörög és a héber adatai nem keverednek a latin tananyaggal.</p>
+<p class="muted">A héber szókincs és nyelvtan saját, külön adatbázisba kerül. A görög és a latin tananyag ettől elkülönül.</p>
 </div>
 </section>
-<footer><span>PHILOLOGIA · V. 0.2</span><span>Ad fontes.</span></footer>
+<footer><span>PHILOLOGIA · V. 0.3</span><span>Ad fontes.</span></footer>
 </main>
 <script>
 const modules={
- greek:{label:"01 · Hellén nyelv",title:"Ελληνικά",desc:"Ógörög · attikai",color:"greek"},
- latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"Szótár · nyelvtan · gyakorlás",color:"latin"},
+ greek:{label:"01 · Hellén nyelv",title:"Ελληνικά",desc:"Ógörög · attikai · a korábban küldött szóanyag",color:"greek"},
+ latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"Latin · szótár · nyelvtan · gyakorlás",color:"latin"},
  hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"Klasszikus és modern héber",color:"hebrew"}
 };
+const vocabularyCache={};
+let currentLanguage="latin";
 let words=[], filtered=[], current=0, revealed=false, dataReady=false;
-let currentFilter="all";
-const STORAGE_KEY="philologia-latin-progress-v1";
+const storageKey=()=> "philologia-"+currentLanguage+"-progress-v1";
+function loadProgress(){try{return JSON.parse(localStorage.getItem(storageKey())||'{"known":[],"reviewed":[]}')}catch(e){return {known:[],reviewed:[]}}}
 let progress=loadProgress();
 
-function loadProgress(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"known":[],"reviewed":[]}')}catch(e){return {known:[],reviewed:[]}}}
-function saveProgress(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress))}catch(e){} updateStats()}
+function saveProgress(){try{localStorage.setItem(storageKey(),JSON.stringify(progress))}catch(e){} updateStats()}
 function updateStats(){
  document.getElementById("statTotal").textContent=words.length;
  document.getElementById("statKnown").textContent=progress.known.length;
@@ -141,28 +142,56 @@ function updateStats(){
  document.getElementById("progressFill").style.width=(words.length?Math.min(100,progress.known.length/words.length*100):0)+"%";
 }
 function openModule(key){
- const m=modules[key]; document.getElementById("home").classList.add("hidden");document.getElementById("module").classList.remove("hidden");
- document.getElementById("moduleLabel").textContent=m.label;document.getElementById("moduleTitle").textContent=m.title;document.getElementById("moduleTitle").className=m.color;document.getElementById("moduleDesc").textContent=m.desc;
- const latin=key==="latin";document.getElementById("latinApp").classList.toggle("hidden",!latin);document.getElementById("comingSoon").classList.toggle("hidden",latin);
- if(latin){loadWords();}
+ const m=modules[key];
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("module").classList.remove("hidden");
+ document.getElementById("moduleLabel").textContent=m.label;
+ document.getElementById("moduleTitle").textContent=m.title;
+ document.getElementById("moduleTitle").className=m.color;
+ document.getElementById("moduleDesc").textContent=m.desc;
+ const hasVocabulary=(key==="latin"||key==="greek");
+ document.getElementById("languageApp").classList.toggle("hidden",!hasVocabulary);
+ document.getElementById("comingSoon").classList.toggle("hidden",hasVocabulary);
+ if(!hasVocabulary)return;
+ currentLanguage=key;
+ words=vocabularyCache[key]||[];
+ dataReady=Boolean(vocabularyCache[key]);
+ filtered=[];
+ current=0;
+ revealed=false;
+ progress=loadProgress();
+ document.getElementById("typeFilter").value="all";
+ document.getElementById("searchBox").value="";
+ document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
+ document.querySelectorAll(".advancedTab").forEach(b=>b.classList.toggle("hidden",key==="greek"));
+ showTab("vocab");
+ updateStats();
+ if(dataReady){applyFilters()}else{loadWords()}
 }
 function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
 function showTab(tab){
+ if(currentLanguage==="greek"&&(tab==="grammar"||tab==="practice"))tab="vocab";
  ["vocab","grammar","practice"].forEach(t=>document.getElementById(t+"Panel").classList.toggle("hidden",t!==tab));
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
 }
 async function loadWords(){
- if(dataReady){applyFilters();return}
+ const requestedLanguage=currentLanguage;
+ if(vocabularyCache[requestedLanguage]){
+  words=vocabularyCache[requestedLanguage];dataReady=true;applyFilters();return;
+ }
  const card=document.getElementById("flashcard");
  try{
-  const response=await fetch("./data/latin-vocabulary.json",{cache:"no-cache"});
+  const response=await fetch("./data/"+requestedLanguage+"-vocabulary.json",{cache:"no-cache"});
   if(!response.ok)throw new Error("HTTP "+response.status);
   const json=await response.json();
   if(!json.entries||!Array.isArray(json.entries))throw new Error("A szótár fájlformátuma nem megfelelő.");
+  vocabularyCache[requestedLanguage]=json.entries;
+  if(currentLanguage!==requestedLanguage)return;
   words=json.entries;
   dataReady=true;
   applyFilters();
  }catch(err){
+  if(currentLanguage!==requestedLanguage)return;
   card.innerHTML='<div class="cardtype">Hiba a szótár betöltésekor</div><div class="meaning">'+escapeHtml(err.message)+'</div><div class="detailrow">Ellenőrizd az internetkapcsolatot, majd frissítsd az oldalt.</div>';
   document.getElementById("resultCount").textContent="A szótár most nem érhető el.";
  }
@@ -178,7 +207,9 @@ function applyFilters(){
   if(type==="ige"&&!pos.includes("ige"))return false;
   if(type==="deponens"&&!w.isDeponent)return false;
   if(type==="melléknév"&&!pos.includes("melléknév"))return false;
-  if(type==="other"&&(pos.includes("főnév")||pos.includes("ige")||pos.includes("melléknév")))return false;
+  if(type==="névmás"&&!pos.includes("névmás"))return false;
+  if(type==="elöljárószó"&&!pos.includes("elöljárószó"))return false;
+  if(type==="other"&&(pos.includes("főnév")||pos.includes("ige")||pos.includes("melléknév")||pos.includes("névmás")||pos.includes("elöljárószó")))return false;
   if(!q)return true;
   return normalize([w.lemma,w.dictionaryForm,w.meaning,w.notes,w.partOfSpeech].join(" ")).includes(q);
  });
@@ -192,7 +223,8 @@ function renderCard(){
  if(!filtered.length){card.innerHTML='<div class="cardtype">Nincs találat</div><div class="meaning">Próbálj más keresőkifejezést vagy szűrőt.</div>';document.getElementById("wordList").innerHTML="";return}
  const w=filtered[current];revealed=false;
  const type=w.partOfSpeech||"szócikk";
- card.innerHTML='<div class="cardtype">Latin · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
+ const languageTitle=currentLanguage==="greek"?"Ógörög · attikai":"Latin";
+ card.innerHTML='<div class="cardtype">'+languageTitle+' · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
  document.getElementById("revealButton").textContent="Jelentés felfedése";
  document.getElementById("wordList").innerHTML=filtered.slice(0,160).map((item,i)=>'<button class="worditem" data-word-index="'+i+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+'</span></button>').join("");
 }
@@ -201,14 +233,23 @@ function reveal(){
  const w=filtered[current];revealed=true;
  const parts=[];
  parts.push('<div class="meaning">'+escapeHtml(w.meaning||"Nincs megadott magyar jelentés.")+'</div>');
- if(w.partOfSpeech && String(w.partOfSpeech).includes("főnév")){
-  const gender=w.gender?" · "+w.gender:"";
-  if(w.declension)parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(gender)+'</span></div>');
-  else parts.push('<div class="detailrow">A deklinációt a forrás nem adta meg / külön ragozású alak.</div>');
+ if((w.partOfSpeech && String(w.partOfSpeech).includes("főnév")) || (w.partOfSpeech && String(w.partOfSpeech).includes("tulajdonnév"))){
+  if(currentLanguage==="latin"){
+   const gender=w.gender?" · "+w.gender:"";
+   if(w.declension)parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(gender)+'</span></div>');
+   else parts.push('<div class="detailrow">'+(gender?escapeHtml(gender.slice(3))+" · ":"")+"A forrásban külön ragozás vagy deklináció nincs megadva.</div>');
+  }else{
+   const nounDetails=[];
+   if(w.gender)nounDetails.push("nem: "+w.gender);
+   if(w.genitive)nounDetails.push("genitivus: "+w.genitive);
+   if(nounDetails.length)parts.push('<div class="detailrow">'+escapeHtml(nounDetails.join(" · "))+'</div>');
+  }
  }
- if(w.isDeponent)parts.push('<div class="detailrow"><span class="tagpill warn">DEPONENS IGE</span> Alakja passzív, jelentése aktív.</div>');
- else if(w.isSemiDeponent)parts.push('<div class="detailrow"><span class="tagpill gold">FÉL-DEPONENS IGE</span> A perfectum alakja passzív formájú, jelentése aktív.</div>');
+ if(w.isDeponent)parts.push('<div class="detailrow"><span class="tagpill warn">DEPONENS IGE</span> A forrás külön deponensként jelöli.</div>');
+ if(w.isSemiDeponent)parts.push('<div class="detailrow"><span class="tagpill gold">FÉL-DEPONENS IGE</span> A perfectum alakja passzív formájú, jelentése aktív.</div>');
  if(w.conjugation)parts.push('<div class="detailrow">Igeragozás: <strong>'+w.conjugation+'. coniugatio</strong></div>');
+ if(w.formType)parts.push('<div class="detailrow"><span class="tagpill green">'+escapeHtml(w.formType)+'</span></div>');
+ if(w.voice)parts.push('<div class="detailrow">Igealak / igei nem: '+escapeHtml(w.voice)+'</div>');
  if(w.notes)parts.push('<div class="detailrow">'+escapeHtml(w.notes)+'</div>');
  if(w.partOfSpeech==="participium"||String(w.partOfSpeech||"").includes("participium"))parts.push('<div class="detailrow"><span class="tagpill green">Melléknévi igenév</span></div>');
  document.getElementById("flashcard").innerHTML+='<div class="reveal">'+parts.join("")+'</div>';
