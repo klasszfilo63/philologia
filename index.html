@@ -36,6 +36,38 @@ input,select{width:100%;border:1px solid var(--line);background:#fffefa;padding:
 .progressbar{height:5px;background:#e8e1d5;border-radius:8px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--gold);width:0}
 footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font:11px system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(max-width:640px){.wrap{padding:19px 15px 42px}.top{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.tile{min-height:185px}.panel{padding:13px}.statgrid{gap:6px}.stat{padding:9px}.flashcard{min-height:290px}}
+
+.grammar-lesson{line-height:1.6}
+.grammar-title{font-size:clamp(30px,5vw,42px);font-weight:400;margin:8px 0 8px}
+.grammar-lead{font-size:17px;line-height:1.65;color:#66645d;max-width:850px;margin:0 0 22px}
+.lesson-box,.declension-block{border:1px solid var(--line);background:#fffefa;border-radius:5px;padding:clamp(15px,3vw,23px);margin:15px 0}
+.lesson-box h3,.declension-block h3{font-size:23px;font-weight:400;margin:0 0 8px}
+.lesson-box p,.declension-block p{margin:8px 0}
+.endings-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:16px 0}
+.endings-strip span{padding:10px 7px;background:var(--soft);border:1px solid var(--line);text-align:center;border-radius:3px;font:14px system-ui,sans-serif}
+.example-line{font-size:14px;color:#56534c}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px;margin-top:14px}
+.case-grid article{border:1px solid var(--line);padding:13px;background:#fdfbf5;display:flex;flex-direction:column;gap:5px}
+.case-grid b{font:600 13px system-ui,sans-serif;color:var(--latin)}
+.case-grid span,.case-grid small{font:12px/1.5 system-ui,sans-serif;color:#656158}
+.case-grid em{font-size:15px;margin-top:5px}
+.declension-block{margin-top:21px}
+.declension-heading{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.declension-heading>span{font:400 30px Georgia,serif;color:var(--latin);border:1px solid var(--line);border-radius:50%;width:52px;height:52px;display:grid;place-items:center;flex:0 0 52px}
+.declension-heading h3{margin:0}
+.declension-heading p{font:12px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 0}
+.table-scroll{overflow-x:auto;margin:12px 0}
+.declension-table{border-collapse:collapse;width:100%;min-width:420px;font-size:15px;background:white}
+.declension-table th,.declension-table td{padding:10px 13px;border:1px solid var(--line);text-align:center}
+.declension-table thead th{font:600 12px system-ui,sans-serif;background:var(--soft);color:#615a4d}
+.declension-table tbody th{font:600 12px system-ui,sans-serif;text-align:left;background:#faf7f0;white-space:nowrap}
+.declension-table td{font-size:17px}
+.declension-table td strong{color:var(--latin);font-weight:700}
+.grammar-note{border-left:3px solid var(--gold);padding:9px 13px;background:#f6f1e5;color:#615b4e;font:13px/1.6 system-ui,sans-serif;margin:14px 0}
+.grammar-rules{padding-left:21px;margin:9px 0}
+.grammar-rules li{padding:5px 0}
+@media(max-width:620px){.endings-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.endings-strip span{font-size:11px;padding:8px 2px}.declension-heading{align-items:flex-start}.declension-heading>span{width:42px;height:42px;flex-basis:42px;font-size:25px}}
+
 </style>
 </head>
 <body>
@@ -90,18 +122,145 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <div class="section" style="margin-top:24px"><h3>Szólista</h3><p>Kattints egy szóra, hogy közvetlenül annak a kártyájára ugorj.</p><div id="wordList" class="wordlist"></div></div>
 </div>
 
-<div id="grammarPanel" class="panel hidden">
-<div class="sub">Grammatica Latina</div><h2 style="font-weight:400;font-size:32px;margin:8px 0">Nyelvtani műhely</h2>
-<p class="muted">A nyelvtani rész külön kezeli a szabályokat és a hozzájuk tartozó gyakorlófeladatokat. A következő bővítésben a tankönyvi tananyag szerint épülnek fel a leckék.</p>
-<div class="grammargrid">
-<article class="grammartile"><h3>Deklinációk</h3><p>Főnevek neme, szótári alakja, esetei és az öt deklináció.</p></article>
-<article class="grammartile"><h3>Igeragozás</h3><p>Coniugatio, praesens, imperfectum, perfectum és rendhagyó igék.</p></article>
-<article class="grammartile"><h3>Participiumok</h3><p>Participium imperfectum activi és participium perfectum passivi.</p></article>
-<article class="grammartile"><h3>Névmások</h3><p>Személyes, birtokos, mutató, vonatkozó és kérdő névmások.</p></article>
-<article class="grammartile"><h3>Vonzatok és esetek</h3><p>Praepositiók, accusativus, ablativus, dativus és genitivus.</p></article>
-<article class="grammartile"><h3>Szintaxis</h3><p>Egyeztetés, mellékmondatok és a mondat felépítése.</p></article>
+<div id="grammarPanel" class="panel hidden grammar-lesson">
+<div class="sub">Grammatica Latina · 01</div>
+<h2 class="grammar-title">A főnevek deklinációi</h2>
+<p class="grammar-lead">A latin főnevek öt deklináció valamelyikébe tartoznak. Ebben a leckében megismered, hogyan állapíthatod meg a deklinációt, mit fejeznek ki az esetek, és hogyan ragozunk egy-egy mintafőnevet egyes és többes számban.</p>
+
+<div class="lesson-box">
+<h3>1. Mi az a deklináció?</h3>
+<p>A <strong>deklináció</strong> (declinatio) a főnevek, melléknevek és névmások névszói ragozása: a szó alakja a mondatbeli szerepétől és a számától függően változik. A latin főnév végződése tehát megmutatja, milyen szerepet tölt be a mondatban.</p>
+<p>A latinban öt fő deklináció van. A deklinációt elsősorban a szótári alak <strong>genitivus singularis</strong> végződéséről ismerjük fel, nem pusztán a nominativusról.</p>
+<div class="endings-strip">
+<span><b>I.</b> -ae</span><span><b>II.</b> -ī</span><span><b>III.</b> -is</span><span><b>IV.</b> -ūs</span><span><b>V.</b> -ēī</span>
 </div>
-<div class="notice">A nyelvtani témakörök szerkezete elkészült; a részletes szabálymagyarázatok és az interaktív feladatok még nincsenek feltöltve.</div>
+<p class="example-line">Például: <em>via, viae, f.</em> → I. deklináció; <em>bellum, bellī, n.</em> → II.; <em>corpus, corporis, n.</em> → III.; <em>manus, manūs, f.</em> → IV.; <em>rēs, reī, f.</em> → V.</p>
+</div>
+
+<div class="lesson-box">
+<h3>2. Mit jelentenek az esetek?</h3>
+<p>A táblázatokban az általad kért sorrendet használom: <strong>nominativus – accusativus – genitivus – dativus – ablativus</strong>.</p>
+<div class="case-grid">
+<article><b>Nominativus</b><span>Alanyeset. A mondat alanyát jelöli.</span><em>Puella venit.</em><small>A lány jön.</small></article>
+<article><b>Accusativus</b><span>Tárgyeset. Leggyakrabban a cselekvés közvetlen tárgyát jelöli; bizonyos elöljárók után irányt is kifejez.</span><em>Puella rosam videt.</em><small>A lány rózsát lát.</small></article>
+<article><b>Genitivus</b><span>Birtokos eset. Birtoklást vagy más főnévhez tartozást fejez ki.</span><em>rosa puellae</em><small>a lány rózsája</small></article>
+<article><b>Dativus</b><span>Részes eset. Azt jelöli, akinek vagy aminek valami történik, jut vagy szól.</span><em>Puellae rosam dat.</em><small>Rózsát ad a lánynak.</small></article>
+<article><b>Ablativus</b><span>Eszközt, módot, elválást, eredetet, okot, helyet vagy időt is jelölhet; gyakori elöljárószók vonzata.</span><em>cum puellā</em><small>a lánnyal</small></article>
+</div>
+<div class="notice">A latinban a vocativus (megszólító eset) is létezik, és néhány helynévi alakban a locativus maradványai is előfordulnak. Most a kért öt esetet gyakoroljuk; a vocativust külön leckében vesszük majd.</div>
+</div>
+
+<div class="lesson-box">
+<h3>3. Hogyan olvassuk a ragozási táblázatot?</h3>
+<p>Minden mintaszónál külön oszlopban látod az <strong>egyes számot (singularis)</strong> és a <strong>többes számot (pluralis)</strong>. A sorok mindig az öt esetet követik a fent megadott sorrendben.</p>
+<p>A szótári alak rendszerint a nominativust, a genitivust és a nemet adja meg. A genitivus segít megtalálni a szótövet: például <em>corpor-is</em> → <em>corpor-</em>, ezért a III. deklinációban a nominativus gyakran kevésbé kiszámítható.</p>
+</div>
+
+<div class="declension-block">
+<div class="declension-heading"><span>I.</span><div><h3>Első deklináció</h3><p>Jellemző genitivus singularis: <strong>-ae</strong> · Többnyire nőnemű főnevek.</p></div></div>
+<p class="example-line"><strong>Mintaszó:</strong> <em>via, viae, f.</em> — út. A szótő: <em>viā-</em>.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>vi<strong>a</strong></td><td>vi<strong>ae</strong></td></tr>
+<tr><th>Accusativus</th><td>vi<strong>am</strong></td><td>vi<strong>ās</strong></td></tr>
+<tr><th>Genitivus</th><td>vi<strong>ae</strong></td><td>vi<strong>ārum</strong></td></tr>
+<tr><th>Dativus</th><td>vi<strong>ae</strong></td><td>vi<strong>īs</strong></td></tr>
+<tr><th>Ablativus</th><td>vi<strong>ā</strong></td><td>vi<strong>īs</strong></td></tr>
+</tbody></table></div>
+<p class="grammar-note"><strong>Figyeld meg:</strong> a singularis genitivus és dativus alakja egyaránt <em>viae</em>. A többes szám genitivusa <em>-ārum</em>, a dativusé és ablativusé <em>-īs</em>.</p>
+<p class="example-line"><strong>További példák a szókincsedből:</strong> <em>casa, casa, -ae, f.</em> (kunyhó), <em>vīta, vītae, f.</em> (élet), <em>familia, familiae, f.</em> (család).</p>
+<div class="notice">Néhány jelentésük szerint hímnemű személyt jelölő főnév is az I. deklinációba tartozik: például <em>nauta</em> (hajós), <em>agricola</em> (földműves), <em>poēta</em> (költő). A <em>fīlia</em> többes számú dativusa és ablativusa a tankönyvi alak szerint <em>fīliābus</em>.</div>
+</div>
+
+<div class="declension-block">
+<div class="declension-heading"><span>II.</span><div><h3>Második deklináció</h3><p>Jellemző genitivus singularis: <strong>-ī</strong> · Hímnemű alakok: gyakran -us vagy -er; semlegesneműek: -um.</p></div></div>
+<p class="example-line"><strong>Hímnemű mintaszó:</strong> <em>servus, servī, m.</em> — rabszolga, szolga.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>serv<strong>us</strong></td><td>serv<strong>ī</strong></td></tr>
+<tr><th>Accusativus</th><td>serv<strong>um</strong></td><td>serv<strong>ōs</strong></td></tr>
+<tr><th>Genitivus</th><td>serv<strong>ī</strong></td><td>serv<strong>ōrum</strong></td></tr>
+<tr><th>Dativus</th><td>serv<strong>ō</strong></td><td>serv<strong>īs</strong></td></tr>
+<tr><th>Ablativus</th><td>serv<strong>ō</strong></td><td>serv<strong>īs</strong></td></tr>
+</tbody></table></div>
+<p class="example-line"><strong>Semlegesnemű mintaszó:</strong> <em>bellum, bellī, n.</em> — háború.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>bell<strong>um</strong></td><td>bell<strong>a</strong></td></tr>
+<tr><th>Accusativus</th><td>bell<strong>um</strong></td><td>bell<strong>a</strong></td></tr>
+<tr><th>Genitivus</th><td>bell<strong>ī</strong></td><td>bell<strong>ōrum</strong></td></tr>
+<tr><th>Dativus</th><td>bell<strong>ō</strong></td><td>bell<strong>īs</strong></td></tr>
+<tr><th>Ablativus</th><td>bell<strong>ō</strong></td><td>bell<strong>īs</strong></td></tr>
+</tbody></table></div>
+<p class="grammar-note"><strong>Neutrum szabály:</strong> a semlegesnemű főnevek nominativusa és accusativusa mindig azonos; többes számban a II. deklinációban mindkettő <em>-a</em> végű. Hímnemű <em>-er</em> végű példa: <em>puer, puerī, m.</em> — fiú; az <em>ager, agrī</em> szóban az <em>e</em> kiesik a szótőből.</p>
+<p class="example-line"><strong>További példák a szókincsedből:</strong> <em>dominus</em> (úr), <em>servus</em> (szolga), <em>verbum</em> (szó), <em>oppidum</em> (város), <em>auxilium</em> (segítség).</p>
+</div>
+
+<div class="declension-block">
+<div class="declension-heading"><span>III.</span><div><h3>Harmadik deklináció</h3><p>Jellemző genitivus singularis: <strong>-is</strong> · Mindhárom nem előfordul; a nominativus alakja sokféle lehet.</p></div></div>
+<p class="example-line"><strong>Hímnemű mintaszó:</strong> <em>rēx, rēgis, m.</em> — király. A szótő a genitivusból: <em>rēg-</em>.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>rē<strong>x</strong></td><td>rēg<strong>ēs</strong></td></tr>
+<tr><th>Accusativus</th><td>rēg<strong>em</strong></td><td>rēg<strong>ēs</strong></td></tr>
+<tr><th>Genitivus</th><td>rēg<strong>is</strong></td><td>rēg<strong>um</strong></td></tr>
+<tr><th>Dativus</th><td>rēg<strong>ī</strong></td><td>rēg<strong>ibus</strong></td></tr>
+<tr><th>Ablativus</th><td>rēg<strong>e</strong></td><td>rēg<strong>ibus</strong></td></tr>
+</tbody></table></div>
+<p class="example-line"><strong>Semlegesnemű mintaszó:</strong> <em>corpus, corporis, n.</em> — test.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>corp<strong>us</strong></td><td>corp<strong>ora</strong></td></tr>
+<tr><th>Accusativus</th><td>corp<strong>us</strong></td><td>corp<strong>ora</strong></td></tr>
+<tr><th>Genitivus</th><td>corpor<strong>is</strong></td><td>corpor<strong>um</strong></td></tr>
+<tr><th>Dativus</th><td>corpor<strong>ī</strong></td><td>corpor<strong>ibus</strong></td></tr>
+<tr><th>Ablativus</th><td>corpor<strong>e</strong></td><td>corpor<strong>ibus</strong></td></tr>
+</tbody></table></div>
+<p class="grammar-note"><strong>Neutrum szabály:</strong> itt is azonos a nominativus és az accusativus; többes számban a nem i-tövű semlegesnemű alakok végződése <em>-a</em>. A III. deklinációban i-tövű főneveknél gyakori a genitivus pluralis <em>-ium</em> végződése, például <em>cīvis, cīvis</em> → <em>cīvium</em>; az ilyen semlegesneműek többes nominativusa/accusativusa gyakran <em>-ia</em> (pl. <em>mare, maria</em>).</p>
+<p class="example-line"><strong>További példák a szókincsedből:</strong> <em>urbs, urbis, f.</em> (város), <em>mors, mortis, f.</em> (halál), <em>nōmen, nōminis, n.</em> (név), <em>pater, patris, m.</em> (apa).</p>
+</div>
+
+<div class="declension-block">
+<div class="declension-heading"><span>IV.</span><div><h3>Negyedik deklináció</h3><p>Jellemző genitivus singularis: <strong>-ūs</strong> · Többnyire hímnemű, de nőnemű és semlegesnemű főnevek is vannak.</p></div></div>
+<p class="example-line"><strong>Nőnemű mintaszó:</strong> <em>manus, manūs, f.</em> — kéz.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>man<strong>us</strong></td><td>man<strong>ūs</strong></td></tr>
+<tr><th>Accusativus</th><td>man<strong>um</strong></td><td>man<strong>ūs</strong></td></tr>
+<tr><th>Genitivus</th><td>man<strong>ūs</strong></td><td>man<strong>uum</strong></td></tr>
+<tr><th>Dativus</th><td>man<strong>uī</strong> (man<strong>ū</strong>)</td><td>man<strong>ibus</strong></td></tr>
+<tr><th>Ablativus</th><td>man<strong>ū</strong></td><td>man<strong>ibus</strong></td></tr>
+</tbody></table></div>
+<p class="example-line"><strong>Semlegesnemű mintaszó:</strong> <em>cornū, cornūs, n.</em> — szarv.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>corn<strong>ū</strong></td><td>corn<strong>ua</strong></td></tr>
+<tr><th>Accusativus</th><td>corn<strong>ū</strong></td><td>corn<strong>ua</strong></td></tr>
+<tr><th>Genitivus</th><td>corn<strong>ūs</strong></td><td>corn<strong>uum</strong></td></tr>
+<tr><th>Dativus</th><td>corn<strong>ū</strong></td><td>corn<strong>ibus</strong></td></tr>
+<tr><th>Ablativus</th><td>corn<strong>ū</strong></td><td>corn<strong>ibus</strong></td></tr>
+</tbody></table></div>
+<p class="grammar-note"><strong>Figyeld meg:</strong> a IV. deklináció semlegesnemű főneveinek pluralis nominativusa és accusativusa <em>-ua</em>. A <em>manus</em> nőnemű, hiába IV. deklinációs.</p>
+<p class="example-line"><strong>További példák a szókincsedből:</strong> <em>currus, currūs, m.</em> (diadalszekér), <em>exercitus, exercitūs, m.</em> (hadsereg), <em>spīritus, spīritūs, m.</em> (lélek).</p>
+</div>
+
+<div class="declension-block">
+<div class="declension-heading"><span>V.</span><div><h3>Ötödik deklináció</h3><p>Jellemző genitivus singularis: <strong>-ēī</strong> · A főnevek többsége nőnemű; a <em>diēs</em> többnyire hímnemű.</p></div></div>
+<p class="example-line"><strong>Mintaszó:</strong> <em>rēs, reī, f.</em> — dolog, ügy.</p>
+<div class="table-scroll"><table class="declension-table"><thead><tr><th>Eset</th><th>Singularis</th><th>Pluralis</th></tr></thead><tbody>
+<tr><th>Nominativus</th><td>r<strong>ēs</strong></td><td>r<strong>ēs</strong></td></tr>
+<tr><th>Accusativus</th><td>r<strong>em</strong></td><td>r<strong>ēs</strong></td></tr>
+<tr><th>Genitivus</th><td>r<strong>eī</strong></td><td>r<strong>ērum</strong></td></tr>
+<tr><th>Dativus</th><td>r<strong>eī</strong></td><td>r<strong>ēbus</strong></td></tr>
+<tr><th>Ablativus</th><td>r<strong>ē</strong></td><td>r<strong>ēbus</strong></td></tr>
+</tbody></table></div>
+<p class="grammar-note"><strong>Figyeld meg:</strong> a singularis genitivus és dativus alakja egyaránt <em>reī</em>. Az <em>diēs, diēī, m.</em> (nap) ugyanezt a ragozási mintát követi.</p>
+</div>
+
+<div class="lesson-box">
+<h3>4. A legfontosabb szabályok egy helyen</h3>
+<ul class="grammar-rules">
+<li><strong>A genitivus singularis segít felismerni a deklinációt:</strong> -ae, -ī, -is, -ūs, -ēī.</li>
+<li><strong>Semlegesnem:</strong> nominativus = accusativus; többes számban a két eset végződése rendszerint -a, a III. deklináció i-tövű alakjainál gyakran -ia, a IV. deklinációban -ua.</li>
+<li><strong>Dativus és ablativus pluralis:</strong> az I–II. deklinációban rendszerint -īs, a III–IV.-ben -ibus, az V.-ben -ēbus.</li>
+<li><strong>A nem nem mindig következik a deklinációból:</strong> az I. deklinációban is vannak hímnemű személynevek/foglalkozásnevek; a IV. deklinációban pedig a <em>manus</em> nőnemű.</li>
+<li><strong>A szótári alakot mindig együtt tanuld:</strong> nominativus + genitivus + nem. Például: <em>urbs, urbis, f.</em></li>
+</ul>
+</div>
+<div class="notice">A táblázatokban minden eset sorrendje a kérésed szerint: nominativus, accusativus, genitivus, dativus, ablativus. A hosszú magánhangzókat makronnal jelöltem.</div>
 </div>
 
 <div id="practicePanel" class="panel hidden">
@@ -119,7 +278,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <p class="muted">A héber szókincs és nyelvtan saját, külön adatbázisba kerül. A görög és a latin tananyag ettől elkülönül.</p>
 </div>
 </section>
-<footer><span>PHILOLOGIA · V. 0.3</span><span>Ad fontes.</span></footer>
+<footer><span>PHILOLOGIA · V. 0.4</span><span>Ad fontes.</span></footer>
 </main>
 <script>
 const modules={
