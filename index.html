@@ -187,8 +187,7 @@ function renderCard(){
  if(!filtered.length){card.innerHTML='<div class="cardtype">Nincs találat</div><div class="meaning">Próbálj más keresőkifejezést vagy szűrőt.</div>';document.getElementById("wordList").innerHTML="";return}
  const w=filtered[current];revealed=false;
  const type=w.partOfSpeech||"szócikk";
- const marker=w.isDeponent?" · deponens ige":w.isSemiDeponent?" · fél-deponens ige":"";
- card.innerHTML='<div class="cardtype">Latin · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">'+(marker?'<span class="tagpill warn">'+escapeHtml(marker.trim())+'</span>':"Kattints a jelentés felfedéséhez")+'</div>';
+ card.innerHTML='<div class="cardtype">Latin · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
  document.getElementById("revealButton").textContent="Jelentés felfedése";
  document.getElementById("wordList").innerHTML=filtered.slice(0,160).map((item,i)=>'<button class="worditem" data-word-index="'+i+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+'</span></button>').join("");
 }
