@@ -1,56 +1,249 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f5f1e8">
-  <title>Philologia — Klasszikus nyelvek műhelye</title>
-  <style>
-    :root{--paper:#f5f1e8;--ink:#25251f;--muted:#74746b;--line:#dfd8c9;--greek:#263d64;--latin:#743943;--heb:#42604f;--card:#fffdf8}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
-    .wrap{max-width:1100px;margin:auto;padding:28px 22px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}
-    .brand{font-size:14px;letter-spacing:.24em;text-transform:uppercase}.sub{color:var(--muted);font:12px/1.4 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-    h1{font-weight:400;font-size:clamp(42px,8vw,76px);letter-spacing:.04em;margin:45px 0 6px}.intro{color:var(--muted);font-size:18px;margin:0 0 32px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.tile{background:var(--card);border:1px solid var(--line);padding:24px;border-radius:5px;min-height:220px;display:flex;flex-direction:column}
-    .tile .tag{font:11px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.tile h2{font-size:32px;font-weight:400;margin:12px 0 2px}.tile p{color:var(--muted);margin:0 0 20px}
-    button{font:14px system-ui,sans-serif;border:1px solid currentColor;background:transparent;padding:10px 14px;border-radius:3px;cursor:pointer;align-self:flex-start;margin-top:auto}
-    .greek{color:var(--greek)}.latin{color:var(--latin)}.hebrew{color:var(--heb)}
-    .section{margin-top:45px;border-top:1px solid var(--line);padding-top:20px}.section h3{font-size:23px;font-weight:400;margin:0 0 8px}.section p{color:var(--muted);margin:0;max-width:720px}
-    .notice{margin-top:32px;padding:16px 18px;border-left:3px solid #b7a98e;background:#eee8dc;color:#5f5a4e;font:13px/1.55 system-ui,sans-serif}
-    footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font:12px system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-    .hidden{display:none}.back{margin:0 0 20px}.placeholder{border:1px dashed var(--line);padding:26px;background:rgba(255,253,248,.6);color:var(--muted)}
-    @media(max-width:560px){.wrap{padding:20px 16px 44px}.top{align-items:flex-start;flex-direction:column}.tile{min-height:190px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f1e8">
+<title>Philologia — Klasszikus nyelvek műhelye</title>
+<style>
+:root{--paper:#f5f1e8;--ink:#25251f;--muted:#74746b;--line:#dfd8c9;--greek:#263d64;--latin:#743943;--heb:#42604f;--card:#fffdf8;--gold:#ad8952;--soft:#eee8dc}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:26px 22px 58px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:17px}.brand{font:13px system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase}.sub{color:var(--muted);font:11px/1.4 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:400;font-size:clamp(42px,8vw,76px);letter-spacing:.035em;margin:42px 0 4px;line-height:1.06}.intro{color:var(--muted);font-size:18px;margin:0 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:15px}.tile{background:var(--card);border:1px solid var(--line);padding:23px;border-radius:5px;min-height:206px;display:flex;flex-direction:column}.tile .tag{font:10px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}.tile h2{font-size:31px;font-weight:400;margin:12px 0 2px}.tile p{color:var(--muted);margin:0 0 18px}
+button{font:13px system-ui,sans-serif;border:1px solid currentColor;background:transparent;color:inherit;padding:10px 14px;border-radius:3px}.tile button{align-self:flex-start;margin-top:auto}.primary{background:var(--latin);color:white;border-color:var(--latin)}.softbtn{border-color:var(--line);background:var(--card)}button:disabled{opacity:.35;cursor:not-allowed}
+.greek{color:var(--greek)}.latin{color:var(--latin)}.hebrew{color:var(--heb)}
+.section{margin-top:40px;border-top:1px solid var(--line);padding-top:19px}.section h3{font-size:22px;font-weight:400;margin:0 0 7px}.section p{color:var(--muted);margin:0;max-width:760px}
+.notice{margin-top:27px;padding:14px 17px;border-left:3px solid #b7a98e;background:var(--soft);color:#5f5a4e;font:13px/1.55 system-ui,sans-serif}
+.hidden{display:none!important}.back{margin:0 0 18px}.modulehead{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}.modulehead h1{font-size:clamp(38px,6vw,60px);margin:14px 0 6px}.muted{color:var(--muted)}.small{font:12px system-ui,sans-serif;color:var(--muted)}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px}.tab.active{background:var(--latin);border-color:var(--latin);color:#fff}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:20px}.toolbar{display:grid;grid-template-columns:minmax(180px,1fr) minmax(140px,210px) auto;gap:10px;align-items:center;margin-bottom:15px}
+input,select{width:100%;border:1px solid var(--line);background:#fffefa;padding:11px 12px;color:var(--ink);border-radius:3px;font:13px system-ui,sans-serif;min-width:0}
+.countline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 12px;font:12px system-ui,sans-serif;color:var(--muted)}
+.flashcard{background:#fffefa;border:1px solid var(--line);min-height:300px;border-radius:5px;padding:clamp(20px,5vw,38px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.cardtype{font:10px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.lemma{font-size:clamp(30px,5vw,46px);line-height:1.2;margin:17px 0 8px;overflow-wrap:anywhere}.dictform{font-size:17px;color:var(--muted);font-style:italic}.cardmeta{font:12px system-ui,sans-serif;color:var(--muted);margin-top:17px}
+.reveal{width:min(100%,720px);border-top:1px solid var(--line);margin-top:22px;padding-top:18px}.meaning{font-size:21px;line-height:1.45}.detailrow{margin-top:10px;font:13px/1.5 system-ui,sans-serif;color:#5c5b54}.tagpill{display:inline-block;font:11px system-ui,sans-serif;padding:4px 8px;border:1px solid var(--line);border-radius:30px;margin:4px 4px 0 0}.tagpill.warn{background:#f3e7e1;color:#813b32;border-color:#d8b6aa}.tagpill.green{background:#e8eee7;color:#365942;border-color:#c9d7c8}.tagpill.gold{background:#f4efdf;color:#80612c;border-color:#e5d7b2}
+.cardactions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:15px}.cardactions button{margin:0}.navigation{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:13px}
+.wordlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-top:18px}.worditem{border:1px solid var(--line);background:#fffefa;text-align:left;padding:10px 12px;border-radius:3px;display:block;width:100%;margin:0}.worditem strong{display:block;font:16px Georgia,serif;color:var(--ink)}.worditem span{display:block;font:11px system-ui,sans-serif;color:var(--muted);margin-top:3px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.stat{border:1px solid var(--line);padding:12px;background:#fffefa}.stat b{display:block;font-size:24px;font-weight:400}.stat span{font:11px system-ui,sans-serif;color:var(--muted)}
+.grammargrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:18px}.grammartile{border:1px solid var(--line);padding:17px;background:#fffefa;min-height:130px}.grammartile h3{margin:0 0 5px;font-weight:400;font-size:21px}.grammartile p{font:12px/1.55 system-ui,sans-serif;color:var(--muted);margin:0}
+.progressbar{height:5px;background:#e8e1d5;border-radius:8px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--gold);width:0}
+footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font:11px system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:640px){.wrap{padding:19px 15px 42px}.top{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.tile{min-height:185px}.panel{padding:13px}.statgrid{gap:6px}.stat{padding:9px}.flashcard{min-height:290px}}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="top"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></header>
-    <div id="home">
-      <h1>Philologia</h1>
-      <p class="intro">Klasszikus nyelvek műhelye</p>
-      <div class="grid">
-        <article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai</p><button onclick="openModule('greek')">Belépés</button></article>
-        <article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Latin</p><button onclick="openModule('latin')">Belépés</button></article>
-        <article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
-      </div>
-      <section class="section"><h3>Három nyelv, külön tananyag</h3><p>Minden nyelv saját szókincset, nyelvtani leckéket, gyakorlófeladatokat és tanulási előrehaladást kap. A modulok nem keverik össze egymás adatait.</p></section>
-      <div class="notice">A Philologia jelenleg az alapfelület első változata. A szótárak és a nyelvtani gyakorlók a kapott órai szólisták és tananyagok alapján kerülnek majd bele.</div>
-    </div>
-    <section id="module" class="hidden">
-      <button class="back" onclick="goHome()">← Vissza a nyelvekhez</button>
-      <div class="sub" id="moduleLabel"></div><h1 id="moduleTitle" style="margin-top:14px"></h1>
-      <div class="grid" id="moduleTiles"></div>
-      <div class="section"><h3 id="moduleSectionTitle">Saját tananyag</h3><p id="moduleDescription"></p></div>
-    </section>
-    <footer><span>PHILOLOGIA · V. 0.1</span><span>Ad fontes.</span></footer>
-  </main>
+<main class="wrap">
+<header class="top"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></header>
+<div id="home">
+<h1>Philologia</h1><p class="intro">Klasszikus nyelvek műhelye</p>
+<div class="grid">
+<article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai</p><button onclick="openModule('greek')">Belépés</button></article>
+<article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Szótár és tanulás · 836 szócikk</p><button onclick="openModule('latin')">Belépés</button></article>
+<article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
+</div>
+<section class="section"><h3>Három nyelv, külön tananyag</h3><p>Minden nyelv saját szókincset, nyelvtani leckéket, gyakorlófeladatokat és tanulási előrehaladást kap. A modulok nem keverik össze egymás adatait.</p></section>
+<div class="notice">A Philologia személyes tanulóműhely. A latin szókártyák és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
+</div>
+
+<section id="module" class="hidden">
+<button class="back softbtn" onclick="goHome()">← Vissza a nyelvekhez</button>
+<div class="modulehead"><div><div class="sub" id="moduleLabel"></div><h1 id="moduleTitle"></h1><p id="moduleDesc" class="muted"></p></div></div>
+<div id="latinApp" class="hidden">
+<div class="pillrow" role="tablist" aria-label="Latin tanulómodul">
+<button class="tab active" data-tab="vocab" onclick="showTab('vocab')">Szókártyák</button>
+<button class="tab" data-tab="grammar" onclick="showTab('grammar')">Nyelvtan</button>
+<button class="tab" data-tab="practice" onclick="showTab('practice')">Gyakorlás</button>
+</div>
+<div id="vocabPanel" class="panel">
+<div class="statgrid">
+<div class="stat"><b id="statTotal">—</b><span>szócikk a szótárban</span></div>
+<div class="stat"><b id="statKnown">0</b><span>ismertnek jelölt</span></div>
+<div class="stat"><b id="statReviewed">0</b><span>átvett kártya</span></div>
+</div>
+<div class="progressbar"><span id="progressFill"></span></div>
+<div class="toolbar" style="margin-top:18px">
+<input id="searchBox" type="search" placeholder="Keresés latin szó vagy magyar jelentés alapján…" oninput="applyFilters()">
+<select id="typeFilter" onchange="applyFilters()">
+<option value="all">Minden szófaj</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="other">Egyéb</option>
+</select>
+<button class="softbtn" onclick="shuffleCards()">Keverés</button>
+</div>
+<div class="countline"><span id="resultCount">Betöltés…</span><span id="cardPosition"></span></div>
+<div class="flashcard" id="flashcard">
+<div class="cardtype">Philologia · Lingua Latina</div><div class="lemma">A szótár betöltése…</div>
+</div>
+<div class="cardactions">
+<button class="primary" id="revealButton" onclick="toggleReveal()">Jelentés felfedése</button>
+<button class="softbtn" onclick="rateCard(false)">× Még gyakorlom</button>
+<button class="softbtn" onclick="rateCard(true)">✓ Ismerem</button>
+</div>
+<div class="navigation">
+<button class="softbtn" onclick="moveCard(-1)">← Előző</button><button class="softbtn" onclick="moveCard(1)">Következő →</button>
+</div>
+<div class="section" style="margin-top:24px"><h3>Szólista</h3><p>Kattints egy szóra, hogy közvetlenül annak a kártyájára ugorj.</p><div id="wordList" class="wordlist"></div></div>
+</div>
+
+<div id="grammarPanel" class="panel hidden">
+<div class="sub">Grammatica Latina</div><h2 style="font-weight:400;font-size:32px;margin:8px 0">Nyelvtani műhely</h2>
+<p class="muted">A nyelvtani rész külön kezeli a szabályokat és a hozzájuk tartozó gyakorlófeladatokat. A következő bővítésben a tankönyvi tananyag szerint épülnek fel a leckék.</p>
+<div class="grammargrid">
+<article class="grammartile"><h3>Deklinációk</h3><p>Főnevek neme, szótári alakja, esetei és az öt deklináció.</p></article>
+<article class="grammartile"><h3>Igeragozás</h3><p>Coniugatio, praesens, imperfectum, perfectum és rendhagyó igék.</p></article>
+<article class="grammartile"><h3>Participiumok</h3><p>Participium imperfectum activi és participium perfectum passivi.</p></article>
+<article class="grammartile"><h3>Névmások</h3><p>Személyes, birtokos, mutató, vonatkozó és kérdő névmások.</p></article>
+<article class="grammartile"><h3>Vonzatok és esetek</h3><p>Praepositiók, accusativus, ablativus, dativus és genitivus.</p></article>
+<article class="grammartile"><h3>Szintaxis</h3><p>Egyeztetés, mellékmondatok és a mondat felépítése.</p></article>
+</div>
+<div class="notice">A nyelvtani témakörök szerkezete elkészült; a részletes szabálymagyarázatok és az interaktív feladatok még nincsenek feltöltve.</div>
+</div>
+
+<div id="practicePanel" class="panel hidden">
+<div class="sub">Exercitia</div><h2 style="font-weight:400;font-size:32px;margin:8px 0">Szókincs gyakorlása</h2>
+<p class="muted">A gyakorló ugyanazt a latin szótárat használja, mint a szókártyák, de csak az általad kiválasztott szóanyagot kérdezi ki.</p>
+<div class="grammargrid">
+<article class="grammartile"><h3>Teljes szókincs</h3><p>Az összes latin szócikkből véletlenszerűen.</p><button class="primary" style="margin-top:15px" onclick="showTab('vocab');shuffleCards()">Indítás</button></article>
+<article class="grammartile"><h3>Csak az ismeretlenek</h3><p>Azokból a szavakból, amelyeket még nem jelöltél ismertnek.</p><button class="softbtn" style="margin-top:15px" onclick="practiceUnknown()">Indítás</button></article>
+<article class="grammartile"><h3>Deponens igék</h3><p>Külön kikérdezés a deponens igékből.</p><button class="softbtn" style="margin-top:15px" onclick="practiceDeponents()">Indítás</button></article>
+</div>
+</div>
+</div>
+<div id="comingSoon" class="panel hidden">
+<div class="sub">Tananyag előkészítés alatt</div><h2 style="font-size:30px;font-weight:400">Ez a nyelvi modul még épül.</h2>
+<p class="muted">A szókincs és a nyelvtan saját, külön adatbázisba kerül majd. Az ógörög és a héber adatai nem keverednek a latin tananyaggal.</p>
+</div>
+</section>
+<footer><span>PHILOLOGIA · V. 0.2</span><span>Ad fontes.</span></footer>
+</main>
 <script>
 const modules={
- greek:{label:"01 · Hellén nyelv",title:"Ελληνικά",desc:"Az ógörög szókincs és nyelvtan külön adatállományba kerül. A tananyag az attikai görögre épül.",color:"greek"},
- latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"A latin szókincs és nyelvtan külön adatállományba kerül. A főneveknél deklináció, az igéknél a fő alakok és a deponens jelölés is megjelenik.",color:"latin"},
- hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"A klasszikus és modern héber később egymástól elkülönített almodulként jelenhet meg.",color:"hebrew"}
+ greek:{label:"01 · Hellén nyelv",title:"Ελληνικά",desc:"Ógörög · attikai",color:"greek"},
+ latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"Szótár · nyelvtan · gyakorlás",color:"latin"},
+ hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"Klasszikus és modern héber",color:"hebrew"}
 };
-function openModule(key){const m=modules[key];document.getElementById('home').classList.add('hidden');document.getElementById('module').classList.remove('hidden');document.getElementById('moduleLabel').textContent=m.label;document.getElementById('moduleTitle').textContent=m.title;document.getElementById('moduleTitle').className=m.color;document.getElementById('moduleDescription').textContent=m.desc;document.getElementById('moduleTiles').innerHTML=['Szókincs','Nyelvtan','Gyakorlás'].map((x,i)=>'<article class="tile"><div class="tag">0'+(i+1)+' · Tanulási terület</div><h2>'+x+'</h2><p>Hamarosan elérhető modul.</p></article>').join('')}
-function goHome(){document.getElementById('module').classList.add('hidden');document.getElementById('home').classList.remove('hidden')}
+let words=[], filtered=[], current=0, revealed=false, dataReady=false;
+let currentFilter="all";
+const STORAGE_KEY="philologia-latin-progress-v1";
+let progress=loadProgress();
+
+function loadProgress(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"known":[],"reviewed":[]}')}catch(e){return {known:[],reviewed:[]}}}
+function saveProgress(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress))}catch(e){} updateStats()}
+function updateStats(){
+ document.getElementById("statTotal").textContent=words.length;
+ document.getElementById("statKnown").textContent=progress.known.length;
+ document.getElementById("statReviewed").textContent=progress.reviewed.length;
+ document.getElementById("progressFill").style.width=(words.length?Math.min(100,progress.known.length/words.length*100):0)+"%";
+}
+function openModule(key){
+ const m=modules[key]; document.getElementById("home").classList.add("hidden");document.getElementById("module").classList.remove("hidden");
+ document.getElementById("moduleLabel").textContent=m.label;document.getElementById("moduleTitle").textContent=m.title;document.getElementById("moduleTitle").className=m.color;document.getElementById("moduleDesc").textContent=m.desc;
+ const latin=key==="latin";document.getElementById("latinApp").classList.toggle("hidden",!latin);document.getElementById("comingSoon").classList.toggle("hidden",latin);
+ if(latin){loadWords();}
+}
+function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
+function showTab(tab){
+ ["vocab","grammar","practice"].forEach(t=>document.getElementById(t+"Panel").classList.toggle("hidden",t!==tab));
+ document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+}
+async function loadWords(){
+ if(dataReady){applyFilters();return}
+ const card=document.getElementById("flashcard");
+ try{
+  const response=await fetch("./data/latin-vocabulary.json",{cache:"no-cache"});
+  if(!response.ok)throw new Error("HTTP "+response.status);
+  const json=await response.json();
+  if(!json.entries||!Array.isArray(json.entries))throw new Error("A szótár fájlformátuma nem megfelelő.");
+  words=json.entries;
+  dataReady=true;
+  applyFilters();
+ }catch(err){
+  card.innerHTML='<div class="cardtype">Hiba a szótár betöltésekor</div><div class="meaning">'+escapeHtml(err.message)+'</div><div class="detailrow">Ellenőrizd az internetkapcsolatot, majd frissítsd az oldalt.</div>';
+  document.getElementById("resultCount").textContent="A szótár most nem érhető el.";
+ }
+}
+function normalize(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+function applyFilters(){
+ if(!dataReady)return;
+ const q=normalize(document.getElementById("searchBox").value.trim());
+ const type=document.getElementById("typeFilter").value;
+ filtered=words.filter(w=>{
+  const pos=normalize(w.partOfSpeech||"");
+  if(type==="főnév"&&!pos.includes("főnév"))return false;
+  if(type==="ige"&&!pos.includes("ige"))return false;
+  if(type==="deponens"&&!w.isDeponent)return false;
+  if(type==="melléknév"&&!pos.includes("melléknév"))return false;
+  if(type==="other"&&(pos.includes("főnév")||pos.includes("ige")||pos.includes("melléknév")))return false;
+  if(!q)return true;
+  return normalize([w.lemma,w.dictionaryForm,w.meaning,w.notes,w.partOfSpeech].join(" ")).includes(q);
+ });
+ current=0;renderCard();
+}
+function renderCard(){
+ const card=document.getElementById("flashcard");
+ document.getElementById("resultCount").textContent=filtered.length+" találat";
+ document.getElementById("cardPosition").textContent=filtered.length?(current+1)+" / "+filtered.length:"";
+ document.getElementById("revealButton").disabled=!filtered.length;
+ if(!filtered.length){card.innerHTML='<div class="cardtype">Nincs találat</div><div class="meaning">Próbálj más keresőkifejezést vagy szűrőt.</div>';document.getElementById("wordList").innerHTML="";return}
+ const w=filtered[current];revealed=false;
+ const type=w.partOfSpeech||"szócikk";
+ const marker=w.isDeponent?" · deponens ige":w.isSemiDeponent?" · fél-deponens ige":"";
+ card.innerHTML='<div class="cardtype">Latin · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">'+(marker?'<span class="tagpill warn">'+escapeHtml(marker.trim())+'</span>':"Kattints a jelentés felfedéséhez")+'</div>';
+ document.getElementById("revealButton").textContent="Jelentés felfedése";
+ document.getElementById("wordList").innerHTML=filtered.slice(0,160).map((item,i)=>'<button class="worditem" data-word-index="'+i+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+'</span></button>').join("");
+}
+function reveal(){
+ if(!filtered.length)return;
+ const w=filtered[current];revealed=true;
+ const parts=[];
+ parts.push('<div class="meaning">'+escapeHtml(w.meaning||"Nincs megadott magyar jelentés.")+'</div>');
+ if(w.partOfSpeech && String(w.partOfSpeech).includes("főnév")){
+  const gender=w.gender?" · "+w.gender:"";
+  if(w.declension)parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(gender)+'</span></div>');
+  else parts.push('<div class="detailrow">A deklinációt a forrás nem adta meg / külön ragozású alak.</div>');
+ }
+ if(w.isDeponent)parts.push('<div class="detailrow"><span class="tagpill warn">DEPONENS IGE</span> Alakja passzív, jelentése aktív.</div>');
+ else if(w.isSemiDeponent)parts.push('<div class="detailrow"><span class="tagpill gold">FÉL-DEPONENS IGE</span> A perfectum alakja passzív formájú, jelentése aktív.</div>');
+ if(w.conjugation)parts.push('<div class="detailrow">Igeragozás: <strong>'+w.conjugation+'. coniugatio</strong></div>');
+ if(w.notes)parts.push('<div class="detailrow">'+escapeHtml(w.notes)+'</div>');
+ if(w.partOfSpeech==="participium"||String(w.partOfSpeech||"").includes("participium"))parts.push('<div class="detailrow"><span class="tagpill green">Melléknévi igenév</span></div>');
+ document.getElementById("flashcard").innerHTML+='<div class="reveal">'+parts.join("")+'</div>';
+ document.getElementById("revealButton").textContent="Válasz elrejtése";
+ progress.reviewed=[...new Set([...progress.reviewed,w.id])];saveProgress();
+}
+function toggleReveal(){if(revealed){renderCard();return}reveal()}
+function moveCard(delta){if(!filtered.length)return;current=(current+delta+filtered.length)%filtered.length;renderCard()}
+function shuffleCards(){for(let i=filtered.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[filtered[i],filtered[j]]=[filtered[j],filtered[i]]}current=0;renderCard();showTab("vocab")}
+function rateCard(known){
+ if(!filtered.length)return;
+ const id=filtered[current].id;
+ progress.reviewed=[...new Set([...progress.reviewed,id])];
+ progress.known=known?[...new Set([...progress.known,id])]:progress.known.filter(x=>x!==id);
+ saveProgress();moveCard(1);
+}
+function practiceUnknown(){
+ if(!dataReady)return;
+ document.getElementById("typeFilter").value="all";document.getElementById("searchBox").value="";
+ filtered=words.filter(w=>!progress.known.includes(w.id));current=0;renderCard();showTab("vocab");
+}
+function practiceDeponents(){
+ if(!dataReady)return;
+ document.getElementById("typeFilter").value="deponens";document.getElementById("searchBox").value="";
+ applyFilters();showTab("vocab");
+}
+function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+document.getElementById("wordList").addEventListener("click",e=>{
+ const btn=e.target.closest("[data-word-index]");if(!btn)return;
+ const i=Number(btn.dataset.wordIndex);if(Number.isInteger(i)&&i>=0&&i<filtered.length){current=i;renderCard()}
+});
+document.addEventListener("keydown",e=>{
+ if(document.getElementById("module").classList.contains("hidden"))return;
+ if(e.target.matches("input,select,textarea"))return;
+ if(e.code==="Space"){e.preventDefault();toggleReveal()}
+ if(e.key==="ArrowRight")moveCard(1);
+ if(e.key==="ArrowLeft")moveCard(-1);
+});
+updateStats();
 </script>
-</body></html>
+</body>
+</html>
