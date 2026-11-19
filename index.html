@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>Philologia — Klasszikus nyelvek műhelye</title>
+  <style>
+    :root{--paper:#f5f1e8;--ink:#25251f;--muted:#74746b;--line:#dfd8c9;--greek:#263d64;--latin:#743943;--heb:#42604f;--card:#fffdf8}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+    .wrap{max-width:1100px;margin:auto;padding:28px 22px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}
+    .brand{font-size:14px;letter-spacing:.24em;text-transform:uppercase}.sub{color:var(--muted);font:12px/1.4 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    h1{font-weight:400;font-size:clamp(42px,8vw,76px);letter-spacing:.04em;margin:45px 0 6px}.intro{color:var(--muted);font-size:18px;margin:0 0 32px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.tile{background:var(--card);border:1px solid var(--line);padding:24px;border-radius:5px;min-height:220px;display:flex;flex-direction:column}
+    .tile .tag{font:11px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.tile h2{font-size:32px;font-weight:400;margin:12px 0 2px}.tile p{color:var(--muted);margin:0 0 20px}
+    button{font:14px system-ui,sans-serif;border:1px solid currentColor;background:transparent;padding:10px 14px;border-radius:3px;cursor:pointer;align-self:flex-start;margin-top:auto}
+    .greek{color:var(--greek)}.latin{color:var(--latin)}.hebrew{color:var(--heb)}
+    .section{margin-top:45px;border-top:1px solid var(--line);padding-top:20px}.section h3{font-size:23px;font-weight:400;margin:0 0 8px}.section p{color:var(--muted);margin:0;max-width:720px}
+    .notice{margin-top:32px;padding:16px 18px;border-left:3px solid #b7a98e;background:#eee8dc;color:#5f5a4e;font:13px/1.55 system-ui,sans-serif}
+    footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font:12px system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .hidden{display:none}.back{margin:0 0 20px}.placeholder{border:1px dashed var(--line);padding:26px;background:rgba(255,253,248,.6);color:var(--muted)}
+    @media(max-width:560px){.wrap{padding:20px 16px 44px}.top{align-items:flex-start;flex-direction:column}.tile{min-height:190px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></header>
+    <div id="home">
+      <h1>Philologia</h1>
+      <p class="intro">Klasszikus nyelvek műhelye</p>
+      <div class="grid">
+        <article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai</p><button onclick="openModule('greek')">Belépés</button></article>
+        <article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Latin</p><button onclick="openModule('latin')">Belépés</button></article>
+        <article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
+      </div>
+      <section class="section"><h3>Három nyelv, külön tananyag</h3><p>Minden nyelv saját szókincset, nyelvtani leckéket, gyakorlófeladatokat és tanulási előrehaladást kap. A modulok nem keverik össze egymás adatait.</p></section>
+      <div class="notice">A Philologia jelenleg az alapfelület első változata. A szótárak és a nyelvtani gyakorlók a kapott órai szólisták és tananyagok alapján kerülnek majd bele.</div>
+    </div>
+    <section id="module" class="hidden">
+      <button class="back" onclick="goHome()">← Vissza a nyelvekhez</button>
+      <div class="sub" id="moduleLabel"></div><h1 id="moduleTitle" style="margin-top:14px"></h1>
+      <div class="grid" id="moduleTiles"></div>
+      <div class="section"><h3 id="moduleSectionTitle">Saját tananyag</h3><p id="moduleDescription"></p></div>
+    </section>
+    <footer><span>PHILOLOGIA · V. 0.1</span><span>Ad fontes.</span></footer>
+  </main>
+<script>
+const modules={
+ greek:{label:"01 · Hellén nyelv",title:"Ελληνικά",desc:"Az ógörög szókincs és nyelvtan külön adatállományba kerül. A tananyag az attikai görögre épül.",color:"greek"},
+ latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"A latin szókincs és nyelvtan külön adatállományba kerül. A főneveknél deklináció, az igéknél a fő alakok és a deponens jelölés is megjelenik.",color:"latin"},
+ hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"A klasszikus és modern héber később egymástól elkülönített almodulként jelenhet meg.",color:"hebrew"}
+};
+function openModule(key){const m=modules[key];document.getElementById('home').classList.add('hidden');document.getElementById('module').classList.remove('hidden');document.getElementById('moduleLabel').textContent=m.label;document.getElementById('moduleTitle').textContent=m.title;document.getElementById('moduleTitle').className=m.color;document.getElementById('moduleDescription').textContent=m.desc;document.getElementById('moduleTiles').innerHTML=['Szókincs','Nyelvtan','Gyakorlás'].map((x,i)=>'<article class="tile"><div class="tag">0'+(i+1)+' · Tanulási terület</div><h2>'+x+'</h2><p>Hamarosan elérhető modul.</p></article>').join('')}
+function goHome(){document.getElementById('module').classList.add('hidden');document.getElementById('home').classList.remove('hidden')}
+</script>
+</body></html>
