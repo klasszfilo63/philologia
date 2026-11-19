@@ -229,13 +229,17 @@
       "lemma": "collocō",
       "dictionaryForm": "collocō 1",
       "partOfSpeech": "ige",
-      "meaning": "felállít, berendez, megszervez",
+      "meaning": "felállít, berendez, megszervez; odatesz valahová, elhelyez valahol",
       "gender": null,
       "declension": null,
       "conjugation": 1,
-      "notes": null,
+      "notes": "Ahol: in + ablativus.",
       "isDeponent": false,
-      "sourceBatch": 1
+      "sourceBatch": 1,
+      "sourceBatches": [
+        1,
+        2
+      ]
     },
     {
       "id": "b1-019",
