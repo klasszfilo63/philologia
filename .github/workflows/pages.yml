@@ -23,11 +23,22 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Download public-domain Apollo photograph
+        run: |
+          curl -fLsS --retry 3 --retry-delay 2 \
+            -A "Philologia preview generator" \
+            "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marble_head_of_Apollo_with_fragment_of_his_hand_MET_DP282116.jpg" \
+            -o apollo-og.jpg
+          test "$(file --brief --mime-type apollo-og.jpg)" = "image/jpeg"
+          test "$(stat -c%s apollo-og.jpg)" -gt 100000
       - name: Render social preview image
         run: |
           sudo apt-get update
           sudo apt-get install -y librsvg2-bin
-          rsvg-convert --format=png --width=1200 --height=630 philologia-og.svg > philologia-og-v2.png
+          rsvg-convert --format=png --width=1200 --height=630 philologia-og.svg > philologia-og-v3.png
+          file philologia-og-v3.png
+          test "$(file --brief --mime-type philologia-og-v3.png)" = "image/png"
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site artifact

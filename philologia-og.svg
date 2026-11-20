@@ -1,55 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
- <defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff9e9"/><stop offset=".55" stop-color="#f3e7ce"/><stop offset="1" stop-color="#e9d8b8"/></linearGradient>
-  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8ecd3"/><stop offset=".52" stop-color="#d9c29a"/><stop offset="1" stop-color="#bfa57d"/></linearGradient>
-  <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f9efd9"/><stop offset=".55" stop-color="#ddc8a4"/><stop offset="1" stop-color="#b89f79"/></linearGradient>
-  <filter id="soft"><feGaussianBlur stdDeviation="1.1"/></filter>
- </defs>
- <rect width="1200" height="630" fill="url(#paper)"/>
- <rect x="12" y="12" width="1176" height="606" fill="none" stroke="#6d1820" stroke-width="3"/>
- <rect x="22" y="22" width="1156" height="586" fill="none" stroke="#b18b50" stroke-width="1.2"/>
- <path d="M25 530 C90 492 122 448 180 425 C222 406 277 403 321 420 C366 437 408 479 449 530 L449 608 L25 608Z" fill="#24364b"/>
- <path d="M42 608 C70 543 127 491 183 460 C227 436 272 432 315 447 C365 465 403 517 425 608Z" fill="url(#cloth)" stroke="#24364b" stroke-width="5"/>
- <path d="M110 608 C163 532 222 495 290 482 C330 474 365 484 405 526" fill="none" stroke="#a48b68" stroke-width="7" opacity=".8"/>
- <path d="M72 584 C142 561 189 552 239 565 C283 577 330 597 365 626" fill="none" stroke="#fff7e8" stroke-width="10" opacity=".8"/>
- <path d="M286 365 C293 409 300 438 328 456 L361 475 C340 503 300 519 258 508 C222 497 190 473 174 442 L198 387Z" fill="url(#stone)" stroke="#24364b" stroke-width="5" stroke-linejoin="round"/>
- <path d="M186 143 C203 88 269 61 328 75 C382 88 411 130 412 188 C414 222 425 236 442 252 C451 261 450 271 432 278 L413 284 C409 297 408 311 399 327 C381 361 351 381 313 383 C269 385 229 364 205 331 C180 297 170 231 186 143Z" fill="url(#stone)" stroke="#24364b" stroke-width="6" stroke-linejoin="round"/>
- <path d="M184 188 C171 130 208 76 264 55 C322 33 386 62 410 117 C383 95 356 91 333 101 C296 114 293 135 264 149 C235 163 211 160 184 188Z" fill="#24364b"/>
- <path d="M195 185 C160 142 170 102 204 76 C227 57 250 55 273 59 C237 70 225 96 231 119 C214 136 206 158 195 185Z" fill="#24364b"/>
- <path d="M204 220 C173 202 160 176 166 148 C170 128 186 110 203 102 C185 131 190 163 210 177Z" fill="#24364b"/>
- <path d="M185 234 C158 226 143 204 144 183 C143 164 152 149 166 141 C157 169 170 195 194 205Z" fill="#24364b"/>
- <path d="M201 115 C221 81 260 69 295 78 M225 151 C247 117 279 103 312 111 M181 182 C196 148 216 135 238 130" fill="none" stroke="#d8c39d" stroke-width="8" stroke-linecap="round"/>
- <path d="M331 185 C352 177 374 180 390 194" fill="none" stroke="#24364b" stroke-width="6" stroke-linecap="round"/>
- <path d="M346 206 C363 199 378 201 389 209" fill="none" stroke="#24364b" stroke-width="4" stroke-linecap="round"/>
- <path d="M370 222 C382 229 391 240 395 251" fill="none" stroke="#987e59" stroke-width="4" stroke-linecap="round"/>
- <path d="M393 263 C405 269 420 270 431 265" fill="none" stroke="#24364b" stroke-width="4" stroke-linecap="round"/>
- <path d="M385 294 C397 300 407 299 415 295" fill="none" stroke="#8c6f50" stroke-width="4" stroke-linecap="round"/>
- <path d="M265 228 C276 222 288 221 299 226" fill="none" stroke="#24364b" stroke-width="5" stroke-linecap="round"/>
- <path d="M291 250 C300 253 305 258 308 265" fill="none" stroke="#917957" stroke-width="3"/>
- <path d="M223 215 C216 236 220 253 233 262 C246 270 258 263 261 251" fill="none" stroke="#9c825c" stroke-width="4"/>
- <path d="M260 377 C248 408 249 437 274 470" fill="none" stroke="#24364b" stroke-width="5"/>
- <path d="M290 380 C305 407 321 424 347 435" fill="none" stroke="#a48b68" stroke-width="4"/>
- <!-- Laurel crown -->
- <path d="M176 123 C202 74 249 48 300 44 C330 42 358 53 382 70" fill="none" stroke="#987039" stroke-width="5"/>
- <g fill="#b18a45" stroke="#82602f" stroke-width="1.8">
-  <path d="M199 97 C176 72 176 53 188 38 C216 55 223 76 199 97Z"/>
-  <path d="M226 75 C211 45 217 27 236 15 C254 37 250 59 226 75Z"/>
-  <path d="M259 58 C251 28 261 11 282 4 C294 29 282 49 259 58Z"/>
-  <path d="M293 50 C292 20 307 5 331 2 C338 28 321 46 293 50Z"/>
-  <path d="M326 55 C333 28 354 17 377 22 C375 49 354 63 326 55Z"/>
-  <path d="M354 68 C370 45 393 42 414 54 C405 79 381 86 354 68Z"/>
- </g>
- <g fill="none" stroke="#8d6a37" stroke-width="2.2"><path d="M199 97 L188 38 M226 75 L236 15 M259 58 L282 4 M293 50 L331 2 M326 55 L377 22 M354 68 L414 54"/></g>
- <!-- decorative vertical divider -->
- <path d="M472 92 V540" stroke="#b18b50" stroke-width="1.5"/>
- <text x="820" y="270" text-anchor="middle" fill="#6d1820" font-family="Georgia, 'Times New Roman', serif" font-size="95" font-style="italic" letter-spacing="-2">Philologia</text>
- <path d="M570 328 H725 M914 328 H1068" stroke="#b18b50" stroke-width="2.5"/>
- <g transform="translate(820 328)" fill="#b18b50" stroke="#8b6938" stroke-width="1.3">
-  <path d="M0 0 C-28 -7 -53 -20 -66 -40 C-34 -35 -15 -21 0 0Z"/>
-  <path d="M0 0 C-25 4 -51 14 -68 34 C-35 30 -15 16 0 0Z"/>
-  <path d="M0 0 C28 -7 53 -20 66 -40 C34 -35 15 -21 0 0Z"/>
-  <path d="M0 0 C25 4 51 14 68 34 C35 30 15 16 0 0Z"/>
- </g>
- <text x="820" y="420" text-anchor="middle" fill="#24364b" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-style="italic">Klasszikus nyelvek műhelye</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Photograph: Marble head of Apollo with fragment of his hand, Roman, 1st-2nd c. CE.
+       The Metropolitan Museum of Art, object 1980.303.2. CC0 1.0 via Wikimedia Commons. -->
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf3e2"/>
+      <stop offset="1" stop-color="#eadbbd"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#201b1b" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#6d1820" stop-opacity=".04"/>
+    </linearGradient>
+    <clipPath id="photoClip"><rect x="22" y="22" width="445" height="586"/></clipPath>
+    <filter id="warmPhoto" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values=".68"/>
+      <feComponentTransfer>
+        <feFuncR type="gamma" amplitude="1.03" exponent="1" offset="0"/>
+        <feFuncG type="gamma" amplitude="1.00" exponent="1" offset="0"/>
+        <feFuncB type="gamma" amplitude=".92" exponent="1" offset=".01"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <rect x="12" y="12" width="1176" height="606" fill="none" stroke="#6d1820" stroke-width="3"/>
+  <rect x="20" y="20" width="449" height="590" fill="#2a2524"/>
+  <g clip-path="url(#photoClip)">
+    <image x="22" y="22" width="445" height="586" xlink:href="apollo-og.jpg" preserveAspectRatio="xMidYMid slice" filter="url(#warmPhoto)"/>
+    <rect x="22" y="22" width="445" height="586" fill="url(#shade)"/>
+  </g>
+  <path d="M484 74 V556" stroke="#b18b50" stroke-width="1.5"/>
+  <text x="837" y="277" text-anchor="middle" fill="#6d1820" font-family="Georgia, 'Times New Roman', serif" font-size="93" font-style="italic" letter-spacing="-2">Philologia</text>
+  <path d="M588 351 H720 M954 351 H1086" stroke="#b18b50" stroke-width="2.2"/>
+  <g transform="translate(852 351)" fill="#b18b50" stroke="#8a6737" stroke-width="1.2">
+    <path d="M0 0 C-25 -6 -45 -18 -57 -36 C-29 -31 -13 -18 0 0Z"/>
+    <path d="M0 0 C-23 4 -43 13 -59 30 C-30 27 -13 15 0 0Z"/>
+    <path d="M0 0 C25 -6 45 -18 57 -36 C29 -31 13 -18 0 0Z"/>
+    <path d="M0 0 C23 4 43 13 59 30 C30 27 13 15 0 0Z"/>
+  </g>
+  <text x="837" y="435" text-anchor="middle" fill="#24364b" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-style="italic">Klasszikus nyelvek műhelye</text>
+  <rect x="12" y="12" width="1176" height="606" fill="none" stroke="#9a7746" stroke-opacity=".45" stroke-width="1"/>
 </svg>
