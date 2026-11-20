@@ -34,6 +34,21 @@ button{font:13px system-ui,sans-serif;border:1px solid currentColor;background:t
 
 .notice{margin-top:27px;padding:14px 17px;border-left:3px solid #b7a98e;background:var(--soft);color:#5f5a4e;font:13px/1.55 system-ui,sans-serif}
 .hidden{display:none!important}.back{margin:0 0 18px}.modulehead{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}.modulehead h1{font-size:clamp(38px,6vw,60px);margin:14px 0 6px}.muted{color:var(--muted)}.small{font:12px system-ui,sans-serif;color:var(--muted)}
+button,input,select{transition:border-color .16s ease,background-color .16s ease,box-shadow .16s ease}
+button:hover{background-color:var(--soft)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.studytoolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 15px;font:12px system-ui,sans-serif;color:var(--muted)}
+.studytoolbar label{display:flex;align-items:center;gap:8px}
+.studytoolbar select{width:auto;min-width:105px;padding:9px 10px}
+.favorite-toggle[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);background:#f7f0df}
+.wordlist-pager{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:13px;font:12px system-ui,sans-serif;color:var(--muted)}
+.wordlist-pager[hidden]{display:none!important}
+.grammar-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
+.grammar-tools input{flex:1 1 240px;width:auto}
+.grammar-tools button{white-space:nowrap}
+.grammar-search-status{font:11px system-ui,sans-serif;color:var(--muted);margin:0 0 8px;min-height:1em}
+@media(max-width:620px){.studytoolbar{align-items:stretch}.studytoolbar label{flex:1}.studytoolbar select{flex:1}.grammar-tools input{flex-basis:100%}.grammar-tools button{flex:1}}
+
 .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px}.tab.active{background:var(--latin);border-color:var(--latin);color:#fff}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:20px}.toolbar{display:grid;grid-template-columns:minmax(180px,1fr) minmax(140px,210px) auto;gap:10px;align-items:center;margin-bottom:15px}
 input,select{width:100%;border:1px solid var(--line);background:#fffefa;padding:11px 12px;color:var(--ink);border-radius:3px;font:13px system-ui,sans-serif;min-width:0}
@@ -197,9 +212,15 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <div class="toolbar" style="margin-top:18px">
 <input id="searchBox" type="search" placeholder="Keresés szó vagy magyar jelentés alapján…" oninput="applyFilters()">
 <select id="typeFilter" onchange="applyFilters()">
-<option value="all">Minden szófaj</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="névmás">Névmások</option><option value="elöljárószó">Elöljárószók</option><option value="other">Egyéb</option>
+<option value="all">Minden szófaj</option><option value="favorites">Kedvencek</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="névmás">Névmások</option><option value="elöljárószó">Elöljárószók</option><option value="other">Egyéb</option>
 </select>
 <button class="softbtn" onclick="shuffleCards()">Keverés</button>
+</div>
+<div class="studytoolbar">
+  <label for="sessionSize">Tanulókör mérete
+    <select id="sessionSize"><option value="all">Összes találat</option><option value="10">10 szó</option><option value="20">20 szó</option><option value="50">50 szó</option></select>
+  </label>
+  <button class="softbtn" onclick="startStudyRound()">Új tanulókör</button>
 </div>
 <div class="countline"><span id="resultCount">Betöltés…</span><span id="cardPosition"></span></div>
 <div class="flashcard" id="flashcard">
@@ -207,19 +228,27 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 </div>
 <div class="cardactions">
 <button class="primary" id="revealButton" onclick="toggleReveal()">Jelentés felfedése</button>
+<button class="softbtn favorite-toggle" id="favoriteButton" onclick="toggleFavorite()" aria-pressed="false">☆ Kedvencekhez</button>
 <button class="softbtn" onclick="rateCard(false)">× Még gyakorlom</button>
 <button class="softbtn" onclick="rateCard(true)">✓ Ismerem</button>
 </div>
 <div class="navigation">
 <button class="softbtn" onclick="moveCard(-1)">← Előző</button><button class="softbtn" onclick="moveCard(1)">Következő →</button>
 </div>
-<div class="section" style="margin-top:24px"><h3>Szólista</h3><p>Kattints egy szóra, hogy közvetlenül annak a kártyájára ugorj.</p><div id="wordList" class="wordlist"></div></div>
+<div class="section" style="margin-top:24px"><h3>Szólista</h3><p>Kattints egy szóra, hogy közvetlenül annak a kártyájára ugorj.</p><div id="wordList" class="wordlist"></div><div class="wordlist-pager" id="wordListPager" hidden><button class="softbtn" id="wordListPrev" onclick="changeWordListPage(-1)">← Előző</button><span id="wordListPageLabel"></span><button class="softbtn" id="wordListNext" onclick="changeWordListPage(1)">Következő →</button></div></div>
 </div>
 
 <div id="grammarPanel" class="panel hidden grammar-lesson">
 <div class="sub">Grammatica Latina</div>
 <h2 class="grammar-title">Nyelvtan</h2>
 <p class="grammar-lead">A latin nyelvtani anyag témakörök szerint rendezve található itt. Nyisd le a kategóriát, majd válaszd ki a tananyagot, amelyet át szeretnél venni.</p>
+<div class="grammar-tools">
+  <input class="grammar-search" id="latinGrammarSearch" type="search" placeholder="Keresés a latin nyelvtanban…" oninput="filterGrammar('latin')">
+  <button class="softbtn" onclick="clearGrammarSearch('latin')">Keresés törlése</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('latin',true)">Összes kinyitása</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('latin',false)">Összes becsukása</button>
+</div>
+<p class="grammar-search-status" id="latinGrammarSearchStatus" aria-live="polite"></p>
 <div class="grammar-categories">
 <details class="grammar-category">
 <summary><span>Főnevek</span><small>1 tananyag</small></summary>
@@ -539,6 +568,13 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <div class="sub">Grammatica Graeca · Dialectus Attica</div>
 <h2 class="grammar-title">Nyelvtan</h2>
 <p class="grammar-lead">Az ógörög nyelvtani anyag külön témakörökbe rendezve található. A kategóriák lenyithatók, az egyes tananyagok pedig önálló egységként tanulhatók. Az itt feldolgozott példák az attikai görög névszóragozását és hangsúlyozását mutatják be.</p>
+<div class="grammar-tools">
+  <input class="grammar-search" id="greekGrammarSearch" type="search" placeholder="Keresés az ógörög nyelvtanban…" oninput="filterGrammar('greek')">
+  <button class="softbtn" onclick="clearGrammarSearch('greek')">Keresés törlése</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('greek',true)">Összes kinyitása</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('greek',false)">Összes becsukása</button>
+</div>
+<p class="grammar-search-status" id="greekGrammarSearchStatus" aria-live="polite"></p>
 <div class="grammar-categories">
 
 <details class="grammar-category">
@@ -1069,9 +1105,15 @@ const modules={
 };
 const vocabularyCache={};
 let currentLanguage="latin";
-let words=[], filtered=[], current=0, revealed=false, dataReady=false;
+let words=[], filtered=[], baseFiltered=[], current=0, revealed=false, dataReady=false, wordListPage=0;
+const WORDS_PER_PAGE=25;
 const storageKey=()=> "philologia-"+currentLanguage+"-progress-v1";
-function loadProgress(){try{return JSON.parse(localStorage.getItem(storageKey())||'{"known":[],"reviewed":[]}')}catch(e){return {known:[],reviewed:[]}}}
+function loadProgress(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(storageKey())||"{}");
+  return {known:Array.isArray(saved.known)?saved.known:[],reviewed:Array.isArray(saved.reviewed)?saved.reviewed:[],favorites:Array.isArray(saved.favorites)?saved.favorites:[]};
+ }catch(e){return {known:[],reviewed:[],favorites:[]}}
+}
 let progress=loadProgress();
 
 function saveProgress(){try{localStorage.setItem(storageKey(),JSON.stringify(progress))}catch(e){} updateStats()}
@@ -1096,10 +1138,13 @@ function openModule(key){
  currentLanguage=key;
  words=vocabularyCache[key]||[];
  dataReady=Boolean(vocabularyCache[key]);
- filtered=[];
- current=0;
+ filtered=[];baseFiltered=[];
+ current=0;wordListPage=0;
  revealed=false;
  progress=loadProgress();
+ document.getElementById("sessionSize").value="all";
+ document.getElementById("latinGrammarSearch").value="";document.getElementById("greekGrammarSearch").value="";
+ filterGrammar("latin");filterGrammar("greek");
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
@@ -1147,7 +1192,8 @@ function applyFilters(){
  const type=document.getElementById("typeFilter").value;
  filtered=words.filter(w=>{
   const pos=normalize(w.partOfSpeech||"");
-  if(type==="főnév"&&!pos.includes("főnév"))return false;
+  if(type==="favorites"&&!progress.favorites.includes(w.id))return false;
+   if(type==="főnév"&&!pos.includes("főnév"))return false;
   if(type==="ige"&&!pos.includes("ige"))return false;
   if(type==="deponens"&&!w.isDeponent)return false;
   if(type==="melléknév"&&!pos.includes("melléknév"))return false;
@@ -1157,20 +1203,55 @@ function applyFilters(){
   if(!q)return true;
   return normalize([w.lemma,w.dictionaryForm,w.meaning,w.notes,w.partOfSpeech].join(" ")).includes(q);
  });
- current=0;renderCard();
+ baseFiltered=filtered.slice();
+ current=0;wordListPage=0;renderCard();
+}
+function startStudyRound(){
+ if(!baseFiltered.length)return;
+ const size=document.getElementById("sessionSize").value;
+ const pool=baseFiltered.slice();
+ for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+ filtered=size==="all"?pool:pool.slice(0,Math.min(Number(size),pool.length));
+ current=0;wordListPage=0;renderCard();showTab("vocab");
 }
 function renderCard(){
  const card=document.getElementById("flashcard");
- document.getElementById("resultCount").textContent=filtered.length+" találat";
+ document.getElementById("resultCount").textContent=filtered.length+" találat"+(filtered.length<baseFiltered.length?" · tanulókör":"");
  document.getElementById("cardPosition").textContent=filtered.length?(current+1)+" / "+filtered.length:"";
  document.getElementById("revealButton").disabled=!filtered.length;
- if(!filtered.length){card.innerHTML='<div class="cardtype">Nincs találat</div><div class="meaning">Próbálj más keresőkifejezést vagy szűrőt.</div>';document.getElementById("wordList").innerHTML="";return}
+ if(!filtered.length){card.innerHTML='<div class="cardtype">Nincs találat</div><div class="meaning">Próbálj más keresőkifejezést vagy szűrőt.</div>';document.getElementById("wordList").innerHTML="";document.getElementById("wordListPager").hidden=true;document.getElementById("favoriteButton").disabled=true;return}
  const w=filtered[current];revealed=false;
  const type=w.partOfSpeech||"szócikk";
+ const favoriteButton=document.getElementById("favoriteButton");favoriteButton.disabled=false;favoriteButton.setAttribute("aria-pressed",String(progress.favorites.includes(w.id)));favoriteButton.textContent=progress.favorites.includes(w.id)?"★ Kedvencek között":"☆ Kedvencekhez";
  const languageTitle=currentLanguage==="greek"?"Ógörög · attikai":"Latin";
  card.innerHTML='<div class="cardtype">'+languageTitle+' · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
  document.getElementById("revealButton").textContent="Jelentés felfedése";
- document.getElementById("wordList").innerHTML=filtered.slice(0,160).map((item,i)=>'<button class="worditem" data-word-index="'+i+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+'</span></button>').join("");
+ renderWordList();
+}
+function renderWordList(){
+ const start=wordListPage*WORDS_PER_PAGE;
+ const items=filtered.slice(start,start+WORDS_PER_PAGE);
+ document.getElementById("wordList").innerHTML=items.map((item,i)=>'<button class="worditem" data-word-index="'+(start+i)+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+(progress.favorites.includes(item.id)?" · ★ kedvenc":"")+'</span></button>').join("");
+ const pager=document.getElementById("wordListPager");
+ const pages=Math.max(1,Math.ceil(filtered.length/WORDS_PER_PAGE));
+ pager.hidden=filtered.length<=WORDS_PER_PAGE;
+ document.getElementById("wordListPageLabel").textContent=(wordListPage+1)+" / "+pages;
+ document.getElementById("wordListPrev").disabled=wordListPage===0;
+ document.getElementById("wordListNext").disabled=wordListPage>=pages-1;
+}
+function changeWordListPage(delta){
+ const pages=Math.max(1,Math.ceil(filtered.length/WORDS_PER_PAGE));
+ wordListPage=Math.max(0,Math.min(pages-1,wordListPage+delta));
+ renderWordList();
+}
+function toggleFavorite(){
+ if(!filtered.length)return;
+ const id=filtered[current].id;
+ if(progress.favorites.includes(id))progress.favorites=progress.favorites.filter(x=>x!==id);
+ else progress.favorites.push(id);
+ saveProgress();
+ if(document.getElementById("typeFilter").value==="favorites")applyFilters();
+ else renderCard();
 }
 function reveal(){
  if(!filtered.length)return;
@@ -1215,6 +1296,37 @@ function rateCard(known){
  progress.known=known?[...new Set([...progress.known,id])]:progress.known.filter(x=>x!==id);
  saveProgress();moveCard(1);
 }
+function filterGrammar(language){
+ const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+ if(!panel)return;
+ const input=panel.querySelector(".grammar-search");
+ const query=normalize(input?input.value.trim():"");
+ const categories=Array.from(panel.querySelectorAll(".grammar-category"));
+ let visibleTopics=0;
+ categories.forEach(category=>{
+  const topics=Array.from(category.querySelectorAll(".grammar-topic"));
+  let categoryMatches=0;
+  topics.forEach(topic=>{
+   const matches=!query||normalize(topic.textContent).includes(query);
+   topic.hidden=!matches;
+   if(matches){categoryMatches++;visibleTopics++;if(query){topic.open=true;let parent=topic.parentElement;while(parent&&parent!==category){if(parent.tagName==="DETAILS")parent.open=true;parent=parent.parentElement;}}}
+  });
+  category.hidden=Boolean(query)&&categoryMatches===0;
+  if(query&&categoryMatches)category.open=true;
+ });
+ const status=document.getElementById(language+"GrammarSearchStatus");
+ if(status)status.textContent=query?(visibleTopics+" kapcsolódó tananyag"):"";
+}
+function clearGrammarSearch(language){
+ const input=document.getElementById(language+"GrammarSearch");
+ if(input)input.value="";
+ filterGrammar(language);
+}
+function toggleGrammarDetails(language,open){
+ const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+ if(!panel)return;
+ panel.querySelectorAll(".grammar-category,.grammar-topic").forEach(item=>{if(!item.hidden)item.open=open;});
+}
 function practiceUnknown(){
  if(!dataReady)return;
  document.getElementById("typeFilter").value="all";document.getElementById("searchBox").value="";
@@ -1226,6 +1338,14 @@ function practiceDeponents(){
  applyFilters();showTab("vocab");
 }
 function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+["grammarPanel","greekGrammarPanel"].forEach(panelId=>{
+ const panel=document.getElementById(panelId);
+ panel.addEventListener("click",e=>{
+  const summary=e.target.closest(".grammar-topic > summary");
+  if(!summary)return;
+  try{localStorage.setItem("philologia-last-lesson",JSON.stringify({language:panelId==="grammarPanel"?"latin":"greek",title:summary.querySelector("span")?.textContent.trim()||summary.textContent.trim(),at:Date.now()}));}catch(err){}
+ });
+});
 document.getElementById("wordList").addEventListener("click",e=>{
  const btn=e.target.closest("[data-word-index]");if(!btn)return;
  const i=Number(btn.dataset.wordIndex);if(Number.isInteger(i)&&i>=0&&i<filtered.length){current=i;renderCard()}
