@@ -1121,6 +1121,18 @@ const modules={
 const vocabularyCache={};
 let currentLanguage="latin";
 let activeModuleKey=null;
+function shuffledCopy(items){
+ const result=items.slice();
+ for(let i=result.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [result[i],result[j]]=[result[j],result[i]];
+ }
+ // Avoid displaying the source order when a shuffle happens to leave it unchanged.
+ if(result.length>1&&result.every((item,index)=>item.id===items[index].id)){
+  [result[0],result[1]]=[result[1],result[0]];
+ }
+ return result;
+}
 let words=[], filtered=[], baseFiltered=[], current=0, revealed=false, dataReady=false, wordListPage=0;
 const WORDS_PER_PAGE=25;
 const storageKey=()=> "philologia-"+currentLanguage+"-progress-v1";
@@ -1242,7 +1254,7 @@ function openModule(key,pushHistory=true){
  document.getElementById("comingSoon").classList.toggle("hidden",hasVocabulary);
  if(!hasVocabulary)return;
  currentLanguage=key;
- words=vocabularyCache[key]||[];
+ words=shuffledCopy(vocabularyCache[key]||[]);
  dataReady=Boolean(vocabularyCache[key]);
  filtered=[];baseFiltered=[];
  current=0;wordListPage=0;
@@ -1256,7 +1268,7 @@ function openModule(key,pushHistory=true){
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
  document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
- showTab("vocab",false);
+ showTab("vocab",false,false);
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
@@ -1268,14 +1280,19 @@ function goHome(pushHistory=true){
  document.title="Philologia — Klasszikus nyelvek műhelye";
  updateResume();
 }
-function showTab(tab,historyMode="replace"){
+function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
+ const enteringVocabulary=tab==="vocab"&&document.getElementById("vocabPanel").classList.contains("hidden");
  if(historyMode)writeAppRoute(currentLanguage+"/"+tab,historyMode);
  document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
  document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
  document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
  document.getElementById("practicePanel").classList.toggle("hidden",tab!=="practice");
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ if(enteringVocabulary&&shuffleOnEnter&&dataReady){
+  words=shuffledCopy(words);
+  applyFilters();
+ }
  rememberLocation({language:currentLanguage,tab});updateResume();
 }
 async function loadWords(){
@@ -1291,7 +1308,7 @@ async function loadWords(){
   if(!json.entries||!Array.isArray(json.entries))throw new Error("A szótár fájlformátuma nem megfelelő.");
   vocabularyCache[requestedLanguage]=json.entries;
   if(currentLanguage!==requestedLanguage)return;
-  words=json.entries;
+  words=shuffledCopy(json.entries);
   dataReady=true;
   applyFilters();
  }catch(err){
@@ -1491,7 +1508,7 @@ function toggleGrammarDetails(language,open){
 function practiceUnknown(){
  if(!dataReady)return;
  document.getElementById("typeFilter").value="all";document.getElementById("searchBox").value="";
- filtered=words.filter(w=>!progress.known.includes(w.id));current=0;renderCard();showTab("vocab");
+ filtered=shuffledCopy(words.filter(w=>!progress.known.includes(w.id)));baseFiltered=filtered.slice();current=0;renderCard();showTab("vocab",false,false);
 }
 function practiceDeponents(){
  if(!dataReady)return;
