@@ -47,6 +47,11 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .grammar-tools input{flex:1 1 240px;width:auto}
 .grammar-tools button{white-space:nowrap}
 .grammar-search-status{font:11px system-ui,sans-serif;color:var(--muted);margin:0 0 8px;min-height:1em}
+.resume-area{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:22px 0 5px;padding:13px 16px;border:1px solid var(--line);background:rgba(255,253,248,.65);border-radius:5px}
+.resume-area .resume-copy{min-width:0}
+.resume-area .resume-label{display:block;font:10px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.resume-area .resume-title{display:block;margin-top:4px;font:15px Georgia,serif;color:var(--ink);overflow-wrap:anywhere}
+@media(max-width:620px){.resume-area{align-items:flex-start}.resume-area button{width:100%}}
 @media(max-width:620px){.studytoolbar{align-items:stretch}.studytoolbar label{flex:1}.studytoolbar select{flex:1}.grammar-tools input{flex-basis:100%}.grammar-tools button{flex:1}}
 
 .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px}.tab.active{background:var(--latin);border-color:var(--latin);color:#fff}
@@ -189,6 +194,10 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Szótár és tanulás · 836 szócikk</p><button onclick="openModule('latin')">Belépés</button></article>
 <article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
 </div>
+<section class="resume-area hidden" id="resumeArea" aria-label="Legutóbb megnyitott tananyag">
+ <div class="resume-copy"><span class="resume-label">Folytatás</span><span class="resume-title" id="resumeTitle"></span></div>
+ <button class="softbtn" onclick="resumeLastLocation()">Folytatás →</button>
+</section>
 
 <div class="notice">A Philologia személyes tanulóműhely. A szókártyák és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
 </div>
@@ -1123,8 +1132,46 @@ function updateStats(){
  document.getElementById("statReviewed").textContent=progress.reviewed.length;
  document.getElementById("progressFill").style.width=(words.length?Math.min(100,progress.known.length/words.length*100):0)+"%";
 }
+function rememberLocation(location){
+ try{localStorage.setItem("philologia-last-location",JSON.stringify(location));}catch(e){}
+}
+function readLastLocation(){
+ try{const value=JSON.parse(localStorage.getItem("philologia-last-location")||"null");return value&&modules[value.language]?value:null;}catch(e){return null;}
+}
+function updateResume(){
+ const area=document.getElementById("resumeArea");
+ const title=document.getElementById("resumeTitle");
+ if(!area||!title)return;
+ const last=readLastLocation();
+ if(!last){area.classList.add("hidden");return;}
+ const moduleName=modules[last.language].title;
+ const tabName=last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
+ title.textContent=last.title?moduleName+" · "+last.title:moduleName+" · "+tabName;
+ area.classList.remove("hidden");
+}
+function resumeLastLocation(){
+ const last=readLastLocation();
+ if(!last)return;
+ openModule(last.language);
+ if(last.language==="latin"||last.language==="greek"){
+  showTab(last.tab||"vocab");
+  if(last.tab==="grammar"&&last.title){
+   const panel=document.getElementById(last.language==="latin"?"grammarPanel":"greekGrammarPanel");
+   const topic=Array.from(panel.querySelectorAll(".grammar-topic")).find(item=>(item.querySelector("summary span")?.textContent.trim()||"")===last.title);
+   if(topic){
+    topic.open=true;
+    let parent=topic.parentElement;
+    while(parent&&parent!==panel){if(parent.tagName==="DETAILS")parent.open=true;parent=parent.parentElement;}
+    setTimeout(()=>topic.scrollIntoView({behavior:"smooth",block:"center"}),80);
+   }
+  }
+ }
+ rememberLocation(last);
+ updateResume();
+}
 function openModule(key){
  const m=modules[key];
+ rememberLocation({language:key,tab:"vocab"});updateResume();
  document.getElementById("home").classList.add("hidden");
  document.getElementById("module").classList.remove("hidden");
  document.getElementById("moduleLabel").textContent=m.label;
@@ -1154,7 +1201,7 @@ function openModule(key){
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
-function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden")}
+function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden");updateResume()}
 function showTab(tab){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
  document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
@@ -1162,6 +1209,7 @@ function showTab(tab){
  document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
  document.getElementById("practicePanel").classList.toggle("hidden",tab!=="practice");
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ rememberLocation({language:currentLanguage,tab});updateResume();
 }
 async function loadWords(){
  const requestedLanguage=currentLanguage;
@@ -1343,7 +1391,7 @@ function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":
  panel.addEventListener("click",e=>{
   const summary=e.target.closest(".grammar-topic > summary");
   if(!summary)return;
-  try{localStorage.setItem("philologia-last-lesson",JSON.stringify({language:panelId==="grammarPanel"?"latin":"greek",title:summary.querySelector("span")?.textContent.trim()||summary.textContent.trim(),at:Date.now()}));}catch(err){}
+  try{const language=panelId==="grammarPanel"?"latin":"greek";const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();rememberLocation({language,tab:"grammar",title,at:Date.now()});updateResume();}catch(err){}
  });
 });
 document.getElementById("wordList").addEventListener("click",e=>{
@@ -1358,6 +1406,7 @@ document.addEventListener("keydown",e=>{
  if(e.key==="ArrowLeft")moveCard(-1);
 });
 updateStats();
+updateResume();
 </script>
 <!-- v0.3.1: repaired the flashcard reveal script -->
 </body>
