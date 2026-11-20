@@ -29,6 +29,9 @@
 <meta name="twitter:description" content="Az ókori világ nyelvei, irodalma és kultúrája egy digitális műhelyben.">
 <meta name="twitter:image" content="https://philologia.hu/philologia-og-v4.jpeg">
 <title>Philologia — Klasszikus nyelvek műhelye</title>
+<script>
+try{if(localStorage.getItem("philologia-theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}
+</script>
 <style>
 :root{--paper:#f5f1e8;--ink:#25251f;--muted:#74746b;--line:#dfd8c9;--greek:#263d64;--latin:#743943;--heb:#42604f;--card:#fffdf8;--gold:#ad8952;--soft:#eee8dc}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
@@ -191,11 +194,63 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 @media(max-width:620px){.grammar-category>summary{padding:14px}.grammar-category-content{padding:8px}.grammar-topic>summary{align-items:flex-start;flex-wrap:wrap}.grammar-topic>summary small{width:100%;padding-right:22px}.stem-examples{grid-template-columns:1fr}}
 
 .i-stem-box{border-left:3px solid var(--gold)}.i-stem-box ol{margin:8px 0;padding-left:23px}.i-stem-box ol li{padding:5px 0}.i-stem-box .endings-strip span{font-size:12px;line-height:1.45}.i-stem-box .declension-table{min-width:560px}.i-stem-box .declension-table td strong{color:var(--latin)}
+
+html[data-theme="dark"]{
+ color-scheme:dark;
+ --paper:#1b1a17;--ink:#e8e1d5;--muted:#aaa294;--line:#454137;
+ --greek:#a2b8dc;--latin:#d59aa0;--heb:#a9c2ad;
+ --card:#25231f;--gold:#c6a36b;--soft:#302d26;
+}
+html[data-theme="dark"] .home-intro>p{color:#c9c1b4}
+html[data-theme="dark"] .notice{color:#c8c0b2}
+html[data-theme="dark"] .favorite-toggle[aria-pressed="true"],
+html[data-theme="dark"] .grammar-favorites-filter[aria-pressed="true"],
+html[data-theme="dark"] .grammar-bookmark[aria-pressed="true"]{background:#393326;color:#d7b77f;border-color:#b4935e}
+html[data-theme="dark"] .resume-area{background:#211f1b}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select{background:#211f1c;color:var(--ink)}
+html[data-theme="dark"] .flashcard,
+html[data-theme="dark"] .worditem,
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .grammartile,
+html[data-theme="dark"] .lesson-box,
+html[data-theme="dark"] .declension-block,
+html[data-theme="dark"] .grammar-category{background:var(--card)}
+html[data-theme="dark"] .detailrow,
+html[data-theme="dark"] .example-line,
+html[data-theme="dark"] .grammar-lead,
+html[data-theme="dark"] .case-grid span,
+html[data-theme="dark"] .case-grid small{color:#c4bcaf}
+html[data-theme="dark"] .tagpill.warn{background:#482d29;color:#e5aaa0;border-color:#70463f}
+html[data-theme="dark"] .tagpill.green{background:#293a2e;color:#b4d0b7;border-color:#46604b}
+html[data-theme="dark"] .tagpill.gold{background:#403725;color:#ddc28d;border-color:#685735}
+html[data-theme="dark"] .progressbar{background:#39352d}
+html[data-theme="dark"] .case-grid article,
+html[data-theme="dark"] .greek-declination-map,
+html[data-theme="dark"] .greek-stem-list>div,
+html[data-theme="dark"] .greek-example,
+html[data-theme="dark"] .grammar-topic,
+html[data-theme="dark"] .stem-examples>div{background:#292720}
+html[data-theme="dark"] .declension-table{background:#24221e}
+html[data-theme="dark"] .declension-table thead th{background:#353127;color:#d2c8b7}
+html[data-theme="dark"] .declension-table tbody th{background:#2d2a24;color:#d6cdbf}
+html[data-theme="dark"] .grammar-note{background:#332d22;color:#d5c7aa}
+html[data-theme="dark"] .greek-table .table-band{background:#393128;color:var(--latin)}
+html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
+
+
+.top-identity{display:flex;flex-direction:column;gap:2px}
+.theme-toggle{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border-color:var(--line);background:var(--card);color:var(--muted);white-space:nowrap}
+.theme-toggle:hover{color:var(--ink);border-color:var(--gold)}
+.theme-icon{font:17px/1 system-ui,sans-serif}
+@media(max-width:640px){.top{align-items:center;flex-direction:row}}
+@media(max-width:380px){.theme-toggle{padding:7px 8px;font-size:12px}.brand{letter-spacing:.18em}}
+
 </style>
 </head>
 <body>
 <main class="wrap">
-<header class="top"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></header>
+<header class="top"><div class="top-identity"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></div><button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-pressed="false" aria-label="Sötét mód bekapcsolása"><span class="theme-icon" aria-hidden="true">☾</span><span>Sötét mód</span></button></header>
 <div id="home">
 <h1>Philologia</h1><p class="intro">Klasszikus nyelvek műhelye</p>
 <section class="home-intro" aria-label="A Philologia bemutatása">
@@ -1556,5 +1611,27 @@ updateResume();
 initializeAppRouting();
 </script>
 <!-- v0.3.1: repaired the flashcard reveal script -->
+
+<script>
+function applyPhilologiaTheme(theme,save=true){
+ const dark=theme==="dark";
+ const root=document.documentElement;
+ if(dark)root.dataset.theme="dark";else delete root.dataset.theme;
+ const toggle=document.getElementById("themeToggle");
+ if(toggle){
+  toggle.setAttribute("aria-pressed",String(dark));
+  toggle.setAttribute("aria-label",dark?"Világos mód bekapcsolása":"Sötét mód bekapcsolása");
+  toggle.innerHTML='<span class="theme-icon" aria-hidden="true">'+(dark?"☼":"☾")+'</span><span>'+(dark?"Világos mód":"Sötét mód")+'</span>';
+ }
+ const meta=document.querySelector('meta[name="theme-color"]');
+ if(meta)meta.setAttribute("content",dark?"#1b1a17":"#4b090e");
+ if(save){try{localStorage.setItem("philologia-theme",dark?"dark":"light");}catch(e){}}
+}
+function toggleTheme(){
+ applyPhilologiaTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+}
+applyPhilologiaTheme(document.documentElement.dataset.theme==="dark"?"dark":"light",false);
+</script>
+
 </body>
 </html>
