@@ -1120,6 +1120,7 @@ const modules={
 };
 const vocabularyCache={};
 let currentLanguage="latin";
+let activeModuleKey=null;
 let words=[], filtered=[], baseFiltered=[], current=0, revealed=false, dataReady=false, wordListPage=0;
 const WORDS_PER_PAGE=25;
 const storageKey=()=> "philologia-"+currentLanguage+"-progress-v1";
@@ -1199,6 +1200,7 @@ function writeAppRoute(route,mode="push"){
 }
 function renderAppRoute(route){
  if(route==="home"){
+  activeModuleKey=null;
   document.getElementById("module").classList.add("hidden");
   document.getElementById("home").classList.remove("hidden");
   document.title="Philologia — Klasszikus nyelvek műhelye";
@@ -1207,7 +1209,7 @@ function renderAppRoute(route){
  }
  const [key,tab="vocab"]=route.split("/");
  if(!modules[key]){renderAppRoute("home");return;}
- const isSameModule=!document.getElementById("module").classList.contains("hidden")&&currentLanguage===key;
+ const isSameModule=!document.getElementById("module").classList.contains("hidden")&&activeModuleKey===key;
  if(!isSameModule)openModule(key,false);
  if(key==="latin"||key==="greek")showTab(tab,false);
  document.title=(modules[key].title||"Philologia")+" — Philologia";
@@ -1225,6 +1227,7 @@ function initializeAppRouting(){
 }
 function openModule(key,pushHistory=true){
  const m=modules[key];
+ activeModuleKey=key;
  const initialTab=key==="hebrew"?"overview":"vocab";
  if(pushHistory)writeAppRoute(key+"/"+initialTab,"push");
  rememberLocation({language:key,tab:initialTab});updateResume();
@@ -1259,6 +1262,7 @@ function openModule(key,pushHistory=true){
 }
 function goHome(pushHistory=true){
  if(pushHistory)writeAppRoute("home","push");
+ activeModuleKey=null;
  document.getElementById("module").classList.add("hidden");
  document.getElementById("home").classList.remove("hidden");
  document.title="Philologia — Klasszikus nyelvek műhelye";
