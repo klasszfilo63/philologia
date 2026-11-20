@@ -1158,10 +1158,11 @@ function updateResume(){
 function resumeLastLocation(){
  const last=readLastLocation();
  if(!last)return;
- openModule(last.language);
+ openModule(last.language,false);
+ const tab=last.tab||"vocab";
  if(last.language==="latin"||last.language==="greek"){
-  showTab(last.tab||"vocab");
-  if(last.tab==="grammar"&&last.title){
+  showTab(tab,false);
+  if(tab==="grammar"&&last.title){
    const panel=document.getElementById(last.language==="latin"?"grammarPanel":"greekGrammarPanel");
    const topic=Array.from(panel.querySelectorAll(".grammar-topic")).find(item=>(item.querySelector("summary span")?.textContent.trim()||"")===last.title);
    if(topic){
@@ -1172,12 +1173,61 @@ function resumeLastLocation(){
    }
   }
  }
+ writeAppRoute(last.language==="hebrew"?"hebrew/overview":last.language+"/"+tab,"push");
  rememberLocation(last);
  updateResume();
 }
-function openModule(key){
+function routeFromHash(){
+ const raw=decodeURIComponent((location.hash||"").replace(/^#\/?/,""));
+ if(!raw||raw==="home")return "home";
+ const parts=raw.split("/");
+ const key=parts[0],requestedTab=parts[1]||"vocab";
+ if(!modules[key])return "home";
+ if(key==="hebrew")return "hebrew/overview";
+ const allowed=["vocab","grammar","practice"];
+ let tab=allowed.includes(requestedTab)?requestedTab:"vocab";
+ if(key==="greek"&&tab==="practice")tab="vocab";
+ return key+"/"+tab;
+}
+function writeAppRoute(route,mode="push"){
+ if(!window.history||!history.pushState)return;
+ const url=route==="home"?"#home":"#"+route;
+ if(mode==="push"&&location.hash===url)return;
+ const state={...(history.state||{}),philologia:true,philologiaRoute:route};
+ if(mode==="replace")history.replaceState(state,"",url);
+ else if(mode==="push")history.pushState(state,"",url);
+}
+function renderAppRoute(route){
+ if(route==="home"){
+  document.getElementById("module").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  document.title="Philologia — Klasszikus nyelvek műhelye";
+  updateResume();
+  return;
+ }
+ const [key,tab="vocab"]=route.split("/");
+ if(!modules[key]){renderAppRoute("home");return;}
+ const isSameModule=!document.getElementById("module").classList.contains("hidden")&&currentLanguage===key;
+ if(!isSameModule)openModule(key,false);
+ if(key==="latin"||key==="greek")showTab(tab,false);
+ document.title=(modules[key].title||"Philologia")+" — Philologia";
+ updateResume();
+}
+function initializeAppRouting(){
+ const route=routeFromHash();
+ writeAppRoute(route,"replace");
+ renderAppRoute(route);
+ window.addEventListener("popstate",()=>{
+  const next=routeFromHash();
+  writeAppRoute(next,"replace");
+  renderAppRoute(next);
+ });
+}
+function openModule(key,pushHistory=true){
  const m=modules[key];
- rememberLocation({language:key,tab:"vocab"});updateResume();
+ const initialTab=key==="hebrew"?"overview":"vocab";
+ if(pushHistory)writeAppRoute(key+"/"+initialTab,"push");
+ rememberLocation({language:key,tab:initialTab});updateResume();
  document.getElementById("home").classList.add("hidden");
  document.getElementById("module").classList.remove("hidden");
  document.getElementById("moduleLabel").textContent=m.label;
@@ -1203,13 +1253,20 @@ function openModule(key){
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
  document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
- showTab("vocab");
+ showTab("vocab",false);
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
-function goHome(){document.getElementById("module").classList.add("hidden");document.getElementById("home").classList.remove("hidden");updateResume()}
-function showTab(tab){
+function goHome(pushHistory=true){
+ if(pushHistory)writeAppRoute("home","push");
+ document.getElementById("module").classList.add("hidden");
+ document.getElementById("home").classList.remove("hidden");
+ document.title="Philologia — Klasszikus nyelvek műhelye";
+ updateResume();
+}
+function showTab(tab,pushHistory=true){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
+ if(pushHistory)writeAppRoute(currentLanguage+"/"+tab,"push");
  document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
  document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
  document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
@@ -1443,7 +1500,7 @@ function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":
  panel.addEventListener("click",e=>{
   const summary=e.target.closest(".grammar-topic > summary");
   if(!summary)return;
-  try{const language=panelId==="grammarPanel"?"latin":"greek";const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();rememberLocation({language,tab:"grammar",title,at:Date.now()});updateResume();}catch(err){}
+  try{const language=panelId==="grammarPanel"?"latin":"greek";const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();rememberLocation({language,tab:"grammar",title,at:Date.now()});writeAppRoute(language+"/grammar","push");updateResume();}catch(err){}
  });
 });
 document.getElementById("wordList").addEventListener("click",e=>{
@@ -1460,6 +1517,7 @@ document.addEventListener("keydown",e=>{
 setupGrammarBookmarks();
 updateStats();
 updateResume();
+initializeAppRouting();
 </script>
 <!-- v0.3.1: repaired the flashcard reveal script -->
 </body>
