@@ -46,6 +46,10 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .grammar-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
 .grammar-tools input{flex:1 1 240px;width:auto}
 .grammar-tools button{white-space:nowrap}
+.grammar-favorites-filter[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);background:#f7f0df}
+.grammar-topic-tools{display:flex;justify-content:flex-end;padding:5px 12px 0}
+.grammar-bookmark{padding:5px 9px;font-size:11px}
+.grammar-bookmark[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);background:#f7f0df}
 .grammar-search-status{font:11px system-ui,sans-serif;color:var(--muted);margin:0 0 8px;min-height:1em}
 .resume-area{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:22px 0 5px;padding:13px 16px;border:1px solid var(--line);background:rgba(255,253,248,.65);border-radius:5px}
 .resume-area .resume-copy{min-width:0}
@@ -254,6 +258,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <div class="grammar-tools">
   <input class="grammar-search" id="latinGrammarSearch" type="search" placeholder="Keresés a latin nyelvtanban…" oninput="filterGrammar('latin')">
   <button class="softbtn" onclick="clearGrammarSearch('latin')">Keresés törlése</button>
+  <button class="softbtn grammar-favorites-filter" id="latinGrammarFavoritesToggle" aria-pressed="false" onclick="toggleGrammarFavoritesFilter('latin')">Kedvencek</button>
   <button class="softbtn" onclick="toggleGrammarDetails('latin',true)">Összes kinyitása</button>
   <button class="softbtn" onclick="toggleGrammarDetails('latin',false)">Összes becsukása</button>
 </div>
@@ -579,6 +584,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <p class="grammar-lead">Az ógörög nyelvtani anyag külön témakörökbe rendezve található. A kategóriák lenyithatók, az egyes tananyagok pedig önálló egységként tanulhatók. Az itt feldolgozott példák az attikai görög névszóragozását és hangsúlyozását mutatják be.</p>
 <div class="grammar-tools">
   <input class="grammar-search" id="greekGrammarSearch" type="search" placeholder="Keresés az ógörög nyelvtanban…" oninput="filterGrammar('greek')">
+  <button class="softbtn grammar-favorites-filter" id="greekGrammarFavoritesToggle" aria-pressed="false" onclick="toggleGrammarFavoritesFilter('greek')">Kedvencek</button>
   <button class="softbtn" onclick="clearGrammarSearch('greek')">Keresés törlése</button>
   <button class="softbtn" onclick="toggleGrammarDetails('greek',true)">Összes kinyitása</button>
   <button class="softbtn" onclick="toggleGrammarDetails('greek',false)">Összes becsukása</button>
@@ -1344,26 +1350,71 @@ function rateCard(known){
  progress.known=known?[...new Set([...progress.known,id])]:progress.known.filter(x=>x!==id);
  saveProgress();moveCard(1);
 }
+const GRAMMAR_FAVORITES_KEY="philologia-grammar-favorites-v1";
+function loadGrammarFavorites(){
+ try{const value=JSON.parse(localStorage.getItem(GRAMMAR_FAVORITES_KEY)||"[]");return Array.isArray(value)?value:[];}catch(e){return [];}
+}
+function saveGrammarFavorites(values){
+ try{localStorage.setItem(GRAMMAR_FAVORITES_KEY,JSON.stringify(values));}catch(e){}
+}
+function setupGrammarBookmarks(){
+ ["latin","greek"].forEach(language=>{
+  const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+  panel.querySelectorAll(".grammar-topic").forEach(topic=>{
+   const summary=topic.querySelector(":scope > summary");
+   if(!summary||topic.querySelector(":scope > .grammar-topic-tools"))return;
+   const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();
+   const key=language+"::"+title;
+   const row=document.createElement("div");row.className="grammar-topic-tools";
+   const button=document.createElement("button");button.type="button";button.className="softbtn grammar-bookmark";
+   const sync=()=>{
+    const saved=loadGrammarFavorites().includes(key);
+    button.setAttribute("aria-pressed",String(saved));
+    button.textContent=saved?"★ Kedvencek között":"☆ Mentés a kedvencek közé";
+    button.setAttribute("aria-label",saved?"Eltávolítás a kedvencek közül":"Lecke mentése a kedvencek közé");
+   };
+   button.addEventListener("click",event=>{
+    event.preventDefault();event.stopPropagation();
+    const favorites=loadGrammarFavorites();
+    const next=favorites.includes(key)?favorites.filter(value=>value!==key):[...favorites,key];
+    saveGrammarFavorites(next);sync();filterGrammar(language);
+   });
+   row.appendChild(button);topic.insertBefore(row,summary.nextElementSibling);sync();
+  });
+ });
+}
+function toggleGrammarFavoritesFilter(language){
+ const button=document.getElementById(language+"GrammarFavoritesToggle");
+ if(!button)return;
+ button.setAttribute("aria-pressed",String(button.getAttribute("aria-pressed")!=="true"));
+ filterGrammar(language);
+}
 function filterGrammar(language){
  const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
  if(!panel)return;
  const input=panel.querySelector(".grammar-search");
  const query=normalize(input?input.value.trim():"");
+ const favoriteButton=document.getElementById(language+"GrammarFavoritesToggle");
+ const favoritesOnly=Boolean(favoriteButton&&favoriteButton.getAttribute("aria-pressed")==="true");
+ const favorites=loadGrammarFavorites();
  const categories=Array.from(panel.querySelectorAll(".grammar-category"));
  let visibleTopics=0;
  categories.forEach(category=>{
   const topics=Array.from(category.querySelectorAll(".grammar-topic"));
   let categoryMatches=0;
   topics.forEach(topic=>{
-   const matches=!query||normalize(topic.textContent).includes(query);
+   const title=topic.querySelector("summary span")?.textContent.trim()||topic.querySelector("summary")?.textContent.trim()||"";
+   const saved=favorites.includes(language+"::"+title);
+   const copy=topic.cloneNode(true);copy.querySelectorAll(".grammar-topic-tools").forEach(node=>node.remove());
+   const matches=(!query||normalize(copy.textContent).includes(query))&&(!favoritesOnly||saved);
    topic.hidden=!matches;
-   if(matches){categoryMatches++;visibleTopics++;if(query){topic.open=true;let parent=topic.parentElement;while(parent&&parent!==category){if(parent.tagName==="DETAILS")parent.open=true;parent=parent.parentElement;}}}
+   if(matches){categoryMatches++;visibleTopics++;if(query||favoritesOnly){topic.open=true;let parent=topic.parentElement;while(parent&&parent!==category){if(parent.tagName==="DETAILS")parent.open=true;parent=parent.parentElement;}}}
   });
-  category.hidden=Boolean(query)&&categoryMatches===0;
-  if(query&&categoryMatches)category.open=true;
+  category.hidden=Boolean(query||favoritesOnly)&&categoryMatches===0;
+  if((query||favoritesOnly)&&categoryMatches)category.open=true;
  });
  const status=document.getElementById(language+"GrammarSearchStatus");
- if(status)status.textContent=query?(visibleTopics+" kapcsolódó tananyag"):"";
+ if(status)status.textContent=(query||favoritesOnly)?(visibleTopics+" "+(favoritesOnly?"kedvenc lecke":"kapcsolódó tananyag")):"";
 }
 function clearGrammarSearch(language){
  const input=document.getElementById(language+"GrammarSearch");
@@ -1405,6 +1456,7 @@ document.addEventListener("keydown",e=>{
  if(e.key==="ArrowRight")moveCard(1);
  if(e.key==="ArrowLeft")moveCard(-1);
 });
+setupGrammarBookmarks();
 updateStats();
 updateResume();
 </script>
