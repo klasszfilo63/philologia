@@ -203,7 +203,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
  <button class="softbtn" onclick="resumeLastLocation()">Folytatás →</button>
 </section>
 
-<div class="notice">A Philologia személyes tanulóműhely. A szókártyák és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
+<div class="notice">A Philologia személyes tanulóműhely. A szókártyák, a kedvencek és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
 </div>
 
 <section id="module" class="hidden">
@@ -1110,7 +1110,7 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <p class="muted">A héber szókincs és nyelvtan saját, külön adatbázisba kerül. A görög és a latin tananyag ettől elkülönül.</p>
 </div>
 </section>
-<footer><span>PHILOLOGIA · V. 0.5</span><span>Ad fontes.</span></footer>
+<footer><span>PHILOLOGIA · V. 0.6</span><span>Ad fontes.</span></footer>
 </main>
 <script>
 const modules={
@@ -1280,6 +1280,7 @@ function renderCard(){
  const languageTitle=currentLanguage==="greek"?"Ógörög · attikai":"Latin";
  card.innerHTML='<div class="cardtype">'+languageTitle+' · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
  document.getElementById("revealButton").textContent="Jelentés felfedése";
+ wordListPage=Math.floor(current/WORDS_PER_PAGE);
  renderWordList();
 }
 function renderWordList(){
