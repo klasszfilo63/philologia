@@ -24,6 +24,14 @@ h1{font-weight:400;font-size:clamp(42px,8vw,76px);letter-spacing:.035em;margin:4
 button{font:13px system-ui,sans-serif;border:1px solid currentColor;background:transparent;color:inherit;padding:10px 14px;border-radius:3px}.tile button{align-self:flex-start;margin-top:auto}.primary{background:var(--latin);color:white;border-color:var(--latin)}.softbtn{border-color:var(--line);background:var(--card)}button:disabled{opacity:.35;cursor:not-allowed}
 .greek{color:var(--greek)}.latin{color:var(--latin)}.hebrew{color:var(--heb)}
 .section{margin-top:40px;border-top:1px solid var(--line);padding-top:19px}.section h3{font-size:22px;font-weight:400;margin:0 0 7px}.section p{color:var(--muted);margin:0;max-width:760px}
+.home-intro{max-width:860px;margin:0 0 34px}
+.home-quote{margin:0 0 20px;padding:0 0 0 18px;border-left:2px solid var(--gold)}
+.home-quote blockquote{margin:0;color:var(--latin);font:italic clamp(19px,2.5vw,25px)/1.45 Georgia,"Times New Roman",serif}
+.home-quote figcaption{display:flex;flex-wrap:wrap;gap:5px 12px;margin-top:9px;color:var(--muted);font:12px/1.5 system-ui,sans-serif}
+.home-quote cite{font-style:normal}
+.home-intro>p{max-width:790px;margin:0;color:#625f57;font-size:15px;line-height:1.75}
+@media(max-width:640px){.home-intro{margin-bottom:28px}.home-quote{padding-left:13px}.home-intro>p{font-size:14px;line-height:1.7}}
+
 .notice{margin-top:27px;padding:14px 17px;border-left:3px solid #b7a98e;background:var(--soft);color:#5f5a4e;font:13px/1.55 system-ui,sans-serif}
 .hidden{display:none!important}.back{margin:0 0 18px}.modulehead{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}.modulehead h1{font-size:clamp(38px,6vw,60px);margin:14px 0 6px}.muted{color:var(--muted)}.small{font:12px system-ui,sans-serif;color:var(--muted)}
 .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px}.tab.active{background:var(--latin);border-color:var(--latin);color:#fff}
@@ -151,13 +159,23 @@ footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:v
 <header class="top"><div class="brand">Studia Classica</div><div class="sub">Személyes tanulóműhely</div></header>
 <div id="home">
 <h1>Philologia</h1><p class="intro">Klasszikus nyelvek műhelye</p>
+<section class="home-intro" aria-label="A Philologia bemutatása">
+  <figure class="home-quote">
+    <blockquote>Homo sum: humani nil a me alienum puto.</blockquote>
+    <figcaption>
+      <span>„Ember vagyok: semmi, ami emberi, nem idegen tőlem.”</span>
+      <cite>Publius Terentius Afer · <em>Heautontimorumenos</em>, 77.</cite>
+    </figcaption>
+  </figure>
+  <p>A Philologia az ókori világ iránt érdeklődők digitális műhelye. A görög, latin és héber nyelvek, az irodalom és a mítoszok nem pusztán egy távoli kor emlékei: olyan szövegek és történetek örökségét őrzik, amelyek ma is formálják, ahogyan a világról és önmagunkról gondolkodunk. Az antikvitás tanulmányozása közelebb visz kultúránk gyökereihez, és segít megérteni azokat a kérdéseket, amelyek különböző korokon átívelve is közösek maradnak. A Philologia teret ad ennek a felfedezésnek: a nyelvek, a szövegek és az antik kultúra találkozásának.</p>
+</section>
 <div class="grid">
 <article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ελληνικά</h2><p>Ógörög · attikai · 227 szócikk</p><button onclick="openModule('greek')">Belépés</button></article>
 <article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Szótár és tanulás · 836 szócikk</p><button onclick="openModule('latin')">Belépés</button></article>
 <article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus és modern héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
 </div>
-<section class="section"><h3>Három nyelv, külön tananyag</h3><p>Minden nyelv saját szókincset, nyelvtani leckéket, gyakorlófeladatokat és tanulási előrehaladást kap. A modulok nem keverik össze egymás adatait.</p></section>
-<div class="notice">A Philologia személyes tanulóműhely. A latin szókártyák és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
+
+<div class="notice">A Philologia személyes tanulóműhely. A szókártyák és az előrehaladás ezen az eszközön, a böngésződben mentődnek.</div>
 </div>
 
 <section id="module" class="hidden">
