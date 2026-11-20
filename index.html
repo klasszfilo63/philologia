@@ -246,6 +246,33 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 @media(max-width:640px){.top{align-items:center;flex-direction:row}}
 @media(max-width:380px){.theme-toggle{padding:7px 8px;font-size:12px}.brand{letter-spacing:.18em}}
 
+
+
+/* Nyelvi modul: belépéskor választható, nagy tanulási felületek */
+.study-chooser{margin-top:22px}
+.study-chooser-intro{margin:0 0 21px}
+.study-chooser-intro h2{font:400 clamp(27px,4vw,34px)/1.2 Georgia,"Times New Roman",serif;margin:8px 0 7px;color:var(--ink)}
+.study-chooser-intro p{margin:0;color:var(--muted);font-size:14px}
+.study-choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:15px}
+.study-choice{--choice-accent:var(--gold);width:100%;min-height:190px;padding:22px 23px;border:1px solid var(--line);border-left:4px solid var(--choice-accent);border-radius:10px;background:var(--card);color:var(--ink);display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:left;white-space:normal;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background-color .18s ease}
+.study-choice-vocab{--choice-accent:var(--gold)}
+.study-choice-grammar{--choice-accent:var(--greek)}
+.study-choice-practice{--choice-accent:var(--latin)}
+.study-choice:hover{background-color:var(--soft);border-color:var(--choice-accent);transform:translateY(-2px);box-shadow:0 7px 20px rgba(35,29,20,.07)}
+.study-choice:focus-visible{outline:2px solid var(--choice-accent);outline-offset:3px}
+.study-choice-kicker{font:10px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.study-choice-title{font:400 clamp(25px,3vw,30px)/1.2 Georgia,"Times New Roman",serif;color:var(--ink)}
+.study-choice-desc{font:13px/1.55 system-ui,sans-serif;color:var(--muted);max-width:290px}
+.study-choice-action{margin-top:auto;padding-top:9px;font:12px system-ui,sans-serif;color:var(--choice-accent);display:flex;gap:8px;align-items:center}
+.study-workspace-head{display:flex;justify-content:flex-end;margin:20px 0 3px}
+.study-workspace-head button{font-size:12px}
+@media(max-width:640px){
+ .study-chooser{margin-top:17px}
+ .study-choice-grid{grid-template-columns:1fr;gap:11px}
+ .study-choice{min-height:155px;padding:19px 20px}
+ .study-workspace-head{margin-top:15px}
+}
+
 </style>
 </head>
 <body>
@@ -280,7 +307,36 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <button class="back softbtn" onclick="goHome()">← Vissza a nyelvekhez</button>
 <div class="modulehead"><div><div class="sub" id="moduleLabel"></div><h1 id="moduleTitle"></h1><p id="moduleDesc" class="muted"></p></div></div>
 <div id="languageApp" class="hidden">
-<div class="pillrow" role="tablist" aria-label="Latin tanulómodul">
+<section id="studyChooser" class="study-chooser" aria-label="Tanulási módok">
+<div class="study-chooser-intro">
+ <div class="sub">Tanulási módok</div>
+ <h2>Mivel szeretnél foglalkozni?</h2>
+ <p>Válaszd ki, melyik területtel szeretnél most foglalkozni.</p>
+</div>
+<div class="study-choice-grid">
+ <button type="button" class="study-choice study-choice-vocab" onclick="showTab('vocab','push')">
+  <span class="study-choice-kicker">01 · Szókincs</span>
+  <span class="study-choice-title">Szókártyák</span>
+  <span class="study-choice-desc">Ismerd meg és ismételd át a szótár szavait.</span>
+  <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
+ </button>
+ <button type="button" class="study-choice study-choice-grammar" onclick="showTab('grammar','push')">
+  <span class="study-choice-kicker">02 · Grammatika</span>
+  <span class="study-choice-title">Nyelvtan</span>
+  <span class="study-choice-desc">Nyelvtani szabályok, táblázatok és témakörök.</span>
+  <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
+ </button>
+ <button type="button" id="choicePractice" class="study-choice study-choice-practice" onclick="showTab('practice','push')">
+  <span class="study-choice-kicker">03 · Exercitia</span>
+  <span class="study-choice-title">Gyakorlás</span>
+  <span class="study-choice-desc">Gyakorold a latin szókincset célzott feladatokkal.</span>
+  <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
+ </button>
+</div>
+</section>
+<div id="studyWorkspace" class="hidden">
+<div class="study-workspace-head"><button type="button" class="softbtn" onclick="showStudyChooser('replace')">← Tanulási módok</button></div>
+<div class="pillrow" role="tablist" aria-label="Nyelvi tanulómodul">
 <button class="tab active" data-tab="vocab" onclick="showTab('vocab')">Szókártyák</button>
 <button class="tab advancedTab" data-tab="grammar" onclick="showTab('grammar')">Nyelvtan</button>
 <button class="tab advancedTab" data-tab="practice" onclick="showTab('practice')">Gyakorlás</button>
@@ -1175,6 +1231,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 </div>
 </div>
 </div>
+</div>
 <div id="comingSoon" class="panel hidden">
 <div class="sub">Tananyag előkészítés alatt</div><h2 style="font-size:30px;font-weight:400">Ez a nyelvi modul még épül.</h2>
 <p class="muted">A héber szókincs és nyelvtan saját, külön adatbázisba kerül. A görög és a latin tananyag ettől elkülönül.</p>
@@ -1234,7 +1291,7 @@ function updateResume(){
  const last=readLastLocation();
  if(!last){area.classList.add("hidden");return;}
  const moduleName=modules[last.language].title;
- const tabName=last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
+ const tabName=last.language==="hebrew"?"Moduláttekintés":last.tab==="overview"?"Tanulási módok kiválasztása":last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
  title.textContent=last.title?moduleName+" · "+last.title:moduleName+" · "+tabName;
  area.classList.remove("hidden");
 }
@@ -1244,7 +1301,8 @@ function resumeLastLocation(){
  openModule(last.language,false);
  const tab=last.tab||"vocab";
  if(last.language==="latin"||last.language==="greek"){
-  showTab(tab,false);
+  if(tab==="overview")showStudyChooser(false);
+  else showTab(tab,false);
   if(tab==="grammar"&&last.title){
    const panel=document.getElementById(last.language==="latin"?"grammarPanel":"greekGrammarPanel");
    const topic=Array.from(panel.querySelectorAll(".grammar-topic")).find(item=>(item.querySelector("summary span")?.textContent.trim()||"")===last.title);
@@ -1264,11 +1322,11 @@ function routeFromHash(){
  const raw=decodeURIComponent((location.hash||"").replace(/^#\/?/,""));
  if(!raw||raw==="home")return "home";
  const parts=raw.split("/");
- const key=parts[0],requestedTab=parts[1]||"vocab";
+ const key=parts[0],requestedTab=parts[1]||"overview";
  if(!modules[key])return "home";
  if(key==="hebrew")return "hebrew/overview";
- const allowed=["vocab","grammar","practice"];
- let tab=allowed.includes(requestedTab)?requestedTab:"vocab";
+ const allowed=["overview","vocab","grammar","practice"];
+ let tab=allowed.includes(requestedTab)?requestedTab:"overview";
  if(key==="greek"&&tab==="practice")tab="vocab";
  return key+"/"+tab;
 }
@@ -1293,7 +1351,10 @@ function renderAppRoute(route){
  if(!modules[key]){renderAppRoute("home");return;}
  const isSameModule=!document.getElementById("module").classList.contains("hidden")&&activeModuleKey===key;
  if(!isSameModule)openModule(key,false);
- if(key==="latin"||key==="greek")showTab(tab,false);
+ if(key==="latin"||key==="greek"){
+  if(tab==="overview")showStudyChooser(false);
+  else showTab(tab,false);
+ }
  document.title=(modules[key].title||"Philologia")+" — Philologia";
  updateResume();
 }
@@ -1310,7 +1371,7 @@ function initializeAppRouting(){
 function openModule(key,pushHistory=true){
  const m=modules[key];
  activeModuleKey=key;
- const initialTab=key==="hebrew"?"overview":"vocab";
+ const initialTab="overview";
  if(pushHistory)writeAppRoute(key+"/"+initialTab,"push");
  rememberLocation({language:key,tab:initialTab});updateResume();
  document.getElementById("home").classList.add("hidden");
@@ -1338,7 +1399,8 @@ function openModule(key,pushHistory=true){
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
  document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
- showTab("vocab",false,false);
+ document.getElementById("choicePractice").classList.toggle("hidden",key==="greek");
+ showStudyChooser(false);
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
@@ -1350,9 +1412,20 @@ function goHome(pushHistory=true){
  document.title="Philologia — Klasszikus nyelvek műhelye";
  updateResume();
 }
+function showStudyChooser(historyMode="push"){
+ if(currentLanguage!=="latin"&&currentLanguage!=="greek")return;
+ document.getElementById("studyChooser").classList.remove("hidden");
+ document.getElementById("studyWorkspace").classList.add("hidden");
+ document.querySelectorAll(".tab").forEach(button=>button.classList.remove("active"));
+ if(historyMode)writeAppRoute(currentLanguage+"/overview",historyMode);
+ rememberLocation({language:currentLanguage,tab:"overview"});
+ updateResume();
+}
 function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
  const enteringVocabulary=tab==="vocab"&&document.getElementById("vocabPanel").classList.contains("hidden");
+ document.getElementById("studyChooser").classList.add("hidden");
+ document.getElementById("studyWorkspace").classList.remove("hidden");
  if(historyMode)writeAppRoute(currentLanguage+"/"+tab,historyMode);
  document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
  document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
