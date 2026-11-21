@@ -409,11 +409,8 @@
       "meaning": "juhok, kecskék; aprójószág, nyáj",
       "gender": "nőnem (gyűjtőnév)",
       "forms": {
-        "singularAbsolute": "צֹאן",
-        "singularConstruct": "צֹאן",
-        "pluralAbsolute": "צֹאן",
-        "pluralConstruct": "צֹאן",
-        "note": "Gyűjtőnév: az állatok csoportjára utal, és nem alkot külön, szabályos többes számú alapalakot; a forma constructusban is változatlan."
+        "collective": "צֹאן",
+        "note": "Gyűjtőnév, amely a nyájra vagy az aprójószágra utal. Nem alkot külön, szabályos többes számú alapalakot; a forma constructusban is változatlan."
       }
     },
     {
