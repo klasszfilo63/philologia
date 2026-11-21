@@ -10,7 +10,8 @@
   "sourceFiles": [
     "2026-11-21 user-supplied vocabulary images",
     "2026-11-21 user-supplied vocabulary images (batch 2)",
-    "2026-11-21 user-supplied grammar image 9.1–9.2"
+    "2026-11-21 user-supplied grammar image 9.1–9.2",
+    "Qal-only verb normalization"
   ],
   "updated": "2026-11-21",
   "sourceCount": 83,
@@ -389,7 +390,10 @@
         "pluralAbsolute": "רֹעִים",
         "pluralConstruct": "רֹעֵי"
       },
-      "notes": "A רֹעֶה főnévi használatban pásztort jelent; alakilag a רָעָה (Qal) ige hímnemű egyes számú aktív participiuma is."
+      "notes": "A רֹעֶה a רָעָה ige Qal aktív participiuma, hímnemű egyes számban; főnévként 'pásztor' jelentésben is használatos.",
+      "root": "רעה",
+      "binyan": "Qal",
+      "lemmaType": "Qal aktív participium · hímnem, egyes szám"
     },
     {
       "id": "hb-028",
@@ -682,28 +686,24 @@
       "notes": "A képen szereplő יָשַׁב Qal perfectum 3ms: 'ült; leült'. A gyök alapjelentése: ülni."
     },
     {
-      "id": "hb-049",
-      "lemma": "הִגִּיד",
-      "dictionaryForm": "הִגִּיד",
-      "transliteration": "higid",
+      "lemma": "נָגַד",
+      "dictionaryForm": "נָגַד",
+      "transliteration": "nagad",
       "partOfSpeech": "ige",
-      "meaning": "elmond; közöl; kijelent, tudat",
+      "meaning": "szemben áll; ellentmond; ellenez",
       "root": "נגד",
-      "binyan": "Hiphil",
-      "lemmaType": "Hiphil perfectum · 3. személy, hímnem, egyes szám",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
       "verbForms": [
         {
-          "form": "הִגִּידוּ",
-          "parsing": "Hiphil perfectum · 3. személy, hímnem, többes szám",
-          "meaning": "elmondták; közölték",
-          "transliteration": "higidu"
+          "form": "נָגְדוּ",
+          "parsing": "Qal perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "szemben álltak; ellentmondtak",
+          "transliteration": "nagdu"
         }
       ],
-      "searchAliases": [
-        "הִגִּידוּ",
-        "higidu"
-      ],
-      "notes": "A szótári alapalak Hiphil perfectum 3ms; a הִגִּידוּ ennek 3mp alakja. Gyöke נגד."
+      "notes": "A Hiphil jelentése ('közöl, bejelent, elmond') nem vihető át a Qalra: ebben a binyanban az ige jelentése 'szemben áll, ellentmond'.",
+      "id": "hb-049"
     },
     {
       "id": "hb-050",
@@ -1082,40 +1082,36 @@
       "notes": "A gyök ו-s gyenge középső mássalhangzós (ע\"ו) ige. A Qal perfectum 3ms alakja קָם."
     },
     {
-      "id": "hb-072",
-      "lemma": "הִשְׁתַּחֲוָה",
-      "dictionaryForm": "הִשְׁתַּחֲוָה",
-      "transliteration": "hishtachavah",
+      "lemma": "וְשַׁח",
+      "dictionaryForm": "וְשַׁח",
+      "transliteration": "ve-shach",
       "partOfSpeech": "ige",
-      "meaning": "leborul; leborulva hódol; földre borul",
-      "root": "חוה",
-      "binyan": "Hishtaphel / Hitpael",
-      "lemmaType": "Hishtaphel perfectum · 3. személy, hímnem, egyes szám",
+      "meaning": "meghajol; leborul; megalázkodik",
+      "root": "שׁחח",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (waw-consecutivus)",
       "verbForms": [
         {
-          "form": "הִשְׁתַּחֲווּ",
-          "parsing": "Hishtaphel perfectum · 3. személy, hímnem, többes szám",
-          "meaning": "leborultak; hódoltak",
-          "transliteration": "hishtachavu"
+          "form": "שַׁחוּ",
+          "parsing": "Qal perfectum · 3. személy, többes szám",
+          "meaning": "meghajoltak; leborultak",
+          "transliteration": "shachu"
         }
       ],
-      "searchAliases": [
-        "הִשְׁתַּחֲווּ",
-        "hishtachavu"
-      ],
-      "notes": "A forma hagyományosan Hishtaphelként, más leírásokban Hitpael-szerű alaként szerepel. A gyök értelmezésében a חוה mellett a שחה kapcsolatát is szokták említeni."
+      "notes": "A חוה gyökű 'leborul' ige Hishtaphel alakú, és ehhez a gyökhöz nem adatolható Qal. A Qal-only szóanyagban a közeli jelentésű, de más gyökhöz tartozó שׁחח Qal alakjai szerepelnek. A וְשַׁח BDB-adatolt Qal perfectum 3ms waw-consecutivus forma.",
+      "id": "hb-072"
     },
     {
-      "id": "hb-073",
-      "lemma": "סִפֵּר",
-      "dictionaryForm": "סִפֵּר",
-      "transliteration": "siper",
+      "lemma": "סָפַר",
+      "dictionaryForm": "סָפַר",
+      "transliteration": "safar",
       "partOfSpeech": "ige",
-      "meaning": "elbeszél; elmond; beszámol",
+      "meaning": "számol; megszámol; számba vesz",
       "root": "ספר",
-      "binyan": "Pi'el",
-      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A Pi'el jelentésben elmondást, elbeszélést jelent; különbözik a Qal סָפַר 'számol, megszámol' jelentésétől."
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A Qal jelentése 'számol, megszámol'. Az 'elbeszél, elmond' jelentés a Pi'elhez tartozik, ezért azt nem tartottam meg a Qal-szócikkben.",
+      "id": "hb-073"
     },
     {
       "id": "hb-074",
@@ -1211,28 +1207,24 @@
       "notes": "Rámutató, figyelemfelhívó partikula."
     },
     {
-      "id": "hb-079",
-      "lemma": "אָלַם",
-      "dictionaryForm": "אָלַם",
-      "transliteration": "alam",
+      "lemma": "אָסַף",
+      "dictionaryForm": "אָסַף",
+      "transliteration": "asaf",
       "partOfSpeech": "ige",
-      "meaning": "kévébe köt; összeköt",
-      "root": "אלם",
-      "binyan": "Pi'el (a megadott alakban)",
-      "lemmaType": "gyöki szótári alak; a 'kévébe köt' jelentésben a forrás a participiumot adja meg",
+      "meaning": "összegyűjt; összeszed; begyűjt",
+      "root": "אסף",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
       "verbForms": [
         {
-          "form": "מְאַלְּמִים",
-          "parsing": "Pi'el aktív participium · hímnem, többes szám",
-          "meaning": "kévéket kötöznek; kévékbe kötnek",
-          "transliteration": "meallemim"
+          "form": "אֹסְפִים",
+          "parsing": "Qal aktív participium · hímnem, többes szám",
+          "meaning": "összegyűjtők; akik összegyűjtenek",
+          "transliteration": "osfim"
         }
       ],
-      "searchAliases": [
-        "מְאַלְּמִים",
-        "meallemim"
-      ],
-      "notes": "A BDB ezt a jelentést a Pi'el participium מְאַלְּמִים alakjából dokumentálja; az alapgyök אָלַם jelentése itt 'megköt, összeköt'."
+      "notes": "A kévébe kötésre használt אָלַם gyökből a lexikon a Pi'el participiumot adatolja, Qal alakot nem. A Qal-only szóanyagban ezért a rokon cselekvésű, de más gyökhöz tartozó אָסַף ('összegyűjt') szerepel.",
+      "id": "hb-079"
     },
     {
       "id": "hb-080",
@@ -1267,7 +1259,7 @@
         "alummati",
         "alummoteikhem"
       ],
-      "notes": "A többes számú alakok között a forrásban hímnemű végződésű אֲלֻמִּים és személyragos nőnemű אֲלֻמֹּתֵיכֶם is szerepel."
+      "notes": "Főnév: kéve. A szócikk névszói alakjai és személyragos formái ehhez a címszóhoz tartoznak."
     },
     {
       "id": "hb-081",
