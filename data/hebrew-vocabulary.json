@@ -64,7 +64,8 @@
         }
       ],
       "searchAliases": [
-        "אֶחָיו"
+        "אֶחָיו",
+        "achav"
       ]
     },
     {
@@ -170,7 +171,8 @@
         }
       ],
       "searchAliases": [
-        "לֹו"
+        "לֹו",
+        "lo"
       ]
     },
     {
@@ -308,7 +310,8 @@
         }
       ],
       "searchAliases": [
-        "אָבִיו"
+        "אָבִיו",
+        "aviv"
       ]
     },
     {
@@ -478,7 +481,8 @@
       ],
       "searchAliases": [
         "בָּנָיו",
-        "בֶּן־זְקֻנִים"
+        "בֶּן־זְקֻנִים",
+        "banav"
       ]
     },
     {
@@ -498,7 +502,8 @@
       "partOfSpeech": "személyes névmás",
       "meaning": "ők (hímnem / vegyes csoport, többes szám)",
       "searchAliases": [
-        "הֵמָּה"
+        "הֵמָּה",
+        "hemah"
       ],
       "alternativeForms": [
         "הֵמָּה"
@@ -519,7 +524,8 @@
         "אָנֹכִי"
       ],
       "searchAliases": [
-        "אָנֹכִי"
+        "אָנֹכִי",
+        "anokhi"
       ],
       "notes": "A személyes névmás két gyakori alakváltozata: אֲנִי és אָנֹכִי."
     },
@@ -570,7 +576,8 @@
         "אַתֵּנָה"
       ],
       "searchAliases": [
-        "אַתֵּנָה"
+        "אַתֵּנָה",
+        "attenah"
       ],
       "notes": "A nőnemű többes számú alak hosszabb változata: אַתֵּנָה."
     },
@@ -588,7 +595,8 @@
         "נַחְנוּ"
       ],
       "searchAliases": [
-        "נַחְנוּ"
+        "נַחְנוּ",
+        "nahnu"
       ],
       "notes": "Az אֲנַחְנוּ mellett a נַחְנוּ rövidebb alakváltozat is előfordul."
     },
@@ -617,7 +625,9 @@
         "הֵנָּה"
       ],
       "searchAliases": [
-        "הֵנָּה"
+        "הֵנָּה",
+        "henah",
+        "hennah"
       ],
       "notes": "A nőnemű többes számú alak hosszabb változata: הֵנָּה."
     },
