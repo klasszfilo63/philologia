@@ -1,7 +1,7 @@
 {
   "language": "Latin",
   "batch": 7,
-  "source": "A felhasználó által küldött három tankönyvi fotó",
+  "source": "Latin szókincsgyűjtemény",
   "entries": [
     {
       "id": "b1-001",
@@ -339,7 +339,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A sum, esse, fuī ige alakja; a tankönyv a nyelvtani ragozás megtekintését kéri.",
+      "notes": "A sum, esse, fuī létige egyes szám harmadik személyű jelen idejű alakja.",
       "isDeponent": false,
       "sourceBatch": 1
     },
@@ -879,7 +879,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 1,
-      "notes": "A tankönyvi vonzat: amit — dativus. A főalakok írásmódját a forrás szerint őriztem meg.",
+      "notes": "Ebben a jelentésében dativusszal áll.",
       "isDeponent": false,
       "sourceBatch": 1,
       "sourceBatches": [
@@ -1147,7 +1147,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 4,
-      "notes": "Kiegészítés a korábbi szócikkhez: a tankönyv itt a „hová jut, kerül, átszáll” jelentéseket adja.",
+      "notes": "A „hová jut, kerül, átszáll” jelentésekben is használatos.",
       "isDeponent": false,
       "sourceBatch": 1,
       "sourceBatches": [
@@ -1662,7 +1662,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Rendhagyó ige; ragozását a tankönyv nyelvtani részében kell megnézni.",
+      "notes": "Rendhagyó ige; alakjai több ponton eltérnek a szabályos igeragozástól.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -1753,7 +1753,7 @@
       "gender": null,
       "declension": 1,
       "conjugation": null,
-      "notes": "A tankönyvi alakot és ékezetjelölést változtatás nélkül őriztem meg.",
+      "notes": "A szótári alak: mālus, māla, mālum.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -2043,7 +2043,7 @@
       "gender": "m",
       "declension": 2,
       "conjugation": null,
-      "notes": "Többes szám nominativusa: dī / deī (a tankönyv jelölése szerint). A tankönyv szerint keresztény értelemben nagybetűvel írandó.",
+      "notes": "Többes szám nominativusa: dī vagy deī. Keresztény értelemben, az egyistenre utalva nagybetűvel írjuk.",
       "isDeponent": false,
       "sourceBatch": 2,
       "sourceBatches": [
@@ -2102,7 +2102,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 3,
-      "notes": "Ahová: in + ablativus (a tankönyv megadása szerint).",
+      "notes": "Helyhatározói szerkezetben az in + ablativus is előfordul.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3183,7 +3183,7 @@
       "gender": "f",
       "declension": 1,
       "conjugation": null,
-      "notes": "A tankönyv magyarázata szerint ünnepélyes vagy vidám alkalmakkor a fejükre tették, illetve az istenek szobrait is megtisztelték vele.",
+      "notes": "Az ókorban koszorút ünnepi vagy vidám alkalmakkor viseltek; olykor az istenek szobrait is feldíszítették vele.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3209,7 +3209,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 1,
-      "notes": "Akit/amire: accusativus (a tankönyv megadása szerint).",
+      "notes": "A személyre vagy dologra irányuló tárgyi bővítmény accusativusban áll.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3261,7 +3261,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv a névmás ragozásához utal.",
+      "notes": "Az is, ea, id névmás egyes számú dativusának alakja (masculinum és neutrum).",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3287,7 +3287,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv a névmás ragozásához utal.",
+      "notes": "Az is, ea, id névmás egyes számú accusativusának hímnemű alakja.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3495,7 +3495,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv a névmás teljes ragozásához utal. iūrāvērunt in eadem verba — ugyanúgy felesküdtek.",
+      "notes": "Az is, ea, id névmás alakjaihoz a -dem nyomatékosító elem kapcsolódik. Példa: iūrāvērunt in eadem verba — ugyanúgy felesküdtek.",
       "isDeponent": false,
       "sourceBatch": 3
     },
@@ -4121,7 +4121,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv a névmás ragozására utal.",
+      "notes": "Mutató névmás; jelentése: „ez”.",
       "isDeponent": false,
       "sourceBatch": 3
     },
@@ -4955,7 +4955,7 @@
       "gender": "m",
       "declension": 2,
       "conjugation": null,
-      "notes": "A tankönyv szerint az egyetlen -ir végű II. deklinációs főnév; ragozása mint a puer, -ī, m. főnévé.",
+      "notes": "A vir, virī a II. deklináció egyetlen -ir végű főneve; ragozása a puer, puerī mintáját követi.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -4981,7 +4981,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A vīs hiányos főnév ablativusa a tankönyvi megadás szerint.",
+      "notes": "A vīs, vīs, f. hiányos ragozású főnév ablativus singularisa: vī.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -5258,7 +5258,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A sum, esse, fuī ige futurum perfectumának alakja (lásd a tankönyv nyelvtanát).",
+      "notes": "A sum, esse, fuī létige futurum perfectumának többes szám harmadik személyű alakja.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -5557,7 +5557,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Az animus, -ī, m. főnévből képzett tekintethatározó a tankönyvi magyarázat szerint.",
+      "notes": "Az animus, -ī, m. főnév ablativusa; tekintethatározóként „lelkében, lelkét tekintve” jelentésű.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -5804,7 +5804,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Rendhagyó ige; osculum ferre — megcsókolni, elviselni. Akit: dativus (a tankönyv megadása szerint).",
+      "notes": "Rendhagyó ige. A személyre utaló bővítmény az itt megadott szerkezetben dativusban áll; az osculum ferre kifejezés jelentése a szövegkörnyezettől függ.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -6310,7 +6310,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Ablativusszal áll. Magánhangzó előtt ab alakban szerepel. Ablativusszal áll. ā civibus perterritis — lásd a tankönyv esettani magyarázatát.",
+      "notes": "A praepositio ablativusszal áll; magánhangzó előtt rendszerint ab alakot vesz fel. Példa: ā civibus perterritis — a megrémült polgárok által.",
       "isDeponent": false,
       "sourceBatch": 5,
       "sourceBatches": [
@@ -6341,7 +6341,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A forrás szerint sing. 3. személyű alakja: ait.",
+      "notes": "Egyes szám harmadik személyű alakja: ait.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -6581,7 +6581,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyvi megjegyzés szerint: ast = at.",
+      "notes": "Változata: at.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -6839,7 +6839,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Perfectum alak, jelen idejű jelentéssel; a ragozást a tankönyv nyelvtani része tárgyalja.",
+      "notes": "Perfectum alak, jelen idejű jelentéssel.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -7639,7 +7639,7 @@
       "gender": "m",
       "declension": 1,
       "conjugation": null,
-      "notes": "A tankönyv szerint az I. deklináció szerint ragozzuk.",
+      "notes": "Az Aenēās, Aenēae, m. az I. deklináció szerint ragozott hímnemű főnév.",
       "isDeponent": false,
       "sourceBatch": 6
     },
@@ -7890,7 +7890,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Módhatározó vagy eszközhatározó a tankönyv szerint.",
+      "notes": "Ablativusban álló mód- vagy eszközhatározói szerkezet.",
       "isDeponent": false,
       "sourceBatch": 6
     },
@@ -9425,7 +9425,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv megjegyzése: a cui vonatkozó névmást itt mutató névmás értelmében használja a mondat elején; magyarul a megfelelő személyes névmással fordítandó.",
+      "notes": "A mondat elején a cui mutató névmási értékben szerepel; magyarul személyes névmással fordítjuk.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -9663,7 +9663,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 1,
-      "notes": "Akit/akinek: accusativus (a tankönyvi megadás szerint).",
+      "notes": "A személyre irányuló tárgyi bővítmény accusativusban áll.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -9677,7 +9677,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Accusativusszal áll. iūxtā quam civitatem — a tankönyv megjegyzése szerint a vonatkozó névmást a mondat elején mutató névmás értelmében használja.",
+      "notes": "Accusativusszal áll. Az iūxtā quam civitatem szerkezetben a quam mondat eleji mutató névmási értékben szerepel.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -9887,7 +9887,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv megjegyzése: a vonatkozó névmást mutató névmás helyett használja; személyes névmással fordítandó, hiszen személyről van szó.",
+      "notes": "Itt a vonatkozó névmás mutató névmási értékben áll; személyre utal, ezért magyarul személyes névmással fordítjuk.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -10265,7 +10265,7 @@
       "gender": "n",
       "declension": 3,
       "conjugation": null,
-      "notes": "mundō corde — nem egyeztetett minőségjelző; lásd a tankönyv nyelvtani magyarázatát.",
+      "notes": "A mundō corde szerkezet nem egyeztetett minőségjelzőként értelmezhető.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -10335,7 +10335,7 @@
       "gender": "m",
       "declension": null,
       "conjugation": null,
-      "notes": "A tankönyv figyelmeztetése: a genitivusa görögös.",
+      "notes": "Genitivusa görögös alakú: Iēsū.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
@@ -10741,7 +10741,7 @@
       "gender": "f",
       "declension": 1,
       "conjugation": null,
-      "notes": "A névalak a tankönyvi képről átírva; érdemes később ellenőrizni.",
+      "notes": "A névalak ellenőrzést igényel.",
       "isDeponent": false,
       "isSemiDeponent": false,
       "sourceBatch": 7
