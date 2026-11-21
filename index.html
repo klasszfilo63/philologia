@@ -2330,7 +2330,7 @@ function hebrewEntryWrittenForms(entry){
  }
  if(entry.adjectiveForms&&typeof entry.adjectiveForms==="object")result.push(...Object.values(entry.adjectiveForms).filter(x=>typeof x==="string"));
  for(const listName of ["verbForms","attachedForms"]){
-  if(Array.isArray(entry[listName]))result.push(...entry[listName].map(item=>item.form).filter(Boolean));
+  if(Array.isArray(entry[listName]))result.push(...entry[listName].flatMap(item=>[item.form,item.transliteration]).filter(Boolean));
  }
  return Array.from(new Set(result));
 }
