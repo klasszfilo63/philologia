@@ -840,7 +840,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 2,
-      "notes": "A harmadik főalak a forrásban így szerepel: pertinentum; ellenőrzendő, nem módosítottam.",
+      "notes": "A harmadik főalak: pertinentum; az alak bizonytalan, ellenőrzést igényel.",
       "isDeponent": false,
       "sourceBatch": 1
     },
@@ -1467,7 +1467,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 2,
-      "notes": "A forrás nem közöl harmadik főalakot.",
+      "notes": "Harmadik főalak nincs megadva.",
       "isDeponent": false,
       "sourceBatch": 1
     },
@@ -1597,7 +1597,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 4,
-      "notes": "A forrás nem közöl további főalakot.",
+      "notes": "További főalak nincs megadva.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -1740,7 +1740,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 2,
-      "notes": "A forrás nem közöl további főalakot.",
+      "notes": "További főalak nincs megadva.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -1991,7 +1991,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 3,
-      "notes": "A forrás nem közöl további főalakot.",
+      "notes": "További főalak nincs megadva.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -2089,7 +2089,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A ragozást a nyelvtanban kell megnézni; a képen említett alakok: eī, eum, eius, eō, eōs, eīs.",
+      "notes": "A névmás gyakori ragozott alakjai: eī, eum, eius, eō, eōs, eīs.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -2357,7 +2357,7 @@
       "gender": "m",
       "declension": 2,
       "conjugation": null,
-      "notes": "Többes szám: locī, -ōrum, m. és loca, -ōrum, n. A kétféle többes szám jelentése eltér: loca = konkrét, helyrajzi értelemben; locī = átvitt értelemben (például könyvben). eō locō — hol? kérdésre felelő helyhatározó.",
+      "notes": "Többes szám: locī, -ōrum, m. és loca, -ōrum, n. A kétféle többes szám jelentése eltér: loca = konkrét, helyrajzi értelemben; locī = átvitt értelemben, például szöveghelyekre utalva. eō locō — hol? kérdésre felelő helyhatározó.",
       "isDeponent": false,
       "sourceBatch": 2
     },
@@ -3749,7 +3749,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A képen kiemelt alakok: quī és quō.",
+      "notes": "Gyakori ragozott alakok: quī és quō.",
       "isDeponent": false,
       "sourceBatch": 3
     },
@@ -4359,7 +4359,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A képen felsorolt alakok: quae, quam, quā, quem, quī.",
+      "notes": "A névmás ragozott alakjai: quae, quam, quā, quem, quī.",
       "isDeponent": false,
       "sourceBatch": 3
     },
@@ -4463,7 +4463,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A képen ablativusszal áll. Accusativusszal áll.",
+      "notes": "A super accusativusszal és ablativusszal is állhat; jelentése az esettől függ.",
       "isDeponent": false,
       "sourceBatch": 3,
       "sourceBatches": [
@@ -4847,7 +4847,7 @@
       "gender": "f",
       "declension": 1,
       "conjugation": null,
-      "notes": "A képen olvasott névalak: Tarquinia; ellenőrzésre érdemes, mert a történeti név alakja bizonytalan a felvételen.",
+      "notes": "A Tarquinia névalak történeti tulajdonnévként szerepel; pontos alakja ellenőrzést igényel.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -5310,7 +5310,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "Hiányos ige; a képen szereplő alak praesens imperfectum singularis 1. személy.",
+      "notes": "Hiányos ige; az itt megadott alak praesens imperfectum singularis 1. személy.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -5336,7 +5336,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 3,
-      "notes": "A képen: hiányzik a tárgy mellőle; értsd hozzá: „a végrendeletet”.",
+      "notes": "A tárgy a jelentés pontosításához kiegészíthető: „a végrendeletet”.",
       "isDeponent": false,
       "sourceBatch": 4
     },
@@ -6557,7 +6557,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 4,
-      "notes": "A forrásban a lemma olvasata vinc(i)ō; a képen vincio-ként jelenik meg.",
+      "notes": "A címszó olvasata bizonytalan: vinc(i)ō; a lemma írásmódja ellenőrzést igényel.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -6803,7 +6803,7 @@
       "gender": null,
       "declension": null,
       "conjugation": null,
-      "notes": "A perfectum alak jelentése jelen idő: ismer; a forrásban nōrunt = nōvērunt (ismernek).",
+      "notes": "Perfectum alak, jelen idejű jelentéssel: „ismer”. A nōrunt a nōvērunt összevont alakja.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -7103,7 +7103,7 @@
       "gender": null,
       "declension": null,
       "conjugation": 1,
-      "notes": "A forrás így adja meg a ragozási számot: 1.",
+      "notes": "A ragozási besorolás ellenőrzést igényel.",
       "isDeponent": false,
       "sourceBatch": 5
     },
@@ -7163,7 +7163,7 @@
       "gender": null,
       "declension": 1,
       "conjugation": null,
-      "notes": "A képen melléknévi igenévként szerepel.",
+      "notes": "Melléknévi igenév (participium perfectum passivi) alak.",
       "isDeponent": false,
       "sourceBatch": 5
     },
