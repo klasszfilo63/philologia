@@ -1,15 +1,17 @@
 {
   "language": "Classical Hebrew",
   "dialect": "Biblical Hebrew",
-  "batch": 1,
+  "batch": 2,
   "batches": [
-    1
+    1,
+    2
   ],
   "sourceFiles": [
-    "2026-11-21 user-supplied vocabulary images"
+    "2026-11-21 user-supplied vocabulary images",
+    "2026-11-21 user-supplied vocabulary images (batch 2)"
   ],
   "updated": "2026-11-21",
-  "sourceCount": 36,
+  "sourceCount": 80,
   "entries": [
     {
       "id": "hb-001",
@@ -53,7 +55,17 @@
         "singularConstruct": "אֲחִי",
         "pluralAbsolute": "אַחִים",
         "pluralConstruct": "אַחֵי"
-      }
+      },
+      "attachedForms": [
+        {
+          "form": "אֶחָיו",
+          "parsing": "pluralis + 3ms birtokos személyrag",
+          "meaning": "az ő fivérei / fiútestvérei"
+        }
+      ],
+      "searchAliases": [
+        "אֶחָיו"
+      ]
     },
     {
       "id": "hb-004",
@@ -149,7 +161,17 @@
       "transliteration": "le",
       "partOfSpeech": "elöljárószó",
       "meaning": "-hoz, -hez, -höz; -nak, -nek; -ra, -re; számára",
-      "notes": "A לְ az alapforma; a következő szó első hangjához igazodva a magánhangzója változhat."
+      "notes": "A לְ az alapforma; a következő szó első hangjához igazodva a magánhangzója változhat. A לֹו alakban 3. személyű hímnemű egyes számú személyrag kapcsolódik hozzá.",
+      "attachedForms": [
+        {
+          "form": "לֹו",
+          "parsing": "לְ + 3ms személyrag",
+          "meaning": "neki; hozzá"
+        }
+      ],
+      "searchAliases": [
+        "לֹו"
+      ]
     },
     {
       "id": "hb-013",
@@ -277,7 +299,17 @@
         "singularConstruct": "אֲבִי",
         "pluralAbsolute": "אָבוֹת",
         "pluralConstruct": "אֲבוֹת"
-      }
+      },
+      "attachedForms": [
+        {
+          "form": "אָבִיו",
+          "parsing": "singularis + 3ms birtokos személyrag",
+          "meaning": "az ő apja"
+        }
+      ],
+      "searchAliases": [
+        "אָבִיו"
+      ]
     },
     {
       "id": "hb-022",
@@ -340,15 +372,16 @@
       "lemma": "רֹעֶה",
       "dictionaryForm": "רֹעֶה",
       "transliteration": "ro'eh",
-      "partOfSpeech": "főnév",
-      "meaning": "pásztor",
+      "partOfSpeech": "főnév / melléknévi igenév",
+      "meaning": "pásztor; legeltető, pásztorkodó",
       "gender": "hímnem",
       "forms": {
         "singularAbsolute": "רֹעֶה",
         "singularConstruct": "רֹעֵה",
         "pluralAbsolute": "רֹעִים",
         "pluralConstruct": "רֹעֵי"
-      }
+      },
+      "notes": "A רֹעֶה főnévi használatban pásztort jelent; alakilag a רָעָה (Qal) ige hímnemű egyes számú aktív participiuma is."
     },
     {
       "id": "hb-028",
@@ -419,7 +452,8 @@
       "dictionaryForm": "אֵלֶּה",
       "transliteration": "elleh",
       "partOfSpeech": "mutató névmás",
-      "meaning": "ezek"
+      "meaning": "ezek",
+      "notes": "Közös nemű többes számú mutató névmás: ezek."
     },
     {
       "id": "hb-034",
@@ -434,7 +468,18 @@
         "singularConstruct": "בֶּן",
         "pluralAbsolute": "בָּנִים",
         "pluralConstruct": "בְּנֵי"
-      }
+      },
+      "attachedForms": [
+        {
+          "form": "בָּנָיו",
+          "parsing": "pluralis + 3ms birtokos személyrag",
+          "meaning": "az ő fiai"
+        }
+      ],
+      "searchAliases": [
+        "בָּנָיו",
+        "בֶּן־זְקֻנִים"
+      ]
     },
     {
       "id": "hb-035",
@@ -442,7 +487,8 @@
       "dictionaryForm": "הוּא",
       "transliteration": "hu",
       "partOfSpeech": "személyes névmás",
-      "meaning": "ő (hímnem, egyes szám)"
+      "meaning": "ő (hímnem, egyes szám)",
+      "notes": "Személyes névmás, 3. személy hímnemű egyes szám."
     },
     {
       "id": "hb-036",
@@ -450,7 +496,756 @@
       "dictionaryForm": "הֵם",
       "transliteration": "hem",
       "partOfSpeech": "személyes névmás",
-      "meaning": "ők (hímnem / vegyes csoport, többes szám)"
+      "meaning": "ők (hímnem / vegyes csoport, többes szám)",
+      "searchAliases": [
+        "הֵמָּה"
+      ],
+      "alternativeForms": [
+        "הֵמָּה"
+      ],
+      "notes": "Személyes névmás, 3. személy hímnemű többes szám. Költői vagy hangsúlyosabb alakváltozata: הֵמָּה."
+    },
+    {
+      "id": "hb-037",
+      "lemma": "אֲנִי",
+      "dictionaryForm": "אֲנִי",
+      "transliteration": "ani",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "én",
+      "person": "1. személy",
+      "gender": "közös nem",
+      "number": "egyes szám",
+      "alternativeForms": [
+        "אָנֹכִי"
+      ],
+      "searchAliases": [
+        "אָנֹכִי"
+      ],
+      "notes": "A személyes névmás két gyakori alakváltozata: אֲנִי és אָנֹכִי."
+    },
+    {
+      "id": "hb-038",
+      "lemma": "אַתָּה",
+      "dictionaryForm": "אַתָּה",
+      "transliteration": "atah",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "te",
+      "person": "2. személy",
+      "gender": "hímnem",
+      "number": "egyes szám"
+    },
+    {
+      "id": "hb-039",
+      "lemma": "אַתְּ",
+      "dictionaryForm": "אַתְּ",
+      "transliteration": "at",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "te",
+      "person": "2. személy",
+      "gender": "nőnem",
+      "number": "egyes szám"
+    },
+    {
+      "id": "hb-040",
+      "lemma": "אַתֶּם",
+      "dictionaryForm": "אַתֶּם",
+      "transliteration": "atem",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ti",
+      "person": "2. személy",
+      "gender": "hímnem",
+      "number": "többes szám"
+    },
+    {
+      "id": "hb-041",
+      "lemma": "אַתֵּן",
+      "dictionaryForm": "אַתֵּן",
+      "transliteration": "atten",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ti",
+      "person": "2. személy",
+      "gender": "nőnem",
+      "number": "többes szám",
+      "alternativeForms": [
+        "אַתֵּנָה"
+      ],
+      "searchAliases": [
+        "אַתֵּנָה"
+      ],
+      "notes": "A nőnemű többes számú alak hosszabb változata: אַתֵּנָה."
+    },
+    {
+      "id": "hb-042",
+      "lemma": "אֲנַחְנוּ",
+      "dictionaryForm": "אֲנַחְנוּ",
+      "transliteration": "anachnu",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "mi",
+      "person": "1. személy",
+      "gender": "közös nem",
+      "number": "többes szám",
+      "alternativeForms": [
+        "נַחְנוּ"
+      ],
+      "searchAliases": [
+        "נַחְנוּ"
+      ],
+      "notes": "Az אֲנַחְנוּ mellett a נַחְנוּ rövidebb alakváltozat is előfordul."
+    },
+    {
+      "id": "hb-043",
+      "lemma": "הִיא",
+      "dictionaryForm": "הִיא",
+      "transliteration": "hi",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ő",
+      "person": "3. személy",
+      "gender": "nőnem",
+      "number": "egyes szám"
+    },
+    {
+      "id": "hb-044",
+      "lemma": "הֵן",
+      "dictionaryForm": "הֵן",
+      "transliteration": "hen",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ők",
+      "person": "3. személy",
+      "gender": "nőnem",
+      "number": "többes szám",
+      "alternativeForms": [
+        "הֵנָּה"
+      ],
+      "searchAliases": [
+        "הֵנָּה"
+      ],
+      "notes": "A nőnemű többes számú alak hosszabb változata: הֵנָּה."
+    },
+    {
+      "id": "hb-045",
+      "lemma": "זֶה",
+      "dictionaryForm": "זֶה",
+      "transliteration": "zeh",
+      "partOfSpeech": "mutató névmás",
+      "meaning": "ez; ez a (hímnem, egyes szám)",
+      "gender": "hímnem",
+      "number": "egyes szám"
+    },
+    {
+      "id": "hb-046",
+      "lemma": "זֹאת",
+      "dictionaryForm": "זֹאת",
+      "transliteration": "zot",
+      "partOfSpeech": "mutató névmás",
+      "meaning": "ez; ez a (nőnem, egyes szám)",
+      "gender": "nőnem",
+      "number": "egyes szám",
+      "searchAliases": [
+        "זָאת"
+      ],
+      "notes": "A szokásos nőnemű egyes számú mutató névmás. Ritkább rövid alakjai: זֹה, זוֹ."
+    },
+    {
+      "id": "hb-047",
+      "lemma": "לֹא",
+      "dictionaryForm": "לֹא",
+      "transliteration": "lo",
+      "partOfSpeech": "tagadószó",
+      "meaning": "nem; nincs",
+      "notes": "A mondatbeli tagadás általános szava."
+    },
+    {
+      "id": "hb-048",
+      "lemma": "יָשַׁב",
+      "dictionaryForm": "יָשַׁב",
+      "transliteration": "yashav",
+      "partOfSpeech": "ige",
+      "meaning": "ül; leül; tartózkodik, lakik",
+      "root": "ישב",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A tanult יָשַׁב alak Qal perfectum 3ms."
+    },
+    {
+      "id": "hb-049",
+      "lemma": "הִגִּיד",
+      "dictionaryForm": "הִגִּיד",
+      "transliteration": "higid",
+      "partOfSpeech": "ige",
+      "meaning": "elmond; közöl; kijelent, tudat",
+      "root": "נגד",
+      "binyan": "Hiphil",
+      "lemmaType": "Hiphil perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "הִגִּידוּ",
+          "parsing": "Hiphil perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "elmondták; közölték",
+          "transliteration": "higidu"
+        }
+      ],
+      "searchAliases": [
+        "הִגִּידוּ",
+        "higidu"
+      ],
+      "notes": "A szótári alapalak Hiphil perfectum 3ms; a הִגִּידוּ ennek 3mp alakja. Gyöke נגד."
+    },
+    {
+      "id": "hb-050",
+      "lemma": "עָשָׂה",
+      "dictionaryForm": "עָשָׂה",
+      "transliteration": "asah",
+      "partOfSpeech": "ige",
+      "meaning": "tesz; csinál; készít",
+      "root": "עשׂה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "עָשׂוּ",
+          "parsing": "Qal perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "tettek; csináltak; készítettek",
+          "transliteration": "asu"
+        }
+      ],
+      "searchAliases": [
+        "עָשׂוּ",
+        "asu"
+      ],
+      "notes": "A forrásban szereplő עָשׂוּ alak a Qal perfectum 3mp formája."
+    },
+    {
+      "id": "hb-051",
+      "lemma": "דָּבָר",
+      "dictionaryForm": "דָּבָר",
+      "transliteration": "davar",
+      "partOfSpeech": "főnév",
+      "meaning": "szó; dolog; ügy, kérdés",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "דָּבָר",
+        "singularConstruct": "דְּבַר",
+        "pluralAbsolute": "דְּבָרִים",
+        "pluralConstruct": "דִּבְרֵי"
+      }
+    },
+    {
+      "id": "hb-052",
+      "lemma": "רַע",
+      "dictionaryForm": "רַע",
+      "transliteration": "ra",
+      "partOfSpeech": "melléknév",
+      "meaning": "rossz; gonosz; ártalmas",
+      "adjectiveForms": {
+        "masculineSingular": "רַע",
+        "feminineSingular": "רָעָה",
+        "masculinePlural": "רָעִים",
+        "femininePlural": "רָעוֹת"
+      }
+    },
+    {
+      "id": "hb-053",
+      "lemma": "עַל",
+      "dictionaryForm": "עַל",
+      "transliteration": "al",
+      "partOfSpeech": "elöljárószó",
+      "meaning": "-on, -en, -ön; fölött; -ról, -ről; miatt, okán",
+      "attachedForms": [
+        {
+          "form": "עָלֵינוּ",
+          "parsing": "עַל + 1. személy, közös nem, többes számú személyrag",
+          "meaning": "rajtunk; fölöttünk; rólunk"
+        }
+      ],
+      "searchAliases": [
+        "עָלֵינוּ",
+        "aleinu"
+      ],
+      "notes": "A jelentése a szövegkörnyezettől függően lehet helyviszonyt, témát vagy okot kifejező."
+    },
+    {
+      "id": "hb-054",
+      "lemma": "בִּלְהָה",
+      "dictionaryForm": "בִּלְהָה",
+      "transliteration": "bilhah",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Bilha",
+      "gender": "nőnem",
+      "notes": "Női személynév."
+    },
+    {
+      "id": "hb-055",
+      "lemma": "זִלְפָּה",
+      "dictionaryForm": "זִלְפָּה",
+      "transliteration": "zilpah",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Zilpa",
+      "gender": "nőnem",
+      "notes": "Női személynév."
+    },
+    {
+      "id": "hb-056",
+      "lemma": "הָיָה",
+      "dictionaryForm": "הָיָה",
+      "transliteration": "hayah",
+      "partOfSpeech": "ige",
+      "meaning": "van; lesz; történik, válik valamivé",
+      "root": "היה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "הָיְתָה",
+          "parsing": "Qal perfectum · 3. személy, nőnem, egyes szám",
+          "meaning": "volt; lett",
+          "transliteration": "hayetah"
+        },
+        {
+          "form": "הָיוּ",
+          "parsing": "Qal perfectum · 3. személy, többes szám",
+          "meaning": "voltak; lettek",
+          "transliteration": "hayu"
+        }
+      ],
+      "searchAliases": [
+        "הָיְתָה",
+        "הָיוּ",
+        "hayetah",
+        "hayu"
+      ]
+    },
+    {
+      "id": "hb-057",
+      "lemma": "שִׁמְעוֹן",
+      "dictionaryForm": "שִׁמְעוֹן",
+      "transliteration": "shimon",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Simeon",
+      "gender": "hímnem",
+      "notes": "Férfi személynév."
+    },
+    {
+      "id": "hb-058",
+      "lemma": "רָעָה",
+      "dictionaryForm": "רָעָה",
+      "transliteration": "raah",
+      "partOfSpeech": "ige",
+      "meaning": "legeltet; pásztorol; nyájat őriz",
+      "root": "רעה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "רֹעֶה",
+          "parsing": "Qal aktív participium · hímnem, egyes szám",
+          "meaning": "legeltető; pásztorkodó",
+          "transliteration": "roeh"
+        }
+      ],
+      "searchAliases": [
+        "רֹעֶה",
+        "roeh"
+      ],
+      "notes": "A רֹעֶה alak a Qal aktív participium hímnemű egyes száma; főnévként 'pásztor' jelentésben is használatos."
+    },
+    {
+      "id": "hb-059",
+      "lemma": "אֵת",
+      "dictionaryForm": "אֵת",
+      "transliteration": "et",
+      "partOfSpeech": "tárgyjelölő partikula",
+      "meaning": "A határozott közvetlen tárgyat jelöli; önmagában nem fordítjuk",
+      "attachedForms": [
+        {
+          "form": "אֹתוֹ",
+          "parsing": "אֵת + 3. személy, hímnem, egyes számú személyrag",
+          "meaning": "őt; azt (közvetlen tárgyként)"
+        }
+      ],
+      "searchAliases": [
+        "אֶת",
+        "אֶת־",
+        "אֹתוֹ",
+        "oto"
+      ],
+      "notes": "A tárgyjelölő a határozott tárgy előtt rendszerint אֶת־ alakban áll; személyraggal az אֹתוֹ alak is előfordul."
+    },
+    {
+      "id": "hb-060",
+      "lemma": "עִם",
+      "dictionaryForm": "עִם",
+      "transliteration": "im",
+      "partOfSpeech": "elöljárószó",
+      "meaning": "-val, -vel; együtt; társaságában"
+    },
+    {
+      "id": "hb-061",
+      "lemma": "כֻּתֹּנֶת",
+      "dictionaryForm": "כְּתֹנֶת",
+      "transliteration": "kuttonet",
+      "partOfSpeech": "főnév",
+      "meaning": "tunika; alsóruhaként viselt hosszú ing",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "כֻּתֹּנֶת",
+        "singularConstruct": "כְּתֹנֶת",
+        "pluralAbsolute": "כֻּתֳּנֹת",
+        "pluralConstruct": "כָּתְנוֹת"
+      },
+      "searchAliases": [
+        "כְּתֹנֶת",
+        "כְּתֹנֶת פַּסִּים"
+      ],
+      "notes": "A forrásban szereplő כְּתֹנֶת construct alak; a szótári abszolutus forma כֻּתֹּנֶת."
+    },
+    {
+      "id": "hb-062",
+      "lemma": "פַּסִּים",
+      "dictionaryForm": "פַּסִּים",
+      "transliteration": "passim",
+      "partOfSpeech": "főnév (többes számú alak)",
+      "meaning": "A כְּתֹנֶת פַּסִּים kifejezés eleme; pontos jelentése bizonytalan",
+      "searchAliases": [
+        "פַּסִּים",
+        "כְּתֹנֶת פַּסִּים"
+      ],
+      "notes": "A szó jelentésére több hagyományos magyarázat létezik (például sokszínű csíkok vagy a kézfej/talp felé nyúló rész); a bibliai kifejezés pontos értelme vitatott."
+    },
+    {
+      "id": "hb-063",
+      "lemma": "שָׂנֵא",
+      "dictionaryForm": "שָׂנֵא",
+      "transliteration": "sane",
+      "partOfSpeech": "ige",
+      "meaning": "gyűlöl; utál",
+      "root": "שנא",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "שָׂנְאוּ",
+          "parsing": "Qal perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "gyűlöltek; utáltak",
+          "transliteration": "saneu"
+        }
+      ],
+      "searchAliases": [
+        "שָׂנְאוּ",
+        "saneu"
+      ]
+    },
+    {
+      "id": "hb-064",
+      "lemma": "כִּי",
+      "dictionaryForm": "כִּי",
+      "transliteration": "ki",
+      "partOfSpeech": "kötőszó",
+      "meaning": "mert; ugyanis; hogy",
+      "notes": "A jelentés a mondatbeli szerepétől függ."
+    },
+    {
+      "id": "hb-065",
+      "lemma": "לָמָּה",
+      "dictionaryForm": "לָמָּה",
+      "transliteration": "lamah",
+      "partOfSpeech": "kérdő határozószó",
+      "meaning": "miért?; mi okból?",
+      "searchAliases": [
+        "לְ + מָה"
+      ],
+      "notes": "Összetett kérdő alak: לְ + מָה."
+    },
+    {
+      "id": "hb-066",
+      "lemma": "זָקֵן",
+      "dictionaryForm": "זָקֵן",
+      "transliteration": "zaqen",
+      "partOfSpeech": "melléknév",
+      "meaning": "öreg; idős",
+      "adjectiveForms": {
+        "masculineSingular": "זָקֵן",
+        "feminineSingular": "זְקֵנָה",
+        "masculinePlural": "זְקֵנִים",
+        "femininePlural": "זְקֵנוֹת"
+      },
+      "notes": "Főnévi használatban 'öregember, vén'; többes számban gyakran 'vének, elöljárók'."
+    },
+    {
+      "id": "hb-067",
+      "lemma": "אָהַב",
+      "dictionaryForm": "אָהַב",
+      "transliteration": "ahav",
+      "partOfSpeech": "ige",
+      "meaning": "szeret; kedvel",
+      "root": "אהב",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "אָהֲבוּ",
+          "parsing": "Qal perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "szerettek",
+          "transliteration": "ahavu"
+        }
+      ],
+      "searchAliases": [
+        "אָהֲבוּ",
+        "ahavu"
+      ],
+      "notes": "A Qal perfectum 3ms bibliai írásmódja אָהַב; az אָהֵב alakváltozatként is előfordul."
+    },
+    {
+      "id": "hb-068",
+      "lemma": "כֹּל",
+      "dictionaryForm": "כֹּל",
+      "transliteration": "kol",
+      "partOfSpeech": "mennyiségjelölő / főnév",
+      "meaning": "egész; minden; valamennyi",
+      "forms": {
+        "singularAbsolute": "כֹּל",
+        "singularConstruct": "כָּל",
+        "pluralAbsolute": null,
+        "pluralConstruct": null,
+        "note": "A forrásban szereplő כָּל־ a construct alak. A szó többes számú névszói paradigmája itt nem alkalmazható."
+      },
+      "searchAliases": [
+        "כָּל",
+        "כָּל־"
+      ],
+      "notes": "A következő főnév előtt rendszerint construct alakban áll: כָּל־."
+    },
+    {
+      "id": "hb-069",
+      "lemma": "בֶּן־זְקֻנִים",
+      "dictionaryForm": "בֶּן־זְקֻנִים",
+      "transliteration": "ben-zequnim",
+      "partOfSpeech": "kifejezés",
+      "meaning": "idős korban született fiú; az öregkor gyermeke",
+      "notes": "Szó szerint: 'az öregkor fia'. A Bibliai kifejezés azt jelöli, hogy a fiú az apa idős korában született."
+    },
+    {
+      "id": "hb-070",
+      "lemma": "מִן",
+      "dictionaryForm": "מִן",
+      "transliteration": "min",
+      "partOfSpeech": "elöljárószó",
+      "meaning": "-ból, -ből; -tól, -től; -ról, -ről; mint …-nál/-nél, több mint",
+      "alternativeForms": [
+        "מִ־"
+      ],
+      "searchAliases": [
+        "מִ־",
+        "mi"
+      ],
+      "notes": "Elöljáróként gyakran rövidül vagy hasonul a következő szó kezdetéhez; összehasonlításban a 'mint, -nál/-nél több' jelentést is kifejezi."
+    },
+    {
+      "id": "hb-071",
+      "lemma": "קָם",
+      "dictionaryForm": "קוּם",
+      "transliteration": "qam",
+      "partOfSpeech": "ige",
+      "meaning": "felkel; feláll; fölkel",
+      "root": "קום",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "קָמָה",
+          "parsing": "Qal perfectum · 3. személy, nőnem, egyes szám",
+          "meaning": "felkelt; felállt",
+          "transliteration": "qamah"
+        }
+      ],
+      "searchAliases": [
+        "קָמָה",
+        "qamah"
+      ],
+      "notes": "A gyök ו-s gyenge középső mássalhangzós (ע\"ו) ige. A Qal perfectum 3ms alakja קָם."
+    },
+    {
+      "id": "hb-072",
+      "lemma": "הִשְׁתַּחֲוָה",
+      "dictionaryForm": "הִשְׁתַּחֲוָה",
+      "transliteration": "hishtachavah",
+      "partOfSpeech": "ige",
+      "meaning": "leborul; leborulva hódol; földre borul",
+      "root": "חוה",
+      "binyan": "Hishtaphel / Hitpael",
+      "lemmaType": "Hishtaphel perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "הִשְׁתַּחֲווּ",
+          "parsing": "Hishtaphel perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "leborultak; hódoltak",
+          "transliteration": "hishtachavu"
+        }
+      ],
+      "searchAliases": [
+        "הִשְׁתַּחֲווּ",
+        "hishtachavu"
+      ],
+      "notes": "A forma hagyományosan Hishtaphelként, más leírásokban Hitpael-szerű alaként szerepel. A gyök értelmezésében a חוה mellett a שחה kapcsolatát is szokták említeni."
+    },
+    {
+      "id": "hb-073",
+      "lemma": "סִפֵּר",
+      "dictionaryForm": "סִפֵּר",
+      "transliteration": "siper",
+      "partOfSpeech": "ige",
+      "meaning": "elbeszél; elmond; beszámol",
+      "root": "ספר",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A Pi'el jelentésben elmondást, elbeszélést jelent; különbözik a Qal סָפַר 'számol, megszámol' jelentésétől."
+    },
+    {
+      "id": "hb-074",
+      "lemma": "אָמַר",
+      "dictionaryForm": "אָמַר",
+      "transliteration": "amar",
+      "partOfSpeech": "ige",
+      "meaning": "mond; kijelent; szól",
+      "root": "אמר",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám"
+    },
+    {
+      "id": "hb-075",
+      "lemma": "הֲ־",
+      "dictionaryForm": "הֲ־",
+      "transliteration": "ha",
+      "partOfSpeech": "kérdő partikula",
+      "meaning": "kérdő partikula; kérdést vezet be",
+      "searchAliases": [
+        "ה־",
+        "הֲ"
+      ],
+      "notes": "A pontos magánhangzó a következő hangtól és a szóalakoktól függ; a forrás ezen a helyen csak a ה betűt közli, a vokalizációt később tárgyalja."
+    },
+    {
+      "id": "hb-076",
+      "lemma": "מָלַךְ",
+      "dictionaryForm": "מָלַךְ",
+      "transliteration": "malakh",
+      "partOfSpeech": "ige",
+      "meaning": "uralkodik; királlyá lesz; királyként uralkodik",
+      "root": "מלך",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "verbForms": [
+        {
+          "form": "תִּמְלֹךְ",
+          "parsing": "Qal imperfectum · 2. személy, hímnem, egyes szám",
+          "meaning": "uralkodni fogsz; király leszel",
+          "transliteration": "timlokh"
+        }
+      ],
+      "searchAliases": [
+        "תִּמְלֹךְ",
+        "timlokh"
+      ]
+    },
+    {
+      "id": "hb-077",
+      "lemma": "חֲלוֹם",
+      "dictionaryForm": "חֲלוֹם",
+      "transliteration": "halom",
+      "partOfSpeech": "főnév",
+      "meaning": "álom",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "חֲלוֹם",
+        "singularConstruct": "חֲלוֹם",
+        "pluralAbsolute": "חֲלֹמוֹת",
+        "pluralConstruct": "חֲלֹמוֹת"
+      },
+      "attachedForms": [
+        {
+          "form": "חֲלֹמוֹ",
+          "parsing": "singularis + 3ms birtokos személyrag",
+          "meaning": "az ő álma"
+        },
+        {
+          "form": "חֲלֹמִי",
+          "parsing": "singularis + 1cs birtokos személyrag",
+          "meaning": "az én álmom"
+        }
+      ],
+      "searchAliases": [
+        "חֲלֹמוֹ",
+        "חֲלֹמִי",
+        "halomo",
+        "halomi"
+      ]
+    },
+    {
+      "id": "hb-078",
+      "lemma": "הִנֵּה",
+      "dictionaryForm": "הִנֵּה",
+      "transliteration": "hinneh",
+      "partOfSpeech": "indulatszó / mutató partikula",
+      "meaning": "íme!; lám!; nézd!",
+      "notes": "Rámutató, figyelemfelhívó partikula."
+    },
+    {
+      "id": "hb-079",
+      "lemma": "אָלַם",
+      "dictionaryForm": "אָלַם",
+      "transliteration": "alam",
+      "partOfSpeech": "ige",
+      "meaning": "kévébe köt; összeköt",
+      "root": "אלם",
+      "binyan": "Pi'el (a megadott alakban)",
+      "lemmaType": "gyöki szótári alak; a 'kévébe köt' jelentésben a forrás a participiumot adja meg",
+      "verbForms": [
+        {
+          "form": "מְאַלְּמִים",
+          "parsing": "Pi'el aktív participium · hímnem, többes szám",
+          "meaning": "kévéket kötöznek; kévékbe kötnek",
+          "transliteration": "meallemim"
+        }
+      ],
+      "searchAliases": [
+        "מְאַלְּמִים",
+        "meallemim"
+      ],
+      "notes": "A BDB ezt a jelentést a Pi'el participium מְאַלְּמִים alakjából dokumentálja; az alapgyök אָלַם jelentése itt 'megköt, összeköt'."
+    },
+    {
+      "id": "hb-080",
+      "lemma": "אֲלֻמָּה",
+      "dictionaryForm": "אֲלֻמָּה",
+      "transliteration": "alummah",
+      "partOfSpeech": "főnév",
+      "meaning": "kéve",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "אֲלֻמָּה",
+        "singularConstruct": null,
+        "pluralAbsolute": "אֲלֻמִּים",
+        "pluralConstruct": null,
+        "note": "A BDB az abszolutus egyes számú אֲלֻמָּה alakot, a többes számú אֲלֻמִּים formát, valamint a személyragos אֲלֻמָּתִי és אֲלֻמֹּתֵיכֶם alakokat adatolja. Külön, személyrag nélküli construct pluralis alakot a megadott lexikoni adatok nem rögzítenek."
+      },
+      "attachedForms": [
+        {
+          "form": "אֲלֻמָּתִי",
+          "parsing": "singularis + 1cs birtokos személyrag",
+          "meaning": "az én kévém"
+        },
+        {
+          "form": "אֲלֻמֹּתֵיכֶם",
+          "parsing": "pluralis + 2mp birtokos személyrag",
+          "meaning": "a ti kévéitek"
+        }
+      ],
+      "searchAliases": [
+        "אֲלֻמָּתִי",
+        "אֲלֻמֹּתֵיכֶם",
+        "alummati",
+        "alummoteikhem"
+      ],
+      "notes": "A többes számú alakok között a forrásban hímnemű végződésű אֲלֻמִּים és személyragos nőnemű אֲלֻמֹּתֵיכֶם is szerepel."
     }
   ]
 }
