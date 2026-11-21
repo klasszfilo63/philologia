@@ -2066,9 +2066,10 @@ function resumeLastLocation(){
    }
   }
  }else if(last.language==="hebrew"){
-  showTab(tab==="dictionary"?"dictionary":"vocab",false,false);
+  if(tab==="overview")showStudyChooser(false);
+  else showTab(tab==="dictionary"?"dictionary":"vocab",false,false);
  }
- writeAppRoute(last.language==="hebrew"?(tab==="dictionary"?"hebrew/dictionary":"hebrew/vocab"):last.language+"/"+tab,"push");
+ writeAppRoute(last.language==="hebrew"?(tab==="overview"?"hebrew/overview":tab==="dictionary"?"hebrew/dictionary":"hebrew/vocab"):last.language+"/"+tab,"push");
  rememberLocation(last);
  updateResume();
 }
@@ -2078,8 +2079,7 @@ function routeFromHash(){
  const parts=raw.split("/");
  const key=parts[0],requestedTab=parts[1]||"overview";
  if(!modules[key])return "home";
- if(key==="hebrew")return requestedTab==="dictionary"?"hebrew/dictionary":"hebrew/vocab";
- const allowed=["overview","vocab","dictionary","grammar","practice"];
+ const allowed=key==="hebrew"?["overview","vocab","dictionary"]:["overview","vocab","dictionary","grammar","practice"];
  let tab=allowed.includes(requestedTab)?requestedTab:"overview";
  if(key==="greek"&&tab==="practice")tab="vocab";
  return key+"/"+tab;
@@ -2109,7 +2109,8 @@ function renderAppRoute(route){
   if(tab==="overview")showStudyChooser(false);
   else showTab(tab,false);
  }else if(key==="hebrew"){
-  showTab(tab,false,false);
+  if(tab==="overview")showStudyChooser(false);
+  else showTab(tab,false,false);
  }
  document.title=(modules[key].title||"Philologia")+" — Philologia";
  updateResume();
@@ -2127,7 +2128,7 @@ function initializeAppRouting(){
 function openModule(key,pushHistory=true){
  const m=modules[key];
  activeModuleKey=key;
- const initialTab=key==="hebrew"?"vocab":"overview";
+ const initialTab="overview";
  if(pushHistory)writeAppRoute(key+"/"+initialTab,"push");
  rememberLocation({language:key,tab:initialTab});updateResume();
  document.getElementById("home").classList.add("hidden");
@@ -2157,7 +2158,10 @@ function openModule(key,pushHistory=true){
  document.querySelector('button[data-tab="grammar"]').classList.toggle("hidden",key==="hebrew");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key!=="latin");
  document.getElementById("choicePractice").classList.toggle("hidden",key!=="latin");
- if(key==="hebrew")showTab("vocab",false,false);else showStudyChooser(false);
+ const grammarChoice=document.querySelector(".study-choice-grammar");
+ if(grammarChoice)grammarChoice.classList.toggle("hidden",key==="hebrew");
+ document.getElementById("choicePractice").classList.toggle("hidden",key!=="latin");
+ showStudyChooser(false);
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
@@ -2170,7 +2174,7 @@ function goHome(pushHistory=true){
  updateResume();
 }
 function showStudyChooser(historyMode="push"){
- if(currentLanguage!=="latin"&&currentLanguage!=="greek")return;
+ if(currentLanguage!=="latin"&&currentLanguage!=="greek"&&currentLanguage!=="hebrew")return;
  document.getElementById("studyChooser").classList.remove("hidden");
  document.getElementById("studyWorkspace").classList.add("hidden");
  document.querySelectorAll(".tab").forEach(button=>button.classList.remove("active"));
