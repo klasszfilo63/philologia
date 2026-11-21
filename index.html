@@ -2236,7 +2236,7 @@ function reveal(){
     parts.push('<div class="detailrow"><span class="tagpill gold">'+w.declension+'. deklináció'+escapeHtml(genderSuffix)+'</span></div>');
    }else{
     const genderText=w.gender ? w.gender+" · " : "";
-    parts.push('<div class="detailrow">'+escapeHtml(genderText)+'A forrásban külön ragozás vagy deklináció nincs megadva.</div>');
+    parts.push('<div class="detailrow">'+escapeHtml(genderText)+'Ehhez a címszóhoz nincs megadva külön ragozási alak vagy deklináció.</div>');
    }
   }else{
    const nounDetails=[];
@@ -2245,7 +2245,7 @@ function reveal(){
    if(nounDetails.length)parts.push('<div class="detailrow">'+escapeHtml(nounDetails.join(" · "))+'</div>');
   }
  }
- if(w.isDeponent)parts.push('<div class="detailrow"><span class="tagpill warn">DEPONENS IGE</span> A forrás külön deponensként jelöli.</div>');
+ if(w.isDeponent)parts.push('<div class="detailrow"><span class="tagpill warn">DEPONENS IGE</span> Deponens ige: passzív alakú végződéseihez aktív vagy középjelentés társul.</div>');
  if(w.isSemiDeponent)parts.push('<div class="detailrow"><span class="tagpill gold">FÉL-DEPONENS IGE</span> A perfectum alakja passzív formájú, jelentése aktív.</div>');
  if(w.conjugation)parts.push('<div class="detailrow">Igeragozás: <strong>'+w.conjugation+'. coniugatio</strong></div>');
  if(w.formType)parts.push('<div class="detailrow"><span class="tagpill green">'+escapeHtml(w.formType)+'</span></div>');
