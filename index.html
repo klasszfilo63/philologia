@@ -100,6 +100,15 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .hebrew-table{min-width:610px}
 .hebrew-table td:first-child,.hebrew-table th:first-child{text-align:center!important}
 .hebrew-table .hebrew-glyph{display:inline-block;direction:rtl;unicode-bidi:isolate;font:600 22px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;white-space:nowrap}
+.vowel-table{min-width:850px}
+.vowel-table th:first-child{min-width:145px}
+.vowel-table td{vertical-align:top!important}
+.vowel-list{display:flex;flex-direction:column;gap:7px;min-width:125px}
+.vowel-entry{display:flex;align-items:center;gap:9px;justify-content:flex-start;flex-wrap:wrap}
+.vowel-entry>span{display:flex;flex-direction:column;gap:1px;line-height:1.35}
+.vowel-entry strong{font-size:12px;font-weight:600}
+.vowel-entry small{font-size:11px;color:var(--muted)}
+.hebrew-shewa-line{display:flex;align-items:center;gap:10px;margin-top:12px;padding:9px 11px;border-left:2px solid var(--gold);background:var(--soft);font-size:13px}
 .hebrew-table .hebrew-inline,.hebrew-inline{direction:rtl;unicode-bidi:isolate;font:600 19px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;white-space:nowrap}
 .hebrew-table .hebrew-glyph{font-size:22px}
 .hebrew-table .hebrew-glyph + br{line-height:1.2}
@@ -2066,11 +2075,11 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <thead><tr><th>Betű</th><th>Dāgeš-sel · zárhang</th><th>Dāgeš nélkül · réshang</th></tr></thead>
 <tbody>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ב</bdi></td><td>b</td><td>v</td></tr>
-<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ג</bdi></td><td>g</td><td>ḡ · zöngés, torokban képzett réshang</td></tr>
-<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ד</bdi></td><td>d</td><td>ḏ · a this th-jéhez hasonló hang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ג</bdi></td><td>g</td><td>—</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ד</bdi></td><td>d</td><td>—</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">כ</bdi></td><td>k</td><td>ḵ · a német ach ch-jához hasonló hang</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">פ</bdi></td><td>p</td><td>f</td></tr>
-<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ת</bdi></td><td>t</td><td>ṯ · a thin th-jéhez hasonló hang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ת</bdi></td><td>t</td><td>—</td></tr>
 </tbody></table></div>
 <p>A betűk alapvetően zárhangok; magánhangzó után rendszerint réshangként ejtjük őket. A modern izraeli kiejtésben a réshangos változat főként a <bdi class="hebrew-inline" dir="rtl" lang="he">ב, כ, פ</bdi> betűknél maradt meg.</p>
 </div>
@@ -2079,15 +2088,50 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <h3>3. A magánhangzójelek</h3>
 <p>A maszoréta (tiberiási) jelölés külön jelekkel írja le a magánhangzókat. Ezek elsősorban a hang <strong>minőségét</strong> mutatják – vagyis azt, hogy a, e, i, o vagy u hangot ejtünk –, nem önmagában a hosszúságát.</p>
 <div class="table-scroll"><table class="declension-table hebrew-table vowel-table">
-<thead><tr><th>Magánhangzócsoport</th><th>Hosszú</th><th>Rövid</th></tr></thead>
+<thead><tr><th>Magánhangzó-típus</th><th>A-hangok</th><th>I / E-hangok</th><th>O / U-hangok</th></tr></thead>
 <tbody>
-<tr><th>A-hangok</th><td><strong>qāmeṣ</strong> · ā</td><td><strong>pātaḥ</strong> · a</td></tr>
-<tr><th>I / E-hangok</th><td><strong>ṣērē</strong> · ē<br><strong>ḥîreq + jód</strong> · î</td><td><strong>segōl</strong> · e<br><strong>ḥîreq</strong> · i</td></tr>
-<tr><th>O / U-hangok</th><td><strong>ḥōlem</strong> · ō<br><strong>šûreq</strong> · û</td><td><strong>qāmeṣ ḥāṭûp</strong> · ŏ<br><strong>qibbûṣ</strong> · u</td></tr>
+<tr>
+<th>Hosszú / teljes<br>mater lectionisszel</th>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בָה</bdi><span><strong>qāmeṣ-hē</strong><small>āh · qāmeṣ gādōl + ה</small></span></div></div></td>
+<td><div class="vowel-list">
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֵי</bdi><span><strong>ṣērē-yōd</strong><small>ê · ֵ + י</small></span></div>
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֶי</bdi><span><strong>segōl-yōd</strong><small>ê · ֶ + י</small></span></div>
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בִי</bdi><span><strong>ḥîreq-yōd</strong><small>î · ִ + י</small></span></div>
+</div></td>
+<td><div class="vowel-list">
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֹו</bdi><span><strong>ḥōlem-wāw</strong><small>ô · ֹ + ו</small></span></div>
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בּוּ</bdi><span><strong>šûreq</strong><small>û · וּ</small></span></div>
+</div></td>
+</tr>
+<tr>
+<th>Középhosszú</th>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בָ</bdi><span><strong>qāmeṣ gādōl</strong><small>ā</small></span></div></div></td>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֵ</bdi><span><strong>ṣērē</strong><small>ē</small></span></div></div></td>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֹ</bdi><span><strong>ḥōlem</strong><small>ō</small></span></div></div></td>
+</tr>
+<tr>
+<th>Rövid</th>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בַ</bdi><span><strong>pātaḥ</strong><small>a</small></span></div></div></td>
+<td><div class="vowel-list">
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֶ</bdi><span><strong>segōl</strong><small>e</small></span></div>
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בִ</bdi><span><strong>ḥîreq</strong><small>i</small></span></div>
+</div></td>
+<td><div class="vowel-list">
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בָ</bdi><span><strong>qāmeṣ ḥāṭûp</strong><small>ŏ</small></span></div>
+<div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֻ</bdi><span><strong>qibbûṣ</strong><small>u</small></span></div>
+</div></td>
+</tr>
+<tr>
+<th>Redukált<br>összetett hangzók</th>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֲ</bdi><span><strong>ḥaṭaf-pātaḥ</strong><small>ă</small></span></div></div></td>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֱ</bdi><span><strong>ḥaṭaf-segōl</strong><small>ĕ</small></span></div></div></td>
+<td><div class="vowel-list"><div class="vowel-entry"><bdi class="hebrew-glyph" dir="rtl" lang="he">בֳ</bdi><span><strong>ḥaṭaf-qāmeṣ</strong><small>ŏ</small></span></div></div></td>
+</tr>
 </tbody></table></div>
-<p>A magánhangzójelek többsége a mássalhangzó alatt áll. A ḥōlem a betű fölé, kissé balra kerül; a šûreq pontja pedig a ו belsejében látható. A magánhangzót az adott betű után ejtjük.</p>
-<p>A qāmeṣ és a qāmeṣ ḥāṭûp grafikai alakja azonos lehet, de hangértékük eltér: az előbbi ā, az utóbbi rövid o (ŏ). A qāmeṣ ḥāṭûp rendszerint hangsúlytalan, zárt szótagban fordul elő.</p>
-<div class="grammar-note">A táblázat a magánhangzók jellemző hosszúságát mutatja. A jelek elsősorban a hang minőségét jelölik, nem mindig a hosszúságát: ezt a szótag felépítése és a hangsúly is befolyásolja. A ḥîreq önmagában rövid i; jód betűvel együtt hosszú î is lehet.</div>
+<p>A hosszú / teljes magánhangzóknál a magánhangzójelhez egy úgynevezett <em>mater lectionis</em> (segédbetű) kapcsolódik: a ה, י vagy ו a magánhangzó jelölését egészíti ki. A táblázat a legfontosabb, tanulásban használt alakokat mutatja.</p>
+<p>A qāmeṣ (ָ) és a qāmeṣ ḥāṭûp jele azonos, de hangértékük eltér: a qāmeṣ gādōl ā, a qāmeṣ ḥāṭûp rövid o (ŏ). A qāmeṣ ḥāṭûp rendszerint hangsúlytalan, zárt szótagban fordul elő. A qibbûṣ jellemzően rövid u; a šûreq a ו betűvel jelölt teljes, hosszú û.</p>
+<div class="grammar-note">A hosszúság a bibliai héberben nem mindig olvasható ki önmagában a magánhangzójelből. A táblázat az oktatásban használt szokásos osztályozást követi; a pontos hosszúságot a szótag felépítése és a hangsúly is befolyásolja.</div>
+<p class="hebrew-shewa-line"><bdi class="hebrew-glyph" dir="rtl" lang="he">בְ</bdi> <strong>šəwā</strong> · ə — önálló, redukált jel; lehet mozgó (ejtett) vagy nyugvó (néma).</p>
 </div>
 
 <div class="lesson-box">
