@@ -1,17 +1,19 @@
 {
   "language": "Classical Hebrew",
   "dialect": "Biblical Hebrew",
-  "batch": 2,
+  "batch": 3,
   "batches": [
     1,
-    2
+    2,
+    3
   ],
   "sourceFiles": [
     "2026-11-21 user-supplied vocabulary images",
-    "2026-11-21 user-supplied vocabulary images (batch 2)"
+    "2026-11-21 user-supplied vocabulary images (batch 2)",
+    "2026-11-21 user-supplied grammar image 9.1–9.2"
   ],
   "updated": "2026-11-21",
-  "sourceCount": 81,
+  "sourceCount": 83,
   "entries": [
     {
       "id": "hb-001",
@@ -32,7 +34,7 @@
       "lemma": "קָטֹן",
       "dictionaryForm": "קָטֹן",
       "transliteration": "qaton",
-      "partOfSpeech": "melléknév",
+      "partOfSpeech": "melléknév / ige (stativum)",
       "meaning": "kicsi",
       "adjectiveForms": {
         "masculineSingular": "קָטֹן",
@@ -40,7 +42,10 @@
         "masculinePlural": "קְטַנִּים",
         "femininePlural": "קְטַנּוֹת"
       },
-      "notes": "A קטֹן alak klasszikus héber írásmódja; a későbbi/modern írásban קָטָן is előfordul."
+      "notes": "Melléknévként: 'kicsi'. Stativ Qal perfectum 3ms-ként: 'kicsi volt; kicsivé vált'. Az alak a két használatban azonos.",
+      "root": "קטן",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)"
     },
     {
       "id": "hb-003",
@@ -674,7 +679,7 @@
       "root": "ישב",
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A tanult יָשַׁב alak Qal perfectum 3ms."
+      "notes": "A képen szereplő יָשַׁב Qal perfectum 3ms: 'ült; leült'. A gyök alapjelentése: ülni."
     },
     {
       "id": "hb-049",
@@ -970,7 +975,7 @@
       "lemma": "זָקֵן",
       "dictionaryForm": "זָקֵן",
       "transliteration": "zaqen",
-      "partOfSpeech": "melléknév",
+      "partOfSpeech": "melléknév / ige (stativum)",
       "meaning": "öreg; idős",
       "adjectiveForms": {
         "masculineSingular": "זָקֵן",
@@ -978,7 +983,10 @@
         "masculinePlural": "זְקֵנִים",
         "femininePlural": "זְקֵנוֹת"
       },
-      "notes": "Főnévi használatban 'öregember, vén'; többes számban gyakran 'vének, elöljárók'."
+      "notes": "Melléknévként: 'öreg, idős'. Stativ Qal perfectum 3ms-ként: 'öreg volt; megöregedett'. Az alak a két használatban azonos.",
+      "root": "זקן",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)"
     },
     {
       "id": "hb-067",
@@ -1002,7 +1010,7 @@
         "אָהֲבוּ",
         "ahavu"
       ],
-      "notes": "A Qal perfectum 3ms bibliai írásmódja אָהַב; az אָהֵב alakváltozatként is előfordul."
+      "notes": "Qal perfectum 3ms: 'szeretett'. A szó jelen idejű / általános jelentése: szeret, kedvel."
     },
     {
       "id": "hb-068",
@@ -1272,6 +1280,30 @@
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
       "notes": "Az ige Qal alakban álmot látni, álmodni jelent. A kapcsolódó főnév: חֲלוֹם – álom."
+    },
+    {
+      "id": "hb-082",
+      "lemma": "שָׁמַר",
+      "dictionaryForm": "שָׁמַר",
+      "transliteration": "shamar",
+      "partOfSpeech": "ige",
+      "meaning": "őriz; vigyáz; megőriz",
+      "root": "שמר",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A 9.1-es példában Qal perfectum 3ms: 'őrzött; megőrzött'."
+    },
+    {
+      "id": "hb-083",
+      "lemma": "כָּבֵד",
+      "dictionaryForm": "כָּבֵד",
+      "transliteration": "kaved",
+      "partOfSpeech": "melléknév / ige (stativum)",
+      "meaning": "nehéz; súlyos",
+      "root": "כבד",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)",
+      "notes": "Melléknévként: 'nehéz, súlyos'. Stativ Qal perfectum 3ms-ként: 'nehéz volt; nehézzé vált'."
     }
   ]
 }
