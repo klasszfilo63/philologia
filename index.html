@@ -61,6 +61,21 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .favorite-toggle[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);background:#f7f0df}
 .wordlist-pager{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:13px;font:12px system-ui,sans-serif;color:var(--muted)}
 .wordlist-pager[hidden]{display:none!important}
+.dictionary-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0}
+.dictionary-toolbar input{flex:1 1 260px;width:auto}
+.dictionary-count{font:12px system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.dictionary-table{min-width:620px}
+.dictionary-table th:first-child{width:24%}
+.dictionary-table th:nth-child(2){width:20%}
+.dictionary-table th:nth-child(3){width:56%}
+.dictionary-table td{padding:11px 13px;text-align:left!important;vertical-align:top;line-height:1.5}
+.dictionary-table td .dictionary-lemma{font:600 16px Georgia,"Times New Roman",serif;color:var(--ink)}
+.dictionary-table td .dictionary-form{display:block;margin-top:3px;font:12px/1.4 system-ui,sans-serif;color:var(--muted)}
+.dictionary-table td .dictionary-pos{font:12px/1.5 system-ui,sans-serif;color:var(--muted)}
+.dictionary-table .dictionary-no-results{text-align:center!important;padding:24px;color:var(--muted);font:13px system-ui,sans-serif}
+.dictionary-footnote{margin:12px 0 0;color:var(--muted);font:12px/1.55 system-ui,sans-serif}
+.study-choice-dictionary{--choice-accent:var(--gold)}
+@media(max-width:640px){.dictionary-toolbar{align-items:stretch}.dictionary-toolbar input{flex-basis:100%}.dictionary-count{white-space:normal}}
 .grammar-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
 .grammar-tools input{flex:1 1 240px;width:auto}
 .grammar-tools button{white-space:nowrap}
@@ -322,14 +337,20 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
   <span class="study-choice-desc">Ismerd meg és ismételd át a szótár szavait.</span>
   <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
  </button>
+ <button type="button" class="study-choice study-choice-dictionary" onclick="showTab('dictionary','push')">
+  <span class="study-choice-kicker">02 · Lexicon</span>
+  <span class="study-choice-title">Szótár</span>
+  <span class="study-choice-desc">Böngészd az összes címszót ábécérendben, a jelentésekkel együtt.</span>
+  <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
+ </button>
  <button type="button" class="study-choice study-choice-grammar" onclick="showTab('grammar','push')">
-  <span class="study-choice-kicker">02 · Grammatika</span>
+  <span class="study-choice-kicker">03 · Grammatika</span>
   <span class="study-choice-title">Nyelvtan</span>
   <span class="study-choice-desc">Nyelvtani szabályok, táblázatok és témakörök.</span>
   <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
  </button>
  <button type="button" id="choicePractice" class="study-choice study-choice-practice" onclick="showTab('practice','push')">
-  <span class="study-choice-kicker">03 · Exercitia</span>
+  <span class="study-choice-kicker">04 · Exercitia</span>
   <span class="study-choice-title">Gyakorlás</span>
   <span class="study-choice-desc">Gyakorold a latin szókincset célzott feladatokkal.</span>
   <span class="study-choice-action">Megnyitás <span aria-hidden="true">→</span></span>
@@ -340,6 +361,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div class="study-workspace-head"><button type="button" class="softbtn" onclick="showStudyChooser('replace')">← Tanulási módok</button></div>
 <div class="pillrow" role="tablist" aria-label="Nyelvi tanulómodul">
 <button class="tab active" data-tab="vocab" onclick="showTab('vocab')">Szókártyák</button>
+<button class="tab" data-tab="dictionary" onclick="showTab('dictionary')">Szótár</button>
 <button class="tab advancedTab" data-tab="grammar" onclick="showTab('grammar')">Nyelvtan</button>
 <button class="tab advancedTab" data-tab="practice" onclick="showTab('practice')">Gyakorlás</button>
 </div>
@@ -377,6 +399,23 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <button class="softbtn" onclick="moveCard(-1)">← Előző</button><button class="softbtn" onclick="moveCard(1)">Következő →</button>
 </div>
 <div class="section" style="margin-top:24px"><h3>Szólista</h3><p>Kattints egy szóra, hogy közvetlenül annak a kártyájára ugorj.</p><div id="wordList" class="wordlist"></div><div class="wordlist-pager" id="wordListPager" hidden><button class="softbtn" id="wordListPrev" onclick="changeWordListPage(-1)">← Előző</button><span id="wordListPageLabel"></span><button class="softbtn" id="wordListNext" onclick="changeWordListPage(1)">Következő →</button></div></div>
+</div>
+
+<div id="dictionaryPanel" class="panel hidden dictionary-panel">
+<div class="sub">Lexicon</div>
+<h2 class="grammar-title">Szótár</h2>
+<p class="grammar-lead">A szótár az összes címszót ábécérendben, a magyar jelentésével együtt mutatja. A keresőben görög vagy latin szóra, illetve magyar jelentésre is kereshetsz.</p>
+<div class="dictionary-toolbar">
+<input id="dictionarySearch" type="search" placeholder="Keresés a címszavak és jelentések között…" oninput="renderDictionary()" aria-label="Keresés a szótárban">
+<span id="dictionaryCount" class="dictionary-count" aria-live="polite">Szótár betöltése…</span>
+</div>
+<div class="table-scroll dictionary-table-scroll">
+<table class="declension-table dictionary-table">
+<thead><tr><th>Címszó</th><th>Szófaj</th><th>Jelentés</th></tr></thead>
+<tbody id="dictionaryEntries"><tr><td colspan="3">A szótár betöltése…</td></tr></tbody>
+</table>
+</div>
+<p class="dictionary-footnote">A lista a szókártyák teljes szóanyagát tartalmazza; a szótári böngészés nem változtatja meg a szókártyák sorrendjét vagy a tanulási előrehaladást.</p>
 </div>
 
 <div id="grammarPanel" class="panel hidden grammar-lesson">
@@ -1935,7 +1974,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 </main>
 <script>
 const modules={
- greek:{label:"01 · Hellén nyelv",title:"Ἑλληνικά",desc:"Ógörög · attikai · a korábban küldött szóanyag",color:"greek"},
+ greek:{label:"01 · Hellén nyelv",title:"Ἑλληνικά",desc:"Ógörög · attikai · 227 szócikk",color:"greek"},
  latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"Latin · szótár · nyelvtan · gyakorlás",color:"latin"},
  hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"Klasszikus héber",color:"hebrew"}
 };
@@ -1985,7 +2024,7 @@ function updateResume(){
  const last=readLastLocation();
  if(!last){area.classList.add("hidden");return;}
  const moduleName=modules[last.language].title;
- const tabName=last.language==="hebrew"?"Moduláttekintés":last.tab==="overview"?"Tanulási módok kiválasztása":last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
+ const tabName=last.language==="hebrew"?"Moduláttekintés":last.tab==="overview"?"Tanulási módok kiválasztása":last.tab==="dictionary"?"Szótár":last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
  title.textContent=last.title?moduleName+" · "+last.title:moduleName+" · "+tabName;
  area.classList.remove("hidden");
 }
@@ -2019,7 +2058,7 @@ function routeFromHash(){
  const key=parts[0],requestedTab=parts[1]||"overview";
  if(!modules[key])return "home";
  if(key==="hebrew")return "hebrew/overview";
- const allowed=["overview","vocab","grammar","practice"];
+ const allowed=["overview","vocab","dictionary","grammar","practice"];
  let tab=allowed.includes(requestedTab)?requestedTab:"overview";
  if(key==="greek"&&tab==="practice")tab="vocab";
  return key+"/"+tab;
@@ -2090,6 +2129,7 @@ function openModule(key,pushHistory=true){
  filterGrammar("latin");filterGrammar("greek");
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
+ document.getElementById("dictionarySearch").value="";
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
  document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
@@ -2122,10 +2162,12 @@ function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  document.getElementById("studyWorkspace").classList.remove("hidden");
  if(historyMode)writeAppRoute(currentLanguage+"/"+tab,historyMode);
  document.getElementById("vocabPanel").classList.toggle("hidden",tab!=="vocab");
+ document.getElementById("dictionaryPanel").classList.toggle("hidden",tab!=="dictionary");
  document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
  document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
  document.getElementById("practicePanel").classList.toggle("hidden",tab!=="practice");
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ if(tab==="dictionary")renderDictionary();
  if(enteringVocabulary&&shuffleOnEnter&&dataReady){
   words=shuffledCopy(words);
   applyFilters();
@@ -2135,7 +2177,9 @@ function showTab(tab,historyMode="replace",shuffleOnEnter=true){
 async function loadWords(){
  const requestedLanguage=currentLanguage;
  if(vocabularyCache[requestedLanguage]){
-  words=vocabularyCache[requestedLanguage];dataReady=true;applyFilters();return;
+  words=vocabularyCache[requestedLanguage];dataReady=true;applyFilters();
+  if(!document.getElementById("dictionaryPanel").classList.contains("hidden"))renderDictionary();
+  return;
  }
  const card=document.getElementById("flashcard");
  try{
@@ -2148,6 +2192,7 @@ async function loadWords(){
   words=shuffledCopy(json.entries);
   dataReady=true;
   applyFilters();
+  if(!document.getElementById("dictionaryPanel").classList.contains("hidden"))renderDictionary();
  }catch(err){
   if(currentLanguage!==requestedLanguage)return;
   card.innerHTML='<div class="cardtype">Hiba a szótár betöltésekor</div><div class="meaning">'+escapeHtml(err.message)+'</div><div class="detailrow">Ellenőrizd az internetkapcsolatot, majd frissítsd az oldalt.</div>';
@@ -2155,6 +2200,46 @@ async function loadWords(){
  }
 }
 function normalize(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+
+function normalizeDictionaryText(value){return normalize(value).replace(/ς/g,"σ")}
+function renderDictionary(){
+ const body=document.getElementById("dictionaryEntries");
+ const count=document.getElementById("dictionaryCount");
+ const input=document.getElementById("dictionarySearch");
+ if(!body||!count||!input)return;
+ if(!dataReady){
+  count.textContent="Szótár betöltése…";
+  body.innerHTML='<tr><td colspan="3">A szótár betöltése…</td></tr>';
+  return;
+ }
+ const allEntries=(vocabularyCache[currentLanguage]||words||[]).slice();
+ const query=normalizeDictionaryText(input.value.trim());
+ const locale=currentLanguage==="greek"?"el":"en";
+ const collator=new Intl.Collator(locale,{usage:"sort",sensitivity:"base",numeric:false});
+ const matches=allEntries.filter(entry=>{
+  const searchable=[entry.lemma,entry.dictionaryForm,entry.meaning].join(" ");
+  return !query||normalizeDictionaryText(searchable).includes(query);
+ });
+ matches.sort((a,b)=>{
+  const primary=collator.compare(a.lemma||"",b.lemma||"");
+  if(primary!==0)return primary;
+  const secondary=String(a.lemma||"").localeCompare(String(b.lemma||""),locale);
+  return secondary||String(a.id||"").localeCompare(String(b.id||""));
+ });
+ count.textContent=query?matches.length+" / "+allEntries.length+" szócikk":allEntries.length+" szócikk";
+ if(!matches.length){
+  body.innerHTML='<tr><td colspan="3" class="dictionary-no-results">'+(query?"Nincs találat erre a keresésre.":"A szótár még nem tartalmaz szócikket.")+'</td></tr>';
+  return;
+ }
+ body.innerHTML=matches.map(entry=>{
+  const lemma=escapeHtml(entry.lemma||"—");
+  const dictionaryForm=entry.dictionaryForm&&entry.dictionaryForm!==entry.lemma
+   ?'<small class="dictionary-form">'+escapeHtml(entry.dictionaryForm)+'</small>':"";
+  const partOfSpeech=escapeHtml(entry.partOfSpeech||"—");
+  const meaning=escapeHtml(entry.meaning||"Nincs megadott jelentés.");
+  return '<tr><td><strong class="dictionary-lemma">'+lemma+'</strong>'+dictionaryForm+'</td><td><span class="dictionary-pos">'+partOfSpeech+'</span></td><td>'+meaning+'</td></tr>';
+ }).join("");
+}
 function applyFilters(){
  if(!dataReady)return;
  const q=normalize(document.getElementById("searchBox").value.trim());
