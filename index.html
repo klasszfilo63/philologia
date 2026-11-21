@@ -64,6 +64,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .dictionary-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0}
 .dictionary-toolbar input{flex:1 1 260px;width:auto}
 .dictionary-count{font:12px system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.dictionary-search-hint{flex-basis:100%;margin:-4px 0 0;color:var(--muted);font:12px/1.5 system-ui,sans-serif}
+.dictionary-search-hint[hidden]{display:none!important}
 .dictionary-table{min-width:620px}
 .dictionary-table th:first-child{width:24%}
 .dictionary-table th:nth-child(2){width:20%}
@@ -407,6 +409,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <p class="grammar-lead">A szótár az összes címszót ábécérendben, a magyar jelentésével együtt mutatja. A keresőben görög vagy latin szóra, illetve magyar jelentésre is kereshetsz.</p>
 <div class="dictionary-toolbar">
 <input id="dictionarySearch" type="search" placeholder="Keresés a címszavak és jelentések között…" oninput="renderDictionary()" aria-label="Keresés a szótárban">
+<p id="dictionarySearchHint" class="dictionary-search-hint" hidden>Görög szavakat latin betűs átírással is kereshetsz, például <em>anthropos</em> = ἄνθρωπος.</p>
 <span id="dictionaryCount" class="dictionary-count" aria-live="polite">Szótár betöltése…</span>
 </div>
 <div class="table-scroll dictionary-table-scroll">
@@ -2202,6 +2205,45 @@ async function loadWords(){
 function normalize(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
 
 function normalizeDictionaryText(value){return normalize(value).replace(/ς/g,"σ")}
+const GREEK_LATIN_MAP={
+ "α":["a"],"β":["b"],"γ":["g"],"δ":["d"],"ε":["e"],"ζ":["z"],
+ "η":["e"],"θ":["th"],"ι":["i"],"κ":["k"],"λ":["l"],"μ":["m"],
+ "ν":["n"],"ξ":["x","ks"],"ο":["o"],"π":["p"],"ρ":["r"],
+ "σ":["s"],"τ":["t"],"υ":["y","u"],"φ":["ph","f"],
+ "χ":["ch","kh"],"ψ":["ps"],"ω":["o"],"ϝ":["w"]
+};
+function greekLatinVariants(value){
+ let input=normalizeDictionaryText(value);
+ if(!/[α-ωϝ]/.test(input))return [];
+ let variants=[""];
+ for(let i=0;i<input.length;){
+  let alternatives=null,step=1;
+  const pair=input.slice(i,i+2);
+  if(pair==="γγ"){alternatives=["gg","ng"];step=2}
+  else if(pair==="γκ"){alternatives=["gk","nk"];step=2}
+  else if(pair==="γξ"){alternatives=["gx","nx"];step=2}
+  else if(pair==="γχ"){alternatives=["gch","nch"];step=2}
+  else alternatives=GREEK_LATIN_MAP[input[i]]||[input[i]];
+  const next=[];
+  for(const prefix of variants){
+   for(const form of alternatives){
+    next.push(prefix+form);
+    if(next.length>=128)break;
+   }
+   if(next.length>=128)break;
+  }
+  variants=next;
+  i+=step;
+ }
+ return Array.from(new Set(variants));
+}
+function matchesVocabularySearch(entry,query){
+ const searchable=[entry.lemma,entry.dictionaryForm,entry.meaning,entry.notes,entry.partOfSpeech].join(" ");
+ if(normalizeDictionaryText(searchable).includes(query))return true;
+ if(currentLanguage!=="greek"||!/[a-z]/i.test(query))return false;
+ const greekText=[entry.lemma,entry.dictionaryForm].join(" ");
+ return greekLatinVariants(greekText).some(candidate=>candidate.includes(query));
+}
 function renderDictionary(){
  const body=document.getElementById("dictionaryEntries");
  const count=document.getElementById("dictionaryCount");
@@ -2214,12 +2256,12 @@ function renderDictionary(){
  }
  const allEntries=(vocabularyCache[currentLanguage]||words||[]).slice();
  const query=normalizeDictionaryText(input.value.trim());
+ const hint=document.getElementById("dictionarySearchHint");
+ input.placeholder=currentLanguage==="greek"?"Keresés görög betűkkel vagy latin átírással…":"Keresés latin szóval vagy magyar jelentéssel…";
+ if(hint)hint.hidden=currentLanguage!=="greek";
  const locale=currentLanguage==="greek"?"el":"en";
  const collator=new Intl.Collator(locale,{usage:"sort",sensitivity:"base",numeric:false});
- const matches=allEntries.filter(entry=>{
-  const searchable=[entry.lemma,entry.dictionaryForm,entry.meaning].join(" ");
-  return !query||normalizeDictionaryText(searchable).includes(query);
- });
+ const matches=allEntries.filter(entry=>!query||matchesVocabularySearch(entry,query));
  matches.sort((a,b)=>{
   const primary=collator.compare(a.lemma||"",b.lemma||"");
   if(primary!==0)return primary;
@@ -2255,7 +2297,7 @@ function applyFilters(){
   if(type==="elöljárószó"&&!pos.includes("elöljárószó"))return false;
   if(type==="other"&&(pos.includes("főnév")||pos.includes("ige")||pos.includes("melléknév")||pos.includes("névmás")||pos.includes("elöljárószó")))return false;
   if(!q)return true;
-  return normalize([w.lemma,w.dictionaryForm,w.meaning,w.notes,w.partOfSpeech].join(" ")).includes(q);
+  return matchesVocabularySearch(w,q);
  });
  baseFiltered=filtered.slice();
  current=0;wordListPage=0;renderCard();
