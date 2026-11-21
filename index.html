@@ -2065,8 +2065,10 @@ function resumeLastLocation(){
     setTimeout(()=>topic.scrollIntoView({behavior:"smooth",block:"center"}),80);
    }
   }
+ }else if(last.language==="hebrew"){
+  showTab(tab==="dictionary"?"dictionary":"vocab",false,false);
  }
- writeAppRoute(last.language==="hebrew"?"hebrew/overview":last.language+"/"+tab,"push");
+ writeAppRoute(last.language==="hebrew"?(tab==="dictionary"?"hebrew/dictionary":"hebrew/vocab"):last.language+"/"+tab,"push");
  rememberLocation(last);
  updateResume();
 }
@@ -2328,11 +2330,15 @@ function matchesHebrewVocabularySearch(entry,query){
  const meaningQuery=normalizeDictionaryText(raw);
  const meaningFields=[entry.meaning,entry.notes,entry.partOfSpeech].filter(Boolean).join(" ");
  if(meaningQuery&&normalizeDictionaryText(meaningFields).includes(meaningQuery))return true;
- const queryForms=new Set([normalizeHebrewRoman(raw),...romanConsonantForms(raw)].filter(Boolean));
+ const romanQuery=normalizeHebrewRoman(raw);
+ const transliterations=[entry.transliteration,...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])].filter(Boolean).map(normalizeHebrewRoman);
+ if(romanQuery.length>=3&&transliterations.some(form=>form.includes(romanQuery)))return true;
+ if(romanQuery.length===2&&transliterations.some(form=>form===romanQuery))return true;
+ const queryForms=new Set(romanConsonantForms(raw));
  if(!queryForms.size)return false;
  const candidates=hebrewEntrySearchForms(entry);
  for(const form of queryForms){
-  if(form.length<2)continue;
+  if(form.length<3)continue;
   for(const candidate of candidates){
    if(candidate&&candidate.includes(form))return true;
   }
