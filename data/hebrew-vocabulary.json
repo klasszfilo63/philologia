@@ -11,7 +11,8 @@
     "2026-11-21 user-supplied vocabulary images",
     "2026-11-21 user-supplied vocabulary images (batch 2)",
     "2026-11-21 user-supplied grammar image 9.1–9.2",
-    "Qal-only verb normalization"
+    "Qal-only verb normalization",
+    "Restored originally supplied non-Qal forms where no Qal equivalent is attested"
   ],
   "updated": "2026-11-21",
   "sourceCount": 83,
@@ -1082,23 +1083,27 @@
       "notes": "A gyök ו-s gyenge középső mássalhangzós (ע\"ו) ige. A Qal perfectum 3ms alakja קָם."
     },
     {
-      "lemma": "וְשַׁח",
-      "dictionaryForm": "וְשַׁח",
-      "transliteration": "ve-shach",
+      "lemma": "הִשְׁתַּחֲוָה",
+      "dictionaryForm": "הִשְׁתַּחֲוָה",
+      "transliteration": "hishtachavah",
       "partOfSpeech": "ige",
-      "meaning": "meghajol; leborul; megalázkodik",
-      "root": "שׁחח",
-      "binyan": "Qal",
-      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (waw-consecutivus)",
+      "meaning": "leborul; leborulva hódol; földre borul",
+      "root": "חוה",
+      "binyan": "Hishtaphel / Hitpael",
+      "lemmaType": "Hishtaphel perfectum · 3. személy, hímnem, egyes szám",
       "verbForms": [
         {
-          "form": "שַׁחוּ",
-          "parsing": "Qal perfectum · 3. személy, többes szám",
-          "meaning": "meghajoltak; leborultak",
-          "transliteration": "shachu"
+          "form": "הִשְׁתַּחֲווּ",
+          "parsing": "Hishtaphel perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "leborultak; hódoltak",
+          "transliteration": "hishtachavu"
         }
       ],
-      "notes": "A חוה gyökű 'leborul' ige Hishtaphel alakú, és ehhez a gyökhöz nem adatolható Qal. A Qal-only szóanyagban a közeli jelentésű, de más gyökhöz tartozó שׁחח Qal alakjai szerepelnek. A וְשַׁח BDB-adatolt Qal perfectum 3ms waw-consecutivus forma.",
+      "searchAliases": [
+        "הִשְׁתַּחֲווּ",
+        "hishtachavu"
+      ],
+      "notes": "A szóanyagban eredetileg megadott alakokat változatlanul visszaállítottam. Ehhez a gyökhöz nem veszek fel helyette más gyökből származó Qal-igét.",
       "id": "hb-072"
     },
     {
@@ -1207,23 +1212,27 @@
       "notes": "Rámutató, figyelemfelhívó partikula."
     },
     {
-      "lemma": "אָסַף",
-      "dictionaryForm": "אָסַף",
-      "transliteration": "asaf",
+      "lemma": "אָלַם",
+      "dictionaryForm": "אָלַם",
+      "transliteration": "alam",
       "partOfSpeech": "ige",
-      "meaning": "összegyűjt; összeszed; begyűjt",
-      "root": "אסף",
-      "binyan": "Qal",
-      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "meaning": "kévébe köt; összeköt",
+      "root": "אלם",
+      "binyan": "Pi'el (a megadott alakban)",
+      "lemmaType": "gyöki szótári alak; a 'kévébe köt' jelentésben a forrás a participiumot adja meg",
       "verbForms": [
         {
-          "form": "אֹסְפִים",
-          "parsing": "Qal aktív participium · hímnem, többes szám",
-          "meaning": "összegyűjtők; akik összegyűjtenek",
-          "transliteration": "osfim"
+          "form": "מְאַלְּמִים",
+          "parsing": "Pi'el aktív participium · hímnem, többes szám",
+          "meaning": "kévéket kötöznek; kévékbe kötnek",
+          "transliteration": "meallemim"
         }
       ],
-      "notes": "A kévébe kötésre használt אָלַם gyökből a lexikon a Pi'el participiumot adatolja, Qal alakot nem. A Qal-only szóanyagban ezért a rokon cselekvésű, de más gyökhöz tartozó אָסַף ('összegyűjt') szerepel.",
+      "searchAliases": [
+        "מְאַלְּמִים",
+        "meallemim"
+      ],
+      "notes": "Visszaállítottam a megadott Pi'el participiumot: מְאַלְּמִים. Ehhez a jelentéshez nincs adatolt Qal-alak, ezért nem helyettesítem más gyök Qal-igéjével.",
       "id": "hb-079"
     },
     {
