@@ -2323,10 +2323,10 @@ function hebrewEntryWrittenForms(entry){
   ...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])
  ].filter(Boolean);
  if(entry.forms&&typeof entry.forms==="object"){
-  for(const [key,value] of Object.entries(entry.forms)){
-   if(typeof value==="string")result.push(value);
-   else if(Array.isArray(value))result.push(...value.filter(x=>typeof x==="string"));
+  for(const key of ["singularAbsolute","singularConstruct","pluralAbsolute","pluralConstruct","dualAbsolute","dualConstruct","collective"]){
+   if(typeof entry.forms[key]==="string")result.push(entry.forms[key]);
   }
+  if(Array.isArray(entry.forms.pluralConstructAlternatives))result.push(...entry.forms.pluralConstructAlternatives);
  }
  if(entry.adjectiveForms&&typeof entry.adjectiveForms==="object")result.push(...Object.values(entry.adjectiveForms).filter(x=>typeof x==="string"));
  for(const listName of ["verbForms","attachedForms"]){
