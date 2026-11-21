@@ -97,6 +97,22 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .hebrew-form-detail-meaning{font:11px/1.5 system-ui,sans-serif;color:var(--ink);text-align:right}
 .hebrew-meta{font:11px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 5px}
 .hebrew-no-paradigm{font:11px/1.5 system-ui,sans-serif;color:var(--muted)}
+.hebrew-table{min-width:610px}
+.hebrew-table td:first-child,.hebrew-table th:first-child{text-align:center!important}
+.hebrew-table .hebrew-glyph{display:inline-block;direction:rtl;unicode-bidi:isolate;font:600 22px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;white-space:nowrap}
+.hebrew-table .hebrew-inline,.hebrew-inline{direction:rtl;unicode-bidi:isolate;font:600 19px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;white-space:nowrap}
+.hebrew-table .hebrew-glyph{font-size:22px}
+.hebrew-table .hebrew-glyph + br{line-height:1.2}
+.hebrew-grammar .lesson-box{margin:14px 0}
+.hebrew-grammar .lesson-box h4{margin:16px 0 7px;font-size:15px}
+.hebrew-grammar .lesson-box ul{margin:7px 0 10px;padding-left:22px}
+.hebrew-grammar .lesson-box li{margin:5px 0}
+.hebrew-grammar .hebrew-table th,.hebrew-grammar .hebrew-table td{vertical-align:middle}
+.hebrew-grammar .hebrew-table td{line-height:1.55}
+.hebrew-grammar .vowel-table td:first-child{min-width:58px}
+.hebrew-grammar .greek-example{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:7px 10px;border-left:2px solid var(--gold);margin:7px 0}
+.hebrew-grammar .greek-example .hebrew-glyph{font-size:22px}
+.hebrew-grammar .grammar-note{margin:12px 0;padding:10px 12px;border-left:2px solid var(--gold);background:var(--soft);color:var(--muted);font-size:13px;line-height:1.6}
 .dictionary-footnote{margin:12px 0 0;color:var(--muted);font:12px/1.55 system-ui,sans-serif}
 .study-choice-dictionary{--choice-accent:var(--gold)}
 @media(max-width:640px){.dictionary-toolbar{align-items:stretch}.dictionary-toolbar input{flex-basis:100%}.dictionary-count{white-space:normal}}
@@ -1979,6 +1995,171 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 </div>
 </div>
 
+
+<div id="hebrewGrammarPanel" class="panel hidden grammar-lesson hebrew-grammar">
+<div class="sub">Grammatica Hebraica · עברית מקראית</div>
+<h2 class="grammar-title">Nyelvtan</h2>
+<p class="grammar-lead">Ez a bevezető lecke a klasszikus héber írásrendszer alapjait foglalja össze: a 22 mássalhangzót, a magánhangzójeleket és a legfontosabb kiejtési jelenségeket. A példákban a teljes maszoréta magánhangzójelölés szerepel.</p>
+<div class="grammar-tools">
+  <input class="grammar-search" id="hebrewGrammarSearch" type="search" placeholder="Keresés a héber nyelvtanban…" oninput="filterGrammar('hebrew')">
+  <button class="softbtn" onclick="clearGrammarSearch('hebrew')">Keresés törlése</button>
+  <button class="softbtn grammar-favorites-filter" id="hebrewGrammarFavoritesToggle" aria-pressed="false" onclick="toggleGrammarFavoritesFilter('hebrew')">Kedvencek</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('hebrew',true)">Összes kinyitása</button>
+  <button class="softbtn" onclick="toggleGrammarDetails('hebrew',false)">Összes becsukása</button>
+</div>
+<p class="grammar-search-status" id="hebrewGrammarSearchStatus" aria-live="polite"></p>
+<div class="grammar-categories">
+<details class="grammar-category">
+<summary><span>Bevezetés a héber írásrendszerbe</span><small>1 tananyag</small></summary>
+<div class="grammar-category-content">
+<details class="grammar-topic">
+<summary><span>Az ábécé, a kiejtés és a magánhangzójelölés</span><small>Összefoglaló alaplecke · 5 fejezet</small></summary>
+<div class="grammar-topic-content">
+
+<div class="lesson-box">
+<h3>1. A héber ábécé</h3>
+<p>A klasszikus héber ábécé <strong>22 betűből</strong> áll. Ezek mássalhangzókat jelölnek; a magánhangzókat külön jelek, a magánhangzójelek (niqqud) mutatják. A héber írás iránya <strong>jobbról balra</strong> halad.</p>
+<div class="table-scroll">
+<table class="declension-table hebrew-table">
+<thead><tr><th>Betű</th><th>A betű neve</th><th>Átírás</th><th>Megjegyzés</th></tr></thead>
+<tbody>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">א</bdi></td><td>álef · אָלֶף</td><td>ʾ</td><td>gégehang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בּ / ב</bdi></td><td>bét · בֵּית</td><td>b / v</td><td>begad kefat</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">גּ / ג</bdi></td><td>gímel · גִּימֶל</td><td>g / ḡ</td><td>begad kefat</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">דּ / ד</bdi></td><td>dálet · דָּלֶת</td><td>d / ḏ</td><td>begad kefat</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ה</bdi></td><td>hé · הֵא</td><td>h</td><td>gégehang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ו</bdi></td><td>váv · וָו</td><td>w</td><td>a modern héberben v</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ז</bdi></td><td>zájin · זַיִן</td><td>z</td><td></td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ח</bdi></td><td>ḥét · חֵית</td><td>ḥ</td><td>gégehang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ט</bdi></td><td>ṭét · טֵית</td><td>ṭ</td><td>hangsúlyos / emphatikus hang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">י</bdi></td><td>jód · יוֹד</td><td>y</td><td></td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">כּ / כ</bdi></td><td>káf · כַּף</td><td>k / ḵ</td><td>begad kefat</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ל</bdi></td><td>lámed · לָמֶד</td><td>l</td><td></td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">מ</bdi></td><td>mém · מֵם</td><td>m</td><td>szó végén: ם</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">נ</bdi></td><td>nún · נוּן</td><td>n</td><td>szó végén: ן</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ס</bdi></td><td>számeḵ · סָמֶךְ</td><td>s</td><td></td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ע</bdi></td><td>ʿájin · עַיִן</td><td>ʿ</td><td>gégehang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">פּ / פ</bdi></td><td>pé · פֵּא</td><td>p / f</td><td>begad kefat; szó végén: ף</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">צ</bdi></td><td>ṣádé · צָדִי</td><td>ṣ</td><td>hangsúlyos / emphatikus hang; szó végén: ץ</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ק</bdi></td><td>qóf · קוֹף</td><td>q</td><td>hátrébb képzett k</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ר</bdi></td><td>rés · רֵישׁ</td><td>r</td><td></td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">שׂ / שׁ</bdi></td><td>szín / sín · שִׂין / שִׁין</td><td>ś / š</td><td>a bal oldali pont: szín; a jobb oldali pont: sín</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">תּ / ת</bdi></td><td>táv · תָּו</td><td>t / ṯ</td><td>begad kefat</td></tr>
+</tbody></table></div>
+<p>A <strong>ך, ם, ן, ף, ץ</strong> betűalakok a כ, מ, נ, פ, צ szóvégi változatai. Csak szó végén állhatnak. A mássalhangzó ugyanaz marad, csupán az íráskép változik.</p>
+<div class="grammar-note">A héber szavakat mindig jobbról balra olvasd. A betű neve és a betű által jelölt hang nem feltétlenül azonos: például a ו neve váv, de a klasszikus átírásban w hangot jelöl.</div>
+</div>
+
+<div class="lesson-box">
+<h3>2. Különleges mássalhangzócsoportok</h3>
+<h4>Gégehangok</h4>
+<p>Az <bdi class="hebrew-inline" dir="rtl" lang="he">א, ה, ח, ע</bdi> hangképzése a gége vagy a garat területéhez kapcsolódik.</p>
+<ul>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">א</bdi> – álef: glottális zárhang; a hangrés rövid lezárásával, majd felengedésével keletkezik.</li>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">ה</bdi> – hé: a magyar h-hoz hasonló légzörej.</li>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">ח</bdi> – ḥét: erőteljesebb, garatban képzett, súrlódó h-szerű hang.</li>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">ע</bdi> – ʿájin: zöngés, garatban képzett hang; a ḥét zöngés párjaként közelíthető meg.</li>
+</ul>
+<h4>Emphatikus hangok</h4>
+<p>A <bdi class="hebrew-inline" dir="rtl" lang="he">ט, צ, ק</bdi> képzése a szájüreg hátsóbb részén történik, mint a hozzájuk közel álló egyszerű hangoké.</p>
+<ul>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">ט</bdi> – emphatikus t.</li>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">צ</bdi> – emphatikus s; a mai izraeli kiejtésben többnyire c/ts.</li>
+<li><bdi class="hebrew-inline" dir="rtl" lang="he">ק</bdi> – mélyebben, az uvula közelében képzett, nem aspirált k-szerű hang.</li>
+</ul>
+<h4>A begad kefat betűk</h4>
+<p>A <strong>בגדכפת</strong> hat betű mindegyike kétféleképpen ejthető: zárhangként vagy réshangként. A két ejtés közti különbséget a dāgeš qal pontja jelzi.</p>
+<div class="table-scroll"><table class="declension-table hebrew-table">
+<thead><tr><th>Betű</th><th>Dāgeš-sel · zárhang</th><th>Dāgeš nélkül · réshang</th></tr></thead>
+<tbody>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ב</bdi></td><td>b</td><td>v</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ג</bdi></td><td>g</td><td>ḡ · zöngés, torokban képzett réshang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ד</bdi></td><td>d</td><td>ḏ · a this th-jéhez hasonló hang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">כ</bdi></td><td>k</td><td>ḵ · a német ach ch-jához hasonló hang</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">פ</bdi></td><td>p</td><td>f</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">ת</bdi></td><td>t</td><td>ṯ · a thin th-jéhez hasonló hang</td></tr>
+</tbody></table></div>
+<p>A betűk alapvetően zárhangok; magánhangzó után rendszerint réshanggá válnak. A hosszú, megkettőzött mássalhangzó és a mozgó šəwā után azonban zárhangként maradnak. A mai izraeli kiejtésben a <bdi class="hebrew-inline" dir="rtl" lang="he">ג, ד, ת</bdi> többnyire nem vált réshangra; a réshangos ejtés főként a <bdi class="hebrew-inline" dir="rtl" lang="he">ב, כ, פ</bdi> esetében él.</p>
+</div>
+
+<div class="lesson-box">
+<h3>3. A magánhangzójelek</h3>
+<p>A maszoréta (tiberiási) jelölés külön jelekkel írja le a magánhangzókat. Ezek elsősorban a hang <strong>minőségét</strong> mutatják – vagyis azt, hogy a, e, i, o vagy u hangot ejtünk –, nem önmagában a hosszúságát.</p>
+<div class="table-scroll"><table class="declension-table hebrew-table vowel-table">
+<thead><tr><th>Jel</th><th>Név</th><th>Átírás</th><th>Kiejtés / példa</th></tr></thead>
+<tbody>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בָּ</bdi></td><td>qāmeṣ</td><td>ā</td><td>a, mint az angol arm szóban</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בָּ</bdi></td><td>qāmeṣ ḥāṭûp</td><td>ō</td><td>rövid o, mint az angol soft szóban; a jel alakja a qāmeṣéval azonos, az olvasatot a szótagkörnyezet határozza meg</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בַּ</bdi></td><td>pātaḥ</td><td>a</td><td>a, mint az angol arm szóban</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בֶּ</bdi></td><td>segōl</td><td>e</td><td>e, mint az angol set szóban</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בֵּ</bdi></td><td>ṣērē</td><td>ē</td><td>zárt e; a mai héberben többnyire azonos a segōl hangjával</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בִּ</bdi></td><td>ḥîreq</td><td>i</td><td>i, mint a siesta szóban</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בֹּ</bdi></td><td>ḥōlem</td><td>ō</td><td>o, mint az angol mold szóban</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">וּ</bdi></td><td>šûreq</td><td>û</td><td>u, mint a rule szóban; a pont a ו belsejében áll</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">בֻּ</bdi></td><td>qibbûṣ</td><td>u</td><td>u, mint a rule szóban</td></tr>
+</tbody></table></div>
+<p>A magánhangzójelek többsége a mássalhangzó alatt áll. A ḥōlem a betű fölé, kissé balra kerül; a šûreq pontja pedig a ו belsejében látható. A magánhangzót az alatta álló betű után ejtjük.</p>
+<p>A qāmeṣ és a qāmeṣ ḥāṭûp grafikai alakja azonos lehet, de hangértékük eltér: az előbbi ā, az utóbbi ō. A qāmeṣ ḥāṭûp rendszerint hangsúlytalan, zárt szótagban fordul elő.</p>
+<div class="grammar-note">A magánhangzók hosszúsága önmagában nem olvasható ki biztosan a jelből. A hosszúságot a szótag felépítése és a hangsúly is befolyásolja; a klasszikus nyelvtanban ennek később fontos szerepe lesz.</div>
+</div>
+
+<div class="lesson-box">
+<h3>4. A šəwā és a rövidített magánhangzók</h3>
+<p>A <bdi class="hebrew-inline" dir="rtl" lang="he">ְ</bdi> jel neve <strong>šəwā</strong>. Olyan mássalhangzó alatt áll, amelynek nincs teljes magánhangzója. Két alapvető típusa van.</p>
+<div class="table-scroll"><table class="declension-table hebrew-table">
+<thead><tr><th>Típus</th><th>Funkció</th><th>Példa</th></tr></thead>
+<tbody>
+<tr><th>Nyugvó (quiescens)</th><td>Nem ejtünk utána külön magánhangzót; a szótagot lezárja.</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">שִׁמְעוֹן</bdi> · Šimʿōn<br><bdi class="hebrew-glyph" dir="rtl" lang="he">יִשְׁמֹר</bdi> · őrizni fog</td></tr>
+<tr><th>Mozgó (mobile)</th><td>Rövid, redukált, elmosódó magánhangzót képvisel; átírása gyakran ə.</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">גְּדוֹלָה</bdi> · nagy (nőnem)<br><bdi class="hebrew-glyph" dir="rtl" lang="he">שָׁמְרוּ</bdi> · őriztek</td></tr>
+</tbody></table></div>
+<p>A szó vagy szótag elején álló šəwā mozgó. A nyugvó šəwā a szótagon belül lezárja az előtte álló magánhangzót. A mai héber kiejtésben a mozgó šəwā hangja gyakran elmarad vagy erősen megrövidül.</p>
+<p>Szó végén a magánhangzó nélküli mássalhangzó alatt általában nem jelölik a šəwāt. Fontos kivételek:</p>
+<ul>
+<li>Szóvégi káf: <bdi class="hebrew-inline" dir="rtl" lang="he">הָלַךְ</bdi> – „elment”.</li>
+<li>A nőnemű, 2. személyű alakok szóvégi távja: <bdi class="hebrew-inline" dir="rtl" lang="he">אַתְּ</bdi> – „te” (nőnem); <bdi class="hebrew-inline" dir="rtl" lang="he">שָׁמַרְתְּ</bdi> – „őriztél”.</li>
+</ul>
+<h4>Összetett šəwā-jelek</h4>
+<p>A gégehangok mellett a šəwā rövid magánhangzóval kapcsolódhat össze. Ezek az összetett jelek:</p>
+<div class="table-scroll"><table class="declension-table hebrew-table">
+<thead><tr><th>Jel</th><th>Név</th><th>Hangérték</th><th>Példa</th></tr></thead>
+<tbody>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">חֲ</bdi></td><td>ḥaṭaf pātaḥ</td><td>rövid a</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">יַעֲקֹב</bdi> · Jákób</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אֱ</bdi></td><td>ḥaṭaf segōl</td><td>rövid e</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אֱלֹהִים</bdi> · Isten</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">הֳ</bdi></td><td>ḥaṭaf qāmeṣ</td><td>rövid o</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">צָהֳרַיִם</bdi> · dél, déli órák</td></tr>
+</tbody></table></div>
+<p>Ezek a jelek főként a gégehangok kiejtését könnyítik meg.</p>
+<h4>A végső pataḥ</h4>
+<p>Ha egy gégehang szó végén áll, előtte rendszerint a hangképzéshez szükséges rövid a-hang jelenik meg. Ezt a pataḥ jele mutatja, de a hangot a gégehang előtt ejtjük. Ezt <em>pataḥ furtivum</em> néven ismerjük:</p>
+<div class="greek-example"><bdi class="hebrew-glyph" dir="rtl" lang="he">רוּחַ</bdi><span>–</span><strong>rūaḥ · szellem, lélek</strong></div>
+<div class="greek-example"><bdi class="hebrew-glyph" dir="rtl" lang="he">שׁוֹמֵעַ</bdi><span>–</span><strong>šōmēaʿ · halló, aki hall</strong></div>
+<p>A szóvégi hé általában magánhangzójelölő betűként viselkedik. Ha azonban mássalhangzóként ejtjük, pont jelöli; ezt a pontot <strong>mappíq</strong>-nak nevezzük: <bdi class="hebrew-inline" dir="rtl" lang="he">הּ</bdi>.</p>
+</div>
+
+<div class="lesson-box">
+<h3>5. A dāgeš: zárhang és mássalhangzó-kettőzés</h3>
+<p>A <bdi class="hebrew-inline" dir="rtl" lang="he">ּ</bdi> pontot <strong>dāgeš</strong>-nak nevezzük. A mássalhangzó belsejében jelenik meg, és két fontos funkciója van.</p>
+<h4>Dāgeš qal</h4>
+<p>A „könnyű dāgeš” a begad kefat betűk zárhangú ejtését jelöli. Például a <bdi class="hebrew-inline" dir="rtl" lang="he">בּ</bdi> b hang, míg a pont nélküli <bdi class="hebrew-inline" dir="rtl" lang="he">ב</bdi> v hang. Hasonló a különbség a ג, ד, כ, פ és ת esetében is.</p>
+<h4>Dāgeš ḥāzāq</h4>
+<p>Az „erős dāgeš” a mássalhangzó megkettőzését, hosszú ejtését jelöli. Előfordulhat például:</p>
+<ul>
+<li>két azonos mássalhangzó találkozásakor, amelyek egy hosszú hanggá olvadnak össze;</li>
+<li>mássalhangzó-hasonulás eredményeként;</li>
+<li>bizonyos nyelvtani alakokban, például a határozott névelő után.</li>
+</ul>
+<p>A határozott névelő <bdi class="hebrew-inline" dir="rtl" lang="he">הַ־</bdi> a következő mássalhangzó megkettőzését idézheti elő:</p>
+<div class="greek-example"><bdi class="hebrew-glyph" dir="rtl" lang="he">הַבֵּן</bdi><span>–</span><strong>habben · a fiú</strong></div>
+<p>Ha a megkettőzött mássalhangzó begad kefat betű, a dāgeš miatt zárhangként ejtjük akkor is, ha magánhangzó követi.</p>
+<div class="grammar-note">Jegyezd meg: a dāgeš qal a begad kefat betű ejtését módosítja; a dāgeš ḥāzāq viszont a mássalhangzó hosszúságát, megkettőzését jelöli.</div>
+</div>
+
+</div>
+</details>
+</div>
+</details>
+</div>
+</div>
+
 <div id="practicePanel" class="panel hidden">
 <div class="sub">Exercitia</div><h2 style="font-weight:400;font-size:32px;margin:8px 0">Szókincs gyakorlása</h2>
 <p class="muted">A gyakorló ugyanazt a latin szótárat használja, mint a szókártyák, de csak az általad kiválasztott szóanyagot kérdezi ki.</p>
@@ -2073,9 +2254,9 @@ function resumeLastLocation(){
   }
  }else if(last.language==="hebrew"){
   if(tab==="overview")showStudyChooser(false);
-  else showTab(tab==="dictionary"?"dictionary":"vocab",false,false);
+  else showTab(tab==="dictionary"?"dictionary":tab==="grammar"?"grammar":"vocab",false,false);
  }
- writeAppRoute(last.language==="hebrew"?(tab==="overview"?"hebrew/overview":tab==="dictionary"?"hebrew/dictionary":"hebrew/vocab"):last.language+"/"+tab,"push");
+ writeAppRoute(last.language==="hebrew"?(tab==="overview"?"hebrew/overview":tab==="dictionary"?"hebrew/dictionary":tab==="grammar"?"hebrew/grammar":"hebrew/vocab"):last.language+"/"+tab,"push");
  rememberLocation(last);
  updateResume();
 }
@@ -2085,7 +2266,7 @@ function routeFromHash(){
  const parts=raw.split("/");
  const key=parts[0],requestedTab=parts[1]||"overview";
  if(!modules[key])return "home";
- const allowed=key==="hebrew"?["overview","vocab","dictionary"]:["overview","vocab","dictionary","grammar","practice"];
+ const allowed=key==="hebrew"?["overview","vocab","dictionary","grammar"]:["overview","vocab","dictionary","grammar","practice"];
  let tab=allowed.includes(requestedTab)?requestedTab:"overview";
  if(key==="greek"&&tab==="practice")tab="vocab";
  return key+"/"+tab;
@@ -2155,17 +2336,17 @@ function openModule(key,pushHistory=true){
  revealed=false;
  progress=loadProgress();
  document.getElementById("sessionSize").value="all";
- document.getElementById("latinGrammarSearch").value="";document.getElementById("greekGrammarSearch").value="";
- filterGrammar("latin");filterGrammar("greek");
+ document.getElementById("latinGrammarSearch").value="";document.getElementById("greekGrammarSearch").value="";document.getElementById("hebrewGrammarSearch").value="";
+ filterGrammar("latin");filterGrammar("greek");filterGrammar("hebrew");
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
  document.getElementById("dictionarySearch").value="";
  document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög betűkkel, latin átírással vagy magyar jelentés alapján…":key==="hebrew"?"Keresés héber betűkkel, latin átírással vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
- document.querySelector('button[data-tab="grammar"]').classList.toggle("hidden",key==="hebrew");
+ document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key!=="latin");
  document.getElementById("choicePractice").classList.toggle("hidden",key!=="latin");
  const grammarChoice=document.querySelector(".study-choice-grammar");
- if(grammarChoice)grammarChoice.classList.toggle("hidden",key==="hebrew");
+ if(grammarChoice)grammarChoice.classList.remove("hidden");
  document.getElementById("choicePractice").classList.toggle("hidden",key!=="latin");
  showStudyChooser(false);
  updateStats();
@@ -2190,7 +2371,7 @@ function showStudyChooser(historyMode="push"){
 }
 function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
- if(currentLanguage==="hebrew"&&tab!=="vocab"&&tab!=="dictionary")tab="vocab";
+ if(currentLanguage==="hebrew"&&tab!=="vocab"&&tab!=="dictionary"&&tab!=="grammar")tab="vocab";
  const enteringVocabulary=tab==="vocab"&&document.getElementById("vocabPanel").classList.contains("hidden");
  document.getElementById("studyChooser").classList.add("hidden");
  document.getElementById("studyWorkspace").classList.remove("hidden");
@@ -2199,6 +2380,7 @@ function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  document.getElementById("dictionaryPanel").classList.toggle("hidden",tab!=="dictionary");
  document.getElementById("grammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="latin");
  document.getElementById("greekGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="greek");
+ document.getElementById("hebrewGrammarPanel").classList.toggle("hidden",tab!=="grammar"||currentLanguage!=="hebrew");
  document.getElementById("practicePanel").classList.toggle("hidden",tab!=="practice");
  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
  if(tab==="dictionary")renderDictionary();
@@ -2636,9 +2818,11 @@ function loadGrammarFavorites(){
 function saveGrammarFavorites(values){
  try{localStorage.setItem(GRAMMAR_FAVORITES_KEY,JSON.stringify(values));}catch(e){}
 }
+function grammarPanelId(language){return language==="latin"?"grammarPanel":language==="greek"?"greekGrammarPanel":"hebrewGrammarPanel"}
 function setupGrammarBookmarks(){
- ["latin","greek"].forEach(language=>{
-  const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+ ["latin","greek","hebrew"].forEach(language=>{
+  const panel=document.getElementById(grammarPanelId(language));
+  if(!panel)return;
   panel.querySelectorAll(".grammar-topic").forEach(topic=>{
    const summary=topic.querySelector(":scope > summary");
    if(!summary||topic.querySelector(":scope > .grammar-topic-tools"))return;
@@ -2669,7 +2853,7 @@ function toggleGrammarFavoritesFilter(language){
  filterGrammar(language);
 }
 function filterGrammar(language){
- const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+ const panel=document.getElementById(grammarPanelId(language));
  if(!panel)return;
  const input=panel.querySelector(".grammar-search");
  const query=normalize(input?input.value.trim():"");
@@ -2701,7 +2885,7 @@ function clearGrammarSearch(language){
  filterGrammar(language);
 }
 function toggleGrammarDetails(language,open){
- const panel=document.getElementById(language==="latin"?"grammarPanel":"greekGrammarPanel");
+ const panel=document.getElementById(grammarPanelId(language));
  if(!panel)return;
  panel.querySelectorAll(".grammar-category,.grammar-topic").forEach(item=>{if(!item.hidden)item.open=open;});
 }
@@ -2716,12 +2900,12 @@ function practiceDeponents(){
  applyFilters();showTab("vocab");
 }
 function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-["grammarPanel","greekGrammarPanel"].forEach(panelId=>{
+["grammarPanel","greekGrammarPanel","hebrewGrammarPanel"].forEach(panelId=>{
  const panel=document.getElementById(panelId);
  panel.addEventListener("click",e=>{
   const summary=e.target.closest(".grammar-topic > summary");
   if(!summary)return;
-  try{const language=panelId==="grammarPanel"?"latin":"greek";const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();rememberLocation({language,tab:"grammar",title,at:Date.now()});writeAppRoute(language+"/grammar","push");updateResume();}catch(err){}
+  try{const language=panelId==="grammarPanel"?"latin":panelId==="greekGrammarPanel"?"greek":"hebrew";const title=summary.querySelector("span")?.textContent.trim()||summary.textContent.trim();rememberLocation({language,tab:"grammar",title,at:Date.now()});writeAppRoute(language+"/grammar","push");updateResume();}catch(err){}
  });
 });
 document.getElementById("wordList").addEventListener("click",e=>{
