@@ -2361,6 +2361,11 @@ function renderHebrewMorphology(entry){
  }
  if(entry.forms){
   const f=entry.forms;
+  if(f.collective){
+   return '<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
+    hebrewFormItem("gyűjtőnév",f.collective)+
+    '</div>'+(f.note?'<span class="hebrew-morph-note">'+escapeHtml(f.note)+'</span>':"")+'</div>';
+  }
   const pluralLabel=f.pluralType==="dual"?"kettős · abs.":"pl. · abs.";
   const pluralConstructLabel=f.pluralType==="dual"?"kettős · cstr.":"pl. · cstr.";
   let html='<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
@@ -2407,7 +2412,7 @@ function renderDictionary(){
   if(hint){hint.hidden=false;hint.textContent="Görög szavakat latin betűs átírással is kereshetsz, például petra = πέτρα, logos = λόγος."}
  }else if(currentLanguage==="hebrew"){
   input.placeholder="Keresés héber betűkkel, átírással vagy magyarul…";
-  if(hint){hint.hidden=false;hint.textContent="A niqqud nélküli héber írásmód és a latin átírás is működik. Kereshetsz például shalom, shlvm, slvm, slm vagy שלום alakban."}
+  if(hint){hint.hidden=false;hint.textContent="A niqqud nélküli héber írásmód és a latin átírás is működik. Kereshetsz például bayit, byt vagy בית alakban."}
  }else{
   input.placeholder="Keresés latin szóval vagy magyar jelentéssel…";
   if(hint)hint.hidden=true;
