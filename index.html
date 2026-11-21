@@ -67,14 +67,30 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .dictionary-search-hint{flex-basis:100%;margin:-4px 0 0;color:var(--muted);font:12px/1.5 system-ui,sans-serif}
 .dictionary-search-hint[hidden]{display:none!important}
 .dictionary-table{min-width:620px}
+.dictionary-table.hebrew-dictionary{min-width:900px}
 .dictionary-table th:first-child{width:24%}
 .dictionary-table th:nth-child(2){width:20%}
 .dictionary-table th:nth-child(3){width:56%}
+.dictionary-table.hebrew-dictionary th:first-child{width:16%}
+.dictionary-table.hebrew-dictionary th:nth-child(2){width:13%}
+.dictionary-table.hebrew-dictionary th:nth-child(3){width:39%}
+.dictionary-table.hebrew-dictionary th:nth-child(4){width:32%}
 .dictionary-table td{padding:11px 13px;text-align:left!important;vertical-align:top;line-height:1.5}
 .dictionary-table td .dictionary-lemma{font:600 16px Georgia,"Times New Roman",serif;color:var(--ink)}
 .dictionary-table td .dictionary-form{display:block;margin-top:3px;font:12px/1.4 system-ui,sans-serif;color:var(--muted)}
 .dictionary-table td .dictionary-pos{font:12px/1.5 system-ui,sans-serif;color:var(--muted)}
 .dictionary-table .dictionary-no-results{text-align:center!important;padding:24px;color:var(--muted);font:13px system-ui,sans-serif}
+.hebrew-lemma{direction:rtl;unicode-bidi:isolate;font-family:"Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif!important}
+.lemma.hebrew-lemma{font-size:clamp(36px,6vw,54px);line-height:1.45;margin:12px 0 5px}
+.dictionary-table .hebrew-lemma{font-size:19px!important;display:inline-block}
+.hebrew-transliteration{display:block;margin-top:4px;font:12px/1.5 system-ui,sans-serif;color:var(--muted);font-style:italic;direction:ltr}
+.hebrew-morphology{min-width:220px}
+.hebrew-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px}
+.hebrew-form{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:2px 0;border-bottom:1px solid var(--line)}
+.hebrew-form-label{font:10px/1.4 system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.hebrew-form-value{font:600 15px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;direction:rtl;unicode-bidi:isolate;text-align:right}
+.hebrew-morph-note{display:block;margin-top:6px;font:11px/1.5 system-ui,sans-serif;color:var(--muted)}
+.hebrew-no-paradigm{font:11px/1.5 system-ui,sans-serif;color:var(--muted)}
 .dictionary-footnote{margin:12px 0 0;color:var(--muted);font:12px/1.55 system-ui,sans-serif}
 .study-choice-dictionary{--choice-accent:var(--gold)}
 @media(max-width:640px){.dictionary-toolbar{align-items:stretch}.dictionary-toolbar input{flex-basis:100%}.dictionary-count{white-space:normal}}
@@ -377,7 +393,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div class="toolbar" style="margin-top:18px">
 <input id="searchBox" type="search" placeholder="Keresés szó vagy magyar jelentés alapján…" oninput="applyFilters()">
 <select id="typeFilter" onchange="applyFilters()">
-<option value="all">Minden szófaj</option><option value="favorites">Kedvencek</option><option value="főnév">Főnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="névmás">Névmások</option><option value="elöljárószó">Elöljárószók</option><option value="other">Egyéb</option>
+<option value="all">Minden szófaj</option><option value="favorites">Kedvencek</option><option value="főnév">Főnevek</option><option value="tulajdonnév">Tulajdonnevek</option><option value="ige">Igék</option><option value="deponens">Deponens igék</option><option value="melléknév">Melléknevek</option><option value="névmás">Névmások</option><option value="elöljárószó">Elöljárószók</option><option value="kötőszó">Kötőszók</option><option value="határozószó">Határozószók</option><option value="other">Egyéb</option>
 </select>
 <button class="softbtn" onclick="shuffleCards()">Keverés</button>
 </div>
@@ -406,10 +422,10 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div id="dictionaryPanel" class="panel hidden dictionary-panel">
 <div class="sub">Lexicon</div>
 <h2 class="grammar-title">Szótár</h2>
-<p class="grammar-lead">A szótár az összes címszót ábécérendben, a magyar jelentésével együtt mutatja. A keresőben görög vagy latin szóra, illetve magyar jelentésre is kereshetsz.</p>
+<p class="grammar-lead">A szótár az összes címszót ábécérendben, a magyar jelentésével együtt mutatja. A keresőben a címszóra, az átírásra és a magyar jelentésre is kereshetsz.</p>
 <div class="dictionary-toolbar">
 <input id="dictionarySearch" type="search" placeholder="Keresés a címszavak és jelentések között…" oninput="renderDictionary()" aria-label="Keresés a szótárban">
-<p id="dictionarySearchHint" class="dictionary-search-hint" hidden>Görög szavakat latin betűs átírással is kereshetsz, például <em>petra</em> = πέτρα, <em>logos</em> = λόγος.</p>
+<p id="dictionarySearchHint" class="dictionary-search-hint" hidden></p>
 <span id="dictionaryCount" class="dictionary-count" aria-live="polite">Szótár betöltése…</span>
 </div>
 <div class="table-scroll dictionary-table-scroll">
@@ -1979,7 +1995,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 const modules={
  greek:{label:"01 · Hellén nyelv",title:"Ἑλληνικά",desc:"Ógörög · attikai · 227 szócikk",color:"greek"},
  latin:{label:"02 · Római nyelv",title:"Lingua Latina",desc:"Latin · szótár · nyelvtan · gyakorlás",color:"latin"},
- hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"Klasszikus héber",color:"hebrew"}
+ hebrew:{label:"03 · Héber nyelvek",title:"עברית",desc:"Klasszikus héber · szókincs és szótár",color:"hebrew"}
 };
 const vocabularyCache={};
 let currentLanguage="latin";
@@ -2027,7 +2043,7 @@ function updateResume(){
  const last=readLastLocation();
  if(!last){area.classList.add("hidden");return;}
  const moduleName=modules[last.language].title;
- const tabName=last.language==="hebrew"?"Moduláttekintés":last.tab==="overview"?"Tanulási módok kiválasztása":last.tab==="dictionary"?"Szótár":last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
+ const tabName=last.tab==="overview"?"Tanulási módok kiválasztása":last.tab==="dictionary"?"Szótár":last.tab==="grammar"?"Nyelvtan":last.tab==="practice"?"Gyakorlás":"Szókártyák";
  title.textContent=last.title?moduleName+" · "+last.title:moduleName+" · "+tabName;
  area.classList.remove("hidden");
 }
@@ -2060,7 +2076,7 @@ function routeFromHash(){
  const parts=raw.split("/");
  const key=parts[0],requestedTab=parts[1]||"overview";
  if(!modules[key])return "home";
- if(key==="hebrew")return "hebrew/overview";
+ if(key==="hebrew")return requestedTab==="dictionary"?"hebrew/dictionary":"hebrew/vocab";
  const allowed=["overview","vocab","dictionary","grammar","practice"];
  let tab=allowed.includes(requestedTab)?requestedTab:"overview";
  if(key==="greek"&&tab==="practice")tab="vocab";
@@ -2090,6 +2106,8 @@ function renderAppRoute(route){
  if(key==="latin"||key==="greek"){
   if(tab==="overview")showStudyChooser(false);
   else showTab(tab,false);
+ }else if(key==="hebrew"){
+  showTab(tab,false,false);
  }
  document.title=(modules[key].title||"Philologia")+" — Philologia";
  updateResume();
@@ -2107,7 +2125,7 @@ function initializeAppRouting(){
 function openModule(key,pushHistory=true){
  const m=modules[key];
  activeModuleKey=key;
- const initialTab="overview";
+ const initialTab=key==="hebrew"?"vocab":"overview";
  if(pushHistory)writeAppRoute(key+"/"+initialTab,"push");
  rememberLocation({language:key,tab:initialTab});updateResume();
  document.getElementById("home").classList.add("hidden");
@@ -2116,7 +2134,7 @@ function openModule(key,pushHistory=true){
  document.getElementById("moduleTitle").textContent=m.title;
  document.getElementById("moduleTitle").className=m.color;
  document.getElementById("moduleDesc").textContent=m.desc;
- const hasVocabulary=(key==="latin"||key==="greek");
+ const hasVocabulary=(key==="latin"||key==="greek"||key==="hebrew");
  document.getElementById("languageApp").classList.toggle("hidden",!hasVocabulary);
  document.getElementById("comingSoon").classList.toggle("hidden",hasVocabulary);
  if(!hasVocabulary)return;
@@ -2133,11 +2151,11 @@ function openModule(key,pushHistory=true){
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
  document.getElementById("dictionarySearch").value="";
- document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög betűkkel, latin átírással vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
- document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
- document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
- document.getElementById("choicePractice").classList.toggle("hidden",key==="greek");
- showStudyChooser(false);
+ document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög betűkkel, latin átírással vagy magyar jelentés alapján…":key==="hebrew"?"Keresés héber betűkkel, latin átírással vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
+ document.querySelector('button[data-tab="grammar"]').classList.toggle("hidden",key==="hebrew");
+ document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key!=="latin");
+ document.getElementById("choicePractice").classList.toggle("hidden",key!=="latin");
+ if(key==="hebrew")showTab("vocab",false,false);else showStudyChooser(false);
  updateStats();
  if(dataReady){applyFilters()}else{loadWords()}
 }
@@ -2160,6 +2178,7 @@ function showStudyChooser(historyMode="push"){
 }
 function showTab(tab,historyMode="replace",shuffleOnEnter=true){
  if(currentLanguage==="greek"&&tab==="practice")tab="vocab";
+ if(currentLanguage==="hebrew"&&tab!=="vocab"&&tab!=="dictionary")tab="vocab";
  const enteringVocabulary=tab==="vocab"&&document.getElementById("vocabPanel").classList.contains("hidden");
  document.getElementById("studyChooser").classList.add("hidden");
  document.getElementById("studyWorkspace").classList.remove("hidden");
@@ -2237,7 +2256,127 @@ function greekLatinVariants(value){
  }
  return Array.from(new Set(variants));
 }
+
+function normalizeHebrewScript(value){
+ return String(value||"").normalize("NFD")
+  .replace(/[\u0591-\u05C7]/g,"")
+  .replace(/[\u200e\u200f\u202a-\u202e]/g,"")
+  .replace(/[ךםןףץ]/g,char=>({"ך":"כ","ם":"מ","ן":"נ","ף":"פ","ץ":"צ"}[char]))
+  .replace(/[\s־–—-]/g,"")
+  .normalize("NFC");
+}
+function normalizeHebrewRoman(value){
+ return String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()
+  .replace(/[’\x27\u02be\u02bf\u02bc-]/g,"").replace(/[^a-z0-9]/g,"");
+}
+function romanConsonantForms(value){
+ const base=normalizeHebrewRoman(value).replace(/[aeiou]/g,"");
+ if(base.length<2)return [];
+ return Array.from(new Set([
+  base,
+  base.replace(/sh/g,"s"),
+  base.replace(/ch/g,"h").replace(/kh/g,"h"),
+  base.replace(/ts|tz/g,"s"),
+  base.replace(/sh/g,"s").replace(/ts|tz/g,"s")
+ ]));
+}
+const HEBREW_LATIN_LETTERS={
+ "א":[""],"ב":["b","v"],"ג":["g"],"ד":["d"],"ה":["h",""],"ו":["v","w",""],
+ "ז":["z"],"ח":["ch","kh"],"ט":["t"],"י":["y","i",""],"כ":["k","kh"],"ך":["k","kh"],
+ "ל":["l"],"מ":["m"],"ם":["m"],"נ":["n"],"ן":["n"],"ס":["s"],"ע":[""],
+ "פ":["p","f"],"ף":["p","f"],"צ":["ts","tz"],"ץ":["ts","tz"],"ק":["q","k"],
+ "ר":["r"],"ש":["sh","s"],"ת":["t"]
+};
+function hebrewConsonantForms(value){
+ const letters=normalizeHebrewScript(value).replace(/[^א-ת]/g,"");
+ let variants=[""];
+ for(const letter of letters){
+  const options=HEBREW_LATIN_LETTERS[letter]||[""];
+  const next=[];
+  for(const prefix of variants){
+   for(const suffix of options){
+    next.push(prefix+suffix);
+    if(next.length>=160)break;
+   }
+   if(next.length>=160)break;
+  }
+  variants=next;
+ }
+ return Array.from(new Set(variants.filter(Boolean)));
+}
+function hebrewEntrySearchForms(entry){
+ const result=new Set();
+ const transliterations=[entry.transliteration,...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])].filter(Boolean);
+ for(const value of transliterations){
+  result.add(normalizeHebrewRoman(value));
+  romanConsonantForms(value).forEach(form=>result.add(form));
+ }
+ hebrewConsonantForms(entry.lemma||"").forEach(form=>result.add(form));
+ hebrewConsonantForms(entry.dictionaryForm||"").forEach(form=>result.add(form));
+ return result;
+}
+function matchesHebrewVocabularySearch(entry,query){
+ const raw=String(query||"").trim();
+ if(!raw)return true;
+ const isHebrew=/[\u05D0-\u05EA]/.test(raw);
+ if(isHebrew){
+  const target=normalizeHebrewScript(raw);
+  if(!target)return false;
+  return [entry.lemma,entry.dictionaryForm].filter(Boolean)
+   .some(value=>normalizeHebrewScript(value).includes(target));
+ }
+ const meaningQuery=normalizeDictionaryText(raw);
+ const meaningFields=[entry.meaning,entry.notes,entry.partOfSpeech].filter(Boolean).join(" ");
+ if(meaningQuery&&normalizeDictionaryText(meaningFields).includes(meaningQuery))return true;
+ const queryForms=new Set([normalizeHebrewRoman(raw),...romanConsonantForms(raw)].filter(Boolean));
+ if(!queryForms.size)return false;
+ const candidates=hebrewEntrySearchForms(entry);
+ for(const form of queryForms){
+  if(form.length<2)continue;
+  for(const candidate of candidates){
+   if(candidate&&candidate.includes(form))return true;
+  }
+ }
+ return false;
+}
+function hebrewFormItem(label,value){
+ if(!value)return "";
+ return '<div class="hebrew-form"><span class="hebrew-form-label">'+escapeHtml(label)+'</span><bdi class="hebrew-form-value" dir="rtl" lang="he">'+escapeHtml(value)+'</bdi></div>';
+}
+function renderHebrewMorphology(entry){
+ if(entry.adjectiveForms){
+  const a=entry.adjectiveForms;
+  return '<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
+   hebrewFormItem("hímnem · sg.",a.masculineSingular)+
+   hebrewFormItem("nőnem · sg.",a.feminineSingular)+
+   hebrewFormItem("hímnem · pl.",a.masculinePlural)+
+   hebrewFormItem("nőnem · pl.",a.femininePlural)+
+   '</div></div>';
+ }
+ if(entry.forms){
+  const f=entry.forms;
+  const pluralLabel=f.pluralType==="dual"?"kettős · abs.":"pl. · abs.";
+  const pluralConstructLabel=f.pluralType==="dual"?"kettős · cstr.":"pl. · cstr.";
+  let html='<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
+   hebrewFormItem("sg. · abs.",f.singularAbsolute)+
+   hebrewFormItem("sg. · cstr.",f.singularConstruct)+
+   hebrewFormItem(pluralLabel,f.pluralAbsolute)+
+   hebrewFormItem(pluralConstructLabel,f.pluralConstruct)+
+   hebrewFormItem("du. · abs.",f.dualAbsolute)+
+   hebrewFormItem("du. · cstr.",f.dualConstruct)+
+   '</div>';
+  if(Array.isArray(f.pluralConstructAlternatives)&&f.pluralConstructAlternatives.length){
+   html+='<span class="hebrew-morph-note">További construct alak: '+f.pluralConstructAlternatives.map(x=>'<bdi dir="rtl" lang="he">'+escapeHtml(x)+'</bdi>').join(" / ")+'</span>';
+  }
+  if(f.note)html+='<span class="hebrew-morph-note">'+escapeHtml(f.note)+'</span>';
+  return html+'</div>';
+ }
+ if(entry.partOfSpeech==="tulajdonnév")return '<span class="hebrew-no-paradigm">Tulajdonnév · nincs szokásos főnévi paradigmája</span>';
+ return "—";
+}
+
 function matchesVocabularySearch(entry,query){
+ if(currentLanguage==="hebrew")return matchesHebrewVocabularySearch(entry,query);
  const searchable=[entry.lemma,entry.dictionaryForm,entry.meaning,entry.notes,entry.partOfSpeech].join(" ");
  if(normalizeDictionaryText(searchable).includes(query))return true;
  if(currentLanguage!=="greek"||!/[a-z]/i.test(query))return false;
@@ -2255,11 +2394,23 @@ function renderDictionary(){
   return;
  }
  const allEntries=(vocabularyCache[currentLanguage]||words||[]).slice();
- const query=normalizeDictionaryText(input.value.trim());
+ const query=currentLanguage==="hebrew"?input.value.trim():normalizeDictionaryText(input.value.trim());
  const hint=document.getElementById("dictionarySearchHint");
- input.placeholder=currentLanguage==="greek"?"Keresés görög betűkkel vagy latin átírással…":"Keresés latin szóval vagy magyar jelentéssel…";
- if(hint)hint.hidden=currentLanguage!=="greek";
- const locale=currentLanguage==="greek"?"el":"en";
+ if(currentLanguage==="greek"){
+  input.placeholder="Keresés görög betűkkel vagy latin átírással…";
+  if(hint){hint.hidden=false;hint.textContent="Görög szavakat latin betűs átírással is kereshetsz, például petra = πέτρα, logos = λόγος."}
+ }else if(currentLanguage==="hebrew"){
+  input.placeholder="Keresés héber betűkkel, átírással vagy magyarul…";
+  if(hint){hint.hidden=false;hint.textContent="A niqqud nélküli héber írásmód és a latin átírás is működik. Kereshetsz például shalom, shlvm, slvm, slm vagy שלום alakban."}
+ }else{
+  input.placeholder="Keresés latin szóval vagy magyar jelentéssel…";
+  if(hint)hint.hidden=true;
+ }
+ const locale=currentLanguage==="greek"?"el":currentLanguage==="hebrew"?"he":"en";
+ const dictionaryTable=document.querySelector(".dictionary-table");
+ if(dictionaryTable)dictionaryTable.classList.toggle("hebrew-dictionary",currentLanguage==="hebrew");
+ const dictionaryHead=document.querySelector(".dictionary-table thead");
+ if(dictionaryHead)dictionaryHead.innerHTML=currentLanguage==="hebrew"?'<tr><th>Címszó</th><th>Szófaj</th><th>Alakok</th><th>Jelentés</th></tr>':'<tr><th>Címszó</th><th>Szófaj</th><th>Jelentés</th></tr>';
  const collator=new Intl.Collator(locale,{usage:"sort",sensitivity:"base",numeric:false});
  const matches=allEntries.filter(entry=>!query||matchesVocabularySearch(entry,query));
  matches.sort((a,b)=>{
@@ -2270,32 +2421,41 @@ function renderDictionary(){
  });
  count.textContent=query?matches.length+" / "+allEntries.length+" szócikk":allEntries.length+" szócikk";
  if(!matches.length){
-  body.innerHTML='<tr><td colspan="3" class="dictionary-no-results">'+(query?"Nincs találat erre a keresésre.":"A szótár még nem tartalmaz szócikket.")+'</td></tr>';
+  body.innerHTML='<tr><td colspan="'+(currentLanguage==="hebrew"?4:3)+'" class="dictionary-no-results">'+(query?"Nincs találat erre a keresésre.":"A szótár még nem tartalmaz szócikket.")+'</td></tr>';
   return;
  }
  body.innerHTML=matches.map(entry=>{
   const lemma=escapeHtml(entry.lemma||"—");
-  const dictionaryForm=entry.dictionaryForm&&entry.dictionaryForm!==entry.lemma
-   ?'<small class="dictionary-form">'+escapeHtml(entry.dictionaryForm)+'</small>':"";
+  const dictionaryForm=currentLanguage==="hebrew"&&entry.transliteration
+   ?'<small class="hebrew-transliteration">'+escapeHtml(entry.transliteration)+'</small>'
+   :entry.dictionaryForm&&entry.dictionaryForm!==entry.lemma?'<small class="dictionary-form">'+escapeHtml(entry.dictionaryForm)+'</small>':"";
   const partOfSpeech=escapeHtml(entry.partOfSpeech||"—");
   const meaning=escapeHtml(entry.meaning||"Nincs megadott jelentés.");
+  if(currentLanguage==="hebrew"){
+   const morphology=renderHebrewMorphology(entry);
+   return '<tr><td><strong class="dictionary-lemma hebrew-lemma" dir="rtl" lang="he">'+lemma+'</strong>'+dictionaryForm+'</td><td><span class="dictionary-pos">'+partOfSpeech+'</span></td><td>'+morphology+'</td><td>'+meaning+'</td></tr>';
+  }
   return '<tr><td><strong class="dictionary-lemma">'+lemma+'</strong>'+dictionaryForm+'</td><td><span class="dictionary-pos">'+partOfSpeech+'</span></td><td>'+meaning+'</td></tr>';
  }).join("");
 }
 function applyFilters(){
  if(!dataReady)return;
- const q=normalizeDictionaryText(document.getElementById("searchBox").value.trim());
+ const rawQuery=document.getElementById("searchBox").value.trim();
+ const q=currentLanguage==="hebrew"?rawQuery:normalizeDictionaryText(rawQuery);
  const type=document.getElementById("typeFilter").value;
  filtered=words.filter(w=>{
   const pos=normalize(w.partOfSpeech||"");
   if(type==="favorites"&&!progress.favorites.includes(w.id))return false;
    if(type==="főnév"&&!pos.includes("főnév"))return false;
+  if(type==="tulajdonnév"&&!pos.includes("tulajdonnév"))return false;
+  if(type==="kötőszó"&&!pos.includes("kötőszó"))return false;
+  if(type==="határozószó"&&!pos.includes("határozószó"))return false;
   if(type==="ige"&&!pos.includes("ige"))return false;
   if(type==="deponens"&&!w.isDeponent)return false;
   if(type==="melléknév"&&!pos.includes("melléknév"))return false;
   if(type==="névmás"&&!pos.includes("névmás"))return false;
   if(type==="elöljárószó"&&!pos.includes("elöljárószó"))return false;
-  if(type==="other"&&(pos.includes("főnév")||pos.includes("ige")||pos.includes("melléknév")||pos.includes("névmás")||pos.includes("elöljárószó")))return false;
+  if(type==="other"&&(pos.includes("főnév")||pos.includes("tulajdonnév")||pos.includes("ige")||pos.includes("melléknév")||pos.includes("névmás")||pos.includes("elöljárószó")||pos.includes("kötőszó")||pos.includes("határozószó")))return false;
   if(!q)return true;
   return matchesVocabularySearch(w,q);
  });
@@ -2319,8 +2479,12 @@ function renderCard(){
  const w=filtered[current];revealed=false;
  const type=w.partOfSpeech||"szócikk";
  const favoriteButton=document.getElementById("favoriteButton");favoriteButton.disabled=false;favoriteButton.setAttribute("aria-pressed",String(progress.favorites.includes(w.id)));favoriteButton.textContent=progress.favorites.includes(w.id)?"★ Kedvencek között":"☆ Kedvencekhez";
- const languageTitle=currentLanguage==="greek"?"Ógörög · attikai":"Latin";
- card.innerHTML='<div class="cardtype">'+languageTitle+' · '+escapeHtml(type)+'</div><div class="lemma">'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(w.dictionaryForm||"")+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
+ const languageTitle=currentLanguage==="greek"?"Ógörög · attikai":currentLanguage==="hebrew"?"Klasszikus héber":"Latin";
+ const hebrew=currentLanguage==="hebrew";
+ const lemmaClass=hebrew?"lemma hebrew-lemma":"lemma";
+ const lemmaDirection=hebrew?' dir="rtl" lang="he"':"";
+ const secondaryForm=hebrew?(w.transliteration||""):(w.dictionaryForm||"");
+ card.innerHTML='<div class="cardtype">'+languageTitle+' · '+escapeHtml(type)+'</div><div class="'+lemmaClass+'"'+lemmaDirection+'>'+escapeHtml(w.lemma)+'</div><div class="dictform">'+escapeHtml(secondaryForm)+'</div><div class="cardmeta">Kattints a jelentés felfedéséhez</div>';
  document.getElementById("revealButton").textContent="Jelentés felfedése";
  wordListPage=Math.floor(current/WORDS_PER_PAGE);
  renderWordList();
@@ -2328,7 +2492,7 @@ function renderCard(){
 function renderWordList(){
  const start=wordListPage*WORDS_PER_PAGE;
  const items=filtered.slice(start,start+WORDS_PER_PAGE);
- document.getElementById("wordList").innerHTML=items.map((item,i)=>'<button class="worditem" data-word-index="'+(start+i)+'"><strong>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+(progress.favorites.includes(item.id)?" · ★ kedvenc":"")+'</span></button>').join("");
+ document.getElementById("wordList").innerHTML=items.map((item,i)=>'<button class="worditem" data-word-index="'+(start+i)+'"><strong'+(currentLanguage==="hebrew"?' class="hebrew-lemma" dir="rtl" lang="he"':"")+'>'+escapeHtml(item.lemma)+'</strong><span>'+escapeHtml(item.partOfSpeech||"szócikk")+(progress.known.includes(item.id)?" · ✓ ismert":"")+(progress.favorites.includes(item.id)?" · ★ kedvenc":"")+'</span></button>').join("");
  const pager=document.getElementById("wordListPager");
  const pages=Math.max(1,Math.ceil(filtered.length/WORDS_PER_PAGE));
  pager.hidden=filtered.length<=WORDS_PER_PAGE;
@@ -2377,6 +2541,7 @@ function reveal(){
  if(w.conjugation)parts.push('<div class="detailrow">Igeragozás: <strong>'+w.conjugation+'. coniugatio</strong></div>');
  if(w.formType)parts.push('<div class="detailrow"><span class="tagpill green">'+escapeHtml(w.formType)+'</span></div>');
  if(w.voice)parts.push('<div class="detailrow">Igealak / igei nem: '+escapeHtml(w.voice)+'</div>');
+ if(currentLanguage==="hebrew"&&(w.forms||w.adjectiveForms))parts.push('<div class="detailrow">'+renderHebrewMorphology(w)+'</div>');
  if(w.notes)parts.push('<div class="detailrow">'+escapeHtml(w.notes)+'</div>');
  if(w.partOfSpeech==="participium"||String(w.partOfSpeech||"").includes("participium"))parts.push('<div class="detailrow"><span class="tagpill green">Melléknévi igenév</span></div>');
  document.getElementById("flashcard").innerHTML+='<div class="reveal">'+parts.join("")+'</div>';
