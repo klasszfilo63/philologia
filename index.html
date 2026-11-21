@@ -38,7 +38,7 @@ try{if(localStorage.getItem("philologia-theme")==="dark")document.documentElemen
 button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:26px 22px 58px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:17px}.brand{font:13px system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase}.sub{color:var(--muted);font:11px/1.4 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}
 h1{font-weight:400;font-size:clamp(42px,8vw,76px);letter-spacing:.035em;margin:42px 0 4px;line-height:1.06}.intro{color:var(--muted);font-size:18px;margin:0 0 30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:15px}.tile{background:var(--card);border:1px solid var(--line);padding:23px;border-radius:5px;min-height:206px;display:flex;flex-direction:column}.tile .tag{font:10px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}.tile h2{font-size:31px;font-weight:400;margin:12px 0 2px}.tile p{color:var(--muted);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:15px}.tile{background:var(--card);border:1.5px solid currentColor;padding:23px;border-radius:13px;min-height:206px;display:flex;flex-direction:column;text-align:left;cursor:pointer;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background-color .18s ease}.tile:hover{background:var(--soft);transform:translateY(-2px);box-shadow:0 8px 22px rgba(35,29,20,.08)}.tile:focus-visible{outline:3px solid currentColor;outline-offset:3px}.tile .tag{font:10px system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}.tile h2{font-size:31px;font-weight:400;margin:12px 0 2px}.tile p{color:var(--muted);margin:0}
 button{font:13px system-ui,sans-serif;border:1px solid currentColor;background:transparent;color:inherit;padding:10px 14px;border-radius:3px}.tile button{align-self:flex-start;margin-top:auto}.primary{background:var(--latin);color:white;border-color:var(--latin)}.softbtn{border-color:var(--line);background:var(--card)}button:disabled{opacity:.35;cursor:not-allowed}
 .greek{color:var(--greek)}.latin{color:var(--latin)}.hebrew{color:var(--heb)}
 .section{margin-top:40px;border-top:1px solid var(--line);padding-top:19px}.section h3{font-size:22px;font-weight:400;margin:0 0 7px}.section p{color:var(--muted);margin:0;max-width:760px}
@@ -89,7 +89,7 @@ input,select{width:100%;border:1px solid var(--line);background:#fffefa;padding:
 .grammargrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:18px}.grammartile{border:1px solid var(--line);padding:17px;background:#fffefa;min-height:130px}.grammartile h3{margin:0 0 5px;font-weight:400;font-size:21px}.grammartile p{font:12px/1.55 system-ui,sans-serif;color:var(--muted);margin:0}
 .progressbar{height:5px;background:#e8e1d5;border-radius:8px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--gold);width:0}
 footer{margin-top:45px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font:11px system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:640px){.wrap{padding:19px 15px 42px}.top{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.tile{min-height:185px}.panel{padding:13px}.statgrid{gap:6px}.stat{padding:9px}.flashcard{min-height:290px}}
+@media(max-width:640px){.wrap{padding:19px 15px 42px}.top{align-items:flex-start;flex-direction:column}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.tile{min-height:185px}.panel{padding:13px}.statgrid{gap:6px}.stat{padding:9px}.flashcard{min-height:290px}}\n@media(prefers-reduced-motion:reduce){.tile{transition:none}.tile:hover{transform:none}}
 
 .grammar-lesson{line-height:1.6}
 .grammar-title{font-size:clamp(30px,5vw,42px);font-weight:400;margin:8px 0 8px}
@@ -293,9 +293,9 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
   <p>A Philologia az ókori világ iránt érdeklődők digitális műhelye. A görög, latin és héber nyelvek, az irodalom és a mítoszok nem pusztán egy távoli kor emlékei: olyan szövegek és történetek örökségét őrzik, amelyek ma is formálják, ahogyan a világról és önmagunkról gondolkodunk. Az antikvitás tanulmányozása közelebb visz kultúránk gyökereihez, és segít megérteni azokat a kérdéseket, amelyek különböző korokon átívelve is közösek maradnak. A Philologia teret ad ennek a felfedezésnek: a nyelvek, a szövegek és az antik kultúra találkozásának.</p>
 </section>
 <div class="grid">
-<article class="tile greek"><div class="tag">01 · Hellén nyelv</div><h2>Ἑλληνικά</h2><p>Ógörög · attikai · 227 szócikk</p><button onclick="openModule('greek')">Belépés</button></article>
-<article class="tile latin"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Klasszikus latin · 836 szócikk</p><button onclick="openModule('latin')">Belépés</button></article>
-<article class="tile hebrew"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus héber</p><button onclick="openModule('hebrew')">Belépés</button></article>
+<article class="tile greek" role="button" tabindex="0" aria-label="Belépés az ógörög nyelv felületére" onclick="openModule('greek')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModule('greek')}"><div class="tag">01 · Hellén nyelv</div><h2>Ἑλληνικά</h2><p>Ógörög · attikai · 227 szócikk</p></article>
+<article class="tile latin" role="button" tabindex="0" aria-label="Belépés a latin nyelv felületére" onclick="openModule('latin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModule('latin')}"><div class="tag">02 · Római nyelv</div><h2>Lingua Latina</h2><p>Klasszikus latin · 836 szócikk</p></article>
+<article class="tile hebrew" role="button" tabindex="0" aria-label="Belépés a héber nyelv felületére" onclick="openModule('hebrew')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModule('hebrew')}"><div class="tag">03 · Héber nyelvek</div><h2>עברית</h2><p>Klasszikus héber</p></article>
 </div>
 <section class="resume-area hidden" id="resumeArea" aria-label="Legutóbb megnyitott tananyag">
  <div class="resume-copy"><span class="resume-label">Folytatás</span><span class="resume-title" id="resumeTitle"></span></div>
@@ -2363,7 +2363,14 @@ function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":
 });
 document.getElementById("wordList").addEventListener("click",e=>{
  const btn=e.target.closest("[data-word-index]");if(!btn)return;
- const i=Number(btn.dataset.wordIndex);if(Number.isInteger(i)&&i>=0&&i<filtered.length){current=i;renderCard()}
+ const i=Number(btn.dataset.wordIndex);
+ if(Number.isInteger(i)&&i>=0&&i<filtered.length){
+  current=i;
+  renderCard();
+  const card=document.getElementById("flashcard");
+  const reducedMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  card.scrollIntoView({behavior:reducedMotion?"auto":"smooth",block:"center"});
+ }
 });
 document.addEventListener("keydown",e=>{
  if(document.getElementById("module").classList.contains("hidden"))return;
