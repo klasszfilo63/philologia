@@ -1,0 +1,459 @@
+{
+  "language": "Classical Hebrew",
+  "dialect": "Biblical Hebrew",
+  "batch": 1,
+  "batches": [
+    1
+  ],
+  "sourceFiles": [
+    "2026-11-21 user-supplied vocabulary images"
+  ],
+  "updated": "2026-11-21",
+  "sourceCount": 36,
+  "entries": [
+    {
+      "id": "hb-001",
+      "lemma": "גָּדוֹל",
+      "dictionaryForm": "גָּדוֹל",
+      "transliteration": "gadol",
+      "partOfSpeech": "melléknév",
+      "meaning": "nagy",
+      "adjectiveForms": {
+        "masculineSingular": "גָּדוֹל",
+        "feminineSingular": "גְּדוֹלָה",
+        "masculinePlural": "גְּדוֹלִים",
+        "femininePlural": "גְּדוֹלוֹת"
+      }
+    },
+    {
+      "id": "hb-002",
+      "lemma": "קָטֹן",
+      "dictionaryForm": "קָטֹן",
+      "transliteration": "qaton",
+      "partOfSpeech": "melléknév",
+      "meaning": "kicsi",
+      "adjectiveForms": {
+        "masculineSingular": "קָטֹן",
+        "feminineSingular": "קְטַנָּה",
+        "masculinePlural": "קְטַנִּים",
+        "femininePlural": "קְטַנּוֹת"
+      },
+      "notes": "A קטֹן alak klasszikus héber írásmódja; a későbbi/modern írásban קָטָן is előfordul."
+    },
+    {
+      "id": "hb-003",
+      "lemma": "אָח",
+      "dictionaryForm": "אָח",
+      "transliteration": "ach",
+      "partOfSpeech": "főnév",
+      "meaning": "fiútestvér, fivér",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "אָח",
+        "singularConstruct": "אֲחִי",
+        "pluralAbsolute": "אַחִים",
+        "pluralConstruct": "אַחֵי"
+      }
+    },
+    {
+      "id": "hb-004",
+      "lemma": "יוֹסֵף",
+      "dictionaryForm": "יוֹסֵף",
+      "transliteration": "yosef",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "József",
+      "gender": "hímnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-005",
+      "lemma": "נַעַר",
+      "dictionaryForm": "נַעַר",
+      "transliteration": "na'ar",
+      "partOfSpeech": "főnév",
+      "meaning": "fiú, ifjú, legény; szolga",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "נַעַר",
+        "singularConstruct": "נַעַר",
+        "pluralAbsolute": "נְעָרִים",
+        "pluralConstruct": "נַעֲרֵי"
+      }
+    },
+    {
+      "id": "hb-006",
+      "lemma": "בִּנְיָמִין",
+      "dictionaryForm": "בִּנְיָמִין",
+      "transliteration": "binyamin",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Benjamin",
+      "gender": "hímnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-007",
+      "lemma": "מַה",
+      "dictionaryForm": "מַה",
+      "transliteration": "mah",
+      "partOfSpeech": "kérdő névmás",
+      "meaning": "mi?; mit?",
+      "notes": "Kérdő névmás."
+    },
+    {
+      "id": "hb-008",
+      "lemma": "מִי",
+      "dictionaryForm": "מִי",
+      "transliteration": "mi",
+      "partOfSpeech": "kérdő névmás",
+      "meaning": "ki?"
+    },
+    {
+      "id": "hb-009",
+      "lemma": "יַעֲקֹב",
+      "dictionaryForm": "יַעֲקֹב",
+      "transliteration": "ya'aqov",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Jákób",
+      "gender": "hímnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-010",
+      "lemma": "אִישׁ",
+      "dictionaryForm": "אִישׁ",
+      "transliteration": "ish",
+      "partOfSpeech": "főnév",
+      "meaning": "férfi, ember",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "אִישׁ",
+        "singularConstruct": "אִישׁ",
+        "pluralAbsolute": "אֲנָשִׁים",
+        "pluralConstruct": "אַנְשֵׁי"
+      }
+    },
+    {
+      "id": "hb-011",
+      "lemma": "לֵאָה",
+      "dictionaryForm": "לֵאָה",
+      "transliteration": "le'ah",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Lea",
+      "gender": "nőnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-012",
+      "lemma": "לְ",
+      "dictionaryForm": "לְ",
+      "transliteration": "le",
+      "partOfSpeech": "elöljárószó",
+      "meaning": "-hoz, -hez, -höz; -nak, -nek; -ra, -re; számára",
+      "notes": "A לְ az alapforma; a következő szó első hangjához igazodva a magánhangzója változhat."
+    },
+    {
+      "id": "hb-013",
+      "lemma": "יָד",
+      "dictionaryForm": "יָד",
+      "transliteration": "yad",
+      "partOfSpeech": "főnév",
+      "meaning": "kéz",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "יָד",
+        "singularConstruct": "יַד",
+        "pluralAbsolute": "יָדוֹת",
+        "pluralConstruct": "יְדוֹת",
+        "dualAbsolute": "יָדַיִם",
+        "dualConstruct": "יְדֵי",
+        "note": "A két kéz szokásos alakja kettős szám: יָדַיִם; ennek construct alakja יְדֵי. A יָדוֹת / יְדוֹת többes szám főként átvitt használatban fordul elő."
+      }
+    },
+    {
+      "id": "hb-014",
+      "lemma": "עַיִן",
+      "dictionaryForm": "עַיִן",
+      "transliteration": "ayin",
+      "partOfSpeech": "főnév",
+      "meaning": "szem",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "עַיִן",
+        "singularConstruct": "עֵין",
+        "pluralAbsolute": "עֵינַיִם",
+        "pluralConstruct": "עֵינֵי",
+        "pluralType": "dual",
+        "note": "A szokásos 'szemek' alak kettős számú: עֵינַיִם; construct alakja עֵינֵי."
+      }
+    },
+    {
+      "id": "hb-015",
+      "lemma": "וְ",
+      "dictionaryForm": "וְ",
+      "transliteration": "ve",
+      "partOfSpeech": "kötőszó",
+      "meaning": "és",
+      "notes": "A וְ kötőszó magánhangzója a következő hang és szóalak függvényében változhat."
+    },
+    {
+      "id": "hb-016",
+      "lemma": "רְאוּבֵן",
+      "dictionaryForm": "רְאוּבֵן",
+      "transliteration": "re'uven",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Rúben",
+      "gender": "hímnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-017",
+      "lemma": "רָחֵל",
+      "dictionaryForm": "רָחֵל",
+      "transliteration": "rahel",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Ráhel",
+      "gender": "nőnem",
+      "notes": "Személynév."
+    },
+    {
+      "id": "hb-018",
+      "lemma": "אִשָּׁה",
+      "dictionaryForm": "אִשָּׁה",
+      "transliteration": "ishah",
+      "partOfSpeech": "főnév",
+      "meaning": "nő; feleség",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "אִשָּׁה",
+        "singularConstruct": "אֵשֶׁת",
+        "pluralAbsolute": "נָשִׁים",
+        "pluralConstruct": "נְשֵׁי"
+      }
+    },
+    {
+      "id": "hb-019",
+      "lemma": "בַּיִת",
+      "dictionaryForm": "בַּיִת",
+      "transliteration": "bayit",
+      "partOfSpeech": "főnév",
+      "meaning": "ház; háztartás",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "בַּיִת",
+        "singularConstruct": "בֵּית",
+        "pluralAbsolute": "בָּתִּים",
+        "pluralConstruct": "בָּתֵּי"
+      }
+    },
+    {
+      "id": "hb-020",
+      "lemma": "שָׂדֶה",
+      "dictionaryForm": "שָׂדֶה",
+      "transliteration": "sadeh",
+      "partOfSpeech": "főnév",
+      "meaning": "mező, szántóföld, határ",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "שָׂדֶה",
+        "singularConstruct": "שְׂדֵה",
+        "pluralAbsolute": "שָׂדוֹת",
+        "pluralConstruct": "שְׂדוֹת",
+        "pluralConstructAlternatives": [
+          "שְׂדֵי"
+        ],
+        "note": "A többes szám constructusban a שְׂדֵי alakváltozat is adatolt."
+      }
+    },
+    {
+      "id": "hb-021",
+      "lemma": "אָב",
+      "dictionaryForm": "אָב",
+      "transliteration": "av",
+      "partOfSpeech": "főnév",
+      "meaning": "apa, atya",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "אָב",
+        "singularConstruct": "אֲבִי",
+        "pluralAbsolute": "אָבוֹת",
+        "pluralConstruct": "אֲבוֹת"
+      }
+    },
+    {
+      "id": "hb-022",
+      "lemma": "אֵינֶנּוּ",
+      "dictionaryForm": "אֵינֶנּוּ",
+      "transliteration": "einennu",
+      "partOfSpeech": "létige tagadó alakja",
+      "meaning": "nincs; ő nincs / ő nem ...",
+      "notes": "Hímnemű, egyes szám harmadik személyű tagadó létigealak."
+    },
+    {
+      "id": "hb-023",
+      "lemma": "אֵיפֹה",
+      "dictionaryForm": "אֵיפֹה",
+      "transliteration": "eifoh",
+      "partOfSpeech": "kérdő határozószó",
+      "meaning": "hol?; merre?"
+    },
+    {
+      "id": "hb-024",
+      "lemma": "בְּ",
+      "dictionaryForm": "בְּ",
+      "transliteration": "be",
+      "partOfSpeech": "elöljárószó",
+      "meaning": "-ban, -ben; -val, -vel; -on, -en, -ön",
+      "notes": "A בְּ az alapforma; a következő szó első hangjához igazodva a magánhangzója változhat."
+    },
+    {
+      "id": "hb-025",
+      "lemma": "פָּרָה",
+      "dictionaryForm": "פָּרָה",
+      "transliteration": "parah",
+      "partOfSpeech": "főnév",
+      "meaning": "tehén",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "פָּרָה",
+        "singularConstruct": "פָּרַת",
+        "pluralAbsolute": "פָּרוֹת",
+        "pluralConstruct": "פָּרוֹת",
+        "note": "A sing. constructus a nőnemű -ָה végződés -ַת alakjával képződik; a többes szám -וֹת végű alakja abszolutusban és constructusban azonos."
+      }
+    },
+    {
+      "id": "hb-026",
+      "lemma": "טוֹב",
+      "dictionaryForm": "טוֹב",
+      "transliteration": "tov",
+      "partOfSpeech": "melléknév",
+      "meaning": "jó",
+      "adjectiveForms": {
+        "masculineSingular": "טוֹב",
+        "feminineSingular": "טוֹבָה",
+        "masculinePlural": "טוֹבִים",
+        "femininePlural": "טוֹבוֹת"
+      }
+    },
+    {
+      "id": "hb-027",
+      "lemma": "רֹעֶה",
+      "dictionaryForm": "רֹעֶה",
+      "transliteration": "ro'eh",
+      "partOfSpeech": "főnév",
+      "meaning": "pásztor",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "רֹעֶה",
+        "singularConstruct": "רֹעֵה",
+        "pluralAbsolute": "רֹעִים",
+        "pluralConstruct": "רֹעֵי"
+      }
+    },
+    {
+      "id": "hb-028",
+      "lemma": "יָפֶה",
+      "dictionaryForm": "יָפֶה",
+      "transliteration": "yafeh",
+      "partOfSpeech": "melléknév",
+      "meaning": "szép, csinos, jóképű",
+      "adjectiveForms": {
+        "masculineSingular": "יָפֶה",
+        "feminineSingular": "יָפָה",
+        "masculinePlural": "יָפִים",
+        "femininePlural": "יָפוֹת"
+      }
+    },
+    {
+      "id": "hb-029",
+      "lemma": "אֶרֶץ",
+      "dictionaryForm": "אֶרֶץ",
+      "transliteration": "erets",
+      "partOfSpeech": "főnév",
+      "meaning": "föld, ország, vidék",
+      "gender": "nőnem",
+      "forms": {
+        "singularAbsolute": "אֶרֶץ",
+        "singularConstruct": "אֶרֶץ",
+        "pluralAbsolute": "אֲרָצוֹת",
+        "pluralConstruct": "אַרְצוֹת"
+      },
+      "notes": "Határozott alakban: הָאָרֶץ – a föld / az ország."
+    },
+    {
+      "id": "hb-030",
+      "lemma": "כְּנַעַן",
+      "dictionaryForm": "כְּנַעַן",
+      "transliteration": "kena'an",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Kánaán",
+      "gender": "hímnem",
+      "notes": "Földrajzi tulajdonnév."
+    },
+    {
+      "id": "hb-031",
+      "lemma": "יְהוּדָה",
+      "dictionaryForm": "יְהוּדָה",
+      "transliteration": "yehudah",
+      "partOfSpeech": "tulajdonnév",
+      "meaning": "Júda",
+      "gender": "hímnem",
+      "notes": "Személy- és földrajzi tulajdonnévként is használatos."
+    },
+    {
+      "id": "hb-032",
+      "lemma": "צֹאן",
+      "dictionaryForm": "צֹאן",
+      "transliteration": "tson",
+      "partOfSpeech": "főnév",
+      "meaning": "juhok, kecskék; aprójószág, nyáj",
+      "gender": "nőnem (gyűjtőnév)",
+      "forms": {
+        "singularAbsolute": "צֹאן",
+        "singularConstruct": "צֹאן",
+        "pluralAbsolute": "צֹאן",
+        "pluralConstruct": "צֹאן",
+        "note": "Gyűjtőnév: az állatok csoportjára utal, és nem alkot külön, szabályos többes számú alapalakot; a forma constructusban is változatlan."
+      }
+    },
+    {
+      "id": "hb-033",
+      "lemma": "אֵלֶּה",
+      "dictionaryForm": "אֵלֶּה",
+      "transliteration": "elleh",
+      "partOfSpeech": "mutató névmás",
+      "meaning": "ezek"
+    },
+    {
+      "id": "hb-034",
+      "lemma": "בֵּן",
+      "dictionaryForm": "בֵּן",
+      "transliteration": "ben",
+      "partOfSpeech": "főnév",
+      "meaning": "fiú; fiúgyermek",
+      "gender": "hímnem",
+      "forms": {
+        "singularAbsolute": "בֵּן",
+        "singularConstruct": "בֶּן",
+        "pluralAbsolute": "בָּנִים",
+        "pluralConstruct": "בְּנֵי"
+      }
+    },
+    {
+      "id": "hb-035",
+      "lemma": "הוּא",
+      "dictionaryForm": "הוּא",
+      "transliteration": "hu",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ő (hímnem, egyes szám)"
+    },
+    {
+      "id": "hb-036",
+      "lemma": "הֵם",
+      "dictionaryForm": "הֵם",
+      "transliteration": "hem",
+      "partOfSpeech": "személyes névmás",
+      "meaning": "ők (hímnem / vegyes csoport, többes szám)"
+    }
+  ]
+}
