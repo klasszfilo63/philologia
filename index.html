@@ -409,7 +409,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <p class="grammar-lead">A szótár az összes címszót ábécérendben, a magyar jelentésével együtt mutatja. A keresőben görög vagy latin szóra, illetve magyar jelentésre is kereshetsz.</p>
 <div class="dictionary-toolbar">
 <input id="dictionarySearch" type="search" placeholder="Keresés a címszavak és jelentések között…" oninput="renderDictionary()" aria-label="Keresés a szótárban">
-<p id="dictionarySearchHint" class="dictionary-search-hint" hidden>Görög szavakat latin betűs átírással is kereshetsz, például <em>anthropos</em> = ἄνθρωπος.</p>
+<p id="dictionarySearchHint" class="dictionary-search-hint" hidden>Görög szavakat latin betűs átírással is kereshetsz, például <em>petra</em> = πέτρα, <em>logos</em> = λόγος.</p>
 <span id="dictionaryCount" class="dictionary-count" aria-live="polite">Szótár betöltése…</span>
 </div>
 <div class="table-scroll dictionary-table-scroll">
@@ -2133,7 +2133,7 @@ function openModule(key,pushHistory=true){
  document.getElementById("typeFilter").value="all";
  document.getElementById("searchBox").value="";
  document.getElementById("dictionarySearch").value="";
- document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög szó vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
+ document.getElementById("searchBox").placeholder=key==="greek"?"Keresés görög betűkkel, latin átírással vagy magyar jelentés alapján…":"Keresés latin szó vagy magyar jelentés alapján…";
  document.querySelector('button[data-tab="grammar"]').classList.remove("hidden");
  document.querySelector('button[data-tab="practice"]').classList.toggle("hidden",key==="greek");
  document.getElementById("choicePractice").classList.toggle("hidden",key==="greek");
@@ -2284,7 +2284,7 @@ function renderDictionary(){
 }
 function applyFilters(){
  if(!dataReady)return;
- const q=normalize(document.getElementById("searchBox").value.trim());
+ const q=normalizeDictionaryText(document.getElementById("searchBox").value.trim());
  const type=document.getElementById("typeFilter").value;
  filtered=words.filter(w=>{
   const pos=normalize(w.partOfSpeech||"");
