@@ -90,6 +90,12 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .hebrew-form-label{font:10px/1.4 system-ui,sans-serif;color:var(--muted);white-space:nowrap}
 .hebrew-form-value{font:600 15px/1.5 "Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;direction:rtl;unicode-bidi:isolate;text-align:right}
 .hebrew-morph-note{display:block;margin-top:6px;font:11px/1.5 system-ui,sans-serif;color:var(--muted)}
+.hebrew-form-meaning{font:11px/1.5 system-ui,sans-serif;color:var(--muted);margin-left:8px}
+.hebrew-form-detail{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:4px 0;border-bottom:1px solid var(--line)}
+.hebrew-form-detail-main{display:flex;flex-direction:column;gap:1px;min-width:0}
+.hebrew-form-detail-parse{font:10px/1.4 system-ui,sans-serif;color:var(--muted)}
+.hebrew-form-detail-meaning{font:11px/1.5 system-ui,sans-serif;color:var(--ink);text-align:right}
+.hebrew-meta{font:11px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 5px}
 .hebrew-no-paradigm{font:11px/1.5 system-ui,sans-serif;color:var(--muted)}
 .dictionary-footnote{margin:12px 0 0;color:var(--muted);font:12px/1.55 system-ui,sans-serif}
 .study-choice-dictionary{--choice-accent:var(--gold)}
@@ -2310,32 +2316,58 @@ function hebrewConsonantForms(value){
  }
  return Array.from(new Set(variants.filter(Boolean)));
 }
+function hebrewEntryWrittenForms(entry){
+ const result=[
+  entry.lemma,entry.dictionaryForm,
+  ...(Array.isArray(entry.alternativeForms)?entry.alternativeForms:[]),
+  ...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])
+ ].filter(Boolean);
+ if(entry.forms&&typeof entry.forms==="object"){
+  for(const [key,value] of Object.entries(entry.forms)){
+   if(typeof value==="string")result.push(value);
+   else if(Array.isArray(value))result.push(...value.filter(x=>typeof x==="string"));
+  }
+ }
+ if(entry.adjectiveForms&&typeof entry.adjectiveForms==="object")result.push(...Object.values(entry.adjectiveForms).filter(x=>typeof x==="string"));
+ for(const listName of ["verbForms","attachedForms"]){
+  if(Array.isArray(entry[listName]))result.push(...entry[listName].map(item=>item.form).filter(Boolean));
+ }
+ return Array.from(new Set(result));
+}
 function hebrewEntrySearchForms(entry){
  const result=new Set();
- const transliterations=[entry.transliteration,...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])].filter(Boolean);
- for(const value of transliterations){
-  result.add(normalizeHebrewRoman(value));
-  romanConsonantForms(value).forEach(form=>result.add(form));
+ const written=hebrewEntryWrittenForms(entry);
+ for(const value of written){
+  if(/[\u05D0-\u05EA]/.test(value)){
+   hebrewConsonantForms(value).forEach(form=>result.add(form));
+  }else{
+   const roman=normalizeHebrewRoman(value);
+   if(roman)result.add(roman);
+   romanConsonantForms(value).forEach(form=>result.add(form));
+  }
  }
- hebrewConsonantForms(entry.lemma||"").forEach(form=>result.add(form));
- hebrewConsonantForms(entry.dictionaryForm||"").forEach(form=>result.add(form));
+ if(entry.transliteration){
+  const roman=normalizeHebrewRoman(entry.transliteration);
+  if(roman)result.add(roman);
+  romanConsonantForms(entry.transliteration).forEach(form=>result.add(form));
+ }
  return result;
 }
 function matchesHebrewVocabularySearch(entry,query){
  const raw=String(query||"").trim();
  if(!raw)return true;
+ const written=hebrewEntryWrittenForms(entry);
  const isHebrew=/[\u05D0-\u05EA]/.test(raw);
  if(isHebrew){
   const target=normalizeHebrewScript(raw);
   if(!target)return false;
-  return [entry.lemma,entry.dictionaryForm].filter(Boolean)
-   .some(value=>normalizeHebrewScript(value).includes(target));
+  return written.some(value=>normalizeHebrewScript(value).includes(target));
  }
  const meaningQuery=normalizeDictionaryText(raw);
  const meaningFields=[entry.meaning,entry.notes,entry.partOfSpeech].filter(Boolean).join(" ");
  if(meaningQuery&&normalizeDictionaryText(meaningFields).includes(meaningQuery))return true;
  const romanQuery=normalizeHebrewRoman(raw);
- const transliterations=[entry.transliteration,...(Array.isArray(entry.searchAliases)?entry.searchAliases:[])].filter(Boolean).map(normalizeHebrewRoman);
+ const transliterations=[entry.transliteration,...written.filter(value=>!(/[\u05D0-\u05EA]/.test(value)))].filter(Boolean).map(normalizeHebrewRoman);
  if(romanQuery.length>=3&&transliterations.some(form=>form.includes(romanQuery)))return true;
  if(romanQuery.length===2&&transliterations.some(form=>form===romanQuery))return true;
  const queryForms=new Set(romanConsonantForms(raw));
@@ -2353,41 +2385,65 @@ function hebrewFormItem(label,value){
  if(!value)return "";
  return '<div class="hebrew-form"><span class="hebrew-form-label">'+escapeHtml(label)+'</span><bdi class="hebrew-form-value" dir="rtl" lang="he">'+escapeHtml(value)+'</bdi></div>';
 }
+function hebrewDetailForm(item){
+ if(!item||!item.form)return "";
+ return '<div class="hebrew-form-detail"><div class="hebrew-form-detail-main"><bdi class="hebrew-form-value" dir="rtl" lang="he">'+escapeHtml(item.form)+'</bdi><span class="hebrew-form-detail-parse">'+escapeHtml(item.parsing||"Kapcsolódó alak")+'</span></div><span class="hebrew-form-detail-meaning">'+escapeHtml(item.meaning||"")+'</span></div>';
+}
 function renderHebrewMorphology(entry){
+ const sections=[];
+ if(entry.root||entry.binyan||entry.lemmaType){
+  const meta=[entry.root?"gyök: "+entry.root:"",entry.binyan?"binyan: "+entry.binyan:"",entry.lemmaType||""].filter(Boolean).join(" · ");
+  sections.push('<div class="hebrew-meta">'+escapeHtml(meta)+'</div>');
+ }
+ if(entry.person||entry.gender||entry.number){
+  const meta=[entry.person||"",entry.gender||"",entry.number||""].filter(Boolean).join(" · ");
+  if(meta)sections.push('<div class="hebrew-meta">'+escapeHtml(meta)+'</div>');
+ }
+ if(Array.isArray(entry.alternativeForms)&&entry.alternativeForms.length){
+  sections.push('<div class="hebrew-morph-note">Alakváltozat: '+entry.alternativeForms.map(x=>'<bdi dir="rtl" lang="he">'+escapeHtml(x)+'</bdi>').join(" / ")+'</div>');
+ }
  if(entry.adjectiveForms){
   const a=entry.adjectiveForms;
-  return '<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
+  sections.push('<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
    hebrewFormItem("hímnem · sg.",a.masculineSingular)+
    hebrewFormItem("nőnem · sg.",a.feminineSingular)+
    hebrewFormItem("hímnem · pl.",a.masculinePlural)+
    hebrewFormItem("nőnem · pl.",a.femininePlural)+
-   '</div></div>';
+   '</div></div>');
  }
  if(entry.forms){
   const f=entry.forms;
   if(f.collective){
-   return '<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
-    hebrewFormItem("gyűjtőnév",f.collective)+
-    '</div>'+(f.note?'<span class="hebrew-morph-note">'+escapeHtml(f.note)+'</span>':"")+'</div>';
+   sections.push('<div class="hebrew-morphology"><div class="hebrew-form-grid">'+hebrewFormItem("gyűjtőnév",f.collective)+'</div></div>');
+  }else{
+   const pluralLabel=f.pluralType==="dual"?"kettős · abs.":"pl. · abs.";
+   const pluralConstructLabel=f.pluralType==="dual"?"kettős · cstr.":"pl. · cstr.";
+   let html='<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
+    hebrewFormItem("sg. · abs.",f.singularAbsolute)+
+    hebrewFormItem("sg. · cstr.",f.singularConstruct)+
+    hebrewFormItem(pluralLabel,f.pluralAbsolute)+
+    hebrewFormItem(pluralConstructLabel,f.pluralConstruct)+
+    hebrewFormItem("du. · abs.",f.dualAbsolute)+
+    hebrewFormItem("du. · cstr.",f.dualConstruct)+
+    '</div>';
+   if(Array.isArray(f.pluralConstructAlternatives)&&f.pluralConstructAlternatives.length){
+    html+='<span class="hebrew-morph-note">További construct alak: '+f.pluralConstructAlternatives.map(x=>'<bdi dir="rtl" lang="he">'+escapeHtml(x)+'</bdi>').join(" / ")+'</span>';
+   }
+   if(f.note)html+='<span class="hebrew-morph-note">'+escapeHtml(f.note)+'</span>';
+   sections.push(html+'</div>');
   }
-  const pluralLabel=f.pluralType==="dual"?"kettős · abs.":"pl. · abs.";
-  const pluralConstructLabel=f.pluralType==="dual"?"kettős · cstr.":"pl. · cstr.";
-  let html='<div class="hebrew-morphology"><div class="hebrew-form-grid">'+
-   hebrewFormItem("sg. · abs.",f.singularAbsolute)+
-   hebrewFormItem("sg. · cstr.",f.singularConstruct)+
-   hebrewFormItem(pluralLabel,f.pluralAbsolute)+
-   hebrewFormItem(pluralConstructLabel,f.pluralConstruct)+
-   hebrewFormItem("du. · abs.",f.dualAbsolute)+
-   hebrewFormItem("du. · cstr.",f.dualConstruct)+
-   '</div>';
-  if(Array.isArray(f.pluralConstructAlternatives)&&f.pluralConstructAlternatives.length){
-   html+='<span class="hebrew-morph-note">További construct alak: '+f.pluralConstructAlternatives.map(x=>'<bdi dir="rtl" lang="he">'+escapeHtml(x)+'</bdi>').join(" / ")+'</span>';
-  }
-  if(f.note)html+='<span class="hebrew-morph-note">'+escapeHtml(f.note)+'</span>';
-  return html+'</div>';
  }
- if(entry.partOfSpeech==="tulajdonnév")return '<span class="hebrew-no-paradigm">Tulajdonnév · nincs szokásos főnévi paradigmája</span>';
- return "—";
+ if(Array.isArray(entry.verbForms)&&entry.verbForms.length){
+  sections.push('<div class="hebrew-morphology"><div class="hebrew-form-label">Tanult igealakok</div>'+entry.verbForms.map(hebrewDetailForm).join("")+'</div>');
+ }
+ if(Array.isArray(entry.attachedForms)&&entry.attachedForms.length){
+  sections.push('<div class="hebrew-morphology"><div class="hebrew-form-label">Kapcsolódó / személyragos alakok</div>'+entry.attachedForms.map(hebrewDetailForm).join("")+'</div>');
+ }
+ if(entry.notes){
+  sections.push('<span class="hebrew-morph-note">'+escapeHtml(entry.notes)+'</span>');
+ }
+ if(!sections.length&&entry.partOfSpeech==="tulajdonnév")return '<span class="hebrew-no-paradigm">Tulajdonnév · nincs szokásos névszói paradigmája</span>';
+ return sections.join("")||"—";
 }
 
 function matchesVocabularySearch(entry,query){
@@ -2556,8 +2612,8 @@ function reveal(){
  if(w.conjugation)parts.push('<div class="detailrow">Igeragozás: <strong>'+w.conjugation+'. coniugatio</strong></div>');
  if(w.formType)parts.push('<div class="detailrow"><span class="tagpill green">'+escapeHtml(w.formType)+'</span></div>');
  if(w.voice)parts.push('<div class="detailrow">Igealak / igei nem: '+escapeHtml(w.voice)+'</div>');
- if(currentLanguage==="hebrew"&&(w.forms||w.adjectiveForms))parts.push('<div class="detailrow">'+renderHebrewMorphology(w)+'</div>');
- if(w.notes)parts.push('<div class="detailrow">'+escapeHtml(w.notes)+'</div>');
+ if(currentLanguage==="hebrew"&&(w.forms||w.adjectiveForms||w.verbForms||w.attachedForms||w.alternativeForms||w.root||w.person||w.notes))parts.push('<div class="detailrow">'+renderHebrewMorphology(w)+'</div>');
+ if(w.notes&&currentLanguage!=="hebrew")parts.push('<div class="detailrow">'+escapeHtml(w.notes)+'</div>');
  if(w.partOfSpeech==="participium"||String(w.partOfSpeech||"").includes("participium"))parts.push('<div class="detailrow"><span class="tagpill green">Melléknévi igenév</span></div>');
  document.getElementById("flashcard").innerHTML+='<div class="reveal">'+parts.join("")+'</div>';
  document.getElementById("revealButton").textContent="Válasz elrejtése";
