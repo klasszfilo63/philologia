@@ -11,7 +11,7 @@
     "2026-11-21 user-supplied vocabulary images (batch 2)"
   ],
   "updated": "2026-11-21",
-  "sourceCount": 80,
+  "sourceCount": 81,
   "entries": [
     {
       "id": "hb-001",
@@ -1187,7 +1187,11 @@
         "חֲלֹמִי",
         "halomo",
         "halomi"
-      ]
+      ],
+      "relatedEntries": [
+        "חָלַם"
+      ],
+      "notes": "A főnév az חָלַם ('álmodik') igével rokon."
     },
     {
       "id": "hb-078",
@@ -1256,6 +1260,18 @@
         "alummoteikhem"
       ],
       "notes": "A többes számú alakok között a forrásban hímnemű végződésű אֲלֻמִּים és személyragos nőnemű אֲלֻמֹּתֵיכֶם is szerepel."
+    },
+    {
+      "id": "hb-081",
+      "lemma": "חָלַם",
+      "dictionaryForm": "חָלַם",
+      "transliteration": "halam",
+      "partOfSpeech": "ige",
+      "meaning": "álmodik; álmot lát",
+      "root": "חלם",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "Az ige Qal alakban álmot látni, álmodni jelent. A kapcsolódó főnév: חֲלוֹם – álom."
     }
   ]
 }
