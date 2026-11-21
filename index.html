@@ -118,6 +118,9 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .hebrew-grammar .lesson-box li{margin:5px 0}
 .hebrew-grammar .hebrew-table th,.hebrew-grammar .hebrew-table td{vertical-align:middle}
 .hebrew-grammar .hebrew-table td{line-height:1.55}
+.hebrew-grammar .hebrew-example-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:7px 14px;margin:10px 0}
+.hebrew-grammar .hebrew-example-list>div{display:flex;align-items:baseline;gap:10px;padding:4px 8px;border-bottom:1px solid var(--line)}
+.hebrew-grammar .hebrew-example-list .hebrew-glyph{min-width:74px}
 .hebrew-grammar .vowel-table td:first-child{min-width:58px}
 .hebrew-grammar .greek-example{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:7px 10px;border-left:2px solid var(--gold);margin:7px 0}
 .hebrew-grammar .greek-example .hebrew-glyph{font-size:22px}
@@ -2208,7 +2211,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div class="grammar-topic-content">
 <div class="lesson-box">
 <h3>1. Mi a névszói mondat?</h3>
-<p>A névszói mondatban az alany főnév vagy névmás, az állítmány pedig főnév vagy melléknév. A legegyszerűbb szerkezetben az alany és az állítmány egymás mellett áll; jelen időben nincs közöttük külön létige („van”).</p>
+<p>A névszói mondatban az alany főnév, az állítmány pedig főnév vagy melléknév. A legegyszerűbb szerkezetben az alany és az állítmány egymás mellett áll; jelen időben nincs közöttük külön létige („van”).</p>
 <div class="grammar-note">Ha a mondat időviszonyát a szövegkörnyezet nem határozza meg, jelen idejűként értjük.</div>
 <h4>Példák</h4>
 <div class="greek-example"><bdi class="hebrew-glyph" dir="rtl" lang="he">יוֹסֵף גָּדוֹל</bdi><span>–</span><strong>József nagy.</strong></div>
@@ -2248,7 +2251,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">פַּעַם</bdi><span>alkalom, egyszer</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">יָד</bdi><span>kéz</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">עַיִן</bdi><span>szem</span></div>
-<div><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזֶן</bdi><span>fül</span></div>
+<div><bdi class="hebrew-glyph" dir="rtl" lang="he">אֹזֶן</bdi><span>fül</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">רֶגֶל</bdi><span>láb</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">אֵם</bdi><span>anya</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">אָתוֹן</bdi><span>szamárkanca</span></div>
@@ -2276,7 +2279,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <thead><tr><th>Egyes szám</th><th>Kettős szám</th><th>Jelentés</th></tr></thead>
 <tbody>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">יָד</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">יָדַיִם</bdi></td><td>kéz → kezek</td></tr>
-<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזֶן</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזְנַיִם</bdi></td><td>fül → fülek</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אֹזֶן</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזְנַיִם</bdi></td><td>fül → fülek</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">רֶגֶל</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">רַגְלַיִם</bdi></td><td>láb → lábak</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">עַיִן</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">עֵינַיִם</bdi></td><td>szem → szemek</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">פַּעַם</bdi></td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">פְּעָמַיִם</bdi></td><td>egyszer → kétszer</td></tr>
@@ -2292,7 +2295,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <p>Bizonyos magánhangzó-minták esetén azonban a hangsúly az utolsó előtti szótagra esik. Ilyen például:</p>
 <div class="hebrew-example-list">
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">פַּעַם</bdi><span>alkalom, egyszer</span></div>
-<div><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזֶן</bdi><span>fül</span></div>
+<div><bdi class="hebrew-glyph" dir="rtl" lang="he">אֹזֶן</bdi><span>fül</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">כְּתֹנֶת</bdi><span>tunika</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">עַיִן</bdi><span>szem</span></div>
 <div><bdi class="hebrew-glyph" dir="rtl" lang="he">יָדַיִם</bdi><span>kezek · kettős szám</span></div>
@@ -2306,7 +2309,7 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div class="table-scroll"><table class="declension-table hebrew-table">
 <thead><tr><th>Alapalak</th><th>Ragozott alak</th><th>Változás</th></tr></thead>
 <tbody>
-<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזֶן</bdi><br>fül</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזְנַיִם</bdi><br>fülek</td><td>A ḥōlem rövidülése qāmeṣ ḥāṭûpra.</td></tr>
+<tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אֹזֶן</bdi><br>fül</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">אָזְנַיִם</bdi><br>fülek</td><td>A ḥōlem rövidülése qāmeṣ ḥāṭûpra.</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">גָּדוֹל</bdi><br>nagy (hímnem)</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">גְּדוֹלָה</bdi><br>nagy (nőnem)<br><bdi class="hebrew-glyph" dir="rtl" lang="he">גְּדוֹלִים</bdi> · <bdi class="hebrew-glyph" dir="rtl" lang="he">גְּדוֹלוֹת</bdi><br>nagyok</td><td>A qāmeṣ redukálódik, mozgó šəwā lesz belőle.</td></tr>
 <tr><td><bdi class="hebrew-glyph" dir="rtl" lang="he">עַיִן</bdi><br>szem</td><td><bdi class="hebrew-glyph" dir="rtl" lang="he">עֵינַיִם</bdi><br>szemek</td><td>Az -ayi- hangkapcsolat ē-vé olvad össze.</td></tr>
 </tbody></table></div>
