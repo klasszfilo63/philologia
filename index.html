@@ -3073,6 +3073,8 @@ function normalizeHebrewRoman(value){
   .replace(/š/g,"sh").replace(/ś/g,"s").replace(/ṣ/g,"ts")
   .replace(/ḥ/g,"ch").replace(/ṭ/g,"t").replace(/ḵ/g,"kh")
   .normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+  // Hungarian "sz" is also accepted as a spelling of Hebrew samekh.
+  .replace(/sz/g,"s")
   .replace(/[’\\x27\\u02be\\u02bf\\u02bc-]/g,"").replace(/[^a-z0-9]/g,"");
 }
 function romanConsonantForms(value){
@@ -3164,6 +3166,11 @@ function matchesHebrewVocabularySearch(entry,query){
  const transliterations=[entry.transliteration,...written.filter(value=>!(/[\u05D0-\u05EA]/.test(value)))].filter(Boolean).map(normalizeHebrewRoman);
  if(romanQuery.length>=3&&transliterations.some(form=>form.includes(romanQuery)))return true;
  if(romanQuery.length===2&&transliterations.some(form=>form===romanQuery))return true;
+ // Allow a one-letter "s" search: it matches both shin and samekh.
+ if(romanQuery==="s"){
+  const candidates=hebrewEntrySearchForms(entry);
+  return Array.from(candidates).some(form=>form.includes("s"));
+ }
  const queryForms=new Set(romanConsonantForms(raw));
  if(!queryForms.size)return false;
  const candidates=hebrewEntrySearchForms(entry);
