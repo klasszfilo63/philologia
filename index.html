@@ -3920,24 +3920,31 @@ function renderDictionary(){
   return '<tr><td><strong class="dictionary-lemma">'+lemma+'</strong>'+dictionaryForm+'</td><td><span class="dictionary-pos">'+partOfSpeech+'</span></td><td>'+meaning+'</td></tr>';
  }).join("");
 }
+function vocabularyPartOfSpeechCategories(entry){
+ const pos=normalize(entry.partOfSpeech||"");
+ const categories=new Set();
+ const has=(...terms)=>terms.some(term=>pos.includes(normalize(term)));
+ if(has("főnév","hiányos főnév","főnévi alak","mennyiségjelölő / főnév"))categories.add("főnév");
+ if(has("tulajdonnév")||pos==="név")categories.add("tulajdonnév");
+ if(has("ige","igealak","deponens","fél-deponens","rendhagyó ige","személytelen ige","hiányos ige","létige"))categories.add("ige");
+ if(entry.isDeponent||has("deponens"))categories.add("deponens");
+ if(has("melléknév","melléknévi igenév","participium","számnévi melléknév"))categories.add("melléknév");
+ if(has("névmás","névmási"))categories.add("névmás");
+ if(has("elöljárószó","praepositio","névutó"))categories.add("elöljárószó");
+ if(has("kötőszó","kötőszói"))categories.add("kötőszó");
+ if(has("határozószó","kérdő határozószó"))categories.add("határozószó");
+ return categories;
+}
 function applyFilters(){
  if(!dataReady)return;
  const rawQuery=document.getElementById("searchBox").value.trim();
  const q=currentLanguage==="hebrew"?rawQuery:normalizeDictionaryText(rawQuery);
  const type=document.getElementById("typeFilter").value;
  filtered=words.filter(w=>{
-  const pos=normalize(w.partOfSpeech||"");
+  const categories=vocabularyPartOfSpeechCategories(w);
   if(type==="favorites"&&!progress.favorites.includes(w.id))return false;
-   if(type==="főnév"&&!pos.includes("főnév"))return false;
-  if(type==="tulajdonnév"&&!pos.includes("tulajdonnév"))return false;
-  if(type==="kötőszó"&&!pos.includes("kötőszó"))return false;
-  if(type==="határozószó"&&!pos.includes("határozószó"))return false;
-  if(type==="ige"&&!pos.includes("ige"))return false;
-  if(type==="deponens"&&!w.isDeponent)return false;
-  if(type==="melléknév"&&!pos.includes("melléknév"))return false;
-  if(type==="névmás"&&!pos.includes("névmás"))return false;
-  if(type==="elöljárószó"&&!pos.includes("elöljárószó"))return false;
-  if(type==="other"&&(pos.includes("főnév")||pos.includes("tulajdonnév")||pos.includes("ige")||pos.includes("melléknév")||pos.includes("névmás")||pos.includes("elöljárószó")||pos.includes("kötőszó")||pos.includes("határozószó")))return false;
+  if(["főnév","tulajdonnév","ige","deponens","melléknév","névmás","elöljárószó","kötőszó","határozószó"].includes(type)&&!categories.has(type))return false;
+  if(type==="other"&&categories.size>0)return false;
   if(!q)return true;
   return matchesVocabularySearch(w,q);
  });
