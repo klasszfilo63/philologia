@@ -371,6 +371,13 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
  background-repeat:no-repeat;background-size:100% 100%;background-position:center bottom;
 }
 .tile.latin>*{position:relative;z-index:1}
+.tile.hebrew:after{
+ content:"";display:block;position:absolute;z-index:0;left:0;right:0;bottom:18px;height:46px;
+ pointer-events:none;opacity:.17;
+ background-image:url("./assets/hebrew-star-pattern.svg");
+ background-repeat:repeat-x;background-size:50px 46px;background-position:left center;
+}
+.tile.hebrew>*{position:relative;z-index:1}
 .home-quote blockquote,.home-quote figcaption{transition:opacity .22s ease}
 .home-quote.is-changing blockquote,.home-quote.is-changing figcaption{opacity:.25}
 .grammar-category>summary,.grammar-topic>summary{transition:background-color .18s ease}
