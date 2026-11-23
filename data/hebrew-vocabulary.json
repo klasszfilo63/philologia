@@ -12,10 +12,11 @@
     "2026-11-21 user-supplied vocabulary images (batch 2)",
     "2026-11-21 user-supplied grammar image 9.1–9.2",
     "Qal-only verb normalization",
-    "Restored originally supplied non-Qal forms where no Qal equivalent is attested"
+    "Restored originally supplied non-Qal forms where no Qal equivalent is attested",
+    "2026-11-23 user-supplied Qal perfect verb list; pointing and meanings checked against Hebrew lexicons"
   ],
-  "updated": "2026-11-21",
-  "sourceCount": 83,
+  "updated": "2026-11-23",
+  "sourceCount": 93,
   "entries": [
     {
       "id": "hb-001",
@@ -1305,6 +1306,121 @@
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)",
       "notes": "Melléknévként: 'nehéz, súlyos'. Stativ Qal perfectum 3ms-ként: 'nehéz volt; nehézzé vált'."
+    },
+    {
+      "lemma": "עָמַד",
+      "dictionaryForm": "עָמַד",
+      "transliteration": "ʿamad",
+      "partOfSpeech": "ige",
+      "meaning": "áll; megáll; helytáll",
+      "root": "עמד",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A Qal perfectum 3ms szótári alakja.",
+      "id": "hb-084"
+    },
+    {
+      "lemma": "שָׁמַע",
+      "dictionaryForm": "שָׁמַע",
+      "transliteration": "shamaʿ",
+      "partOfSpeech": "ige",
+      "meaning": "hall; meghall; figyel; engedelmeskedik",
+      "root": "שמע",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A Qal jelentése a szövegkörnyezettől függően 'hall', 'figyel' vagy 'engedelmeskedik'.",
+      "id": "hb-085"
+    },
+    {
+      "lemma": "שָׁפַט",
+      "dictionaryForm": "שָׁפַט",
+      "transliteration": "shafat",
+      "partOfSpeech": "ige",
+      "meaning": "ítél; bíráskodik; kormányoz",
+      "root": "שפט",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-086"
+    },
+    {
+      "lemma": "אָבָה",
+      "dictionaryForm": "אָבָה",
+      "transliteration": "ʾavah",
+      "partOfSpeech": "ige",
+      "meaning": "akar; hajlandó valamire; beleegyezik",
+      "root": "אבה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "Gyakran לֹא vagy אַל tagadószóval fordul elő: 'nem akar, nem hajlandó'.",
+      "id": "hb-087"
+    },
+    {
+      "lemma": "יָכֹל",
+      "dictionaryForm": "יָכֹל",
+      "transliteration": "yakhol",
+      "partOfSpeech": "ige (stativum)",
+      "meaning": "képes valamire; tud; képes rá",
+      "root": "יכל",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)",
+      "notes": "Stativ ige; a perfectum alak jelentése gyakran 'képes volt rá' vagy egyszerűen 'képes rá'. A gyök hosszabb magánhangzós változatban יָכוֹל alakban is előfordul.",
+      "id": "hb-088"
+    },
+    {
+      "lemma": "עָלָה",
+      "dictionaryForm": "עָלָה",
+      "transliteration": "ʿalah",
+      "partOfSpeech": "ige",
+      "meaning": "felmegy; feljön; felemelkedik",
+      "root": "עלה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-089"
+    },
+    {
+      "lemma": "יָרַד",
+      "dictionaryForm": "יָרַד",
+      "transliteration": "yarad",
+      "partOfSpeech": "ige",
+      "meaning": "lemegy; leereszkedik; alászáll",
+      "root": "ירד",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-090"
+    },
+    {
+      "lemma": "מָצָא",
+      "dictionaryForm": "מָצָא",
+      "transliteration": "matsaʾ",
+      "partOfSpeech": "ige",
+      "meaning": "talál; rátalál; megtalál",
+      "root": "מצא",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-091"
+    },
+    {
+      "lemma": "הָלַךְ",
+      "dictionaryForm": "הָלַךְ",
+      "transliteration": "halakh",
+      "partOfSpeech": "ige",
+      "meaning": "megy; jár; elmegy",
+      "root": "הלך",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-092"
+    },
+    {
+      "lemma": "בָּא",
+      "dictionaryForm": "בָּא",
+      "transliteration": "baʾ",
+      "partOfSpeech": "ige",
+      "meaning": "jön; megérkezik; bemegy",
+      "root": "בוא",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A gyök בוא, de a Qal perfectum 3ms alakja בָּא.",
+      "id": "hb-093"
     }
   ]
 }
