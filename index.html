@@ -3067,8 +3067,13 @@ function normalizeHebrewScript(value){
   .normalize("NFC");
 }
 function normalizeHebrewRoman(value){
- return String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()
-  .replace(/[’\x27\u02be\u02bf\u02bc-]/g,"").replace(/[^a-z0-9]/g,"");
+ return String(value||"").toLowerCase()
+  // Normalize academic Hebrew transliteration before stripping diacritics.
+  // Shin (š) is searchable both as "sh" and as the simplified "s".
+  .replace(/š/g,"sh").replace(/ś/g,"s").replace(/ṣ/g,"ts")
+  .replace(/ḥ/g,"ch").replace(/ṭ/g,"t").replace(/ḵ/g,"kh")
+  .normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+  .replace(/[’\\x27\\u02be\\u02bf\\u02bc-]/g,"").replace(/[^a-z0-9]/g,"");
 }
 function romanConsonantForms(value){
  const base=normalizeHebrewRoman(value).replace(/[aeiou]/g,"");
