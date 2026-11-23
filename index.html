@@ -4288,10 +4288,39 @@ document.addEventListener("keydown",e=>{
 });
 
 const philologiaQuotes=[
- {text:"Homo sum: humani nil a me alienum puto.",translation:"„Ember vagyok: semmi, ami emberi, nem idegen tőlem.”",source:"Publius Terentius Afer · Heautontimorumenos, 77."},
- {text:"Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον…",translation:"„Férfiúról szólj nékem, Múzsa, ki sokfele bolygott…”",source:"Homérosz · Odüsszeia, 1.1."},
- {text:"Forsan et haec olim meminisse iuvabit.",translation:"„Talán egyszer még jólesik majd ezekre is visszaemlékezni.”",source:"Vergilius · Aeneis, 1.203."},
- {text:"נֵר־לְרַגְלִי דְבָרֶךָ וְאוֹר לִנְתִיבָתִי",translation:"„Lábam előtt mécses a te igéd, ösvényem világossága.”",source:"Zsoltárok 119,105."}
+ // Graeca
+ {text:"Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον…",translation:"Férfiúról szólj nékem, Múzsa, ki sokfele bolyongott…",source:"Homérosz · Odüsszeia, 1.1."},
+ {text:"Μῆνιν ἄειδε, θεά, Πηληϊάδεω Ἀχιλῆος.",translation:"Haragot zengj, istennő, Péleidész Akhilleuszét.",source:"Homérosz · Iliasz, 1.1."},
+ {text:"Ἄριστον μὲν ὕδωρ.",translation:"A legkiválóbb a víz.",source:"Pindarosz · Olümpiai óda, 1.1."},
+ {text:"Πολλὰ τὰ δεινὰ κοὐδὲν ἀνθρώπου δεινότερον πέλει.",translation:"Sok van, mi félelmetes, de az embernél nincs félelmetesebb.",source:"Szophoklész · Antigoné, 332–333."},
+ {text:"ἦθος ἀνθρώπῳ δαίμων.",translation:"Az ember jelleme a daimónja.",source:"Hérakleitosz · B 119."},
+ {text:"πόλεμος πάντων μὲν πατήρ ἐστι…",translation:"A háború mindenek atyja…",source:"Hérakleitosz · B 53."},
+ {text:"φύσις κρύπτεσθαι φιλεῖ.",translation:"A természet szeret rejtőzni.",source:"Hérakleitosz · B 123."},
+ {text:"ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς ἀνθρώπῳ.",translation:"A meg nem vizsgált élet nem méltó arra, hogy éljük.",source:"Platón · Szókratész védőbeszéde, 38a."},
+ {text:"πάντες ἄνθρωποι τοῦ εἰδέναι ὀρέγονται φύσει.",translation:"Minden ember természeténél fogva vágyik a tudásra.",source:"Arisztotelész · Metafizika, 980a."},
+ {text:"πάθει μάθος.",translation:"Szenvedés által tanulás.",source:"Aiszkhülosz · Agamemnón, 177."},
+ {text:"φαίνεταί μοι κῆνος ἴσος θέοισιν ἔμμεν ὤνηρ…",translation:"Úgy tűnik nékem, istenekkel egyenlő az a férfi…",source:"Szapphó · 31. töredék."},
+ {text:"Γνῶθι σεαυτόν.",translation:"Ismerd meg önmagad!",source:"Delphoi · a hét bölcsnek tulajdonított maxima."},
+ {text:"Μέτρον ἄριστον.",translation:"A mérték a legjobb.",source:"Kleobulosznak tulajdonított görög bölcs mondás."},
+ {text:"Ὁ βίος βραχύς, ἡ δὲ τέχνη μακρή.",translation:"Az élet rövid, a művészet hosszú.",source:"Hippokratész · Aphorizmoi, 1.1."},
+ {text:"οὐκ ἐν τῷ πολλῷ τὸ εὖ, ἀλλ᾽ ἐν τῷ εὖ τὸ πολύ.",translation:"A jó nem a sokban rejlik, hanem a sok a jóban.",source:"A hagyomány szerint Szókratészhez kapcsolt mondás."},
+ // Latina
+ {text:"Carpe diem, quam minimum credula postero.",translation:"Ragadd meg a napot, s minél kevésbé bízz a holnapban.",source:"Horatius · Carmina, 1.11.8."},
+ {text:"Sapere aude.",translation:"Merj bölcs lenni!",source:"Horatius · Epistulae, 1.2.40."},
+ {text:"Homo sum: humani nihil a me alienum puto.",translation:"Ember vagyok: semmi emberi nem idegen tőlem.",source:"Terentius · Heautontimorumenos, 77."},
+ {text:"Ars longa, vita brevis.",translation:"A művészet hosszú, az élet rövid.",source:"A hippokratészi aforizma latin hagyományú változata."},
+ {text:"Omnia mutantur, nihil interit.",translation:"Minden változik, semmi sem vész el.",source:"Ovidius · Metamorphoses, 15.165."},
+ {text:"Forsan et haec olim meminisse iuvabit.",translation:"Talán egyszer még jólesik majd ezekre is visszaemlékezni.",source:"Vergilius · Aeneis, 1.203."},
+ {text:"Timeo Danaos et dona ferentes.",translation:"Félek a görögöktől, még ha ajándékot hoznak is.",source:"Vergilius · Aeneis, 2.49."},
+ {text:"Audentes fortuna iuvat.",translation:"A bátrakat segíti a szerencse.",source:"Vergilius · Aeneis, 10.284."},
+ {text:"Sunt lacrimae rerum et mentem mortalia tangunt.",translation:"Vannak könnyei a dolgoknak, és a halandóság megérinti a lelket.",source:"Vergilius · Aeneis, 1.462."},
+ {text:"Labor omnia vicit improbus.",translation:"A kitartó munka mindent legyőz.",source:"Vergilius · Georgica, 1.145."},
+ {text:"Non omnis moriar.",translation:"Nem halok meg egészen.",source:"Horatius · Carmina, 3.30.6."},
+ {text:"Odi et amo.",translation:"Gyűlölök és szeretek.",source:"Catullus · 85. vers."},
+ // Hebraica
+ {text:"הֲבֵל הֲבָלִים הַכֹּל הָבֶל",translation:"Hiábavalóságok hiábavalósága, minden hiábavalóság.",source:"Prédikátor, 1:2."},
+ {text:"דּוֹר הֹלֵךְ וְדוֹר בָּא וְהָאָרֶץ לְעוֹלָם עֹמָדֶת",translation:"Nemzedék megy, nemzedék jön, de a föld örökké megmarad.",source:"Prédikátor, 1:4."},
+ {text:"וְאָהַבְתָּ לְרֵעֲךָ כָּמוֹךָ",translation:"Szeresd felebarátodat, mint önmagadat.",source:"Leviticus, 19:18."}
 ];
 function setPhilologiaQuote(){
  const figure=document.querySelector(".home-quote");
