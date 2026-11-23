@@ -353,12 +353,16 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 .adjective-agreement-table{min-width:660px}.adjective-table{min-width:520px}.possessive-table{min-width:650px}
 .pronoun-table{min-width:560px}.example-line p{margin:7px 0}
 
-/* Finom, nyelvenként eltérő könyvdíszek – a meglévő tipográfia és paletta megtartásával. */
+/* Visszafogott görög meanderminta a görög nyelvi kártya alsó sávjában. */
 .tile{position:relative;isolation:isolate}
-.tile:after{content:"";position:absolute;right:24px;bottom:22px;width:48px;height:13px;opacity:.34;pointer-events:none}
-.tile.greek:after{background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 6px);height:8px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
-.tile.latin:after{content:"❧";width:auto;height:auto;font:24px/1 Georgia,serif;opacity:.42}
-.tile.hebrew:after{content:"אבג";width:auto;height:auto;font:17px/1.2 Georgia,serif;letter-spacing:.12em;direction:rtl}
+.tile:after{content:none}
+.tile.greek:after{
+ content:"";display:block;position:absolute;z-index:0;left:0;right:0;bottom:18px;height:42px;
+ pointer-events:none;opacity:.16;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='42' viewBox='0 0 72 42'%3E%3Cg fill='none' stroke='%23263d64' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M0 3H72M0 39H72'/%3E%3Cpath d='M0 9H62V33H9V15H47V27H24V21H34'/%3E%3C/g%3E%3C/svg%3E");
+ background-repeat:repeat-x;background-size:72px 42px;background-position:left center;
+}
+.tile.greek>*{position:relative;z-index:1}
 .home-quote blockquote,.home-quote figcaption{transition:opacity .22s ease}
 .home-quote.is-changing blockquote,.home-quote.is-changing figcaption{opacity:.25}
 .grammar-category>summary,.grammar-topic>summary{transition:background-color .18s ease}
