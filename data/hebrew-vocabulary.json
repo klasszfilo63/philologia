@@ -13,10 +13,11 @@
     "2026-11-21 user-supplied grammar image 9.1–9.2",
     "Qal-only verb normalization",
     "Restored originally supplied non-Qal forms where no Qal equivalent is attested",
-    "2026-11-23 user-supplied Qal perfect verb list; pointing and meanings checked against Hebrew lexicons"
+    "2026-11-23 user-supplied Qal perfect verb list; pointing and meanings checked against Hebrew lexicons",
+    "2026-11-23 user-supplied Pi'el grammar pages · new roots"
   ],
   "updated": "2026-11-23",
-  "sourceCount": 93,
+  "sourceCount": 100,
   "entries": [
     {
       "id": "hb-001",
@@ -1421,6 +1422,90 @@
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
       "notes": "A gyök בוא, de a Qal perfectum 3ms alakja בָּא.",
       "id": "hb-093"
+    },
+    {
+      "lemma": "שִׁלֵּחַ",
+      "dictionaryForm": "שִׁלֵּחַ",
+      "transliteration": "shilleaḥ",
+      "partOfSpeech": "ige",
+      "meaning": "elküld; elbocsát; szabadon enged",
+      "root": "שלח",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrásban szereplő Pi'el-ige. A Qal שָׁלַח alapjelentése 'küld'; a Pi'el gyakran 'elküld, elbocsát, szabadon enged' jelentésű.",
+      "id": "hb-094"
+    },
+    {
+      "lemma": "מִלֵּא",
+      "dictionaryForm": "מִלֵּא",
+      "transliteration": "mille",
+      "partOfSpeech": "ige",
+      "meaning": "megtölt; betölt; teljessé tesz",
+      "root": "מלא",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás példája a Qal מָלֵא ('tele volt') mellett; Pi'elben 'megtölt, betölt' jelentésű.",
+      "id": "hb-095"
+    },
+    {
+      "lemma": "כִּלָּה",
+      "dictionaryForm": "כִּלָּה",
+      "transliteration": "killah",
+      "partOfSpeech": "ige",
+      "meaning": "befejez; bevégez; véget vet",
+      "root": "כלה",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás példája a Qal כָּלָה ('véget ért') mellett; Pi'elben 'befejez, bevégez' jelentésű.",
+      "id": "hb-096"
+    },
+    {
+      "lemma": "נִחֵשׁ",
+      "dictionaryForm": "נִחֵשׁ",
+      "transliteration": "niḥesh",
+      "partOfSpeech": "ige",
+      "meaning": "jósol; jövendöl; varázslással próbál előjelet fejteni",
+      "root": "נחש",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás a Pi'el denominális igék példájaként hozza: 'jóslást űz, jövendöl'.",
+      "id": "hb-097"
+    },
+    {
+      "lemma": "בִּקֵּשׁ",
+      "dictionaryForm": "בִּקֵּשׁ",
+      "transliteration": "biqqesh",
+      "partOfSpeech": "ige",
+      "meaning": "keres; kér; igényel",
+      "root": "בקש",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás külön Pi'el-igeként említi; nincs szükség hozzá külön Qal-alak feltételezésére.",
+      "id": "hb-098"
+    },
+    {
+      "lemma": "צִוָּה",
+      "dictionaryForm": "צִוָּה",
+      "transliteration": "tsivvah",
+      "partOfSpeech": "ige",
+      "meaning": "megparancsol; utasít; elrendel",
+      "root": "צוה",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás külön Pi'el-igeként említi. A bibliai szövegekben gyakori jelentése: 'megparancsol, elrendel'.",
+      "id": "hb-099"
+    },
+    {
+      "lemma": "נִחֵם",
+      "dictionaryForm": "נִחֵם",
+      "transliteration": "niḥem",
+      "partOfSpeech": "ige",
+      "meaning": "megvigasztal; megnyugtat",
+      "root": "נחם",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "A forrás conjugate példái között szerepel. A Pi'el alak jelentése 'megvigasztal'; a gyök más törzsekben más jelentésű is lehet.",
+      "id": "hb-100"
     }
   ]
 }
