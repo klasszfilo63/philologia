@@ -352,6 +352,25 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 
 .adjective-agreement-table{min-width:660px}.adjective-table{min-width:520px}.possessive-table{min-width:650px}
 .pronoun-table{min-width:560px}.example-line p{margin:7px 0}
+
+/* Finom, nyelvenként eltérő könyvdíszek – a meglévő tipográfia és paletta megtartásával. */
+.tile{position:relative;isolation:isolate}
+.tile:after{content:"";position:absolute;right:24px;bottom:22px;width:48px;height:13px;opacity:.34;pointer-events:none}
+.tile.greek:after{background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 6px);height:8px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+.tile.latin:after{content:"❧";width:auto;height:auto;font:24px/1 Georgia,serif;opacity:.42}
+.tile.hebrew:after{content:"אבג";width:auto;height:auto;font:17px/1.2 Georgia,serif;letter-spacing:.12em;direction:rtl}
+.home-quote blockquote,.home-quote figcaption{transition:opacity .22s ease}
+.home-quote.is-changing blockquote,.home-quote.is-changing figcaption{opacity:.25}
+.grammar-category>summary,.grammar-topic>summary{transition:background-color .18s ease}
+.grammar-category>summary:hover,.grammar-topic>summary:hover{background:var(--soft)}
+@keyframes philologia-arrive{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.grammar-category[open]>.grammar-category-content,.grammar-topic[open]>.grammar-topic-content{animation:philologia-arrive .2s ease both}
+#module:not(.hidden){animation:philologia-arrive .24s ease both}
+@media(prefers-reduced-motion:reduce){
+ .home-quote blockquote,.home-quote figcaption{transition:none}
+ .grammar-category[open]>.grammar-category-content,.grammar-topic[open]>.grammar-topic-content,#module:not(.hidden){animation:none}
+}
+
 </style>
 </head>
 <body>
@@ -360,11 +379,11 @@ html[data-theme="dark"] .theme-toggle{background:#282620;color:#d8cdbb}
 <div id="home">
 <h1>Philologia</h1><p class="intro">Klasszikus nyelvek műhelye</p>
 <section class="home-intro" aria-label="A Philologia bemutatása">
-  <figure class="home-quote">
-    <blockquote>Homo sum: humani nil a me alienum puto.</blockquote>
+  <figure class="home-quote" aria-live="polite">
+    <blockquote id="homeQuoteText">Homo sum: humani nil a me alienum puto.</blockquote>
     <figcaption>
-      <span>„Ember vagyok: semmi, ami emberi, nem idegen tőlem.”</span>
-      <cite>Publius Terentius Afer · <em>Heautontimorumenos</em>, 77.</cite>
+      <span id="homeQuoteTranslation">„Ember vagyok: semmi, ami emberi, nem idegen tőlem.”</span>
+      <cite id="homeQuoteSource">Publius Terentius Afer · <em>Heautontimorumenos</em>, 77.</cite>
     </figcaption>
   </figure>
   <p>A Philologia az ókori világ iránt érdeklődők digitális műhelye. A görög, latin és héber nyelvek, az irodalom és a mítoszok nem pusztán egy távoli kor emlékei: olyan szövegek és történetek örökségét őrzik, amelyek ma is formálják, ahogyan a világról és önmagunkról gondolkodunk. Az antikvitás tanulmányozása közelebb visz kultúránk gyökereihez, és segít megérteni azokat a kérdéseket, amelyek különböző korokon átívelve is közösek maradnak. A Philologia teret ad ennek a felfedezésnek: a nyelvek, a szövegek és az antik kultúra találkozásának.</p>
@@ -4248,6 +4267,32 @@ document.addEventListener("keydown",e=>{
  if(e.key==="ArrowRight")moveCard(1);
  if(e.key==="ArrowLeft")moveCard(-1);
 });
+
+const philologiaQuotes=[
+ {text:"Homo sum: humani nil a me alienum puto.",translation:"„Ember vagyok: semmi, ami emberi, nem idegen tőlem.”",source:"Publius Terentius Afer · Heautontimorumenos, 77."},
+ {text:"Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτροπον…",translation:"„Férfiúról szólj nékem, Múzsa, ki sokfele bolygott…”",source:"Homérosz · Odüsszeia, 1.1."},
+ {text:"Forsan et haec olim meminisse iuvabit.",translation:"„Talán egyszer még jólesik majd ezekre is visszaemlékezni.”",source:"Vergilius · Aeneis, 1.203."},
+ {text:"נֵר־לְרַגְלִי דְבָרֶךָ וְאוֹר לִנְתִיבָתִי",translation:"„Lábam előtt mécses a te igéd, ösvényem világossága.”",source:"Zsoltárok 119,105."}
+];
+function setPhilologiaQuote(){
+ const figure=document.querySelector(".home-quote");
+ const text=document.getElementById("homeQuoteText");
+ const translation=document.getElementById("homeQuoteTranslation");
+ const source=document.getElementById("homeQuoteSource");
+ if(!figure||!text||!translation||!source)return;
+ let index=Math.floor(Math.random()*philologiaQuotes.length);
+ try{const previous=Number(sessionStorage.getItem("philologia-last-quote"));if(index===previous)index=(index+1)%philologiaQuotes.length;sessionStorage.setItem("philologia-last-quote",String(index));}catch(e){}
+ const quote=philologiaQuotes[index];
+ figure.classList.add("is-changing");
+ window.setTimeout(()=>{
+  text.textContent=quote.text;
+  translation.textContent=quote.translation;
+  source.textContent=quote.source;
+  figure.classList.remove("is-changing");
+ },120);
+}
+setPhilologiaQuote();
+
 setupGrammarBookmarks();
 updateStats();
 updateResume();
