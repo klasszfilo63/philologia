@@ -1363,6 +1363,26 @@
           "form": "שְׁמוּרוֹת",
           "parsing": "Qal passzív participium · nőnem, többes szám",
           "meaning": "őrzöttek"
+        },
+        {
+          "form": "שֹׁמֶרֶת",
+          "parsing": "Qal aktív participium · nőnem, egyes szám",
+          "meaning": "őrző; őriz"
+        },
+        {
+          "form": "שֹׁמְרִים",
+          "parsing": "Qal aktív participium · hímnem, többes szám",
+          "meaning": "őrzők; őriznek"
+        },
+        {
+          "form": "שֹׁמְרוֹת",
+          "parsing": "Qal aktív participium · nőnem, többes szám",
+          "meaning": "őrzők; őriznek"
+        },
+        {
+          "form": "שָׁמוּר",
+          "parsing": "Qal passzív participium · hímnem, egyes szám",
+          "meaning": "őrzött"
         }
       ]
     },
