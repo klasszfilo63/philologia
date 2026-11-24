@@ -311,7 +311,7 @@
         "pluralConstructAlternatives": [
           "שְׂדֵי"
         ],
-        "note": "A többes szám constructusban a שְׂדֵי alakváltozat is adatolt."
+        "note": "A pluralis constructus alakváltozata: שְׂדֵי."
       }
     },
     {
@@ -939,8 +939,7 @@
       "searchAliases": [
         "כְּתֹנֶת",
         "כְּתֹנֶת פַּסִּים"
-      ],
-      "notes": "A כְּתֹנֶת a constructusban használt alak; az abszolutus alak: כֻּתֹּנֶת."
+      ]
     },
     {
       "id": "hb-062",
@@ -1278,7 +1277,6 @@
         "מְאַלְּמִים",
         "meallemim"
       ],
-      "notes": "A מְאַלְּמִים a Pi'el aktív participium hímnemű többes számú alakja; a מְאַלֵּם hímnemű egyes számú alak.",
       "id": "hb-079"
     },
     {
@@ -1294,7 +1292,7 @@
         "singularConstruct": null,
         "pluralAbsolute": "אֲלֻמִּים",
         "pluralConstruct": null,
-        "note": "A bibliai alakok között szerepel: אֲלֻמָּה (sg. abs.), אֲלֻמִּים (pl. abs.), אֲלֻמָּתִי (sg. + 1cs) és אֲלֻמֹּתֵיכֶם (pl. + 2mp). Külön, személyrag nélküli construct pluralis alak nincs megadva."
+        "note": "Külön, személyrag nélküli construct pluralis alak nem szerepel."
       },
       "attachedForms": [
         {
