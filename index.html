@@ -3740,7 +3740,7 @@ async function loadWords(){
  }
  const card=document.getElementById("flashcard");
  try{
-  const response=await fetch("./data/"+requestedLanguage+"-vocabulary.json",{cache:"no-cache"});
+  const response=await fetch("./data/"+requestedLanguage+"-vocabulary.json?v=20261124-ah-hataf-patah",{cache:"no-store"});
   if(!response.ok)throw new Error("HTTP "+response.status);
   const json=await response.json();
   if(!json.entries||!Array.isArray(json.entries))throw new Error("A szótár fájlformátuma nem megfelelő.");
