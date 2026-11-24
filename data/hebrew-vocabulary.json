@@ -11,12 +11,11 @@
     "2026-11-21 user-supplied vocabulary images",
     "2026-11-21 user-supplied vocabulary images (batch 2)",
     "2026-11-21 user-supplied grammar image 9.1–9.2",
-    "Qal-only verb normalization",
-    "Restored originally supplied non-Qal forms where no Qal equivalent is attested",
     "2026-11-23 user-supplied Qal perfect verb list; pointing and meanings checked against Hebrew lexicons",
-    "2026-11-23 user-supplied Pi'el grammar pages · new roots"
+    "2026-11-23 user-supplied Pi'el grammar pages · new roots",
+    "2026-11-24 restored originally supplied verb binyanim and corrected אָח plural construct vocalization"
   ],
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "sourceCount": 100,
   "entries": [
     {
@@ -63,7 +62,7 @@
         "singularAbsolute": "אָח",
         "singularConstruct": "אֲחִי",
         "pluralAbsolute": "אַחִים",
-        "pluralConstruct": "אַחֵי"
+        "pluralConstruct": "אֲחֵי"
       },
       "attachedForms": [
         {
@@ -689,24 +688,28 @@
       "notes": "A képen szereplő יָשַׁב Qal perfectum 3ms: 'ült; leült'. A gyök alapjelentése: ülni."
     },
     {
-      "lemma": "נָגַד",
-      "dictionaryForm": "נָגַד",
-      "transliteration": "nagad",
+      "lemma": "הִגִּיד",
+      "dictionaryForm": "הִגִּיד",
+      "transliteration": "higgid",
       "partOfSpeech": "ige",
-      "meaning": "szemben áll; ellentmond; ellenez",
+      "meaning": "elmond; közöl; kihirdet",
       "root": "נגד",
-      "binyan": "Qal",
-      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "binyan": "Hiphil",
+      "lemmaType": "Hiphil perfectum · 3. személy, hímnem, egyes szám",
       "verbForms": [
         {
-          "form": "נָגְדוּ",
-          "parsing": "Qal perfectum · 3. személy, hímnem, többes szám",
-          "meaning": "szemben álltak; ellentmondtak",
-          "transliteration": "nagdu"
+          "form": "הִגִּידוּ",
+          "parsing": "Hiphil perfectum · 3. személy, hímnem, többes szám",
+          "meaning": "elmondtak; közöltek; kihirdettek",
+          "transliteration": "higgidu"
         }
       ],
-      "notes": "A Hiphil jelentése ('közöl, bejelent, elmond') nem vihető át a Qalra: ebben a binyanban az ige jelentése 'szemben áll, ellentmond'.",
-      "id": "hb-049"
+      "notes": "A felhasználó eredeti anyagában szereplő Hiphil-alakok: הִגִּיד és הִגִּידוּ. A Qal נָגַד más jelentésű, ezért nem helyettesíti ezt a szócikket.",
+      "id": "hb-049",
+      "searchAliases": [
+        "הִגִּידוּ",
+        "higgidu"
+      ]
     },
     {
       "id": "hb-050",
@@ -1109,15 +1112,15 @@
       "id": "hb-072"
     },
     {
-      "lemma": "סָפַר",
-      "dictionaryForm": "סָפַר",
-      "transliteration": "safar",
+      "lemma": "סִפֵּר",
+      "dictionaryForm": "סִפֵּר",
+      "transliteration": "sipper",
       "partOfSpeech": "ige",
-      "meaning": "számol; megszámol; számba vesz",
+      "meaning": "elbeszél; elmond; beszámol",
       "root": "ספר",
-      "binyan": "Qal",
-      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A Qal jelentése 'számol, megszámol'. Az 'elbeszél, elmond' jelentés a Pi'elhez tartozik, ezért azt nem tartottam meg a Qal-szócikkben.",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "notes": "Az eredetileg megadott Pi'el-alak. Jelentése: 'elbeszél, elmond'; nem azonos a Qal סָפַר ('számol') jelentésével.",
       "id": "hb-073"
     },
     {
