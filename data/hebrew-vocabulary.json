@@ -40,18 +40,14 @@
       "lemma": "קָטֹן",
       "dictionaryForm": "קָטֹן",
       "transliteration": "qaton",
-      "partOfSpeech": "melléknév / ige (stativum)",
+      "partOfSpeech": "melléknév",
       "meaning": "kicsi",
       "adjectiveForms": {
         "masculineSingular": "קָטֹן",
         "feminineSingular": "קְטַנָּה",
         "masculinePlural": "קְטַנִּים",
         "femininePlural": "קְטַנּוֹת"
-      },
-      "notes": "Melléknévként: 'kicsi'. Stativ Qal perfectum 3ms-ként: 'kicsi volt; kicsivé vált'. Az alak a két használatban azonos.",
-      "root": "קטן",
-      "binyan": "Qal",
-      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)"
+      }
     },
     {
       "id": "hb-003",
@@ -1950,6 +1946,17 @@
       "meaning": "csillag",
       "gender": "hímnem",
       "id": "hb-135"
+    },
+    {
+      "id": "hb-136",
+      "lemma": "קָטֹן",
+      "dictionaryForm": "קָטֹן",
+      "transliteration": "qaton",
+      "partOfSpeech": "ige (stativum)",
+      "meaning": "kicsi volt; kicsivé vált",
+      "root": "קטן",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)"
     }
   ]
 }
