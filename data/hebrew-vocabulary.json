@@ -1,11 +1,12 @@
 {
   "language": "Classical Hebrew",
   "dialect": "Biblical Hebrew",
-  "batch": 3,
+  "batch": 4,
   "batches": [
     1,
     2,
-    3
+    3,
+    4
   ],
   "sourceFiles": [
     "2026-11-21 user-supplied vocabulary images",
@@ -14,10 +15,11 @@
     "2026-11-23 user-supplied Qal perfect verb list; pointing and meanings checked against Hebrew lexicons",
     "2026-11-23 user-supplied Pi'el grammar pages · new roots",
     "2026-11-24 restored originally supplied verb binyanim and corrected אָח plural construct vocalization",
-    "2026-11-24 user-supplied textbook image: אָח paradigm"
+    "2026-11-24 user-supplied textbook image: אָח paradigm",
+    "2026-11-24 textbook pages 8.1–12 and Readings 1–2; vocabulary and verb patterns checked against site"
   ],
   "updated": "2026-11-24",
-  "sourceCount": 100,
+  "sourceCount": 135,
   "entries": [
     {
       "id": "hb-001",
@@ -70,6 +72,11 @@
           "form": "אֶחָיו",
           "parsing": "pluralis + 3ms birtokos személyrag",
           "meaning": "az ő fivérei / fiútestvérei"
+        },
+        {
+          "form": "אַחֶיךָ",
+          "parsing": "pluralis + 2ms birtokos személyrag",
+          "meaning": "a te fivéreid / fiútestvéreid"
         }
       ],
       "searchAliases": [
@@ -177,6 +184,16 @@
           "form": "לֹו",
           "parsing": "לְ + 3ms személyrag",
           "meaning": "neki; hozzá"
+        },
+        {
+          "form": "לְךָ",
+          "parsing": "לְ + 2ms személyrag",
+          "meaning": "neked; hozzád"
+        },
+        {
+          "form": "לִי",
+          "parsing": "לְ + 1cs személyrag",
+          "meaning": "nekem; hozzám"
         }
       ],
       "searchAliases": [
@@ -426,7 +443,14 @@
         "pluralAbsolute": "אֲרָצוֹת",
         "pluralConstruct": "אַרְצוֹת"
       },
-      "notes": "Határozott alakban: הָאָרֶץ – a föld / az ország."
+      "notes": "Határozott alakban: הָאָרֶץ – a föld / az ország.",
+      "attachedForms": [
+        {
+          "form": "אַרְצָה",
+          "parsing": "irányhatározói alak",
+          "meaning": "a földre; föld felé"
+        }
+      ]
     },
     {
       "id": "hb-030",
@@ -1067,7 +1091,7 @@
     {
       "id": "hb-071",
       "lemma": "קָם",
-      "dictionaryForm": "קוּם",
+      "dictionaryForm": "קָם",
       "transliteration": "qam",
       "partOfSpeech": "ige",
       "meaning": "felkel; feláll; fölkel",
@@ -1086,7 +1110,7 @@
         "קָמָה",
         "qamah"
       ],
-      "notes": "A gyök ו-s gyenge középső mássalhangzós (ע\"ו) ige. A Qal perfectum 3ms alakja קָם."
+      "notes": "A gyök ו-s gyenge középső mássalhangzós (ע״ו) ige. A tankönyv a קָם alakot adja meg ('felállt, felkelt'); a gyök: קום."
     },
     {
       "lemma": "הִשְׁתַּחֲוָה",
@@ -1103,6 +1127,21 @@
           "parsing": "Hishtaphel perfectum · 3. személy, hímnem, többes szám",
           "meaning": "leborultak; hódoltak",
           "transliteration": "hishtachavu"
+        },
+        {
+          "form": "לְהִשְׁתַּחֲוֹת",
+          "parsing": "Hitpael infinitivus constructus",
+          "meaning": "leborulni; hódolni"
+        },
+        {
+          "form": "מִשְׁתַּחֲוֶה",
+          "parsing": "Hitpael aktív participium · hímnem, egyes szám",
+          "meaning": "leboruló; hódoló"
+        },
+        {
+          "form": "מִשְׁתַּחֲוִים",
+          "parsing": "Hitpael aktív participium · hímnem, többes szám",
+          "meaning": "leborulók; hódolók"
         }
       ],
       "searchAliases": [
@@ -1232,6 +1271,11 @@
           "parsing": "Pi'el aktív participium · hímnem, többes szám",
           "meaning": "kévéket kötöznek; kévékbe kötnek",
           "transliteration": "meallemim"
+        },
+        {
+          "form": "מְאַלֵּם",
+          "parsing": "Pi'el aktív participium · hímnem, egyes szám",
+          "meaning": "kévébe kötő"
         }
       ],
       "searchAliases": [
@@ -1298,7 +1342,29 @@
       "root": "שמר",
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A 9.1-es példában Qal perfectum 3ms: 'őrzött; megőrzött'."
+      "notes": "A 9.1-es példában Qal perfectum 3ms: 'őrzött; megőrzött'.",
+      "verbForms": [
+        {
+          "form": "שֹׁמֵר",
+          "parsing": "Qal aktív participium · hímnem, egyes szám",
+          "meaning": "őrző; őriz"
+        },
+        {
+          "form": "שְׁמוּרָה",
+          "parsing": "Qal passzív participium · nőnem, egyes szám",
+          "meaning": "őrzött"
+        },
+        {
+          "form": "שְׁמוּרִים",
+          "parsing": "Qal passzív participium · hímnem, többes szám",
+          "meaning": "őrzöttek"
+        },
+        {
+          "form": "שְׁמוּרוֹת",
+          "parsing": "Qal passzív participium · nőnem, többes szám",
+          "meaning": "őrzöttek"
+        }
+      ]
     },
     {
       "id": "hb-083",
@@ -1425,7 +1491,14 @@
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
       "notes": "A gyök בוא, de a Qal perfectum 3ms alakja בָּא.",
-      "id": "hb-093"
+      "id": "hb-093",
+      "verbForms": [
+        {
+          "form": "נָבוֹא",
+          "parsing": "Qal imperfectum · 1. személy, közös nem, többes szám",
+          "meaning": "jövünk; jönni fogunk"
+        }
+      ]
     },
     {
       "lemma": "שִׁלֵּחַ",
@@ -1510,6 +1583,368 @@
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
       "notes": "A forrás conjugate példái között szerepel. A Pi'el alak jelentése 'megvigasztal'; a gyök más törzsekben más jelentésű is lehet.",
       "id": "hb-100"
+    },
+    {
+      "lemma": "פָּתַח",
+      "dictionaryForm": "פָּתַח",
+      "transliteration": "pataḥ",
+      "partOfSpeech": "ige",
+      "meaning": "kinyit; megnyit",
+      "root": "פתח",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-101"
+    },
+    {
+      "lemma": "נִפְתַּח",
+      "dictionaryForm": "נִפְתַּח",
+      "transliteration": "niftaḥ",
+      "partOfSpeech": "ige",
+      "meaning": "kinyílt; megnyílt; megnyitották",
+      "root": "פתח",
+      "binyan": "Nif'al",
+      "lemmaType": "Nif'al perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-102"
+    },
+    {
+      "lemma": "פֶּתַח",
+      "dictionaryForm": "פֶּתַח",
+      "transliteration": "petaḥ",
+      "partOfSpeech": "főnév",
+      "meaning": "ajtónyílás; bejárat; ajtó",
+      "gender": "hímnem",
+      "id": "hb-103"
+    },
+    {
+      "lemma": "שָׁקַל",
+      "dictionaryForm": "שָׁקַל",
+      "transliteration": "shaqal",
+      "partOfSpeech": "ige",
+      "meaning": "mér; megmér; lemér",
+      "root": "שקל",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-104"
+    },
+    {
+      "lemma": "נִשְׁקַל",
+      "dictionaryForm": "נִשְׁקַל",
+      "transliteration": "nishqal",
+      "partOfSpeech": "ige",
+      "meaning": "megmérték; mérlegre került",
+      "root": "שקל",
+      "binyan": "Nif'al",
+      "lemmaType": "Nif'al perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-105"
+    },
+    {
+      "lemma": "שֶׁקֶל",
+      "dictionaryForm": "שֶׁקֶל",
+      "transliteration": "sheqel",
+      "partOfSpeech": "főnév",
+      "meaning": "sékel; súlymérték, pénzegység",
+      "gender": "hímnem",
+      "id": "hb-106"
+    },
+    {
+      "lemma": "מִשְׁקָל",
+      "dictionaryForm": "מִשְׁקָל",
+      "transliteration": "mishqal",
+      "partOfSpeech": "főnév",
+      "meaning": "súly; mérlegelés",
+      "gender": "hímnem",
+      "id": "hb-107"
+    },
+    {
+      "lemma": "נִשְׁמַר",
+      "dictionaryForm": "נִשְׁמַר",
+      "transliteration": "nishmar",
+      "partOfSpeech": "ige",
+      "meaning": "megőrizte magát; vigyázott magára",
+      "root": "שמר",
+      "binyan": "Nif'al",
+      "lemmaType": "Nif'al perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-108"
+    },
+    {
+      "lemma": "מִשְׁמָר",
+      "dictionaryForm": "מִשְׁמָר",
+      "transliteration": "mishmar",
+      "partOfSpeech": "főnév",
+      "meaning": "őrség; őrhely; börtön",
+      "gender": "hímnem",
+      "id": "hb-109"
+    },
+    {
+      "lemma": "מָקוֹם",
+      "dictionaryForm": "מָקוֹם",
+      "transliteration": "maqom",
+      "partOfSpeech": "főnév",
+      "meaning": "hely; tartózkodási hely",
+      "root": "קום",
+      "gender": "hímnem",
+      "id": "hb-110"
+    },
+    {
+      "lemma": "מָבוֹא",
+      "dictionaryForm": "מָבוֹא",
+      "transliteration": "mavo",
+      "partOfSpeech": "főnév",
+      "meaning": "bejárat; bemenet",
+      "root": "בוא",
+      "gender": "hímnem",
+      "id": "hb-111"
+    },
+    {
+      "lemma": "סָפַר",
+      "dictionaryForm": "סָפַר",
+      "transliteration": "safar",
+      "partOfSpeech": "ige",
+      "meaning": "számol; megszámlál",
+      "root": "ספר",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-112"
+    },
+    {
+      "lemma": "סֻפַּר",
+      "dictionaryForm": "סֻפַּר",
+      "transliteration": "suppar",
+      "partOfSpeech": "ige",
+      "meaning": "elbeszéltetett; elmondatott",
+      "root": "ספר",
+      "binyan": "Pu'al",
+      "lemmaType": "Pu'al perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-113"
+    },
+    {
+      "lemma": "הִתְאַפֵּק",
+      "dictionaryForm": "הִתְאַפֵּק",
+      "transliteration": "hit'apek",
+      "partOfSpeech": "ige",
+      "meaning": "visszafogta magát; türtőztette magát",
+      "root": "אפק",
+      "binyan": "Hitpa'el",
+      "lemmaType": "Hitpa'el perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-114"
+    },
+    {
+      "lemma": "הִזְכִּיר",
+      "dictionaryForm": "הִזְכִּיר",
+      "transliteration": "hizkir",
+      "partOfSpeech": "ige",
+      "meaning": "emlékeztet; megemlít; eszébe juttat",
+      "root": "זכר",
+      "binyan": "Hiph'il",
+      "lemmaType": "Hiph'il perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-115"
+    },
+    {
+      "lemma": "הֻזְכַּר",
+      "dictionaryForm": "הֻזְכַּר",
+      "transliteration": "huzkar",
+      "partOfSpeech": "ige",
+      "meaning": "megemlíttetett; említés történt róla",
+      "root": "זכר",
+      "binyan": "Hof'al",
+      "lemmaType": "Hof'al perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-116"
+    },
+    {
+      "lemma": "שָׁלַח",
+      "dictionaryForm": "שָׁלַח",
+      "transliteration": "shalaḥ",
+      "partOfSpeech": "ige",
+      "meaning": "küld; elküld",
+      "root": "שלח",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-117"
+    },
+    {
+      "lemma": "מָלֵא",
+      "dictionaryForm": "מָלֵא",
+      "transliteration": "male",
+      "partOfSpeech": "ige / melléknév (stativum)",
+      "meaning": "tele volt; megtelt",
+      "root": "מלא",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám (stativum)",
+      "id": "hb-118"
+    },
+    {
+      "lemma": "כָּלָה",
+      "dictionaryForm": "כָּלָה",
+      "transliteration": "kalah",
+      "partOfSpeech": "ige",
+      "meaning": "véget ért; befejeződött",
+      "root": "כלה",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-119"
+    },
+    {
+      "lemma": "שָׁכַל",
+      "dictionaryForm": "שָׁכַל",
+      "transliteration": "shakhal",
+      "partOfSpeech": "ige",
+      "meaning": "gyászol; gyermekét elveszíti",
+      "root": "שכל",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-120"
+    },
+    {
+      "lemma": "זָכַר",
+      "dictionaryForm": "זָכַר",
+      "transliteration": "zakhar",
+      "partOfSpeech": "ige",
+      "meaning": "emlékezik; megemlékezik",
+      "root": "זכר",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-121"
+    },
+    {
+      "lemma": "שָׁכַב",
+      "dictionaryForm": "שָׁכַב",
+      "transliteration": "shakhav",
+      "partOfSpeech": "ige",
+      "meaning": "fekszik; lefekszik",
+      "root": "שכב",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-122"
+    },
+    {
+      "lemma": "הִשְׁכִּיב",
+      "dictionaryForm": "הִשְׁכִּיב",
+      "transliteration": "hishkiv",
+      "partOfSpeech": "ige",
+      "meaning": "lefektet; ágyba fektet",
+      "root": "שכב",
+      "binyan": "Hiph'il",
+      "lemmaType": "Hiph'il perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-123"
+    },
+    {
+      "lemma": "נָפַל",
+      "dictionaryForm": "נָפַל",
+      "transliteration": "nafal",
+      "partOfSpeech": "ige",
+      "meaning": "esik; elesik; leesik",
+      "root": "נפל",
+      "binyan": "Qal",
+      "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-124"
+    },
+    {
+      "lemma": "הִפִּיל",
+      "dictionaryForm": "הִפִּיל",
+      "transliteration": "hippil",
+      "partOfSpeech": "ige",
+      "meaning": "ledönt; leejt; elejt",
+      "root": "נפל",
+      "binyan": "Hiph'il",
+      "lemmaType": "Hiph'il perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-125"
+    },
+    {
+      "lemma": "כִּלְכֵּל",
+      "dictionaryForm": "כִּלְכֵּל",
+      "transliteration": "kilkel",
+      "partOfSpeech": "ige",
+      "meaning": "fenntart; eltart; gondoskodik",
+      "root": "כלכל",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-126"
+    },
+    {
+      "lemma": "הִתְגּוֹלֵל",
+      "dictionaryForm": "הִתְגּוֹלֵל",
+      "transliteration": "hitgolel",
+      "partOfSpeech": "ige",
+      "meaning": "ürügyet keresett; kifogást talált",
+      "root": "גלל",
+      "binyan": "Hitpolel",
+      "lemmaType": "Hitpolel perfectum · 3. személy, hímnem, egyes szám",
+      "id": "hb-127"
+    },
+    {
+      "lemma": "אֲשֶׁר",
+      "dictionaryForm": "אֲשֶׁר",
+      "transliteration": "asher",
+      "partOfSpeech": "vonatkozó névmás / kötőszó",
+      "meaning": "aki; amely; ami; hogy",
+      "id": "hb-128"
+    },
+    {
+      "lemma": "אֵם",
+      "dictionaryForm": "אֵם",
+      "transliteration": "em",
+      "partOfSpeech": "főnév",
+      "meaning": "anya",
+      "gender": "nőnem",
+      "id": "hb-129",
+      "attachedForms": [
+        {
+          "form": "אִמְּךָ",
+          "parsing": "singularis + 2ms birtokos személyrag",
+          "meaning": "a te anyád"
+        }
+      ]
+    },
+    {
+      "lemma": "עוֹד",
+      "dictionaryForm": "עוֹד",
+      "transliteration": "od",
+      "partOfSpeech": "határozószó",
+      "meaning": "még; továbbra is; tovább; ezenfelül",
+      "id": "hb-130"
+    },
+    {
+      "lemma": "שֶׁמֶשׁ",
+      "dictionaryForm": "שֶׁמֶשׁ",
+      "transliteration": "shemesh",
+      "partOfSpeech": "főnév",
+      "meaning": "nap",
+      "gender": "nőnem",
+      "id": "hb-131"
+    },
+    {
+      "lemma": "יָרֵחַ",
+      "dictionaryForm": "יָרֵחַ",
+      "transliteration": "yare'aḥ",
+      "partOfSpeech": "főnév",
+      "meaning": "hold",
+      "gender": "hímnem",
+      "id": "hb-132"
+    },
+    {
+      "lemma": "אֶחָד",
+      "dictionaryForm": "אֶחָד",
+      "transliteration": "eḥad",
+      "partOfSpeech": "számnév",
+      "meaning": "egy; egyetlen",
+      "id": "hb-133"
+    },
+    {
+      "lemma": "עָשָׂר",
+      "dictionaryForm": "עָשָׂר",
+      "transliteration": "asar",
+      "partOfSpeech": "számnév",
+      "meaning": "tíz (összetett számnevekben)",
+      "id": "hb-134"
+    },
+    {
+      "lemma": "כּוֹכָב",
+      "dictionaryForm": "כּוֹכָב",
+      "transliteration": "kokhav",
+      "partOfSpeech": "főnév",
+      "meaning": "csillag",
+      "gender": "hímnem",
+      "id": "hb-135"
     }
   ]
 }
