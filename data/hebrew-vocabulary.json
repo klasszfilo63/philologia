@@ -1252,25 +1252,20 @@
       "notes": "Rámutató, figyelemfelhívó partikula."
     },
     {
-      "lemma": "אָלַם",
-      "dictionaryForm": "אָלַם",
-      "transliteration": "alam",
-      "partOfSpeech": "ige",
-      "meaning": "kévébe köt; összeköt",
+      "lemma": "מְאַלֵּם",
+      "dictionaryForm": "מְאַלֵּם",
+      "transliteration": "meallem",
+      "partOfSpeech": "igei melléknévi igenév",
+      "meaning": "kévébe kötő; kévét kötöző",
       "root": "אלם",
       "binyan": "Pi'el",
-      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
+      "lemmaType": "Pi'el aktív participium · hímnem, egyes szám",
       "verbForms": [
         {
           "form": "מְאַלְּמִים",
           "parsing": "Pi'el aktív participium · hímnem, többes szám",
-          "meaning": "kévéket kötöznek; kévékbe kötnek",
+          "meaning": "kévéket kötözők; kévébe kötők",
           "transliteration": "meallemim"
-        },
-        {
-          "form": "מְאַלֵּם",
-          "parsing": "Pi'el aktív participium · hímnem, egyes szám",
-          "meaning": "kévébe kötő"
         }
       ],
       "searchAliases": [
