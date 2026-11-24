@@ -710,7 +710,7 @@
       "root": "ישב",
       "binyan": "Qal",
       "lemmaType": "Qal perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A képen szereplő יָשַׁב Qal perfectum 3ms: 'ült; leült'. A gyök alapjelentése: ülni."
+      "notes": "A gyök alapjelentése: ülni."
     },
     {
       "lemma": "הִגִּיד",
@@ -729,7 +729,6 @@
           "transliteration": "higgidu"
         }
       ],
-      "notes": "A felhasználó eredeti anyagában szereplő Hiphil-alakok: הִגִּיד és הִגִּידוּ. A Qal נָגַד más jelentésű, ezért nem helyettesíti ezt a szócikket.",
       "id": "hb-049",
       "searchAliases": [
         "הִגִּידוּ",
@@ -757,8 +756,7 @@
       "searchAliases": [
         "עָשׂוּ",
         "asu"
-      ],
-      "notes": "A forrásban szereplő עָשׂוּ alak a Qal perfectum 3mp formája."
+      ]
     },
     {
       "id": "hb-051",
@@ -942,7 +940,7 @@
         "כְּתֹנֶת",
         "כְּתֹנֶת פַּסִּים"
       ],
-      "notes": "A forrásban szereplő כְּתֹנֶת construct alak; a szótári abszolutus forma כֻּתֹּנֶת."
+      "notes": "A כְּתֹנֶת a constructusban használt alak; az abszolutus alak: כֻּתֹּנֶת."
     },
     {
       "id": "hb-062",
@@ -1054,8 +1052,7 @@
         "singularAbsolute": "כֹּל",
         "singularConstruct": "כָּל",
         "pluralAbsolute": null,
-        "pluralConstruct": null,
-        "note": "A forrásban szereplő כָּל־ a construct alak. A szó többes számú névszói paradigmája itt nem alkalmazható."
+        "pluralConstruct": null
       },
       "searchAliases": [
         "כָּל",
@@ -1148,7 +1145,6 @@
         "הִשְׁתַּחֲווּ",
         "hishtachavu"
       ],
-      "notes": "A szóanyagban eredetileg megadott alakokat változatlanul visszaállítottam. Ehhez a gyökhöz nem veszek fel helyette más gyökből származó Qal-igét.",
       "id": "hb-072"
     },
     {
@@ -1160,7 +1156,7 @@
       "root": "ספר",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "Az eredetileg megadott Pi'el-alak. Jelentése: 'elbeszél, elmond'; nem azonos a Qal סָפַר ('számol') jelentésével.",
+      "notes": "A Pi'el jelentése: elbeszél, elmond; a Qal סָפַר jelentése: számol.",
       "id": "hb-073"
     },
     {
@@ -1185,7 +1181,7 @@
         "ה־",
         "הֲ"
       ],
-      "notes": "A pontos magánhangzó a következő hangtól és a szóalakoktól függ; a forrás ezen a helyen csak a ה betűt közli, a vokalizációt később tárgyalja."
+      "notes": "A kérdő partikula magánhangzója a következő hangtól és szóalaktól függ."
     },
     {
       "id": "hb-076",
@@ -1263,8 +1259,8 @@
       "partOfSpeech": "ige",
       "meaning": "kévébe köt; összeköt",
       "root": "אלם",
-      "binyan": "Pi'el (a megadott alakban)",
-      "lemmaType": "gyöki szótári alak; a 'kévébe köt' jelentésben a forrás a participiumot adja meg",
+      "binyan": "Pi'el",
+      "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
       "verbForms": [
         {
           "form": "מְאַלְּמִים",
@@ -1282,7 +1278,7 @@
         "מְאַלְּמִים",
         "meallemim"
       ],
-      "notes": "Visszaállítottam a megadott Pi'el participiumot: מְאַלְּמִים. Ehhez a jelentéshez nincs adatolt Qal-alak, ezért nem helyettesítem más gyök Qal-igéjével.",
+      "notes": "A מְאַלְּמִים a Pi'el aktív participium hímnemű többes számú alakja; a מְאַלֵּם hímnemű egyes számú alak.",
       "id": "hb-079"
     },
     {
@@ -1298,7 +1294,7 @@
         "singularConstruct": null,
         "pluralAbsolute": "אֲלֻמִּים",
         "pluralConstruct": null,
-        "note": "A BDB az abszolutus egyes számú אֲלֻמָּה alakot, a többes számú אֲלֻמִּים formát, valamint a személyragos אֲלֻמָּתִי és אֲלֻמֹּתֵיכֶם alakokat adatolja. Külön, személyrag nélküli construct pluralis alakot a megadott lexikoni adatok nem rögzítenek."
+        "note": "A bibliai alakok között szerepel: אֲלֻמָּה (sg. abs.), אֲלֻמִּים (pl. abs.), אֲלֻמָּתִי (sg. + 1cs) és אֲלֻמֹּתֵיכֶם (pl. + 2mp). Külön, személyrag nélküli construct pluralis alak nincs megadva."
       },
       "attachedForms": [
         {
@@ -1317,8 +1313,7 @@
         "אֲלֻמֹּתֵיכֶם",
         "alummati",
         "alummoteikhem"
-      ],
-      "notes": "Főnév: kéve. A szócikk névszói alakjai és személyragos formái ehhez a címszóhoz tartoznak."
+      ]
     },
     {
       "id": "hb-081",
@@ -1529,7 +1524,7 @@
       "root": "שלח",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrásban szereplő Pi'el-ige. A Qal שָׁלַח alapjelentése 'küld'; a Pi'el gyakran 'elküld, elbocsát, szabadon enged' jelentésű.",
+      "notes": "A Qal שָׁלַח jelentése 'küld'; a Pi'el jelentése 'elküld, elbocsát, szabadon enged'.",
       "id": "hb-094"
     },
     {
@@ -1541,7 +1536,7 @@
       "root": "מלא",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás példája a Qal מָלֵא ('tele volt') mellett; Pi'elben 'megtölt, betölt' jelentésű.",
+      "notes": "A Qal מָלֵא jelentése 'tele van'; a Pi'el מִלֵּא jelentése 'megtölt, betölt'.",
       "id": "hb-095"
     },
     {
@@ -1553,7 +1548,7 @@
       "root": "כלה",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás példája a Qal כָּלָה ('véget ért') mellett; Pi'elben 'befejez, bevégez' jelentésű.",
+      "notes": "A Qal כָּלָה jelentése 'véget ér'; a Pi'el כִּלָּה jelentése 'befejez, bevégez'.",
       "id": "hb-096"
     },
     {
@@ -1565,7 +1560,7 @@
       "root": "נחש",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás a Pi'el denominális igék példájaként hozza: 'jóslást űz, jövendöl'.",
+      "notes": "Denominális Pi'el ige: jóslást űz, jövendöl.",
       "id": "hb-097"
     },
     {
@@ -1577,7 +1572,6 @@
       "root": "בקש",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás külön Pi'el-igeként említi; nincs szükség hozzá külön Qal-alak feltételezésére.",
       "id": "hb-098"
     },
     {
@@ -1589,7 +1583,6 @@
       "root": "צוה",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás külön Pi'el-igeként említi. A bibliai szövegekben gyakori jelentése: 'megparancsol, elrendel'.",
       "id": "hb-099"
     },
     {
@@ -1601,7 +1594,6 @@
       "root": "נחם",
       "binyan": "Pi'el",
       "lemmaType": "Pi'el perfectum · 3. személy, hímnem, egyes szám",
-      "notes": "A forrás conjugate példái között szerepel. A Pi'el alak jelentése 'megvigasztal'; a gyök más törzsekben más jelentésű is lehet.",
       "id": "hb-100"
     },
     {
